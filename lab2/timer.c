@@ -13,7 +13,7 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
-    /* To be implemented by the students */
+  /* To be implemented by the students */
   printf("%s is not yet implemented!\n", __func__);
 
   return 1;
@@ -32,10 +32,13 @@ void (timer_int_handler)() {
 }
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
+  if(st == NULL || timer <= 2) return 1;
+  else{
+    __uint32_t rb_cmd = TIMER_RB_CMD|TIMER_RB_COUNT_| TIMER_RB_SEL(timer);
+    sys_outb(TIMER_0 + timer, rb_cmd);
+    if(util_sys_inb(TIMER_0 + timer, st)) return 1;
+    else return 0;
+  }
 }
 
 int (timer_display_conf)(uint8_t timer, uint8_t st,
