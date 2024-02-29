@@ -8,7 +8,7 @@
 int(timer_set_frequency)(uint8_t timer, uint32_t freq) {
   // Timer is [0,2]
   if (timer > 2) return 1;
-  // Frequency needs to be between minimum frequency and maximum frequency
+  // Frequency needs to be between minimum frequency (see notes below) and maximum frequency.
   if (freq < 19 || freq > TIMER_FREQ) {
     printf("Error in %s: Input frequency is out of bounds. Make sure it is in the interval [%d Hz, %d Hz]\n", __func__, 19, TIMER_FREQ);
     return 1;
@@ -41,13 +41,13 @@ int(timer_set_frequency)(uint8_t timer, uint32_t freq) {
   // Write control word to configure the timer:
   if (sys_outb(TIMER_CTRL, ctrlWord)) return 1;
 
-  // Get new frequency for timer:
-  uint16_t newFreq = (uint16_t) (TIMER_FREQ/freq);
+  // Get number of clock cycles (see notes below):
+  uint16_t numClocks = (uint16_t) (TIMER_FREQ/freq);
 
   // Split 2 bytes into LSB and MSB:
   uint8_t lsb = 0x00, msb = 0x00;
-  if (util_get_LSB(newFreq, &lsb)) return 1;
-  if (util_get_MSB(newFreq, &msb)) return 1;
+  if (util_get_LSB(numClocks, &lsb)) return 1;
+  if (util_get_MSB(numClocks, &msb)) return 1;
 
   // Write both bytes to the timer reg (lsb first)
   if (sys_outb(timerAddr, lsb)) return 1;
@@ -56,23 +56,27 @@ int(timer_set_frequency)(uint8_t timer, uint32_t freq) {
   return 0;
 }
 
+// Arbitrary value because it will be the mask bit before being hook_id (see notes on lab2.c)
+static int hook_id = TIMER0_IRQ;
 int(timer_subscribe_int)(uint8_t *bit_no) {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  if (bit_no == NULL) return 1;
+  
+  *bit_no = hook_id;
 
-  return 1;
+  // Check notes below on the arguments of this function
+  if (sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id)) return 1;
+
+  return 0;
 }
 
 int(timer_unsubscribe_int)() {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  if (sys_irqrmpolicy(&hook_id)) return 1;
 
-  return 1;
+  return 0;
 }
 
 void(timer_int_handler)() {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  // Did what this had to do inside 'if (msg.m_notify.interrupts & irq_set)', to avoid creating a variable across files - like wth >:( 
 }
 
 int(timer_get_conf)(uint8_t timer, uint8_t *st) {
@@ -88,12 +92,6 @@ int(timer_get_conf)(uint8_t timer, uint8_t *st) {
 
 int(timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field field) {
   if (timer > 2) return 1;
-
-  // Example:
-  // 10001101 (encontro o bcd_bit)
-  // 01000110 (shift 1 para a direita, ja nao preciso do bcd_bit)
-  // (uso os 5 LSbits do count_bits)
-  // 00000001 (shift 6 para a direta, ja nao preciso dos 5 bits do count_bits nem do bit 6 (null count))
 
   uint8_t bcd_bit = st & 0x01;
   uint8_t count_bits = ((uint8_t) (st >> 1)) & 0x1f;
@@ -128,10 +126,10 @@ int(timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field field
         case 1:
           toDisplay.count_mode = 1;
           break;
-        case 2: case 6: // 6 for compatibility with future Intel products
+        case 2: case 6: // See notes below
           toDisplay.count_mode = 2;
           break;
-        case 3: case 7: // 7 for compatibility with future Intel products
+        case 3: case 7:
           toDisplay.count_mode = 3;
           break;
         case 4:
@@ -151,3 +149,36 @@ int(timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field field
 
   return 0;
 }
+
+/* NOTES:
+<About timer_set_frequency()>
+Notes on the numClocks variable:
+- Corresponds to the number of clock cycles, also called count - for the timer to achieve the desired frequency, freq. It has to do with MINIX's timer being in Mode 3 (Square Wave Generator). "An initial count of N results in a square wave with a period of N CLK cycles" (https://web.fe.up.pt/~pfs/aulas/lcom2010/labs/lab3/intel-82c54-timer.pdf)
+
+Note on the minimum allowed frequency:
+- The result of TIMER_FREQ/freq can be at most UINT16_MAX (65532), because 16 bit is the size of the timer's counter. So freq can be, at a minimum, 18,207623756, therefore the lowest integer it can be is 19.
+
+
+<About timer_display_conf()>
+Example to help manipulate the status and ctrlWord:
+- 10001101 (encontro o bcd_bit)
+- 01000110 (shift 1 para a direita, ja nao preciso do bcd_bit)
+- (uso os 5 LSbits do count_bits)
+- 00000001 (shift 6 para a direta, ja nao preciso dos 5 bits do count_bits nem do bit 6 (null count) e tenho o output bit) 
+
+Note on operating modes/counting modes 2 and 3: 
+- The 3rd bit (MSbit) of operating modes 2 and 3 are 'don't care' bits - they can be either 0 or 1. According to https://web.fe.up.pt/~pfs/aulas/lcom2122/labs/lab2/lab2_03.html table 1's caption, case 6 (0b110) and 7 (0b111) are used to ensure compatibility with future Intel products. 
+- While https://web.fe.up.pt/~pfs/aulas/lcom2010/labs/lab3/intel-82c54-timer.pdf figure 7's caption says the opposite: case 2 (0b010) and 3 (0b011) are the ones that are actually for compatibility with future Intel products
+
+
+<About timer_subscribe_int()>
+Note on sys_irqsetpolicy(int irq_line, int policy, int *hook_id)'s arguments;
+- irq_line is the irq_line of the device I want (timer 0 - https://web.fe.up.pt/~pfs/aulas/lcom2122/labs/lab2/lab2_04.html - table 5)
+- policy has 2 options:
+  - IRQ_REENABLE: The kernel automatically re-enables the interrupt after notification. (For timer interrupts, a common choice is IRQ_REENABLE to ensure continuous triggering of timer events without manual re-enabling. - by Google Gemini)
+  - IRQ_DISABLE: The kernel disables the interrupt after notification, and you'll need to manually re-enable it using sys_irqenable.
+- hook_id is used both for:
+  - input to the call: value that will be used in interrupt notifications; 
+  - output from the call (returned by the call): must be used in the other MINIX 3 kernel calls to specify the interrupt notification to operate on.
+
+*/
