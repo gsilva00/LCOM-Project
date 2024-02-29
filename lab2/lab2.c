@@ -30,27 +30,47 @@ int main(int argc, char *argv[]) {
 }
 
 int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {
-  if (timer > 2) return 1;
-  
   uint8_t stReceiver = 0x00;
   
   if (timer_get_conf(timer, &stReceiver)) return 1;
-  if (timer_display_conf(timer, &stReceiver, field)) return 1;  
+  if (timer_display_conf(timer, stReceiver, field)) return 1;  
 
   return 0;
 }
 
 int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
-  if (timer > 2) return 1;
-  
   if (timer_set_frequency(timer, freq)) return 1;
 
   return 0;
 }
 
 int(timer_test_int)(uint8_t time) {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
+  /*
+  int ipc_status;
+  message msg;
+  
+  while ( 1 ) { // You may want to use a different condition 
+    // Get a request message.
+    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) { // received notification 
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE: // hardware interrupt notification 
+          if (msg.m_notify.interrupts & irq_set) { //subscribe
+            // process it 
+          }
+          break;
+        default:
+          // no other notifications expected: do nothing
+          break;
+      }
+    } 
+    else { // received a standard message, not a notification
+      // no standard messages expected: do nothing
+    }
+ }
+ */
+  return 0;
 }

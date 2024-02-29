@@ -1,7 +1,0 @@
-@lcflib.a:2019, lcf_start
-  timer_test_time_base(timer, freq)
-> timer_test_time_base(0, 60)
-  @lab2.c:41, timer_test_time_base
-    printf("%s is not yet implemented!\n", __func__)
-    "timer_test_time_base is not yet implemented!"
-< timer_test_time_base(0, 60) -> (ret: 1)
