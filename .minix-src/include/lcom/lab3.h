@@ -42,7 +42,14 @@ int (kbd_test_poll)();
 int (kbd_test_timed_scan)(uint8_t n);
 
 /** 
- * @brief Interrupt handler to read scancodes in C.
+ * @brief Handles keyboard interrupts (C implementation)
+ * 
+ * Reads the status register and the output buffer (OB).
+ * If there was some error, the byte read from the OB should be discarded.
+ * 
+ * All communication with other code must be done via global variables, static if possible.
+ * 
+ * Must be defined using parenthesis around the function name: 
  */
 void (kbc_ih)(void);
 

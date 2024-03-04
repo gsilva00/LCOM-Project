@@ -56,28 +56,31 @@ int(timer_set_frequency)(uint8_t timer, uint32_t freq) {
   return 0;
 }
 
-// Arbitrary value because it will be the mask bit before being hook_id (see notes on lab2.c)
-static int hook_id = TIMER0_IRQ;
+// Arbitrary value -> it will be the mask bit before being timer's hook_id (see notes on lab2.c)
+int timer_hookId = TIMER0_IRQ;
+// See notes below
+int int_counter = 0;
+
 int(timer_subscribe_int)(uint8_t *bit_no) {
   if (bit_no == NULL) return 1;
   
-  *bit_no = hook_id;
+  *bit_no = timer_hookId;
 
   // Check notes below on the arguments of this function
-  if (sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id)) return 1;
+  if (sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &timer_hookId)) return 1;
 
   return 0;
 }
 
 int(timer_unsubscribe_int)() {
-  if (sys_irqrmpolicy(&hook_id)) return 1;
-
+  if (sys_irqrmpolicy(&timer_hookId)) return 1;
   return 0;
 }
 
 void(timer_int_handler)() {
-  // Did what this had to do inside 'if (msg.m_notify.interrupts & irq_set)', to avoid creating a variable across files - like wth >:( 
+  int_counter++;
 }
+
 
 int(timer_get_conf)(uint8_t timer, uint8_t *st) {
   if (st == NULL || timer > 2) return 1;
@@ -172,13 +175,17 @@ Note on operating modes/counting modes 2 and 3:
 
 
 <About timer_subscribe_int()>
-Note on sys_irqsetpolicy(int irq_line, int policy, int *hook_id)'s arguments;
+Note on sys_irqsetpolicy(int irq_line, int policy, int *timer_hookId)'s arguments;
 - irq_line is the irq_line of the device I want (timer 0 - https://web.fe.up.pt/~pfs/aulas/lcom2122/labs/lab2/lab2_04.html - table 5)
 - policy has 2 options:
   - IRQ_REENABLE: The kernel automatically re-enables the interrupt after notification. (For timer interrupts, a common choice is IRQ_REENABLE to ensure continuous triggering of timer events without manual re-enabling. - by Google Gemini)
   - IRQ_DISABLE: The kernel disables the interrupt after notification, and you'll need to manually re-enable it using sys_irqenable.
-- hook_id is used both for:
+- timer_hookId is used both for:
   - input to the call: value that will be used in interrupt notifications; 
   - output from the call (returned by the call): must be used in the other MINIX 3 kernel calls to specify the interrupt notification to operate on.
+
+<About timer_int_handler(), get_int_counter()>
+- timer_int_handler() increments the int_counter variable to store the number of interrupts the timer has sent (60 Hz - 60 per second).
+- get_int_counter() serves as a 
 
 */

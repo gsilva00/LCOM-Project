@@ -1,0 +1,9 @@
+# Do not track the executable
+lab3
+
+# Do not track the object files
+*.o
+
+# Do not track the files that aid development
+output.txt
+trace.txt

@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+extern int int_counter;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -45,7 +46,7 @@ int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
 }
 
 int(timer_test_int)(uint8_t time) {
-  int ipc_status, r, int_counter = 0;
+  int ipc_status, r;
   message msg;
   
   // See notes below:
@@ -62,9 +63,9 @@ int(timer_test_int)(uint8_t time) {
     if (is_ipc_notify(ipc_status)) { // received notification 
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE: // hardware interrupt notification 
-          if (msg.m_notify.interrupts & irq_set) { //subscribed interrupt
-            int_counter++;
-            if (int_counter % 60 == 0) { // See notes below:
+          if (msg.m_notify.interrupts & irq_set) { // subscribed interrupt
+            timer_int_handler();
+            if (!(int_counter % 60)) { // See notes below:
               timer_print_elapsed_time();
               time--;
             }
@@ -91,5 +92,5 @@ Note on bit_no:
 - This allows the kernel to send a single message to notify a process of the occurrence of several interrupts on different IRQ lines.
 
 Note on the number 60:
-- Timer runs at 60Hz, 60 clocks per second, need to print message every second
+- Timer runs at 60Hz -> 60 clock cycles per second, 60 interrupts per second, need to print message every second, so need to check when it is a multiple of 60 -> get_int_counter() % 60 == 0
 */
