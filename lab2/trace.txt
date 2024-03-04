@@ -1,35 +1,32 @@
 @lcflib.a:2019, lcf_start
-  timer_test_read_config(timer, field)
-> timer_test_read_config(0, timer_status_field::all)
-  @lab2.c:37, timer_test_read_config
-    timer_get_conf(timer, &st)
-  > timer_get_conf(0, addr: 0xeffff72b)
-    @timer.c:54, timer_get_conf
+  timer_test_time_base(timer, freq)
+> timer_test_time_base(0, 60)
+  @lab2.c:44, timer_test_time_base
+    timer_set_frequency(timer, freq)
+  > timer_set_frequency(0, 60)
+    @timer.c:13, timer_set_frequency
       sys_outb(TIMER_CTRL, rb_cmd)
     > sys_outb(0x43, 0xe2 = 0b11100010)
     @utils.c:25, util_sys_inb
       sys_inb(port, &temp)
-    > sys_inb(0x40, addr: 0xeffff614)
-    < sys_inb(0x40, addr: 0xeffff614 [0xb6 = 0b10110110])
-  < timer_get_conf(0, addr: 0xeffff72b [0xb6 = 0b10110110]) -> (ret: 0)
-  @lab2.c:38, timer_test_read_config
-    timer_display_conf(timer, st, field)
-  > timer_display_conf(0, 0xb6 = 0b10110110, timer_status_field::all)
-    @timer.c:66, timer_display_conf
-      timer_get_conf(timer, &st)
-    > timer_get_conf(0, addr: 0xeffff64f)
-      @timer.c:54, timer_get_conf
-        sys_outb(TIMER_CTRL, rb_cmd)
-      > sys_outb(0x43, 0xe2 = 0b11100010)
-      @utils.c:25, util_sys_inb
-        sys_inb(port, &temp)
-      > sys_inb(0x40, addr: 0xeffff52c)
-      < sys_inb(0x40, addr: 0xeffff52c [0x36 = 0b00110110])
-    < timer_get_conf(0, addr: 0xeffff64f [0x36 = 0b00110110]) -> (ret: 0)
-    @timer.c:85, timer_display_conf
-      timer_print_config(timer, field, data)
-    > timer_print_config(0, timer_status_field::all, timer_status_field_val::byte = 0x36 = 0b00110110)
-      "timer_print_config:all timer = 0 conf = 0x36"
-    < timer_print_config(...) -> (ret: 0)
-  < timer_display_conf(0, 0xb6 = 0b10110110, timer_status_field::all) -> (ret: 0)
-< timer_test_read_config(0, timer_status_field::all) -> (ret: 0)
+    > sys_inb(0x40, addr: 0xeffff628)
+    < sys_inb(0x40, addr: 0xeffff628 [0x36 = 0b00110110])
+    @timer.c:20, timer_set_frequency
+      sys_outb(TIMER_CTRL, inf)
+    > sys_outb(0x43, 0x36 = 0b00110110)
+    @timer.c:23, timer_set_frequency
+      util_get_LSB(div, &lsb)
+    > util_get_LSB(0x4dae, addr: 0xeffff65a)
+    < util_get_LSB(0x4dae, addr: 0xeffff65a [0xae]) -> (ret: 0)
+    @timer.c:24, timer_set_frequency
+      util_get_MSB(div, &msb)
+    > util_get_MSB(0x4dae, addr: 0xeffff659)
+    < util_get_MSB(0x4dae, addr: 0xeffff659 [0x4d]) -> (ret: 0)
+    @timer.c:25, timer_set_frequency
+      sys_outb(TIMER_0 + timer, lsb)
+    > sys_outb(0x40, 0xae = 0b10101110)
+    @timer.c:26, timer_set_frequency
+      sys_outb(TIMER_0 + timer, msb)
+    > sys_outb(0x40, 0x4d = 0b01001101)
+  < timer_set_frequency(0, 60) -> (ret: 0)
+< timer_test_time_base(0, 60) -> (ret: 0)
