@@ -4,7 +4,6 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "utils.c"
 #include "keyboard.h"
 #include "i8042.h"
 
@@ -36,12 +35,14 @@ int main(int argc, char *argv[]) {
 int(kbd_test_scan)() {
   int ipc_status, r;
   message msg;
+
+  uint8_t scancode_size = 1;
   
   uint8_t bit_no;
-  if (kbd_subscribe_int(&bit_no)) return 1;
+  if (kbc_subscribe_int(&bit_no)) return 1;
   uint32_t irq_set = BIT(bit_no);
 
-  while (get_scancode() == 0x81) { // ESC breakcode found
+  while (get_scancode() != BREAKCODE_ESC) { // ESC breakcode found
     // Get a request message.
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
       printf("driver_receive failed with: %d", r);
@@ -49,16 +50,20 @@ int(kbd_test_scan)() {
     }
     if (is_ipc_notify(ipc_status)) { // received notification 
       switch (_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE: // hardware interrupt notification 
+        case HARDWARE: // hardware interrupt notification
           if (msg.m_notify.interrupts & irq_set) { // subscribed interrupt
             kbc_ih();
             
             uint8_t scancode = get_scancode();
-            if (kbd_print_scancode(
-              !(scancode & MAKECODE),
-              (scancode == SC_MSB1 || scancode == SC_MSB2) ? 2 : 1,
-              &scancode
-            )) return 1;
+            
+            if (scancode == SC_MSB1 || scancode == SC_MSB2) {
+              scancode_size = 2;
+              continue;
+            }
+            else {
+              if (kbd_print_scancode(!(scancode & BREAKCODE), scancode_size, &scancode)) return 1;
+              scancode_size = 1;
+            }
           }
           break;
         default:
@@ -71,7 +76,7 @@ int(kbd_test_scan)() {
     }
   }
   
-  if (kbd_unsubscribe_int()) return 1;
+  if (kbc_unsubscribe_int()) return 1;
   if (kbd_print_no_sysinb(get_sysinb_count())) return 1;
   return 0;
 }
@@ -79,7 +84,7 @@ int(kbd_test_scan)() {
 int(kbd_test_poll)() {
   
 
-  if (kbd_print_scancode()) return 1;
+  //if (kbd_print_scancode()) return 1;
 
   return 0;
 }

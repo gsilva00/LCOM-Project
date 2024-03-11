@@ -10,6 +10,7 @@
     "lab3.h": "c",
     "stdint.h": "c",
     "i8042.h": "c",
-    "lcf.h": "c"
+    "lcf.h": "c",
+    "keyboard.h": "c"
   },
 }

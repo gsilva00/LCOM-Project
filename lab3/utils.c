@@ -2,7 +2,6 @@
 
 #include <stdint.h>
 
-#define LAB3
 
 static int cnt = 0;
 

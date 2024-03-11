@@ -23,4 +23,4 @@ int(kbc_unsubscribe_int)();
 uint8_t get_scancode();
 uint8_t get_sysinb_count();
 
-#endif /* __TIMER_H */
+#endif /* __KEYBOARD_H */

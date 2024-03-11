@@ -4,6 +4,11 @@ lab3
 # Do not track the object files
 *.o
 
+# Do not track the depend files
+*.d
+
 # Do not track the files that aid development
+.depend
+.gdbinit
 output.txt
 trace.txt

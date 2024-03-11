@@ -15,8 +15,10 @@
 #define KBC_ST_INBUF BIT(1) /** @brief Status byte input buffer full */
 #define KBC_ST_OUTBUF BIT(0) /** @brief Status byte output buffer full */
 
-#define MAKECODE BIT(7) /** @brief Makecode MSbit is 0, Breakcode MSbit is 1 */
+#define BREAKCODE BIT(7) /** @brief Makecode MSbit is 0, Breakcode MSbit is 1 */
 #define SC_MSB1 0xE0 /** @brief 2-byte-scancode MSB can be E0 */
 #define SC_MSB2 0xE2 /** @brief 2-byte-scancode MSB can also be E2 */
 
-#endif /* _LCOM_I8054_H */
+#define BREAKCODE_ESC 0x81 /** @brief Breakcode of ESC key */
+
+#endif /* _LCOM_I8042_H */
