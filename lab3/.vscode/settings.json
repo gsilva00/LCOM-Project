@@ -8,6 +8,8 @@
   "editor.wordWrapColumn": 100,
   "files.associations": {
     "lab3.h": "c",
-    "stdint.h": "c"
+    "stdint.h": "c",
+    "i8042.h": "c",
+    "lcf.h": "c"
   },
 }
