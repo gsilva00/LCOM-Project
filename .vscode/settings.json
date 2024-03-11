@@ -3,6 +3,9 @@
     "files.associations": {
         "stdbool.h": "c",
         "lcf.h": "c",
-        "lab3.h": "c"
+        "lab3.h": "c",
+        "timer.h": "c",
+        "i8254.h": "c",
+        "stdint.h": "c"
     }
 }
