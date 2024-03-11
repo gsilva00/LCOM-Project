@@ -12,20 +12,20 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   if(freq < 19 || freq > TIMER_FREQ || timer < 0 || timer > 2) return 1;
   __uint32_t rb_cmd = TIMER_RB_CMD|TIMER_RB_COUNT_| TIMER_RB_SEL(timer);
   uint8_t inf = 0;
-  sys_outb(TIMER_CTRL, rb_cmd);
-  util_sys_inb(TIMER_0 + timer, &inf);
+  if(sys_outb(TIMER_CTRL, rb_cmd)) return 1;
+  if(util_sys_inb(TIMER_0 + timer, &inf)) return 1;
   inf &= 0x0f;
   if(timer == 0) inf |= TIMER_LSB_MSB;
   else if(timer == 1) inf |= TIMER_LSB_MSB | TIMER_SEL1;
   else inf |= TIMER_LSB_MSB | TIMER_SEL2;
   uint16_t div = (uint16_t)(TIMER_FREQ/freq);
-  sys_outb(TIMER_CTRL, inf);
+  if(sys_outb(TIMER_CTRL, inf)) return 1;
   uint8_t lsb;
   uint8_t msb;
-  util_get_LSB(div, &lsb);
-  util_get_MSB(div, &msb);
-  sys_outb(TIMER_0 + timer, lsb);
-  sys_outb(TIMER_0 + timer, msb);
+  if(util_get_LSB(div, &lsb)) return 1;
+  if(util_get_MSB(div, &msb)) return 1;
+  if(sys_outb(TIMER_0 + timer, lsb)) return 1;
+  if(sys_outb(TIMER_0 + timer, msb)) return 1;
   return 0;
 }
 
@@ -47,7 +47,7 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
   if(st == NULL || timer > 2 || timer < 0) return 1;
   else{
     __uint32_t rb_cmd = TIMER_RB_CMD|TIMER_RB_COUNT_| TIMER_RB_SEL(timer);
-    sys_outb(TIMER_CTRL, rb_cmd);
+    if(sys_outb(TIMER_CTRL, rb_cmd)) return 1;
     if(util_sys_inb(TIMER_0 + timer, st)) return 1;
     else return 0;
   }
@@ -59,7 +59,7 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
   else if(field != tsf_all && field != tsf_base && field != tsf_initial && field != tsf_mode) return 1;
   else{
     union timer_status_field_val data;
-    timer_get_conf(timer, &st);
+    if(timer_get_conf(timer, &st)) return 1;
     switch(field){
       case tsf_all:
         data.byte = st;
@@ -78,7 +78,7 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
         st = st >> 5;
         data.count_mode = st;
     }
-    timer_print_config(timer, field, data);
+    if(timer_print_config(timer, field, data)) return 1;
     return 0;
   }
 }

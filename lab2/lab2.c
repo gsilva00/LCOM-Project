@@ -56,7 +56,7 @@ int(timer_test_int)(uint8_t time) {
   if(timer_subscribe_int(&bit_no) != 0) return 1;
   
   while(time > 0) {
-    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) { 
         printf("driver_receive failed with: %d", r);
         continue;
     }
