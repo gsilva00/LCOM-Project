@@ -91,7 +91,9 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
   //ler o que recebemos ,status, em 0x40 + timer(port que queremos)
   int port = TIMER_0 + timer;
   uint32_t rbc = TIMER_RB_CMD | TIMER_RB_COUNT_ | TIMER_RB_SEL(timer);
-  sys_outb(TIMER_CTRL,rbc);
+  if(sys_outb(TIMER_CTRL,rbc)){
+    return 1;
+  }
   if( util_sys_inb(port,st) ){
     return 1; //não conseguiu ler
   }
@@ -117,7 +119,13 @@ int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field fiel
   else if(tsf_initial == field){
     //st bites 5 e 4      0011 0000 > 4
     uint8_t temporario = (st & 0x30) >> 4;
-    conf.in_mode = temporario;
+    if (temporario == 6){
+      conf.in_mode = 2;
+    }else if(temporario == 7){
+        conf.in_mode = 3;
+    }else{
+       conf.in_mode = temporario;
+    }
   }
   else if(tsf_mode == field){
     //st bites 3 2e 1      0000 1110 > 1
