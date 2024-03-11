@@ -11,6 +11,8 @@
     "lcf.h": "c",
     "sysutil.h": "c",
     "lab2.h": "c",
-    "i8254.h": "c"
+    "i8254.h": "c",
+    "utils.h": "c",
+    "aux_timer.h": "c"
   },
 }

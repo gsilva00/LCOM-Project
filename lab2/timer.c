@@ -57,9 +57,9 @@ int(timer_set_frequency)(uint8_t timer, uint32_t freq) {
 }
 
 // Arbitrary value -> it will be the mask bit before being timer's hook_id (see notes on lab2.c)
-int timer_hookId = TIMER0_IRQ;
+static int timer_hookId = TIMER0_IRQ;
 // See notes below
-int int_counter = 0;
+static int int_counter = 0;
 
 int(timer_subscribe_int)(uint8_t *bit_no) {
   if (bit_no == NULL) return 1;
@@ -79,6 +79,10 @@ int(timer_unsubscribe_int)() {
 
 void(timer_int_handler)() {
   int_counter++;
+}
+
+int get_int_counter() {
+  return int_counter;
 }
 
 
