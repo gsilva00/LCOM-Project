@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include <lcom/timer.h>
+#include "aux_timer.h"
 #include "keyboard.h"
 #include "kbc.h"
 #include "i8042.h"
@@ -99,10 +101,59 @@ int(kbd_test_poll)() {
 }
 
 int(kbd_test_timed_scan)(uint8_t n) {
-  /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  int ipc_status, r;
+  message msg;
+  
+  uint8_t bit_no;
+  if (kbc_subscribe_int(&bit_no)) return 1;
+  uint32_t kbc_int_bit = BIT(bit_no);
+  if (timer_subscribe_int(&bit_no)) return 1;
+  uint32_t timer0_int_bit = BIT(bit_no);
 
-  return 1;
+  int time_passed = 0;
+  while (get_scancode() != BREAKCODE_ESC && time_passed < n) { // ESC breakcode found
+    // Get a request message.
+    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) { // received notification 
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE: // hardware interrupt notification
+          if (msg.m_notify.interrupts & kbc_int_bit) { // subscribed kbc interrupt
+            kbc_ih();
+            
+            uint8_t scancode = get_scancode();
+            if (kbd_print_scancode(
+              !(scancode & BREAKCODE), 
+              (scancode == SC_MSB1) ? 2 : 1, 
+              &scancode
+            )) return 1;
+            
+            time_passed = 0;
+            set_timer_intCounter(0);
+            // See comments below
+          }
+          if (msg.m_notify.interrupts & timer0_int_bit) { // subscribed timer interrupt
+            timer_int_handler();
+            if (get_timer_intCounter() % 60 == 0) {
+              n--;
+            }
+          }
+          break;
+        default:
+          // no other notifications expected: do nothing
+          break;
+      }
+    } 
+    else { // received a standard message, not a notification
+      // no standard messages expected: do nothing
+    }
+  }
+
+  if (kbc_unsubscribe_int()) return 1;
+  if (timer_unsubscribe_int()) return 1;
+  return 0;
 }
 
 /* NOTES: 
