@@ -1,8 +1,9 @@
 #include <lcom/lcf.h>
-#include "keyboard.h"
 
 #include <stdint.h>
 
+#include "keyboard.h"
+#include "kbc.h"
 #include "i8042.h"
 
 static int kbc_hookId = KBC_IRQ;
@@ -19,23 +20,21 @@ int(kbc_unsubscribe_int)() {
 }
 
 void (kbc_ih)() {
-  int tries = 5; // A more fault-tolerant approach is to give enough-time for the KBC or the keyboard to respond, retry a few times on time-out, and finally give up.
-  while (tries) {
-    uint8_t kbc_st;
+  // Might need message to detect error
+  kbc_read_outbuf(KBC_OUTBUF, &scancode);
+}
 
-    if (util_sys_inb(KBC_ST_PORT, &kbc_st)) return;
+int reset_keyboard() {
+  uint8_t cmd;
 
-    // When LSbit is 0 (no output) don't do anything
-    if (!(kbc_st & KBC_ST_OUTBUF)) return;
-    // Test for errors (2 MSbits on 1)
-    if (kbc_st & KBC_ST_ERRPAR) return;
-    if (kbc_st & KBC_ST_ERRTOUT) return;
+  if (kbc_write_cmd(KBC_CMD_REG, KBC_CMD_READ)) return 1;
+  if (kbc_read_outbuf(KBC_OUTBUF, &cmd)) return 1;
 
-    if (util_sys_inb(KBC_IO_PORT, &scancode)) return;
+  cmd |= CMDB_INT_KBD;
+  if (kbc_write_cmd(KBC_CMD_REG, KBC_CMD_WRITE)) return 1;
+  if (kbc_write_cmd(KBC_INBUF, cmd)) return 1;
 
-    tries--;
-    // tickdelay(micros_to_ticks(DELAY_US));
-  }
+  return 0;
 }
 
 

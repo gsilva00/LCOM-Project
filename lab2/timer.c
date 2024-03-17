@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 
+#include "aux_timer.h"
 #include "i8254.h"
 
 int(timer_set_frequency)(uint8_t timer, uint32_t freq) {

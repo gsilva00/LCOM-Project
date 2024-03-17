@@ -1,7 +1,7 @@
-#ifndef __AUX_TIMER_H
-#define __AUX_TIMER_H
-// Where functions implemented in timer.c to be shared between files are
+#ifndef AUX_TIMER_H
+#define AUX_TIMER_H
+// Declarations of functions to be shared between files and implemented in timer.c
 
 int get_int_counter(); /** Getter for int_counter static global variable in timer.c */
 
-#endif /* __AUX_TIMER_H */
+#endif /* AUX_TIMER_H */

@@ -5,6 +5,7 @@
 #include <stdint.h>
 
 #include "keyboard.h"
+#include "kbc.h"
 #include "i8042.h"
 
 
@@ -35,8 +36,6 @@ int main(int argc, char *argv[]) {
 int(kbd_test_scan)() {
   int ipc_status, r;
   message msg;
-
-  uint8_t scancode_size = 1;
   
   uint8_t bit_no;
   if (kbc_subscribe_int(&bit_no)) return 1;
@@ -55,15 +54,13 @@ int(kbd_test_scan)() {
             kbc_ih();
             
             uint8_t scancode = get_scancode();
+            if (kbd_print_scancode(
+              !(scancode & BREAKCODE), 
+              (scancode == SC_MSB1) ? 2 : 1, 
+              &scancode
+            )) return 1;
             
-            if (scancode == SC_MSB1 || scancode == SC_MSB2) {
-              scancode_size = 2;
-              continue;
-            }
-            else {
-              if (kbd_print_scancode(!(scancode & BREAKCODE), scancode_size, &scancode)) return 1;
-              scancode_size = 1;
-            }
+            // See comments below
           }
           break;
         default:
@@ -82,9 +79,21 @@ int(kbd_test_scan)() {
 }
 
 int(kbd_test_poll)() {
+  while (get_scancode() != BREAKCODE_ESC) {
+    uint8_t scancode = get_scancode();
+    
+    if (kbc_read_outbuf(KBC_OUTBUF, &scancode)) return 1;
+    
+    if(kbd_print_scancode(
+      !(scancode & BREAKCODE), 
+      scancode == SC_MSB1 ? 2 : 1, 
+      &scancode
+    )) return 1;   
+  }
   
-
-  //if (kbd_print_scancode()) return 1;
+  if (reset_keyboard()) return 1;
+  
+  if (kbd_print_no_sysinb(get_sysinb_count())) return 1;
 
   return 0;
 }
@@ -95,3 +104,24 @@ int(kbd_test_timed_scan)(uint8_t n) {
 
   return 1;
 }
+
+/* NOTES: 
+<kbd_test_scan()>
+.Keyboard Interrupts: 
+- When the scancode read from the output buffer is SC_MSB1 (0xE0) or SC_MSB2 (0xE2, as mentioned by professor Pedro Souto), the scancode will have 2 bytes.
+- The communication serial line between the keyboard and the keyboard controller sends 1 byte at a time. When the code has 2 bytes, 0xE0 or 0xE2 get sent first
+- So I signal that the code has 2 bytes, and the text time it receives an interruption (reads the output buffer), it's gonna be the rest of the code.
+- NOT SURE: kbd_print_scancode() probably knows that when scancode_size is 2, the &scancode argument, when printed, is preceded by 0xE0 (don't know if 0xE2 is considered). That's why the &scancode argument is only a uint8_t (doesn't allow the passing of the full 2-byte scancode).
+THIS RESULTS IN (WHICH FOR SOME REASON DOESN'T WORK):
+  uint8_t scancode_size = 1;
+  if (scancode == SC_MSB1 || scancode == SC_MSB2) {
+    scancode_size = 2;
+    continue;
+  }
+  else {
+    // Makecode MSB is 0, 1st argument needs to be 1 (true)
+    // Breakcode MSB is 1, 1st argument needs to be 0 (false)
+    if (kbd_print_scancode(!(scancode & BREAKCODE), scancode_size, &scancode)) return 1;
+    scancode_size = 1;
+  }
+*/
