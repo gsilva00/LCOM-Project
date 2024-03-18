@@ -4,7 +4,7 @@
 int counter = 0;
 uint8_t status = 0, value = 0;
 
-void (kbc_ih)() {  
+void (kbc_status_read)() {  
   if(util_sys_inb(0x64, &status)) {
     return;
   }
