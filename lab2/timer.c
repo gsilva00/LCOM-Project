@@ -70,7 +70,7 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
         data.in_mode = st;
         break;
       case tsf_base:
-        st &= 0xfc;
+        st &= 0x01;
         data.bcd = st;
         break;
       default:
