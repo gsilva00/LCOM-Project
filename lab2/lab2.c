@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
 }
 
 int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {
-  uint8_t stReceiver = 0x00;
+  uint8_t stReceiver;
   
   if (timer_get_conf(timer, &stReceiver)) return 1;
   if (timer_display_conf(timer, stReceiver, field)) return 1;  

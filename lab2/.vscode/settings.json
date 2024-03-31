@@ -13,6 +13,7 @@
     "lab2.h": "c",
     "i8254.h": "c",
     "utils.h": "c",
-    "aux_timer.h": "c"
+    "aux_timer.h": "c",
+    "stdint.h": "c"
   },
 }
