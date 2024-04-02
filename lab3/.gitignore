@@ -1,5 +1,4 @@
 lab3
-
 *.o
 *.txt
 .gdbinit

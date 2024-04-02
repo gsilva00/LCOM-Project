@@ -2,6 +2,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+uint32_t counter = 0;
+
 int(util_get_LSB)(uint16_t val, uint8_t *lsb) {
   if(lsb == NULL) return 1;
   else{
@@ -19,6 +21,9 @@ int(util_get_MSB)(uint16_t val, uint8_t *msb) {
 }
 
 int (util_sys_inb)(int port, uint8_t *value) {
+  #ifdef LAB3
+  counter++;
+  #endif
   if(value == NULL) return 1;
   else{
     uint32_t temp = 0x00000000;
