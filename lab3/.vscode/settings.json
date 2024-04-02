@@ -17,6 +17,7 @@
     "stdbool.h": "c",
     "proj.h": "c",
     "kbc.h": "c",
-    "timer.h": "c"
+    "timer.h": "c",
+    "aux_timer.h": "c"
   },
 }

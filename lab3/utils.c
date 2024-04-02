@@ -39,6 +39,6 @@ uint8_t get_sysinb_count() {
 /* NOTES: 
 <About util_sys_inb()>
 - Wrapper for the sys_inb() kernel call. 
-- Reason: This kernel call takes the address of a 32-bit unsigned integer, instead of a 8-byte one. Therefore, it can't be called directly using the 'value' function argument.
+- Reason: This kernel call takes the address of a 32-bit unsigned integer, instead of a 8-bit one. Therefore, it can't be called directly using the 'value' function argument.
 
 */

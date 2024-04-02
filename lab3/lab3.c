@@ -41,7 +41,7 @@ int(kbd_test_scan)() {
   
   uint8_t bit_no;
   if (kbc_subscribe_int(&bit_no)) return 1;
-  uint32_t irq_set = BIT(bit_no);
+  uint32_t kbc_int_bit = BIT(bit_no);
 
   while (get_scancode() != BREAKCODE_ESC) { // ESC breakcode found
     // Get a request message.
@@ -52,7 +52,7 @@ int(kbd_test_scan)() {
     if (is_ipc_notify(ipc_status)) { // received notification 
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE: // hardware interrupt notification
-          if (msg.m_notify.interrupts & irq_set) { // subscribed interrupt
+          if (msg.m_notify.interrupts & kbc_int_bit) { // subscribed interrupt
             kbc_ih();
             
             uint8_t scancode = get_scancode();
@@ -81,8 +81,10 @@ int(kbd_test_scan)() {
 }
 
 int(kbd_test_poll)() {
-  while (get_scancode() != BREAKCODE_ESC) {
-    uint8_t scancode = get_scancode();
+  uint8_t scancode = get_scancode();
+
+  while (scancode != BREAKCODE_ESC) {
+    scancode = get_scancode();
     
     if (kbc_read_outbuf(KBC_OUTBUF, &scancode)) return 1;
     
@@ -120,6 +122,11 @@ int(kbd_test_timed_scan)(uint8_t n) {
     if (is_ipc_notify(ipc_status)) { // received notification 
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE: // hardware interrupt notification
+        // Higher priority devices' interrupts first to be handled
+          if (msg.m_notify.interrupts & timer0_int_bit) { // subscribed timer interrupt
+            timer_int_handler();
+            if (get_timer_intCounter() % 60 == 0) time_passed++;
+          }
           if (msg.m_notify.interrupts & kbc_int_bit) { // subscribed kbc interrupt
             kbc_ih();
             
@@ -133,12 +140,6 @@ int(kbd_test_timed_scan)(uint8_t n) {
             time_passed = 0;
             set_timer_intCounter(0);
             // See comments below
-          }
-          if (msg.m_notify.interrupts & timer0_int_bit) { // subscribed timer interrupt
-            timer_int_handler();
-            if (get_timer_intCounter() % 60 == 0) {
-              n--;
-            }
           }
           break;
         default:
@@ -161,7 +162,7 @@ int(kbd_test_timed_scan)(uint8_t n) {
 .Keyboard Interrupts: 
 - When the scancode read from the output buffer is SC_MSB1 (0xE0) or SC_MSB2 (0xE2, as mentioned by professor Pedro Souto), the scancode will have 2 bytes.
 - The communication serial line between the keyboard and the keyboard controller sends 1 byte at a time. When the code has 2 bytes, 0xE0 or 0xE2 get sent first
-- So I signal that the code has 2 bytes, and the text time it receives an interruption (reads the output buffer), it's gonna be the rest of the code.
+- So I signal that the code has 2 bytes, and the next time it receives an interruption (reads the output buffer), it's gonna be the rest of the code.
 - NOT SURE: kbd_print_scancode() probably knows that when scancode_size is 2, the &scancode argument, when printed, is preceded by 0xE0 (don't know if 0xE2 is considered). That's why the &scancode argument is only a uint8_t (doesn't allow the passing of the full 2-byte scancode).
 THIS RESULTS IN (WHICH FOR SOME REASON DOESN'T WORK):
   uint8_t scancode_size = 1;

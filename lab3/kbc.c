@@ -19,6 +19,7 @@ int kbc_read_outbuf(uint8_t port, uint8_t *output) {
       continue;
     }
 
+    if (util_sys_inb(port, output)) return 1;
 
     // else (outbuf is full), test for errors: 
     // Parity error in serial communication
@@ -28,7 +29,6 @@ int kbc_read_outbuf(uint8_t port, uint8_t *output) {
     // ... and AUX is cleared (no mouse data)
     if (kbc_st & KBC_ST_AUX) return 1;
 
-    if (util_sys_inb(port, output)) return 1;
     return 0;
   }
 
