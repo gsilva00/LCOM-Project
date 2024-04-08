@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 // Any header files included below this line should have been created by you
+#include "aux_timer.h"
 #include "mouse.h"
 #include "kbc.h"
 #include "i8042.h"
@@ -43,14 +44,14 @@ int (mouse_test_packet)(uint32_t cnt) {
   uint8_t pkt_byteCounter = 0;
 
   // Enable stream mode data reporting
-  if (mouse_enable_data_reporting()) return 1;
+  if (enable_stream_data()) return 1;
 
   uint8_t bit_no;
   if (mouse_subscribe_int(&bit_no)) return 1;
   uint32_t mouse_int_bit = BIT(bit_no);
 
-  uint32_t packetNum = 0;
-  while (packetNum < cnt) { // ESC breakcode found
+  uint32_t numPackets = 0;
+  while (numPackets < cnt) {
     // Get a request message.
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
       printf("driver_receive failed with: %d", r);
@@ -95,7 +96,7 @@ int (mouse_test_packet)(uint32_t cnt) {
 
               // Successfully parsed and printed a packet
               mouse_print_packet(&pkt);
-              packetNum++;
+              numPackets++;
 
               // Cleaning array and pkt_byteCounter for next packet
               for (int j = 0; j < 3; j++) {
@@ -127,9 +128,98 @@ int (mouse_test_packet)(uint32_t cnt) {
 }
 
 int (mouse_test_async)(uint8_t idle_time) {
-    /* To be completed */
-    printf("%s(%u): under construction\n", __func__, idle_time);
-    return 1;
+  int ipc_status, r;
+  message msg;
+  
+  uint8_t pkt_allBytes[3];
+  uint8_t pkt_byteCounter = 0;
+
+  // Enable stream mode data reporting
+  if (enable_stream_data()) return 1;
+
+  uint8_t bit_no;
+  if (timer_subscribe_int(&bit_no)) return 1;
+  uint32_t timer_int_bit = BIT(bit_no);
+  if (mouse_subscribe_int(&bit_no)) return 1;
+  uint32_t mouse_int_bit = BIT(bit_no);
+
+  int timePassed = 0;
+  while (timePassed < idle_time) {
+    // Get a request message.
+    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) { // received notification 
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE: // hardware interrupt notification
+          if (msg.m_notify.interrupts & timer_int_bit) { // subscribed timer interrupt
+            timer_int_handler();
+            if (get_timer_intCounter() % sys_hz() == 0) timePassed++;
+          }
+          if (msg.m_notify.interrupts & mouse_int_bit) { // subscribed mouse  interrupt
+            mouse_ih();
+
+            timePassed = 0;
+            set_timer_intCounter(0);
+            
+            uint8_t packetByte = get_packetByte();
+
+            // Packet's first byte's bit 3 is not 0, (it's not the 1st byte, driver and mouse are desynchronized)
+            if (pkt_byteCounter == 0 && !(packetByte & BIT(3))) {
+              printf("ERROR: This packet's first byte has bit 3 at 0!\n");
+              continue;  
+            }
+            
+            pkt_allBytes[pkt_byteCounter++] = packetByte;
+
+            // Parse the 3 packets
+            if (pkt_byteCounter == 3) {
+              struct packet pkt;
+
+              // Setting up the packet struct
+              for (int i = 0; i < 3; i++) {
+                pkt.bytes[i] = pkt_allBytes[i];
+              }
+
+              pkt.rb = pkt_allBytes[0] & PS2_RB;
+              pkt.mb = pkt_allBytes[0] & PS2_MB;
+              pkt.lb = pkt_allBytes[0] & PS2_LB;
+
+              // Read notes below
+              uint8_t signX = pkt_allBytes[0] & PS2_XDELTA, signY = pkt_allBytes[0] & PS2_YDELTA;
+              pkt.delta_x = (signX ? 0xFF00 : 0x0000) | pkt_allBytes[1];
+              pkt.delta_y = (signY ? 0xFF00 : 0x0000) | pkt_allBytes[2];
+
+              pkt.x_ov = pkt_allBytes[0] & PS2_XOVER; 
+              pkt.y_ov = pkt_allBytes[0] & PS2_YOVER;
+
+              // Successfully parsed and printed a packet
+              mouse_print_packet(&pkt);
+
+              // Cleaning array and pkt_byteCounter for next packet
+              for (int j = 0; j < 3; j++) {
+                pkt_allBytes[j] = 0;
+              }
+              pkt_byteCounter = 0;
+            }
+          }
+          break;
+        default:
+          // no other notifications expected: do nothing
+          break;
+      }
+    } 
+    else { // received a standard message, not a notification
+      // no standard messages expected: do nothing
+    }
+  }
+  if (timer_unsubscribe_int()) return 1;
+  if (mouse_unsubscribe_int()) return 1;
+
+  if (disable_stream_data()) return 1;
+
+  return 0;
 }
 
 int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {

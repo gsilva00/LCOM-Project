@@ -24,27 +24,14 @@ void (mouse_ih)() {
   kbc_read_outbuf(OUTBUF_REG, &packetByte, 1);
 }
 
+
+int enable_stream_data() {
+  return kbc_write_mouse(PS2_DATA_ENABLE);
+}
+
 // Read notes below
 int disable_stream_data() {
-  int tries = MAX_TRIES;
-  uint8_t ack_message;
-
-  while (tries--) {
-    if (kbc_write_cmd(CMD_REG, MOUSE_WRITE)) return 1;
-    // Read ACK (works if only after the argument, for some reason, not according to the documentation)
-    // tickdelay(micros_to_ticks(MOUSE_DELAY_US));
-    // if (util_sys_inb(OUTBUF_REG, &ack_message, 1)) return 1;
-    // if (ack_message != PS2_ACK) continue;
-
-    if (kbc_write_cmd(INBUF_REG, PS2_DATA_DIS)) return 1;
-    // Read ACK
-    tickdelay(micros_to_ticks(MOUSE_DELAY_US));
-    if (util_sys_inb(OUTBUF_REG, &ack_message)) return 1;
-    if (ack_message == PS2_ACK) return 0;
-  }
-
-  // Ran out of time and was unsuccessful
-  return 1;
+  return kbc_write_mouse(PS2_DATA_DIS);
 }
 
 

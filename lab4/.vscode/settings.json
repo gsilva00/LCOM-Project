@@ -12,6 +12,7 @@
     "lab4.h": "c",
     "lab5.h": "c",
     "keyboard.h": "c",
-    "kbc.h": "c"
+    "kbc.h": "c",
+    "aux_timer.h": "c"
   },
 }

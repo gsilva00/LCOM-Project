@@ -13,24 +13,24 @@
 // Numeric Constants:
 #define MAX_TRIES 10 /** @brief Maximum amount of tries allowed to successfully complete operation on KBC */
 #define KBD_DELAY_US 20000 /** @brief Keyboard's time to respond to a command in microseconds (μs) */
-#define MOUSE_DELAY_US 25000 /** @brief Mouse's time to send an acknowledgement mensage in in microseconds (μs) */
+#define MOUSE_DELAY_US 25000 /** @brief Mouse's time to send an acknowledgement message in microseconds (μs) */
 
 // KBC Interrupt Request Lines:
 #define KBD_IRQ 1 /** @brief Keyboard's IRQ line */
 #define MOUSE_IRQ 12 /** @brief Mouse's IRQ line */
 
 // KBC Registers and Ports:
-#define INBUF_REG 0x60 /** @brief Input Register (to write KBD commands or KBC commands' arguments) */
-#define OUTBUF_REG 0x60 /** @brief Output Register (to read scancodes from KBD or KBC commands' return values) */
-#define ST_REG 0x64 /** @brief Status Register (to read KBC status) */
-#define CMD_REG 0x64 /** @brief Not Named Register (to write KBC commands) */ 
+#define INBUF_REG 0x60 /** @brief Input Register to write KBD commands or KBC commands' arguments */
+#define OUTBUF_REG 0x60 /** @brief Output Register to read scancodes from KBD or return values of KBC commands/KBC commands' arguments */
+#define ST_REG 0x64 /** @brief Status Register to read KBC status */
+#define CMD_REG 0x64 /** @brief Not Named Register to write KBC commands */ 
 
 // KBC Status Byte:
-#define ST_ERRPAR BIT(7) /** @brief Status byte's parity error */
-#define ST_ERRTOUT BIT(6) /** @brief Status byte's timeout error */
-#define ST_AUX BIT(5) /** @brief Status byte's mouse data */
-#define ST_IBF BIT(1) /** @brief Status byte's input buffer full */
-#define ST_OBF BIT(0) /** @brief Status byte's output buffer full */
+#define ST_ERRPAR BIT(7) /** @brief Status byte's parity error bit - invalid data (error in serial communication) */
+#define ST_ERRTOUT BIT(6) /** @brief Status byte's timeout error bit - invalid data (error in serial communication) */
+#define ST_AUX BIT(5) /** @brief Status byte's mouse data bit */
+#define ST_IBF BIT(1) /** @brief Status byte's input buffer full bit */
+#define ST_OBF BIT(0) /** @brief Status byte's output buffer full bit */
 
 // Auxiliars for Scancodes:
 #define BREAKCODE BIT(7) /** @brief Makecode MSbit is 0, Breakcode MSbit is 1 */
@@ -41,7 +41,7 @@
 // KBC Commands (written to CMD_REG):
 #define CMDBYTE_READ 0x20 /** @brief To be able to read Command Byte from KBC_OUTBUF */
 #define CMDBYTE_WRITE 0x60 /** @brief To be able to write new Command Byte to KBC_INBUF */
-#define MOUSE_WRITE 0xD4 /** @brief To be able to write byte argument to KBC_INBUF */
+#define MOUSE_WRITE 0xD4 /** @brief To be able to write byte arguments directly to mouse without KBC interpretation (through KBC_INBUF) */
 
 // KBC Command Byte (returned on OUTBUF_REG after CMDBYTE_READ):
 #define CMDB_DIS_MOUSE BIT(5) /** @brief Bit to disable mouse interface */
@@ -66,7 +66,7 @@
 #define PS2_NACK 0xFE /** @brief If invalid byte (may be because of a serial communication error) */
 #define PS2_ERROR 0xFC /** @brief Second consecutive invalid byte */
 
-// KBC_MOUSE_WRITE's arguments (passed in KBC_INBUF, responses to them in KBC_OUTBUF):
+// MOUSE_WRITE's arguments (passed in KBC_INBUF, responses to them in KBC_OUTBUF) - Directly to the mouse:
 // #define PS2_RESET 0xFF /** @brief Mouse reset */
 // #define PS2_RESEND 0xFE /** @brief For serial communications errors */
 // #define PS2_DEFAULT 0xF6 /** @brief Set default values */
@@ -81,5 +81,6 @@
 // #define PS2_SCALING2 0xE7 /** @brief Scaling parameter: value of counters reported by mouse - Acceleration mode */
 // #define PS2_SCALING1 0xE6 /** @brief Scaling parameter: value of counters reported by mouse - Linear mode */
 
+/**@}*/
 
 #endif /* LCOM_I8042_H */
