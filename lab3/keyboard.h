@@ -10,14 +10,14 @@
  * @param bit_no address of memory to be initialized with the bit number to be set in the mask returned upon an interrupt
  * @return Return 0 upon success and non-zero otherwise
  */
-int(kbc_subscribe_int)(uint8_t *bit_no);
+int kbc_subscribe_int(uint8_t *bit_no);
 
 /**
  * @brief Unsubscribes keyboard interrupts
  *
  * @return Return 0 upon success and non-zero otherwise
  */
-int(kbc_unsubscribe_int)();
+int kbc_unsubscribe_int();
 
 /**
  * @brief Re-enables keyboard interrupts (that lcf_start() disabled) by writing command byte

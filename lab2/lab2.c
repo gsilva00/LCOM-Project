@@ -52,7 +52,7 @@ int(timer_test_int)(uint8_t time) {
   // See notes below:
   uint8_t bit_no;
   if (timer_subscribe_int(&bit_no)) return 1;
-  uint32_t irq_set = BIT(bit_no);
+  uint32_t timer_int_bit = BIT(bit_no);
 
   while (time) { 
     // Get a request message.
@@ -63,7 +63,7 @@ int(timer_test_int)(uint8_t time) {
     if (is_ipc_notify(ipc_status)) { // received notification 
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE: // hardware interrupt notification 
-          if (msg.m_notify.interrupts & irq_set) { // subscribed interrupt
+          if (msg.m_notify.interrupts & timer_int_bit) { // subscribed interrupt
             timer_int_handler();
             if (!(get_int_counter() % 60)) { // See notes below:
               timer_print_elapsed_time();

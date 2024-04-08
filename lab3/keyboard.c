@@ -9,13 +9,13 @@
 static int kbc_hookId = KBC_IRQ;
 static uint8_t scancode;
 
-int(kbc_subscribe_int)(uint8_t *bit_no) {
+int kbc_subscribe_int(uint8_t *bit_no) {
   if (bit_no == NULL) return 1;
   *bit_no = kbc_hookId;
   return sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE|IRQ_EXCLUSIVE, &kbc_hookId);
 }
 
-int(kbc_unsubscribe_int)() {
+int kbc_unsubscribe_int() {
   return sys_irqrmpolicy(&kbc_hookId);
 }
 

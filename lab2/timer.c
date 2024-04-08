@@ -46,7 +46,7 @@ int(timer_set_frequency)(uint8_t timer, uint32_t freq) {
   uint16_t numClocks = (uint16_t) (TIMER_FREQ/freq);
 
   // Split 2 bytes into LSB and MSB:
-  uint8_t lsb = 0x00, msb = 0x00;
+  uint8_t lsb, msb;
   if (util_get_LSB(numClocks, &lsb)) return 1;
   if (util_get_MSB(numClocks, &msb)) return 1;
 

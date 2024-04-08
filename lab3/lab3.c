@@ -96,9 +96,7 @@ int(kbd_test_poll)() {
   }
   
   if (reset_keyboard()) return 1;
-  
   if (kbd_print_no_sysinb(get_sysinb_count())) return 1;
-
   return 0;
 }
 

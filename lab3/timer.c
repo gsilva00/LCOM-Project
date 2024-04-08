@@ -85,7 +85,6 @@ void(timer_int_handler)() {
 int get_timer_intCounter() {
   return timer_intCounter;
 }
-
 void set_timer_intCounter(int newTime) {
   timer_intCounter = newTime;
 }
