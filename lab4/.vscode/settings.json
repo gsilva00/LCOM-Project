@@ -13,6 +13,9 @@
     "lab5.h": "c",
     "keyboard.h": "c",
     "kbc.h": "c",
-    "aux_timer.h": "c"
+    "aux_timer.h": "c",
+    "sef.h": "c",
+    "mouse_sm.h": "c",
+    "i8042.h": "c"
   },
 }

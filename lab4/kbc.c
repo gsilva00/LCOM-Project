@@ -60,14 +60,14 @@ int kbc_write_cmd(uint8_t port, uint8_t command) {
   return 1;
 }
 
-int kbc_write_mouse(uint8_t mouseArgument) {
+int kbc_write_mouse(uint8_t arg) {
   int tries = MAX_TRIES;
   uint8_t ack_message;
 
   while (tries--) {
     if (kbc_write_cmd(CMD_REG, MOUSE_WRITE)) return 1;
 
-    if (kbc_write_cmd(INBUF_REG, mouseArgument)) return 1;
+    if (kbc_write_cmd(INBUF_REG, arg)) return 1;
     
     // Read ACK
     tickdelay(micros_to_ticks(MOUSE_DELAY_US));
