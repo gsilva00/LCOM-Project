@@ -158,7 +158,7 @@ int (mouse_test_async)(uint8_t idle_time) {
             timer_int_handler();
             if (get_timer_intCounter() % sys_hz() == 0) timePassed++;
           }
-          if (msg.m_notify.interrupts & mouse_int_bit) { // subscribed mouse  interrupt
+          if (msg.m_notify.interrupts & mouse_int_bit) { // subscribed mouse interrupt
             mouse_ih();
 
             timePassed = 0;

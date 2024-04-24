@@ -73,26 +73,30 @@ void lbP_handler(mouse_state_t *state, struct packet pp, uint8_t x_len, uint8_t 
       *state = FIRST_LINE;
       break;
     case FIRST_LINE:
-      if (pp.delta_x > 0-tolerance) {
+      if (pp.delta_x < 0-tolerance) {
         printf("The negative displacement in the X axis is too large!\n");
+        *state = INIT;
         return;
       }
-      if (pp.delta_y > 0-tolerance) {
+      if (pp.delta_y < 0-tolerance) {
         printf("The negative displacement in the Y axis is too large!\n");
+        *state = INIT;
         return;
       }
       if (abs((double)(pp.delta_y/pp.delta_x)) < 1) {
         printf("The slope of the line is too small!\n");
+        *state = INIT;
         return;
       }
       if (pp.delta_x < x_len) {
         printf("X-axis displacement is too small!\n");
+        *state = INIT;
         return;
       }
 
       break;
     case VERTEX:
-      *state = INIT;
+      *state = FIRST_LINE;
       break;
     case SECOND_LINE:
       *state = INIT;
@@ -112,7 +116,7 @@ void lbR_handler(mouse_state_t *state, struct packet pp, uint8_t x_len, uint8_t 
       *state = VERTEX;
       break;
     case VERTEX:
-      // Do nothing
+      *state = INIT;
       break;
     case SECOND_LINE:
       // Do nothing
@@ -135,20 +139,24 @@ void rbP_handler(mouse_state_t *state, struct packet pp, uint8_t x_len, uint8_t 
       *state = SECOND_LINE;
       break;
     case SECOND_LINE:
-      if (pp.delta_x > 0-tolerance) {
+      if (pp.delta_x < 0-tolerance) {
         printf("The negative displacement in the X axis is too large!\n");
+        *state = INIT;
         return;
       }
-      if (pp.delta_y < tolerance) { // The Y displacement can't be positive (line goes down)
+      if (pp.delta_y > tolerance) { // The Y displacement can't be positive (line goes down)
         printf("The positive displacement in the Y axis is too large!\n");
+        *state = INIT;
         return;
       }
       if (abs((double)(pp.delta_y/pp.delta_x)) < 1) {
         printf("The slope of the line is too small!\n");
+        *state = INIT;
         return;
       }
       if (pp.delta_x < x_len) {
         printf("X-axis displacement is too small!\n");
+        *state = INIT;
         return;
       }
 
@@ -165,10 +173,10 @@ void rbR_handler(mouse_state_t *state, struct packet pp, uint8_t x_len, uint8_t 
       // Do nothing
       break;
     case FIRST_LINE:
-      // Do nothing
+      *state = INIT;
       break;
     case VERTEX:
-      // Do nothing
+      *state = INIT;
       break;
     case SECOND_LINE:
       *state = DONE;
@@ -185,13 +193,13 @@ void bEv_handler(mouse_state_t *state, struct packet pp, uint8_t x_len, uint8_t 
       // Do nothing
       break;
     case FIRST_LINE:
-      // Do nothing
+      *state = INIT;
       break;
     case VERTEX:
-      // Do nothing
+      *state = INIT;
       break;
     case SECOND_LINE:
-      // Do nothing
+      *state = INIT;
       break; 
     case DONE:
       // Do nothing
@@ -210,10 +218,12 @@ void mov_handler(mouse_state_t *state, struct packet pp, uint8_t x_len, uint8_t 
     case VERTEX:
       if (abs(pp.delta_x) > tolerance) {
         printf("The displacement in the X axis in the vertex position is too large!\n");
+        *state = INIT;
         return;
       }
       if (abs(pp.delta_y) > tolerance) {
         printf("The displacement in the Y axis in the vertex position is too large!\n");
+        *state = INIT;
         return;
       }
       break;
