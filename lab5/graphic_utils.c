@@ -68,12 +68,11 @@ int create_frame_buffer(uint16_t mode) {
   }
 
   return 0;
-  }
+}
+
 
 
 int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
-  if (x >= vbe_minfo.XResolution || y >= vbe_minfo.YResolution) return 1;
-
   // Draw the rectangle line by line
   for (uint16_t i = 0; i < height; i++) {
     if (vg_draw_hline(x, y + i, width, color)) return 1;
@@ -81,9 +80,8 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
 
   return 0;
 }
-
 int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
-  if (x + len >= vbe_minfo.XResolution || y >= vbe_minfo.YResolution) return 1;
+  if (x >= vbe_minfo.XResolution || y >= vbe_minfo.YResolution) return 1;
 
   uint8_t bytesPerPix = (vbe_minfo.BitsPerPixel / 8) + ((vbe_minfo.BitsPerPixel % 8) ? 1 : 0);
   // Pointer to the starting pixel
@@ -101,15 +99,15 @@ int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
 uint8_t* get_video_mem() {
   return video_mem;
 }
-
+vbe_mode_info_t get_vbe_mode_info() {
+  return vbe_minfo;
+}
 unsigned get_hres() {
   return vbe_minfo.XResolution;
 }
-
 unsigned get_vres() {
   return vbe_minfo.YResolution;
 }
-
 unsigned get_bits_per_pixel() {
   return vbe_minfo.BitsPerPixel;
 }

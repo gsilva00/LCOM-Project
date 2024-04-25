@@ -24,6 +24,13 @@ int create_frame_buffer(uint16_t mode);
 uint8_t* get_video_mem();
 
 /**
+ * @brief Retrieves the general VBE mode information.
+ *
+ * @return The VBE mode information.
+ */
+vbe_mode_info_t get_vbe_mode_info();
+
+/**
  * @brief Gets the horizontal resolution of the screen.
  * 
  * @return unsigned Returns the horizontal resolution.
