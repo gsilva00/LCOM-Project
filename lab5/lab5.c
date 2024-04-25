@@ -51,25 +51,24 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
 int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
                           uint16_t width, uint16_t height, uint32_t color) {
   // Step 1: Map video memory (VRAM) to process's address space                         
-
-
+  if (create_frame_buffer(mode)) return 1;;
 
   // Step 2: Change video mode to the one specified in the mode argument
   if (change_video_mode(mode)) return 1;
 
   // Step 3: Draw the rectangle
+  if (vg_draw_rectangle(x, y, width, height, color)) return 1;
 
-  // Step 4: Wait for ESC key release
+  // Step 4: Wait for ESC key release and reset Minix to text mode
   int ipc_status, r;
   message msg;
-  
-  uint8_t scancode;
 
   uint8_t bit_no;
-  if (keyboard_subscribe_int(&bit_no)) return 1;
+  if (kbd_subscribe_int(&bit_no)) return 1;
   uint32_t kbc_int_bit = BIT(bit_no);
 
-  while (scancode == BREAKCODE_ESC) {
+  uint8_t scancode = get_scancode();
+  while (scancode != BREAKCODE_ESC) {
     // Get a request message.
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
       printf("driver_receive failed with: %d", r);
@@ -95,6 +94,7 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
   }
   if (kbd_unsubscribe_int()) return 1;
   
+  if (vg_exit()) return 1;
 
   return 0;
 }

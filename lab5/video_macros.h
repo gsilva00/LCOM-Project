@@ -17,7 +17,7 @@
 #define Ah_FUNC_INV_FAIL 0x03 /** VBE function is invalid in current video mode */
 
 /** VBE modes - screen res, color model, bits per pixel ((A:)R:G:B) */
-#define VBE_MODE_105 0x105 /** 1024x768, indexed, 8 per RGB */
+#define VBE_MODE_105 0x105 /** 1024x768, indexed, 8 - color argument can't be bigger than 256 */
 #define VBE_MODE_110 0x110 /** 640x480, direct color, 15((1:)5:5:5) */
 #define VBE_MODE_115 0x115 /** 800x600, direct color, 24 (8:8:8) */
 #define VBE_MODE_11A 0x11A /** 1280x1024, direct color, 16 (5:6:5) */
