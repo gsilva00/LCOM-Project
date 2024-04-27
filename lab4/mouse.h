@@ -1,16 +1,16 @@
-#ifndef __KEYBOARD_H
-#define __KEYBOARD_H
+#ifndef MOUSE_H
+#define MOUSE_H
 
 #include <stdint.h>
 
-extern uint8_t bit_no;
-extern uint32_t count;
-extern uint8_t bit_no_timer;
-extern uint8_t counter;
+int(mouse_subscribe)(uint16_t *bit_no);
 
-int (keyboard_subscribe_int)(uint8_t *bit_no);
-int (keyboard_unsubscribe_int)();
-int (keyboard_read_out_buf)(uint8_t *scancode);
+int(mouse_unsubscribe)();
+
+int (disable_stream_data)();
+
+int (enable_stream_data)();
 
 
-#endif /* __KEYBOARD_H */
+
+#endif /* MOUSE_H */

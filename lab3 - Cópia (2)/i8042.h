@@ -1,0 +1,24 @@
+#ifndef LCOM_KBD
+#define LCOM_KBD
+
+#define IRQLINE_KBD 1
+#define CONTROL_REG 0X64
+#define STATUS_REG 0X64
+#define OUT_BUF 0X60
+
+#define DELAY_US    20000
+
+#define OBF BIT(0)
+#define IBF BIT(1)
+#define AUX BIT(5)
+#define TIMEOUT BIT(6)
+#define PARITY BIT(7)
+
+#define BREAKCODE BIT(7)
+#define ESC_BREAKCODE 0X81
+
+#define COMAND_TO_READ_COMAND_BYTE 0X20
+#define COMAND_TO_WRITE_COMAND_BYTE 0X60
+#define ENABLE_INTERRUPT_OBF BIT(0)
+
+#endif

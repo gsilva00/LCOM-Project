@@ -116,7 +116,7 @@ int (kbc_sys_outb)(uint8_t comando, bool com_arg ,uint8_t * argumento) {
   if(util_sys_inb(STAT_REG,&status) ){
     return 1;
   }
-  uint8_t ibf = status & 0x01;
+  uint8_t ibf = status & 0x02;
 
   if(ibf){
     printf("ibf encontra-se ocupado para escrever");
@@ -179,7 +179,7 @@ int (verify_error_out_buf_by_status_and_see_availabity)(){
 }
 
 int (enable_interrupt)(){
- //enable interrupt OBF lendo o command byte (escrever comando 0x20 no porto 0x64 e ler comando em 0x60) Depois trocar 0 bit para 1 e enviar comando 0x60 em 0x64 e colocar o comando trocado em 0x60
+//enable interrupt OBF lendo o command byte (escrever comando 0x20 no porto 0x64 e ler comando em 0x60) Depois trocar 0 bit para 1 e enviar comando 0x60 em 0x64 e colocar o comando trocado em 0x60
   uint8_t command_byte = 0;
 
   /*if(sys_outb(COMAND_REG,0x20)){
