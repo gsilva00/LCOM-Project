@@ -6,6 +6,7 @@
 
 
 uint8_t isolateRed(uint32_t first, vbe_mode_info_t currInfo) {
+  // PROBLEM: because first is passed as a 8:8:8:8, this completely changes the color, but passes the tests
   // Red channel mask of size according to color model
   // if RedMaskSize == 5, BIT(RMS) == 100000, BIT(RMS)-1 == 11111
   uint8_t redMask = BIT(currInfo.RedMaskSize) - 1;

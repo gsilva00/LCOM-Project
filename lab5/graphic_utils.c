@@ -81,19 +81,26 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
   return 0;
 }
 int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
-  if (x >= vbe_minfo.XResolution || y >= vbe_minfo.YResolution) return 1;
-
-  uint8_t bytesPerPix = (vbe_minfo.BitsPerPixel / 8) + ((vbe_minfo.BitsPerPixel % 8) ? 1 : 0);
-  // Pointer to the starting pixel
-  unsigned int initPos = (y * vbe_minfo.XResolution + x) * bytesPerPix;
-
+  // Draw the line pixel by pixel
   for (uint16_t i = 0; i < len; i++) {
-    memcpy(&video_mem[initPos + i*bytesPerPix], &color, bytesPerPix);
+    if (draw_pixel(x+i, y, color)) return 1;
   }
 
   return 0;
 }
 
+int draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
+  if (x >= vbe_minfo.XResolution || y >= vbe_minfo.YResolution) return 1;
+
+  uint8_t bytesPerPix = (vbe_minfo.BitsPerPixel / 8) + ((vbe_minfo.BitsPerPixel % 8) ? 1 : 0);
+  // Pointer to the starting pixel
+  unsigned int pos = (y * vbe_minfo.XResolution + x) * bytesPerPix;
+
+  // Checking for error not necessary -> causes segmentation fault (breaks the program)
+  memcpy(&video_mem[pos], &color, bytesPerPix);
+
+  return 0;
+}
 
 // Getters
 uint8_t* get_video_mem() {

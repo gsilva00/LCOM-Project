@@ -28,6 +28,5 @@ int reset_keyboard();
 
 // Getters
 uint8_t get_scancode();
-uint8_t get_sysinb_count();
 
 #endif /* KEYBOARD_H */

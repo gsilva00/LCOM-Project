@@ -172,10 +172,63 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
+  // 0x105 mode is asked to be hard-coded
+  if (create_frame_buffer(VBE_MODE_105)) return 1;
+  if (change_video_mode(VBE_MODE_105)) return 1;
 
-  return 1;
+  enum xpm_image_type type = XPM_INDEXED;
+  xpm_image_t img; // pixmap and metadata  
+
+  // Pixmap itself - 2D - array of colors (indexed in this case)
+  // Points to the first element in the array
+  uint8_t *map = xpm_load(xpm, type, &img);
+
+  if (map == NULL) return 1;
+
+  for (int y_disp = 0; y_disp < img.height; y_disp++) {
+    for (int x_disp = 0; x_disp < img.width; x_disp++) {
+      draw_pixel(x + x_disp, y + y_disp, *map);
+      map++; // Moves the pointer by bytesPerPix amount (1 byte in XPM_INDEXED)
+    }
+  }
+
+  int ipc_status, r;
+  message msg;
+
+  uint8_t bit_no;
+  if (kbd_subscribe_int(&bit_no)) return 1;
+  uint32_t kbc_int_bit = BIT(bit_no);
+
+  uint8_t scancode = get_scancode();
+  while (scancode != BREAKCODE_ESC) {
+    // Get a request message.
+    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) { // received notification 
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE: // hardware interrupt notification
+          if (msg.m_notify.interrupts & kbc_int_bit) { // subscribed keyboard interrupt
+            kbc_ih();
+
+            scancode = get_scancode();
+          }
+          break;
+        default:
+          // no other notifications expected: do nothing
+          break;
+      }
+    } 
+    else { // received a standard message, not a notification
+      // no standard messages expected: do nothing
+    }
+  }
+  if (kbd_unsubscribe_int()) return 1;
+  
+  if (vg_exit()) return 1;
+
+  return 0;
 }
 
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
