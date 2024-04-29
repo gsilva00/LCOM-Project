@@ -68,7 +68,7 @@ int interrupt_loop() {
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE: // hardware interrupt notification
           if (msg.m_notify.interrupts & timer_int_bit) { // subscribed timer interrupt
-            timer_ih();
+            timer_int_handler();
           }
           if (msg.m_notify.interrupts & keyboard_int_bit) { // subscribed keyboard interrupt
             kbc_ih();
@@ -97,7 +97,7 @@ int interrupt_loop() {
   return 0;
 }
 
-int proj_main_loop(int argc, char **argv) {
+int(proj_main_loop)(int argc, char *argv[]){
   // Start visual manipulation
   if (create_frame_buffer(VBE_MODE_14C)) return 1;
   if (change_video_mode(VBE_MODE_14C)) return 1;
