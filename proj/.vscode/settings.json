@@ -1,0 +1,12 @@
+{
+  "files.associations": {
+    "kbc.h": "c",
+    "stdint.h": "c",
+    "rtc.h": "c",
+    "aux_timer.h": "c",
+    "mouse.h": "c",
+    "mouse_sm.h": "c",
+    "keyboard.h": "c",
+    "i8254.h": "c"
+  }
+}
