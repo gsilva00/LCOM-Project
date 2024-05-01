@@ -7,6 +7,7 @@
 #include <stdio.h>
 
 #include <lcom/timer.h>
+#include "aux_timer.h"
 #include "video_macros.h"
 #include "graphic_utils.h"
 #include "keyboard.h"
@@ -240,14 +241,28 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
   if (create_frame_buffer(VBE_MODE_105)) return 1;
   if (change_video_mode(VBE_MODE_105)) return 1;
 
+
   // Prepare XPM
   enum xpm_image_type type = XPM_INDEXED;
   xpm_image_t img; // pixmap and metadata  
   uint8_t *map = xpm_load(xpm, type, &img);
+  if (map == NULL) return 1;
+
+  // Draw initial position
+  if (draw_xpm(xi, yi, img)) return 1;
 
 
+  // Direction of movement:
+  // 1: positive direction of axis; 
+  // 0: no movement in that axis;
+  // -1: negative direction of axis;
+  int8_t hor = 0;
+  int8_t vert = 0;
+  if (yi == yf && xi < xf) hor = 1;
+  else if (yi == yf && xi > xf) hor = -1;
+  else if (xi == xf && yi < yf) vert = 1;
+  else if (xi == xf && yi > yf) vert = -1;
 
-  
   // Interrupt loop
   int ipc_status, r;
   message msg;
@@ -258,8 +273,22 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
   if (kbd_subscribe_int(&bit_no)) return 1;
   uint32_t kbc_int_bit = BIT(bit_no);
 
-  uint8_t scancode = get_scancode();
-  while (scancode != BREAKCODE_ESC) {
+  // Interrupts per frame 
+  // (way of controlling framerate without without changing interrupt rate)
+  // fr_rate is always a divisor of 60 (sys_hz())
+  // int_per_frame is at most 60
+  uint8_t int_per_frame = sys_hz() / fr_rate;
+  // Num of frames per movement when speed < 0
+  // (When its one, it moves 1 every frame)
+  uint16_t numFrames = 1;
+
+  // Is there movement needed? (edge case)
+  bool noMove = false;
+  if ((yi == yf && xi == xf) || speed == 0) noMove = true;
+
+  int i = 0;
+  uint8_t scancode = 0;
+  while (scancode != BREAKCODE_ESC && !noMove) {
     // Get a request message.
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
       printf("driver_receive failed with: %d", r);
@@ -270,6 +299,46 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
         case HARDWARE: // hardware interrupt notification
         if (msg.m_notify.interrupts & timer_int_bit) { // subscribed timer interrupt
             timer_int_handler();
+
+            // Final position reached but ESC not pressed 
+            // (avoid doing useless computation with the buffer)
+            if (xi == xf && yi == yf) {
+              if (get_timer_intCounter() % 60 == 0) { // To avoid spam-printing
+                printf("\n %ds passed: The sprite has finished moving, you can press ESC to leave!\n", i++);
+              }
+              continue;
+            }
+
+            if (get_timer_intCounter() % int_per_frame == 0) { // Do something every frame
+              if (speed > 0) { // Displacement in pixels between consecutive frames
+                // Clear screen for next frame
+                // Very naive/brute-forcey implementation
+                // Can be massively optimized
+                if (vg_draw_rectangle(xi, yi, img.width, img.height, 0xFFFFFF)) return 1;
+
+                // Near the end position, the move can be less than speed
+                if (vert == 1) yi = (yi + speed < yf) ? yi + speed : yf;
+                else if (vert == -1) yi = (yi - speed > yf) ? yi - speed : yf;
+                else if (hor == 1) xi = (xi + speed < xf) ? xi + speed : xf;
+                else if (hor == -1) xi = (xi - speed > xf) ? xi - speed : xf;
+                if (draw_xpm(xi, yi, img)) return 1;
+              }
+              else { // Number of frames required for moving 1 pixel
+                if (numFrames == abs(speed)) { // Only does something when speed frames have passed
+                  // Clear screen for next frame (only when new frame is drawn)
+                  if (vg_draw_rectangle(xi, yi, img.width, img.height, 0xFFFFFF)) return 1;
+
+                  if (vert == 1) yi = (yi+1 < yf) ? yi+1 : yf;
+                  else if (vert == -1) yi = (yi-1 > yf) ? yi-1 : yf;
+                  else if (hor == 1) xi = (xi+1 < xf) ? xi+1 : xf;
+                  else if (hor == -1) xi = (xi-1 > xf) ? xi-1 : xf;
+                  if (draw_xpm(xi, yi, img)) return 1;
+
+                  numFrames = 1; // Reset until next movement
+                } 
+                else numFrames++; // Haven't reached enough frames to move 1 pixel yet
+              }
+            }
           }
           if (msg.m_notify.interrupts & kbc_int_bit) { // subscribed keyboard interrupt
             kbc_ih();
@@ -286,6 +355,8 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
       // no standard messages expected: do nothing
     }
   }
+
+  if (timer_unsubscribe_int()) return 1;
   if (kbd_unsubscribe_int()) return 1;
   
   if (vg_exit()) return 1;
