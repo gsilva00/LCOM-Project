@@ -1,0 +1,9 @@
+{
+  "files.associations": {
+    "gpu.h": "c",
+    "lcf.h": "c",
+    "stdlib.h": "c",
+    "types.h": "c",
+    "i8042.h": "c"
+  }
+}
