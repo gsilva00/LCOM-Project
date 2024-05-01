@@ -6,6 +6,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include <lcom/timer.h>
 #include "video_macros.h"
 #include "graphic_utils.h"
 #include "keyboard.h"
@@ -185,12 +186,14 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
 
   if (map == NULL) return 1;
 
-  for (int y_disp = 0; y_disp < img.height; y_disp++) {
-    for (int x_disp = 0; x_disp < img.width; x_disp++) {
-      draw_pixel(x + x_disp, y + y_disp, *map);
-      map++; // Moves the pointer by bytesPerPix amount (1 byte in XPM_INDEXED)
-    }
-  }
+  // printf("\nType: %d\n", img.type);
+  // printf("Width: %d\n", img.width);
+  // printf("Height: %d\n", img.height);
+  // printf("Size: %d\n", img.size);
+  // printf("Bytes: %p\n\n", img.bytes);
+
+  if (draw_xpm(x, y, img)) return 1;
+
 
   int ipc_status, r;
   message msg;
@@ -231,13 +234,63 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
   return 0;
 }
 
-int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
-                     int16_t speed, uint8_t fr_rate) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
-         __func__, xpm, xi, yi, xf, yf, speed, fr_rate);
+int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf, int16_t speed, uint8_t fr_rate) {
+  // Initialize vram and mode
+  // 0x105 mode is asked to be hard-coded
+  if (create_frame_buffer(VBE_MODE_105)) return 1;
+  if (change_video_mode(VBE_MODE_105)) return 1;
 
-  return 1;
+  // Prepare XPM
+  enum xpm_image_type type = XPM_INDEXED;
+  xpm_image_t img; // pixmap and metadata  
+  uint8_t *map = xpm_load(xpm, type, &img);
+
+
+
+  
+  // Interrupt loop
+  int ipc_status, r;
+  message msg;
+
+  uint8_t bit_no;
+  if (timer_subscribe_int(&bit_no)) return 1;
+  uint32_t timer_int_bit = BIT(bit_no);
+  if (kbd_subscribe_int(&bit_no)) return 1;
+  uint32_t kbc_int_bit = BIT(bit_no);
+
+  uint8_t scancode = get_scancode();
+  while (scancode != BREAKCODE_ESC) {
+    // Get a request message.
+    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) { // received notification 
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE: // hardware interrupt notification
+        if (msg.m_notify.interrupts & timer_int_bit) { // subscribed timer interrupt
+            timer_int_handler();
+          }
+          if (msg.m_notify.interrupts & kbc_int_bit) { // subscribed keyboard interrupt
+            kbc_ih();
+
+            scancode = get_scancode();
+          }
+          break;
+        default:
+          // no other notifications expected: do nothing
+          break;
+      }
+    } 
+    else { // received a standard message, not a notification
+      // no standard messages expected: do nothing
+    }
+  }
+  if (kbd_unsubscribe_int()) return 1;
+  
+  if (vg_exit()) return 1;
+
+  return 0;
 }
 
 int(video_test_controller)() {

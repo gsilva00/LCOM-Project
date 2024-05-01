@@ -22,7 +22,10 @@ int create_frame_buffer(uint16_t mode);
 
 
 int draw_pixel(uint16_t x, uint16_t y, uint32_t color);
-  
+
+
+int draw_xpm(uint16_t x, uint16_t y, xpm_image_t img);
+
 
 // Getters
 
@@ -59,6 +62,6 @@ unsigned get_vres();
  * 
  * @return Number of bits per pixel.
  */
-unsigned get_bits_per_pixel();
+unsigned get_bytes_per_pixel();
 
 #endif

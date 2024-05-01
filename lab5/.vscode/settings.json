@@ -13,6 +13,7 @@
     "video_macros.h": "c",
     "kbc.h": "c",
     "lcf.h": "c",
-    "stdint.h": "c"
+    "stdint.h": "c",
+    "i8254.h": "c"
   },
 }
