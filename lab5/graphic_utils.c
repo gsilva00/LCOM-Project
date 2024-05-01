@@ -9,7 +9,7 @@
 static uint8_t *video_mem;		        // Process (virtual) address to which VRAM is mapped
 static vbe_mode_info_t vbe_minfo;
 /*
-Replaced:
+Above replaced:
 static unsigned hres;             // Horizontal resolution in pixels
 static unsigned vres;	            // Vertical resolution in pixels
 static unsigned bits_per_pixel;   // Number of VRAM bits per pixel
@@ -23,13 +23,15 @@ int change_video_mode(uint16_t mode) {
   memset(&r86, 0, sizeof(r86));
 
   r86.intno = INT_10;
+  
+  // Set video mode to graphics mode
+  r86.ax = INVOKE_VBE_FUNC << 8 | SET_VBE_MODE;
   /*
-  Breakdown of instruction below:
+  Above replaced:
   r86.ah = INVOKE_VBE_FUNC;
   r86.al = SET_VBE_MODE;
   */
-  // Set video mode to graphics mode
-  r86.ax = INVOKE_VBE_FUNC << 8 | SET_VBE_MODE;
+
   // Set the specified graphics mode
   r86.bx = SET_LINEAR_FB | mode; 
 

@@ -20,9 +20,12 @@ int kbc_read_outbuf(uint8_t port, uint8_t *output, bool mouse) {
       continue;
     }
 
+    // Outbuf is full:
+    // Read it before testing for errors. To discard it if there are errors
+    // If it was the other way around, the outbuf would stay full if the data was faulty
     if (util_sys_inb(port, output)) return 1;
 
-    // else (outbuf is full), test for errors: 
+    // Test for errors: 
     // Parity error in serial communication
     if (kbc_st & ST_ERRPAR) return 1;
     // Timeout error in serial communication

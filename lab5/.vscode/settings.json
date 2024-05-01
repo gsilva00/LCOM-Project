@@ -12,6 +12,7 @@
     "lab5.h": "c",
     "video_macros.h": "c",
     "kbc.h": "c",
-    "lcf.h": "c"
+    "lcf.h": "c",
+    "stdint.h": "c"
   },
 }
