@@ -9,7 +9,8 @@
  * Constants for programming the i8254 Timer. Needs to be completed.
  */
 
-#define TIMER_FREQ 1193182 /**< @brief clock frequency for timer in PC and AT */
+#define TIMER_MAX_FREQ 1193182 /**< @brief maximum frequency for timer in PC and AT */
+#define TIMER_MIN_FREQ ((TIMER_MAX_FREQ / UINT16_MAX) + (TIMER_MAX_FREQ % UINT16_MAX ? 1 : 0)) /**< @brief minimum clock frequency for timer in PC and AT @details Timer's counter stores a 16-bit unsigned integer. The minimum frequency is the maximum amount that can be stored (clock cycles before interrupt) */
 #define TIMER0_IRQ 0 /**< @brief Timer 0 IRQ line */
 
 /* I/O port addresses */

@@ -7,21 +7,19 @@
 #include "i8254.h"
 
 int(timer_set_frequency)(uint8_t timer, uint32_t freq) {
-  // Timer is [0,2]
-  if (timer > 2) return 1;
-  // Frequency needs to be between minimum frequency (see notes below) and maximum frequency.
-  if (freq < 19 || freq > TIMER_FREQ) {
-    printf("Error in %s: Input frequency is out of bounds. Make sure it is in the interval [%d Hz, %d Hz]\n", __func__, 19, TIMER_FREQ);
+  if (timer > 2) {printf("ERROR: Counter out of bounds! Timer has 3 counters: 0,1,2!\n"); return 1;}
+  // See notes below
+  if (freq < TIMER_MIN_FREQ || freq > TIMER_MAX_FREQ) {
+    printf("Error in %s: Input frequency is out of bounds! Make sure it is in the interval [%d Hz, %d Hz]\n", __func__, 19, TIMER_MAX_FREQ);
     return 1;
   }
 
-  // Variables: 
-  // ctrlWord - store timer status; 
-  // timerAddr - store timer counter's address;
   uint8_t status, timerAddr = TIMER_0 + timer;
 
-  // Read timer configuration/status
-  if (timer_get_conf(timer, &status)) return 1;
+  if (timer_get_conf(timer, &status)) {
+    printf("Error while getting timer's configuration!\n");
+    return 1;
+  }
 
   // Prepare control word without changing 4 LSbits of the status
   // - Ignore 4 MSbits of the status byte. 
@@ -38,44 +36,42 @@ int(timer_set_frequency)(uint8_t timer, uint32_t freq) {
   // - Initialization mode (LSB followed by MSB): 
   ctrlWord |= TIMER_LSB_MSB;
 
-  // Write control word to configure the timer:
-  if (sys_outb(TIMER_CTRL, ctrlWord)) return 1;
+  if (sys_outb(TIMER_CTRL, ctrlWord)) {
+    printf("%s ERROR: sys_outb to control register!\n", __func__);
+    return 1;
+  }
 
 
-  // Get number of clock cycles (see notes below):
-  uint16_t numClocks = (uint16_t) (TIMER_FREQ/freq);
+  // See notes below
+  uint16_t numClocks = (uint16_t) (TIMER_MAX_FREQ/freq);
 
   // Split 2 bytes into LSB and MSB:
   uint8_t lsb = 0x00, msb = 0x00;
-  if (util_get_LSB(numClocks, &lsb)) return 1;
-  if (util_get_MSB(numClocks, &msb)) return 1;
+  if (util_get_LSB(numClocks, &lsb)) {printf("%s ERROR: getting lsb \n", __func__); return 1;}
+  if (util_get_MSB(numClocks, &msb)) {printf("%s ERROR: getting msb \n", __func__); return 1;}
 
   // Write both bytes to the timer reg (lsb first)
-  if (sys_outb(timerAddr, lsb)) return 1;
-  if (sys_outb(timerAddr, msb)) return 1;
+  if (sys_outb(timerAddr, lsb)) {printf("%s ERROR: sending lsb \n", __func__); return 1;}
+  if (sys_outb(timerAddr, msb)) {printf("%s ERROR: sending msb \n", __func__); return 1;}
 
   return 0;
 }
 
-// Arbitrary value -> it will be the mask bit before being timer's hook_id (see notes on lab2.c)
+// Arbitrary value -> it will be the mask bit before being timer's hook_id
 static int timer_hookId = TIMER0_IRQ;
 // See notes below
 static int timer_intCounter = 0;
 
 int(timer_subscribe_int)(uint8_t *bit_no) {
-  if (bit_no == NULL) return 1;
+  if (bit_no == NULL) {printf("Pointer to store bit_no points to NULL!\n"); return 1;}
   
   *bit_no = timer_hookId;
 
   // Check notes below on the arguments of this function
-  if (sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &timer_hookId)) return 1;
-
-  return 0;
+  return (sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &timer_hookId));
 }
-
 int(timer_unsubscribe_int)() {
-  if (sys_irqrmpolicy(&timer_hookId)) return 1;
-  return 0;
+  return sys_irqrmpolicy(&timer_hookId);
 }
 
 void(timer_int_handler)() {
@@ -90,18 +86,22 @@ void set_timer_intCounter(int newTime) {
 }
 
 int(timer_get_conf)(uint8_t timer, uint8_t *st) {
-  if (st == NULL || timer > 2) return 1;
+  if (timer > 2) {printf("ERROR: Counter out of bounds! Timer has 3 counters: 0,1,2!\n"); return 1;}
+  if (st == NULL) {printf("Pointer to store status points to NULL!\n"); return 1;}
 
   uint8_t rb_cmd = TIMER_RB_CMD | TIMER_RB_COUNT_ | TIMER_RB_SEL(timer);
 
-  if (sys_outb(TIMER_CTRL, rb_cmd)) return 1;
-  if (util_sys_inb(TIMER_0 + timer, st)) return 1;
+  if (sys_outb(TIMER_CTRL, rb_cmd)) {printf("%s ERROR: sending rb_cmd \n", __func__); return 1;}
+  if (util_sys_inb(TIMER_0 + timer, st)) {
+    printf("%s ERROR: reading timer %d status \n", __func__, timer); 
+    return 1;
+  }
 
   return 0;
 }
 
 int(timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field field) {
-  if (timer > 2) return 1;
+  if (timer > 2) {printf("ERROR: Counter out of bounds! Timer has 3 counters: 0,1,2!\n"); return 1;}
 
   union timer_status_field_val toDisplay;
   switch (field) {
@@ -151,7 +151,10 @@ int(timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field field
       break;
   }
 
-  if (timer_print_config(timer, field, toDisplay)) return 1;
+  if (timer_print_config(timer, field, toDisplay)) {
+    printf("Error while printing timer config!\n");
+    return 1;
+  }
 
   return 0;
 }
