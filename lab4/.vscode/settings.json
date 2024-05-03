@@ -6,16 +6,5 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 100,
-  "files.associations": {
-    "lcf.h": "c",
-    "stdint.h": "c",
-    "lab4.h": "c",
-    "lab5.h": "c",
-    "keyboard.h": "c",
-    "kbc.h": "c",
-    "aux_timer.h": "c",
-    "sef.h": "c",
-    "mouse_sm.h": "c",
-    "i8042.h": "c"
-  },
+  "files.associations": { },
 }

@@ -6,14 +6,5 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 100,
-  "files.associations": {
-    "stdio.h": "c",
-    "proj.h": "c",
-    "lab5.h": "c",
-    "video_macros.h": "c",
-    "kbc.h": "c",
-    "lcf.h": "c",
-    "stdint.h": "c",
-    "i8254.h": "c"
-  },
+  "files.associations": { },
 }
