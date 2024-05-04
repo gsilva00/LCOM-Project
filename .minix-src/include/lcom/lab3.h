@@ -71,3 +71,4 @@ int (kbd_print_scancode)(bool make, uint8_t size, uint8_t *bytes);
  * @return Return 0 upon success and non-zero otherwise
  */
 int (kbd_print_no_sysinb)(uint32_t cnt);
+

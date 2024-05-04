@@ -7,7 +7,7 @@
 /**
  * @brief Changes the video mode to the specified mode.
  * 
- * @param mode The video mode to change to.
+ * @param mode video mode to change to.
  * @return 0 on success, non-zero otherwise.
  */
 int change_video_mode(uint16_t mode);
@@ -15,14 +15,17 @@ int change_video_mode(uint16_t mode);
 /**
  * Creates a frame buffer for the specified VBE mode.
  *
- * @param mode The VBE mode to set.
- * @return 0 if successful, 1 otherwise.
+ * @param mode VBE mode to set.
+ * @return 0 on success, non-zero otherwise.
  */
 int create_frame_buffer(uint16_t mode);
 
 
 int draw_pixel(uint16_t x, uint16_t y, uint32_t color);
-  
+
+
+int draw_xpm(uint16_t x, uint16_t y, xpm_image_t img);
+
 
 // Getters
 
@@ -55,10 +58,11 @@ unsigned get_hres();
 unsigned get_vres();
 
 /**
- * @brief Gets the number of bits per pixel.
+ * @brief Gets the number of bytes per pixel.
  * 
- * @return Number of bits per pixel.
+ * @return Number of bytes per pixel.
  */
-unsigned get_bits_per_pixel();
+unsigned get_bytes_per_pixel();
+
 
 #endif

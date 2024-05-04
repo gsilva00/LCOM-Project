@@ -16,6 +16,7 @@
 #include "devices/gpu/colors_utils.h"
 #include "devices/gpu/gpu_macros.h"
 
+
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
   lcf_set_language("EN-US");
@@ -42,16 +43,26 @@ int main(int argc, char *argv[]) {
 
 
 int interrupt_loop() {
+
+}
+
+int(proj_main_loop)(int argc, char *argv[]){
+// ======= Start graphics =======
+  if (create_frame_buffer(VBE_MODE_115)) {printf("Error while creating frame buffer!\n"); return 1;}
+  if (change_video_mode(VBE_MODE_115)) {printf("Error while changing video mode!\n"); return 1;}
+
+
+// ======= Interrupt loop =======
   int ipc_status, r;
   message msg;
 
 
   uint8_t bit_no;
-  if (timer_subscribe_int(&bit_no)) return 1;
+  if (timer_subscribe_int(&bit_no)) {printf("Error while subscribing timer ints!\n"); return 1;}
   uint32_t timer_int_bit = BIT(bit_no);
-  if (kbd_subscribe_int(&bit_no)) return 1;
+  if (kbd_subscribe_int(&bit_no)) {printf("Error while subscribing kbd ints!\n"); return 1;}
   uint32_t keyboard_int_bit = BIT(bit_no);
-  if (mouse_subscribe_int(&bit_no)) return 1;
+  if (mouse_subscribe_int(&bit_no)) {printf("Error while subscribing mouse ints!\n"); return 1;}
   uint32_t mouse_int_bit = BIT(bit_no);
   // if (rtc_subscribe_int(&bit_no)) return 1
   // uint32_t rtc_int_bit = BIT(bit_no);
@@ -90,22 +101,13 @@ int interrupt_loop() {
     }
   }
   
-  if (timer_unsubscribe_int()) return 1;
-  if (kbd_unsubscribe_int()) return 1;
-  if (mouse_unsubscribe_int()) return 1;
+  if (timer_unsubscribe_int()) {printf("Error while unsubscribing timer ints!\n"); return 1;}
+  if (kbd_unsubscribe_int()) {printf("Error while unsubscribing kbd ints!\n"); return 1;}
+  if (mouse_unsubscribe_int()) {printf("Error while unsubscribing mouse ints!\n"); return 1;}
 
-  return 0;
-}
 
-int(proj_main_loop)(int argc, char *argv[]){
-  // Start visual manipulation
-  if (create_frame_buffer(VBE_MODE_14C)) return 1;
-  if (change_video_mode(VBE_MODE_14C)) return 1;
-
-  if (interrupt_loop()) return 1;
-
-  // End visual manipulation
-  if (vg_exit()) return 1;
+// ======= End graphics =======
+  if (vg_exit()) {printf("Error while returning to text mode!\n"); return 1;}
 
   return 0;
 }

@@ -6,7 +6,7 @@ PROG=proj
 .PATH: ${.CURDIR}/devices/timer
 .PATH: ${.CURDIR}/devices/kbc
 .PATH: ${.CURDIR}/devices/gpu
-.PATH: ${.CURDIR}/controllers/rtc
+.PATH: ${.CURDIR}/devices/rtc
 .PATH: ${.CURDIR}/devices/serial_port
 
 # source code files to be compiled
