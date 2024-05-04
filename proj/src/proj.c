@@ -16,6 +16,9 @@
 #include "devices/gpu/colors_utils.h"
 #include "devices/gpu/gpu_macros.h"
 
+#include "objects/bola.xpm"
+#include "objects/ball.h"
+
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -43,7 +46,7 @@ int main(int argc, char *argv[]) {
 
 
 int interrupt_loop() {
-
+  return 0;
 }
 
 int(proj_main_loop)(int argc, char *argv[]){
@@ -68,8 +71,29 @@ int(proj_main_loop)(int argc, char *argv[]){
   // uint32_t rtc_int_bit = BIT(bit_no);
   // Serial port subscribe
   uint32_t serial_int_bit = BIT(bit_no);
+  bool done = false;
 
-  while (1) {
+  xpm_map_t bola_map = (xpm_map_t) bola_xpm;
+
+  printf("bola %s\n", bola_map[0]);
+  //printf("Aa");
+
+  //xpm_image_t img;
+  ball *bola = create_ball(bola_map,50,100,0,0,0);
+
+  //printf("\n%d",bola->x);
+
+
+  printf("size %zu\n",bola->img.size);
+  printf("height %u\n",bola->img.height);
+  printf("width %u\n",bola->img.width);
+
+
+
+  draw_xpm(bola->x,bola->y,bola->img);
+
+
+  while (!done) {
     // Get a request message.
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
       printf("driver_receive failed with: %d", r);
@@ -83,6 +107,20 @@ int(proj_main_loop)(int argc, char *argv[]){
           }
           if (msg.m_notify.interrupts & keyboard_int_bit) { // subscribed keyboard interrupt
             kbc_ih();
+            uint8_t scancode = get_scancode();
+            bool make = 1;
+              if(scancode & BREAKCODE){
+                make = 0;
+              }
+
+              if(kbd_print_scancode(make ,1,&scancode)){
+                return 1;
+              }
+
+              if(BREAKCODE_ESC == scancode){
+                done = true;
+              }
+
           }
           if (msg.m_notify.interrupts & mouse_int_bit) { // subscribed mouse interrupt
             mouse_ih();
@@ -100,6 +138,9 @@ int(proj_main_loop)(int argc, char *argv[]){
       // no standard messages expected: do nothing
     }
   }
+
+  
+  destroy_ball(bola);
   
   if (timer_unsubscribe_int()) {printf("Error while unsubscribing timer ints!\n"); return 1;}
   if (kbd_unsubscribe_int()) {printf("Error while unsubscribing kbd ints!\n"); return 1;}

@@ -8,9 +8,10 @@ PROG=proj
 .PATH: ${.CURDIR}/devices/gpu
 .PATH: ${.CURDIR}/devices/rtc
 .PATH: ${.CURDIR}/devices/serial_port
+.PATH: ${.CURDIR}/objects
 
 # source code files to be compiled
-SRCS = proj.c timer.c keyboard.c mouse.c mouse_sm.c gpu.c colors_utils.c utils.c kbc.c
+SRCS = proj.c timer.c keyboard.c mouse.c mouse_sm.c gpu.c colors_utils.c utils.c kbc.c ball.c player.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set

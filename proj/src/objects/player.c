@@ -6,17 +6,18 @@ struct Player{
   int width, height;
   int xspeed, yspeed;
   int power, header; //dictates the strength of the kick and the header
-  char *map;
+  uint8_t *map;
   bool orientation; //bool that tells which direction is facing, if true he is facing the right side of the screen, if false he is facing the right side of the screen
 };
 
-player *create_player(char *pic[], int x, int y, int xspeed, int yspeed) {
+player *create_player(xpm_map_t pic, int x, int y, int xspeed, int yspeed) {
   //allocate space for the "object"
   player *pl = (player *) malloc ( sizeof(player));
   if(pl == NULL)
     return NULL;
+   xpm_image_t img;
   // read the player pixmap
-  pl->map = read_xpm(pic, &(pl->width), &(pl->height));
+  pl->map =  xpm_load(pic, XPM_8_8_8,&img);
   if( pl->map == NULL ) {
     free(pl);
     return NULL;

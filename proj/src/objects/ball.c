@@ -2,21 +2,15 @@
 #include "ball.h"
 #include "player.h"
 
-struct Ball{
-  int x, y;
-  int width, height;
-  int xspeed, yspeed;
-  uint32_t time_in_mov;
-  char *map;
-};
-
-ball *create_ball(char *pic[], int x, int y, int xspeed, int yspeed, uint32_t time_in_mov) {
+ball *create_ball(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t time_in_mov) {
   //allocate space for the "object"
   ball *bl = (ball *) malloc ( sizeof(ball));
-  if(bl == NULL)
+  if(bl == NULL){
     return NULL;
+  }
+  xpm_image_t img;
   // read the ball pixmap
-  bl->map = read_xpm(pic, &(bl->width), &(bl->height));
+  bl->map = xpm_load(pic, XPM_8_8_8,&img);
   if( bl->map == NULL ) {
     free(bl);
     return NULL;
@@ -25,6 +19,7 @@ ball *create_ball(char *pic[], int x, int y, int xspeed, int yspeed, uint32_t ti
   bl->y = y;
   bl->xspeed = xspeed;
   bl->yspeed = yspeed;
+  bl->img = img;
   return bl;
 }
 
@@ -809,4 +804,5 @@ int ball_collision(ball *bl, vbe_mode_info_t vmi, player *p1, player *p2){
   }else{
     return 1; //Direction error
   }
+  return 0; //return 1????0???? too long to check
 }
