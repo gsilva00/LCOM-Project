@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
 
 
 int interrupt_loop() {
-
+  return 0;
 }
 
 int(proj_main_loop)(int argc, char *argv[]){
@@ -68,8 +68,9 @@ int(proj_main_loop)(int argc, char *argv[]){
   // uint32_t rtc_int_bit = BIT(bit_no);
   // Serial port subscribe
   uint32_t serial_int_bit = BIT(bit_no);
+  bool done = false;
 
-  while (1) {
+  while (!done) {
     // Get a request message.
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
       printf("driver_receive failed with: %d", r);
@@ -83,6 +84,20 @@ int(proj_main_loop)(int argc, char *argv[]){
           }
           if (msg.m_notify.interrupts & keyboard_int_bit) { // subscribed keyboard interrupt
             kbc_ih();
+            uint8_t scancode = get_scancode();
+            bool make = 1;
+              if(scancode & BREAKCODE){
+                make = 0;
+              }
+
+              if(kbd_print_scancode(make ,1,&scancode)){
+                return 1;
+              }
+
+              if(BREAKCODE_ESC == scancode){
+                done = true;
+              }
+
           }
           if (msg.m_notify.interrupts & mouse_int_bit) { // subscribed mouse interrupt
             mouse_ih();
