@@ -1,4 +1,4 @@
-#include "goal.h"-*
+#include "goal.h"
 
 struct Goal{
   int x, y;
@@ -13,7 +13,7 @@ goal *create_goal(char *pic[], int x, int y) {
   if(gl == NULL)
     return NULL;
   // read the goal pixmap
-  gl->map = read_xpm(pic, &(gl->width), &(gl->height));
+  //gl->map = xpm_load(pic, &(gl->width), &(gl->height));
   if( gl->map == NULL ) {
     free(gl);
     return NULL;
