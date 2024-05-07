@@ -6,16 +6,12 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 100,
-<<<<<<< HEAD
-  "files.associations": {
-    "mouse.h": "c",
-    "i8042.h": "c"
-  },
-}
-=======
   "files.associations": { },
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> f5d504b6a84535ec01cd32b09505b22db1fd6001
 =======
 >>>>>>> f5d504b6a84535ec01cd32b09505b22db1fd6001
+=======
+>>>>>>> 12fa002350e36872af4e42aa43409301e51f45d6

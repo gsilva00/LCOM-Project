@@ -1,14 +1,14 @@
 # Do not track the executable
-proj
+**/proj
 
 # Do not track the object files
-*.o
+**/*.o
 
 # Do not track the depend files
-*.d
+**/*.d
 
 # Do not track the files that aid development
-.depend
-.gdbinit
-output.txt
-trace.txt
+**/.depend
+**/.gdbinit
+**/output.txt
+**/trace.txt

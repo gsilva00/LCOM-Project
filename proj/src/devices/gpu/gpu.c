@@ -115,14 +115,22 @@ int draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
 
 int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img) {
   unsigned int pos;
-  
+  printf("aaa");
   for (int y = 0; y < img.height; y++) {
     for (int x = 0; x < img.width; x++) {
       pos = (y * img.width + x) * bytes_per_pixel;
+        
+        printf("%06x     ",(uint32_t) img.bytes[pos]);
+        
+        if ( (uint32_t) img.bytes[pos] != 0x00FF00)
+        {
+        
+        
       if (draw_pixel(xi + x, yi + y, *(img.bytes + pos))) {
         printf("Error while drawing pixel!\n");
         return 1;
       }
+        }
     }
   }
 
