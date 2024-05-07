@@ -28,12 +28,10 @@ void destroy_ball(ball *bl);
 
 int ball_walls_collision(ball *bl, vbe_mode_info_t vmi_p);
 
-int ball_p1_collision(ball *bl, player *p1);
-
-int ball_p2_collision(ball *bl, player *p2);
+int ball_player_collision(ball *bl, player *pl);
 
 int ball_goal_collision(ball *bl, goal *gl);
 
-
+int detect_collisions(ball *bl, vbe_mode_info_t vmi_p, player *p1, player *p2, goal *gl1, goal *gl2);
 
 #endif
