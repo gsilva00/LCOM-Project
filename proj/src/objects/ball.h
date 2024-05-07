@@ -14,6 +14,7 @@ struct Ball{
   int xspeed, yspeed;
   uint32_t time_in_mov;
   uint8_t *map;
+  bool stop;
   xpm_image_t img;
 };
 
@@ -23,7 +24,7 @@ ball *create_ball(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t 
 
 void destroy_ball(ball *bl);
 
-int move_ball(ball *bl);
+/*int move_ball(ball *bl);*/
 
 int ball_walls_collision(ball *bl, vbe_mode_info_t vmi_p);
 

@@ -9,6 +9,7 @@ ball *create_ball(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t 
   xpm_image_t img;
   // read the ball pixmap
   bl->map = xpm_load(pic, XPM_8_8_8,&img);
+  
   if( bl->map == NULL ) {
     free(bl);
     return NULL;
@@ -18,6 +19,7 @@ ball *create_ball(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t 
   bl->xspeed = xspeed;
   bl->yspeed = yspeed;
   bl->img = img;
+  bl->stop = false;
   return bl;
 }
 
@@ -30,13 +32,13 @@ void destroy_ball(ball *bl) {
   bl = NULL;
 }
 
-int move_ball(ball *bl) {
+/*int move_ball(ball *bl) {
   if( bl == NULL )
     return 1;
   bl->x += bl->xspeed;
   bl->y += bl->yspeed;
   return 0;
-}
+}*/
 
 int ball_walls_collision(ball *bl, vbe_mode_info_t vmi){
   if(bl->x <= 0 || bl->x >= vmi.XResolution){ //hitting side walls

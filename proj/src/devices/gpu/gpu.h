@@ -20,8 +20,12 @@ int change_video_mode(uint16_t mode);
  */
 int create_frame_buffer(uint16_t mode);
 
+int limpa_buffer();
+
 
 int draw_pixel(uint16_t x, uint16_t y, uint32_t color);
+
+int draw_background(uint32_t color);
 
 
 int draw_xpm(uint16_t x, uint16_t y, xpm_image_t img);
