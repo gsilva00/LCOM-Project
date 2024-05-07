@@ -1,4 +1,3 @@
-#include <lcom/lcf.h>
 #include "player.h"
 
 struct Player{

@@ -1,6 +1,8 @@
 #ifndef GOAL_H
 #define GOAL_H
 
+#include <lcom/lcf.h>
+
 struct Goal;
 typedef struct Goal goal;
 

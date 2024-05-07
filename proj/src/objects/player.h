@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <lcom/lcf.h>
+
 struct Player;
 typedef struct Player player;
 
