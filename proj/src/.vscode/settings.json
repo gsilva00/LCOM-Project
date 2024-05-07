@@ -13,6 +13,7 @@
     "lab5.h": "c",
     "*.xpm": "c",
     "stdio.h": "c",
-    "ball_controller.h": "c"
+    "ball_controller.h": "c",
+    "ball.h": "c"
   },
 }

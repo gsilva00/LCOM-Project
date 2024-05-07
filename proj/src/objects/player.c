@@ -1,14 +1,5 @@
 #include "player.h"
 
-struct Player{
-  int x, y;
-  int width, height;
-  int xspeed, yspeed;
-  int power, header; //dictates the strength of the kick and the header
-  uint8_t *map;
-  bool orientation; //bool that tells which direction is facing, if true he is facing the right side of the screen, if false he is facing the right side of the screen
-};
-
 player *create_player(xpm_map_t pic, int x, int y, int xspeed, int yspeed) {
   //allocate space for the "object"
   player *pl = (player *) malloc ( sizeof(player));
@@ -37,13 +28,13 @@ void destroy_player(player *pl) {
   pl = NULL;
 }
 
-int move_player(player *pl) {
+/*int move_player(player *pl) {
   if( pl == NULL )
     return 1;
   pl->x += pl->xspeed;
   pl->y += pl->yspeed;
   return 0;
-}
+}*/
 
 int player_get_X(player *pl) {
   if(pl == NULL){

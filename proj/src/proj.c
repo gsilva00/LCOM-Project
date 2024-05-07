@@ -19,6 +19,7 @@
 #include "objects/ball.h"
 #include "objects/bola.xpm"
 #include "objects/object_controllers/ball_controller.h"
+#include "objects/object_controllers/player_controller.h"
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -104,6 +105,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
   BallState ball_state = STATE_NONE;
   BallState ball_state_temporary = STATE_NONE;
 
+  player *player;
+  PlayerState player_state = STATE_NONE;
+  PlayerState player_state_temporary = STATE_NONE;
+
   // int counter = 0;
   while (!done) {
     // Get a request message.
@@ -118,6 +123,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
             timer_int_handler();
 
             move_ball(bola,&ball_state,&ball_state_temporary);
+            move_player(player, &player_state, &player_state_temporary);
           }
           if (msg.m_notify.interrupts & keyboard_int_bit) { // subscribed keyboard interrupt
             kbc_ih();
