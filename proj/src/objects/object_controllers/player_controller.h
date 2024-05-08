@@ -1,5 +1,5 @@
-#ifndef BALL_CONTROLLER_H
-#define BALL_CONTROLLER_H
+#ifndef PLAYER_CONTROLLER_H
+#define PLAYER_CONTROLLER_H
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 200
@@ -34,14 +34,19 @@
     STATE_BEFORE_JUMP_RIGHT,
     STATE_JUMP_RIGHT,
     STATE_AFTER_JUMP_RIGHT,
+  } PlayerStateJump;
 
+  typedef enum {
+    STATE_NONE,
     STATE_MOVE_LEFT_START,
     STATE_MOVE_RIGHT_START,
     STATE_MOVE_LEFT,
     STATE_MOVE_RIGHT,
+    STATE_AFTER_MOVE_LEFT,
+    STATE_AFTER_MOVE_RIGHT,
     STATE_MOVE_END,
-  } PlayerState;
+  } PlayerStateMove;
 
-void(move_player)(player *player, PlayerState *player_state, PlayerState * player_state_temporary);
+void(move_player)(player *player, PlayerStateJump *player_state_jump, PlayerStateJump * player_state_jump_temporary, PlayerStateMove player_state_move, PlayerStateMove player_state_move_temporary);
 
 #endif
