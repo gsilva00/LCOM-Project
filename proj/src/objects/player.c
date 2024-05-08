@@ -1,13 +1,14 @@
 #include "player.h"
 
-player *create_player(xpm_map_t pic, int x, int y, int xspeed, int yspeed) {
-  //allocate space for the "object"
+player *create_player(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t time_in_mov) {
   player *pl = (player *) malloc ( sizeof(player));
-  if(pl == NULL)
+  if(pl == NULL){
     return NULL;
-   xpm_image_t img;
+  }
+  xpm_image_t img;
   // read the player pixmap
-  pl->map =  xpm_load(pic, XPM_8_8_8,&img);
+  pl->map = xpm_load(pic, XPM_8_8_8,&img);
+  
   if( pl->map == NULL ) {
     free(pl);
     return NULL;
@@ -16,6 +17,7 @@ player *create_player(xpm_map_t pic, int x, int y, int xspeed, int yspeed) {
   pl->y = y;
   pl->xspeed = xspeed;
   pl->yspeed = yspeed;
+  pl->img = img;
   return pl;
 }
 
