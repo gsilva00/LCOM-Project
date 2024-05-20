@@ -472,8 +472,10 @@ int ball_player_collision(ball *bl, player *pl){
   }else{
     return 1;
   }
+  return 0;
 }
 
+/*
 int ball_goal_collision(ball *bl, goal *gl){
   if(bl == NULL || gl == NULL){
     return 1;
@@ -534,6 +536,7 @@ int ball_goal_collision(ball *bl, goal *gl){
       return 1; //Direction error
     }
   }
+  return 0;
 }
 
 int detect_collisions(ball *bl, vbe_mode_info_t vmi_p, player *p1, player *p2, goal *gl1, goal *gl2){
@@ -555,7 +558,8 @@ int detect_collisions(ball *bl, vbe_mode_info_t vmi_p, player *p1, player *p2, g
   if(ball_goal_collision(bl, gl1) != 0){
     return 1;
   }
-  if(ball_player_collision(bl, gl2) != 0){
+  if(ball_goal_collision(bl, gl2) != 0){
     return 1;
   }
-}
+  return 0;
+}*/

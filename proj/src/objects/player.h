@@ -3,14 +3,24 @@
 
 #include <lcom/lcf.h>
 
-struct Player;
+struct Player{
+  int x, y;
+  int width, height;
+  int xspeed, yspeed;
+  int power, header; //dictates the strength of the kick and the header
+  uint32_t time_in_mov;
+  uint8_t *map;
+  bool orientation; //bool that tells which direction is facing, if true he is facing the right side of the screen, if false he is facing the right side of the screen
+  xpm_image_t img;
+};
+
 typedef struct Player player;
 
-player *create_player(xpm_map_t pic, int x, int y, int xspeed, int yspeed);
+player *create_player(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t time_in_mov);
 
 void destroy_player(player *pl);
 
-int move_player(player *pl);
+//int move_player(player *pl);
 
 int player_get_X(player *pl);
 

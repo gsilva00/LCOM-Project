@@ -18,7 +18,14 @@
 
 #include "objects/ball.h"
 #include "objects/bola.xpm"
+#include "objects/muro.xpm"
+#include "objects/baliza-tras-right.xpm"
+#include "objects/goal_back.xpm"
+#include "objects/goal.h"
+#include "objects/personagem_parado.xpm"
+#include "objects/wall.h"
 #include "objects/object_controllers/ball_controller.h"
+#include "objects/object_controllers/player_controller.h"
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -85,24 +92,54 @@ int(proj_main_loop)(int argc, char *argv[]) {
   uint32_t serial_int_bit = BIT(bit_no);
   bool done = false;
 
-  uint32_t background_color = 0x550055;
-  if (draw_background(background_color)) {
+
+  xpm_map_t muro = (xpm_map_t) muro_xpm;
+  wall *muro_ = create_wall(muro); //800,314
+
+  if (draw_back(0, 600 - 314, muro_->img)) {
+    return 1; // epa nao deu pra desenhar background
+  }
+
+  xpm_map_t baliza = (xpm_map_t) goal_back_xpm;
+  xpm_map_t baliza_right = (xpm_map_t) baliza_tras_right_xpm;
+  goal *goal_ = create_goal(baliza); //800,314
+  goal *goal_right_ = create_goal(baliza_right);
+
+  if (draw_back(0, 314, goal_->img)) {
+    return 1; // epa nao deu pra desenhar background
+  }
+
+  if (draw_back(720, 314, goal_right_->img)) {
     return 1; // epa nao deu pra desenhar background
   }
 
   xpm_map_t bola_map = (xpm_map_t) bola_xpm;
+  xpm_map_t player_map = (xpm_map_t) personagem_parado_xpm;
 
   printf("bola %s\n", bola_map[0]);
   // printf("Aa");
 
   // xpm_image_t img;
-  ball *bola = create_ball(bola_map, 50, 200, 10, 50, 0);
+  ball *bola = create_ball(bola_map, 20, 200, 10, 50, 0);
+
+  draw_frame_start();
 
   // Draw the XPM image
   draw_xpm(bola->x, bola->y, bola->img);
 
   BallState ball_state = STATE_NONE;
   BallState ball_state_temporary = STATE_NONE;
+
+  player *player = create_player(player_map, 400, 400, 10, 50, 0);
+
+  draw_xpm(player->x, player->y, player->img);
+
+  draw_frame_end();
+  
+  PlayerStateJump player_state_jump = STATE_PLAYER_JUMP_NONE;
+  PlayerStateJump player_state_jump_temporary = STATE_PLAYER_JUMP_NONE;
+  PlayerStateMove player_state_move = STATE_PLAYER_MOVE_NONE;
+  PlayerStateMove player_state_move_temporary = STATE_PLAYER_MOVE_NONE;
 
   // int counter = 0;
   while (!done) {
@@ -117,7 +154,33 @@ int(proj_main_loop)(int argc, char *argv[]) {
           if (msg.m_notify.interrupts & timer_int_bit) {
             timer_int_handler();
 
+             if (get_timer_intCounter() % 2 == 0) {
+
+            if (ball_state != STATE_NONE)
+            {
+              draw_frame_start();
+            }
+            if (player_state_move !=  STATE_PLAYER_MOVE_NONE)
+            {
+              draw_frame_start();
+            }
+
+
+              draw_xpm(bola->x, bola->y, bola->img);
+
+
+
+
+              draw_xpm(player->x, player->y, player->img);
+
+
+            }
+            
+           //
             move_ball(bola,&ball_state,&ball_state_temporary);
+            move_player(player, &player_state_move, &player_state_move_temporary, &player_state_jump, &player_state_jump_temporary);
+            draw_frame_end();
+
           }
           if (msg.m_notify.interrupts & keyboard_int_bit) { // subscribed keyboard interrupt
             kbc_ih();
@@ -131,7 +194,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
               return 1;
             }
 
-            if (scancode == 0x19) { // 0x19 is the scancode for the "P" key
+            if (scancode == 0x19) { // 0x19 is the makecode for the "P" key
               if (ball_state != STATE_NONE) {
                 ball_state = STATE_JUMP_END;
                 ball_state_temporary = STATE_MOVE_RIGHT_START;
@@ -140,7 +203,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
               }
             }
 
-            if (scancode == 0x1e) { // 0x19 is the scancode for the "P" key
+            if (scancode == 0x1e) { // 0x1e is the makecode for the "A" key
              if (ball_state != STATE_NONE) {
               ball_state = STATE_JUMP_END;
               ball_state_temporary = STATE_MOVE_LEFT_START;
@@ -149,7 +212,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
             }
             }
 
-            if (0xcd == scancode) {
+            if (0x4d == scancode) { //0x4d is the makecode for the right key
               if (ball_state != STATE_NONE) {
                 ball_state = STATE_JUMP_END;
                 ball_state_temporary = STATE_START_JUMP_RIGHT;
@@ -157,15 +220,45 @@ int(proj_main_loop)(int argc, char *argv[]) {
               else {
                 ball_state = STATE_START_JUMP_RIGHT;
               }
+              if (player_state_move != STATE_PLAYER_MOVE_NONE) {
+                player_state_move = STATE_PLAYER_MOVE_END;
+                player_state_move_temporary = STATE_PLAYER_MOVE_RIGHT_START;
+              }else{
+                player_state_move = STATE_PLAYER_MOVE_RIGHT_START;
+              }
             }
 
-            if (0xcb == scancode) {
+            if (0x4b == scancode) { //0x4b is the makecode for the left key
               if (ball_state != STATE_NONE) {
                 ball_state = STATE_JUMP_END;
                 ball_state_temporary = STATE_START_JUMP_LEFT;
               }
               else {
                 ball_state = STATE_START_JUMP_LEFT;
+              }
+              if (player_state_move != STATE_PLAYER_MOVE_NONE) {
+                player_state_move = STATE_PLAYER_MOVE_END;
+                player_state_move_temporary = STATE_PLAYER_MOVE_LEFT_START;
+              }else{
+                player_state_move = STATE_PLAYER_MOVE_LEFT_START;
+              }
+            }
+
+            if(0xcd == scancode){ //0xcd is the breakcode for the right key
+              player_state_move = STATE_AFTER_PLAYER_MOVE_RIGHT;
+            }
+
+            if(0xcb == scancode){ //0xcb is the breakcode for the left key
+              player_state_move = STATE_AFTER_PLAYER_MOVE_LEFT;
+            }
+
+            if(0x48 == scancode){ //0x48 is the makecode for the up key
+              if (player_state_jump != STATE_PLAYER_JUMP_NONE) {
+                player_state_jump = STATE_PLAYER_JUMP_END;
+                player_state_jump_temporary = STATE_START_PLAYER_JUMP;
+              }
+              else {
+                player_state_jump = STATE_START_PLAYER_JUMP;
               }
             }
 
@@ -190,6 +283,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
   }
 
   destroy_ball(bola);
+  destroy_player(player);
 
   if (timer_unsubscribe_int()) {
     printf("Error while unsubscribing timer ints!\n");

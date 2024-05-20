@@ -58,7 +58,9 @@ void handle_jump(ball *bola, BallState *ball_state, int direction) {
       }
 
       change_y(bola);
-      draw_xpm(bola->x, bola->y, bola->img);
+
+      //draw_xpm(bola->x, bola->y, bola->img);
+
       time_passed_y++;
       time_passed_x++;
     }
@@ -133,7 +135,8 @@ void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_tempora
         if (get_timer_intCounter() % 2 == 0) {
           bola->x -= bola->xspeed;
           check_border(bola);
-          draw_xpm(bola->x, bola->y, bola->img);
+          //draw_xpm(bola->x, bola->y, bola->img);
+          
         }
         if (get_timer_intCounter() % 30 == 0) {
           bola->xspeed = bola->xspeed * SPEED_REDUCTION_FACTOR;
@@ -150,7 +153,7 @@ void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_tempora
         if (get_timer_intCounter() % 2 == 0) {
           bola->x += bola->xspeed;
           check_border(bola);
-          draw_xpm(bola->x, bola->y, bola->img);
+          //draw_xpm(bola->x, bola->y, bola->img);
         }
         if (get_timer_intCounter() % 30 == 0) {
           bola->xspeed = bola->xspeed * SPEED_REDUCTION_FACTOR;
