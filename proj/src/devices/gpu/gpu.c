@@ -132,6 +132,26 @@ int draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
   return 0;
 }
 
+int draw_back(uint16_t xi, uint16_t yi, xpm_image_t img) {
+  unsigned int pos;
+  // printf("Reached draw_xpm!\n");
+  for (int y = 0; y < img.height; y++) {
+    for (int x = 0; x < img.width; x++) {
+      pos = (y * img.width + x) * bytes_per_pixel;
+      // printf("x:%d, y:%d - ", x, y);
+      // printf("blue:%x; green:%x; red:%x\n", *(img.bytes + pos), *(img.bytes + pos+1), *(img.bytes + pos+2));
+      uint32_t color = (img.bytes[pos + 2]) << 16 | (img.bytes[pos + 1] << 8) | img.bytes[pos];
+
+      if (color != 0x00FF00) {
+        uint8_t *pixel_pos = triple_buffer + (((y+yi) * vmi.XResolution + (x+xi)) * bytes_per_pixel);
+        memcpy(pixel_pos, &color, bytes_per_pixel);
+      }
+    }
+  }
+  return 0;
+}
+
+
 int draw_background(uint32_t color) {
   for (uint16_t y = 0; y < vmi.YResolution; y++) {
     for (uint16_t x = 0; x < vmi.XResolution; x++) {
@@ -156,8 +176,12 @@ int draw_background(uint32_t color) {
   return 0;
 }
 
-int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img) {
+int draw_frame_start(){
   memcpy(double_buffer, triple_buffer, vmi.XResolution * vmi.YResolution * ((vmi.BitsPerPixel + 7) / 8));
+  return 0;
+}
+
+int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img) {
   unsigned int pos;
   // printf("Reached draw_xpm!\n");
   for (int y = 0; y < img.height; y++) {
@@ -165,7 +189,7 @@ int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img) {
       pos = (y * img.width + x) * bytes_per_pixel;
       // printf("x:%d, y:%d - ", x, y);
       // printf("blue:%x; green:%x; red:%x\n", *(img.bytes + pos), *(img.bytes + pos+1), *(img.bytes + pos+2));
-      uint32_t color = (img.bytes[pos] << 16) | (img.bytes[pos + 1] << 8) | img.bytes[pos + 2];
+      uint32_t color = (img.bytes[pos + 2] << 16) | (img.bytes[pos + 1] << 8) | img.bytes[pos];
 
       if (color != 0x00FF00) {
         if (draw_pixel(xi + x, yi + y, color)) {
@@ -175,9 +199,11 @@ int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img) {
       }
     }
   }
+  return 0;
+}
 
-  memcpy(video_mem, double_buffer, vmi.XResolution * vmi.YResolution * ((vmi.BitsPerPixel + 7) / 8));
-
+int draw_frame_end(){
+    memcpy(video_mem, double_buffer, vmi.XResolution * vmi.YResolution * ((vmi.BitsPerPixel + 7) / 8));
   return 0;
 }
 

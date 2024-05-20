@@ -1,7 +1,7 @@
 /* XPM */
 static char * personagem_parado_xpm[] = {
 "62 78 91 1",
-" 	c None",
+" 	c #00FF00",
 ".	c #000000",
 "+	c #020C49",
 "@	c #141529",

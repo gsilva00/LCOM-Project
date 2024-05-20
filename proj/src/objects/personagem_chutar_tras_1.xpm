@@ -1,7 +1,7 @@
 /* XPM */
 static char * personagem_chutar_tras_1_xpm[] = {
 "59 81 91 1",
-" 	c None",
+" 	c #00FF00",
 ".	c #000000",
 "+	c #020C49",
 "@	c #141529",
