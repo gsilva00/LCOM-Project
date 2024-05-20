@@ -138,6 +138,14 @@ void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStat
         *player_state_jump_temporary = STATE_PLAYER_JUMP_NONE;
       }
       break;
+    case STATE_BEFORE_PLAYER_JUMP:
+      prepare_for_player_jump(player);
+      *player_state_jump = player->yspeed > 0 ? STATE_PLAYER_JUMP : STATE_PLAYER_JUMP_END;
+      break;
+    case STATE_AFTER_PLAYER_JUMP:
+      update_player_position_after_jump(player);
+      *player_state_jump = STATE_BEFORE_PLAYER_JUMP;
+      break;
     default:
       break;
   }

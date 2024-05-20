@@ -92,6 +92,8 @@ int(proj_main_loop)(int argc, char *argv[]) {
     return 1; // epa nao deu pra desenhar background
   }
 
+  memcpy(double_buffer, triple_buffer, vmi.XResolution * vmi.YResolution * ((vmi.BitsPerPixel + 7) / 8));
+
   xpm_map_t bola_map = (xpm_map_t) bola_xpm;
   xpm_map_t player_map = (xpm_map_t) personagem_parado_xpm;
 

@@ -157,7 +157,7 @@ int draw_background(uint32_t color) {
 }
 
 int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img) {
-  memcpy(double_buffer, triple_buffer, vmi.XResolution * vmi.YResolution * ((vmi.BitsPerPixel + 7) / 8));
+
   unsigned int pos;
   // printf("Reached draw_xpm!\n");
   for (int y = 0; y < img.height; y++) {
