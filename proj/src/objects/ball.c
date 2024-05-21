@@ -475,6 +475,7 @@ int ball_player_collision(ball *bl, player *pl){
   return 0;
 }
 
+/*
 int ball_goal_collision(ball *bl, goal *gl){
   if(bl == NULL || gl == NULL){
     return 1;
@@ -561,4 +562,4 @@ int detect_collisions(ball *bl, vbe_mode_info_t vmi_p, player *p1, player *p2, g
     return 1;
   }
   return 0;
-}
+}*/

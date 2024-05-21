@@ -25,10 +25,15 @@ int limpa_buffer();
 
 int draw_pixel(uint16_t x, uint16_t y, uint32_t color);
 
+int draw_back(uint16_t xi, uint16_t yi, xpm_image_t img);
+
 int draw_background(uint32_t color);
 
+int draw_frame_start();
 
-int draw_xpm(uint16_t x, uint16_t y, xpm_image_t img);
+int draw_frame_end();
+
+int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img);
 
 
 // Getters

@@ -1,29 +1,30 @@
 #include "goal.h"
 
-struct Goal{
+/*struct Goal{
   int x, y;
   int width, height;
   int orientation; //if 1 the goal is facing the right side
   char *map;
-};
+};*/
 
-goal *create_goal(char *pic[], int x, int y) {
+goal *create_goal(xpm_map_t pic) {
   //allocate space for the "object"
   goal *gl = (goal *) malloc ( sizeof(goal));
   if(gl == NULL)
     return NULL;
-  // read the goal pixmap
-  //gl->map = xpm_load(pic, &(gl->width), &(gl->height));
+
+  xpm_image_t img;
+  gl->map = xpm_load(pic, XPM_8_8_8,&img);
+  
   if( gl->map == NULL ) {
     free(gl);
     return NULL;
   }
-  gl->x = x;
-  gl->y = y;
+  gl->img = img;
   return gl;
 }
 
-void destroy_goal(goal *gl) {
+/*void destroy_goal(goal *gl) {
   if( gl == NULL )
     return;
   if( gl->map )
@@ -70,4 +71,4 @@ int goal_get_orientation(goal *gl){
   }else{
     return gl->orientation;
   }
-}
+}*/
