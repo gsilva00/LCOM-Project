@@ -24,6 +24,7 @@
 #include "objects/goal.h"
 #include "objects/xpm/personagem_parado.xpm"
 #include "objects/xpm/menuuu.xpm"
+#include "objects/xpm/pausa_menu_90_sem_background.xpm"
 #include "objects/xpm/play.xpm"
 #include "objects/xpm/play_sem.xpm"
 #include "objects/xpm/close.xpm"
@@ -67,14 +68,17 @@ typedef enum {
   STATE_GAME_START_TO_PLAY,
   STATE_GAME_PLAY,
   STATE_GAME_PLAY_TO_START,
+  STATE_GAME_PLAY_TO_PAUSE,
   STATE_GAME_PAUSE,
+  STATE_GAME_PAUSE_TO_START,
+  STATE_GAME_PAUSE_TO_PLAY,
   STATE_GAME_OVER
 } GameState;
 
 int keyboard_active = 1;
 int mouse_active = 1;
 
-int draw_game(wall *muro_, goal *goal_, goal *goal_right_, ball *bola, player *player){
+int draw_game(wall *muro_, goal *goal_, goal *goal_right_, ball *bola, player *player, bool done){
 
   if (draw_back(0, 600 - 314, muro_->img)) {
     return 1; // epa nao deu pra desenhar background
@@ -95,8 +99,15 @@ int draw_game(wall *muro_, goal *goal_, goal *goal_right_, ball *bola, player *p
 
   draw_xpm(player->x, player->y, player->img);
 
-  draw_frame_end();
+  if(done) draw_frame_end();
   return 0;
+}
+
+void draw_main_menu(xpm_image_t menu_img, button *single, button *multi, button *end){
+  draw_xpm(0, 0, menu_img);
+  if(single != NULL) draw_xpm(single->x, single->y, single->img);
+  if(multi != NULL) draw_xpm(multi->x, multi->y, multi->img);
+  if(end != NULL) draw_xpm(end->x, end->y, end->img);
 }
 
 int(proj_main_loop)(int argc, char *argv[]) {
@@ -123,11 +134,14 @@ int(proj_main_loop)(int argc, char *argv[]) {
   PlayerStateMove player_state_move_temporary = STATE_PLAYER_MOVE_NONE;
   GameState game_state = STATE_GAME_START;
   MenuState menu_state = STATE_MENU_HOVER_SINGLEPLAYER;
+  MenuPauseState menu_pause_state = STATE_MENU_HOVER_RESUME;
   ball *bola;
   player *player;
   button *single;
   button *multi;
   button *end;
+  button *resume;
+  button *go_back;
   xpm_map_t muro = (xpm_map_t) muro_xpm;
   wall *muro_ = create_wall(muro);
   xpm_map_t baliza = (xpm_map_t) goal_back_xpm;
@@ -141,12 +155,16 @@ int(proj_main_loop)(int argc, char *argv[]) {
   xpm_map_t end_selected_map = (xpm_map_t) close_xpm;
   xpm_map_t end_not_selected_map = (xpm_map_t) close_sem_xpm;
   xpm_map_t menu_xpm = (xpm_map_t) menuuu_xpm;
+  xpm_map_t pause_menu_xpm = (xpm_map_t) pausa_menu_90_sem_background_xpm;
   xpm_image_t menu_img;
+  xpm_image_t pause_menu_img;
   bola = create_ball(bola_map, 20, 200, 10, 50, 0);
   player = create_player(player_map, 400, 400, 10, 50, 0);
   single = create_button(start_selected_map, 500, 155, true);
   multi = create_button(start_not_selected_map, 500, 219, false);
   end = create_button(end_not_selected_map, 500, 284, false);
+  resume = create_button(start_selected_map, 500, 155, true);
+  go_back = create_button(end_not_selected_map, 500, 219, false);
 
   if (timer_subscribe_int(&bit_no)) {
     printf("Error while subscribing timer ints!\n");
@@ -172,15 +190,12 @@ int(proj_main_loop)(int argc, char *argv[]) {
   if(game_state == STATE_GAME_START){
     xpm_load(menu_xpm, XPM_8_8_8, &menu_img);
     draw_frame_start();
-    draw_xpm(0, 0, menu_img);
-    draw_xpm(single->x, single->y, single->img);
-    draw_xpm(multi->x, multi->y, multi->img);
-    draw_xpm(end->x, end->y, end->img);
+    draw_main_menu(menu_img, single, multi, end);
     draw_frame_end();
   }
 
   if(game_state == STATE_GAME_PLAY){
-    if(draw_game(muro_, goal_, goal_right_, bola, player)){
+    if(draw_game(muro_, goal_, goal_right_, bola, player, true)){
       return 1;
     }
   }
@@ -209,7 +224,8 @@ int(proj_main_loop)(int argc, char *argv[]) {
 
                 draw_xpm(bola->x, bola->y, bola->img);
                 draw_xpm(player->x, player->y, player->img);
-              }else if(game_state == STATE_GAME_START){
+              }
+              else if(game_state == STATE_GAME_START){
                 if(menu_state == STATE_MENU_HOVER_SINGLEPLAYER && single->selected == false){
                   set_selected(single, true);
                   set_selected(multi, false);
@@ -218,12 +234,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   set_image(multi, start_not_selected_map);
                   set_image(end, end_not_selected_map);
                   draw_frame_start();
-                  draw_xpm(0, 0, menu_img);
-                  draw_xpm(single->x, single->y, single->img);
-                  draw_xpm(multi->x, multi->y, multi->img);
-                  draw_xpm(end->x, end->y, end->img);
+                  draw_main_menu(menu_img, single, multi, end);
                   draw_frame_end();
-                }if(menu_state == STATE_MENU_HOVER_MULTIPLAYER && multi->selected == false){
+                }
+                if(menu_state == STATE_MENU_HOVER_MULTIPLAYER && multi->selected == false){
                   set_selected(single, false);
                   set_selected(multi, true);
                   set_selected(end, false);
@@ -231,12 +245,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   set_image(multi, start_selected_map);
                   set_image(end, end_not_selected_map);
                   draw_frame_start();
-                  draw_xpm(0, 0, menu_img);
-                  draw_xpm(single->x, single->y, single->img);
-                  draw_xpm(multi->x, multi->y, multi->img);
-                  draw_xpm(end->x, end->y, end->img);
+                  draw_main_menu(menu_img, single, multi, end);
                   draw_frame_end();
-                }else if(menu_state == STATE_MENU_HOVER_EXIT && end->selected == false){
+                }
+                else if(menu_state == STATE_MENU_HOVER_EXIT && end->selected == false){
                   set_selected(end, true);
                   set_selected(multi, false);
                   set_selected(single, false);
@@ -244,26 +256,56 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   set_image(multi, start_not_selected_map);
                   set_image(single, start_not_selected_map);
                   draw_frame_start();
-                  draw_xpm(0, 0, menu_img);
-                  draw_xpm(single->x, single->y, single->img);
-                  draw_xpm(multi->x, multi->y, multi->img);
-                  draw_xpm(end->x, end->y, end->img);
+                  draw_main_menu(menu_img, single, multi, end);
                   draw_frame_end();
                 }
-              }else if(game_state == STATE_GAME_START_TO_PLAY){
+              }
+              else if(game_state == STATE_GAME_START_TO_PLAY){
                 set_selected(single, true);
                 set_selected(multi, false);
                 set_selected(end, false);
-                draw_game(muro_, goal_, goal_right_, bola, player);
+                draw_game(muro_, goal_, goal_right_, bola, player, true);
                 game_state = STATE_GAME_PLAY;
-              }else if(game_state == STATE_GAME_PLAY_TO_START){
+              }
+              else if(game_state == STATE_GAME_PAUSE_TO_START){
+                set_selected(resume, true);
+                set_selected(go_back, false);
                 draw_frame_start();
-                draw_xpm(0, 0, menu_img);
-                draw_xpm(single->x, single->y, single->img);
-                draw_xpm(multi->x, multi->y, multi->img);
-                draw_xpm(end->x, end->y, end->img);
+                draw_main_menu(menu_img, single, multi, end);
                 draw_frame_end();
                 game_state = STATE_GAME_START;
+              }
+              else if(game_state == STATE_GAME_PLAY_TO_PAUSE){
+                xpm_load(pause_menu_xpm, XPM_8_8_8, &pause_menu_img);
+                draw_main_menu(pause_menu_img, resume, go_back, NULL);
+                draw_frame_end();
+                game_state = STATE_GAME_PAUSE;
+              }
+              else if(game_state == STATE_GAME_PAUSE_TO_PLAY){
+                set_selected(resume, true);
+                set_selected(go_back, false);
+                draw_game(muro_, goal_, goal_right_, bola, player, true);
+                game_state = STATE_GAME_PLAY;
+              }
+              else if(game_state == STATE_GAME_PAUSE){
+                if(menu_pause_state == STATE_MENU_HOVER_RESUME && resume->selected == false){
+                  set_selected(resume, true);
+                  set_selected(go_back, false);
+                  set_image(resume, start_selected_map);
+                  set_image(go_back, end_not_selected_map);
+                  draw_game(muro_, goal_, goal_right_, bola, player, false);
+                  draw_main_menu(pause_menu_img, resume, go_back, NULL);
+                  draw_frame_end();
+                }
+                if(menu_pause_state == STATE_MENU_HOVER_GO_BACK && go_back->selected == false){
+                  set_selected(resume, false);
+                  set_selected(go_back, true);
+                  set_image(resume, start_not_selected_map);
+                  set_image(go_back, end_selected_map);
+                  draw_game(muro_, goal_, goal_right_, bola, player, false);
+                  draw_main_menu(pause_menu_img, resume, go_back, NULL);
+                  draw_frame_end();
+                }
               }
             }
             
@@ -285,7 +327,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
               return 1;
             }
 
-            if (scancode == 0x19) { // 0x19 is the makecode for the "P" key
+            if (scancode == MAKECODE_P) { // 0x19 is the makecode for the "P" key
               if(game_state == STATE_GAME_PLAY){
                 if (ball_state != STATE_NONE) {
                   ball_state = STATE_JUMP_END;
@@ -296,7 +338,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
               }
             }
 
-            if (scancode == 0x1e) { // 0x1e is the makecode for the "A" key
+            if (scancode == MAKECODE_A) { // 0x1e is the makecode for the "A" key
               if(game_state == STATE_GAME_PLAY){
                 if (ball_state != STATE_NONE) {
                   ball_state = STATE_JUMP_END;
@@ -307,7 +349,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
               }
             }
 
-            if (0x4d == scancode) { //0x4d is the makecode for the right key
+            if (MAKECODE_RIGHT == scancode) { //0x4d is the makecode for the right key
               if(game_state == STATE_GAME_PLAY){
                 if (ball_state != STATE_NONE) {
                   ball_state = STATE_JUMP_END;
@@ -325,7 +367,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
               }
             }
 
-            if (0x4b == scancode) { //0x4b is the makecode for the left key
+            if (MAKECODE_LEFT == scancode) { //0x4b is the makecode for the left key
               if(game_state == STATE_GAME_PLAY){
                 if (ball_state != STATE_NONE) {
                   ball_state = STATE_JUMP_END;
@@ -343,19 +385,19 @@ int(proj_main_loop)(int argc, char *argv[]) {
               }
             }
 
-            if(0xcd == scancode){ //0xcd is the breakcode for the right key
+            if(BREAKCODE_LEFT == scancode){ //0xcd is the breakcode for the right key
               if(game_state == STATE_GAME_PLAY){
                 player_state_move = STATE_AFTER_PLAYER_MOVE_RIGHT;
               }
             }
 
-            if(0xcb == scancode){ //0xcb is the breakcode for the left key
+            if(BREAKCODE_RIGHT == scancode){ //0xcb is the breakcode for the left key
               if(game_state == STATE_GAME_PLAY){
                 player_state_move = STATE_AFTER_PLAYER_MOVE_LEFT;
               }
             }
 
-            if(0x48 == scancode){ //0x48 is the makecode for the up key
+            if(MAKECODE_UP == scancode){ //0x48 is the makecode for the up key
               if(game_state == STATE_GAME_PLAY){
                 if (player_state_jump != STATE_PLAYER_JUMP_NONE) {
                   player_state_jump = STATE_PLAYER_JUMP_END;
@@ -372,10 +414,16 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }else if(menu_state == STATE_MENU_HOVER_EXIT){
                   menu_state = STATE_MENU_HOVER_MULTIPLAYER;
                 }
+              }else if(game_state == STATE_GAME_PAUSE){
+                if (menu_pause_state == STATE_MENU_HOVER_RESUME){
+                  menu_pause_state = STATE_MENU_HOVER_GO_BACK;
+                }else if(menu_pause_state == STATE_MENU_HOVER_GO_BACK){
+                  menu_pause_state = STATE_MENU_HOVER_RESUME;
+                }
               }
             }
 
-            if(0x50 == scancode){ //0x50 is the makecode for the down key
+            if(MAKECODE_DOWN == scancode){ //0x50 is the makecode for the down key
               if(game_state == STATE_GAME_START){
                 if (menu_state == STATE_MENU_HOVER_SINGLEPLAYER){
                   menu_state = STATE_MENU_HOVER_MULTIPLAYER;
@@ -384,29 +432,37 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }else if(menu_state == STATE_MENU_HOVER_EXIT){
                   menu_state = STATE_MENU_HOVER_SINGLEPLAYER;
                 }
+              }else if(game_state == STATE_GAME_PAUSE){
+                if (menu_pause_state == STATE_MENU_HOVER_RESUME){
+                  menu_pause_state = STATE_MENU_HOVER_GO_BACK;
+                }else if(menu_pause_state == STATE_MENU_HOVER_GO_BACK){
+                  menu_pause_state = STATE_MENU_HOVER_RESUME;
+                }
               }
             }
 
-            if(0x1C == scancode){ //0x50 is the makecode for the enter key
+            if(MAKECODE_ENTER == scancode){ //0x50 is the makecode for the enter key
               if(game_state == STATE_GAME_START){
                 if (menu_state == STATE_MENU_HOVER_SINGLEPLAYER){
-                  menu_state = STATE_MENU_SELECTION;
                   game_state = STATE_GAME_START_TO_PLAY;
                 }else if (menu_state == STATE_MENU_HOVER_MULTIPLAYER){
-                  menu_state = STATE_MENU_SELECTION;
                   game_state = STATE_GAME_START_TO_PLAY;
                 }else if(menu_state == STATE_MENU_HOVER_EXIT){
-                  menu_state = STATE_MENU_SELECTION;
                   game_state = STATE_GAME_OVER;
                   done = true;
+                }
+              }else if(game_state == STATE_GAME_PAUSE){
+                if (menu_pause_state == STATE_MENU_HOVER_RESUME){
+                  game_state = STATE_GAME_PAUSE_TO_PLAY;
+                }else if(menu_pause_state == STATE_MENU_HOVER_GO_BACK){
+                  game_state = STATE_GAME_PAUSE_TO_START;
                 }
               }
             }
 
             if (BREAKCODE_ESC == scancode) {
               if(game_state == STATE_GAME_PLAY){
-                game_state = STATE_GAME_PLAY_TO_START;
-                menu_state = STATE_MENU_HOVER_SINGLEPLAYER;
+                game_state = STATE_GAME_PLAY_TO_PAUSE;
               }
             }
           }
