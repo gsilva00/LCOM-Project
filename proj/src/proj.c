@@ -276,15 +276,18 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 game_state = STATE_GAME_START;
               }
               else if(game_state == STATE_GAME_PLAY_TO_PAUSE){
+                game_state = STATE_GAME_PAUSE;
                 xpm_load(pause_menu_xpm, XPM_8_8_8, &pause_menu_img);
                 draw_main_menu(pause_menu_img, resume, go_back, NULL);
                 draw_frame_end();
-                game_state = STATE_GAME_PAUSE;
               }
               else if(game_state == STATE_GAME_PAUSE_TO_PLAY){
                 set_selected(resume, true);
                 set_selected(go_back, false);
                 draw_game(muro_, goal_, goal_right_, bola, player, true);
+                if(player_get_xspeed(player) != 0){
+                  player_state_move = player_get_xspeed(player) < 0 ? STATE_AFTER_PLAYER_MOVE_LEFT : STATE_AFTER_PLAYER_MOVE_RIGHT;
+                }
                 game_state = STATE_GAME_PLAY;
               }
               else if(game_state == STATE_GAME_PAUSE){
