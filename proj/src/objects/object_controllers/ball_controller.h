@@ -41,6 +41,6 @@
     STATE_MOVE_RIGHT,
   } BallState;
 
-void(move_ball)(ball *bola, BallState *ball_state, BallState * ball_state_temporary);
+void(move_ball)(ball *bola, BallState *ball_state, BallState * ball_state_temporary, player *player1);
 
 #endif

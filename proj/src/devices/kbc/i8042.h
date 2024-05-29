@@ -37,6 +37,15 @@
 #define SC_MSB1 0xE0 /** @brief 2-byte-scancode MSB can be E0 */
 #define SC_MSB2 0xE2 /** @brief 2-byte-scancode MSB can also be E2 */
 #define BREAKCODE_ESC 0x81 /** @brief Breakcode of ESC key */
+#define MAKECODE_P 0x19 /** @brief Makecode of P key */
+#define MAKECODE_A 0x1e /** @brief Makecode of A key */
+#define MAKECODE_RIGHT 0x4d /** @brief Makecode of right key */
+#define MAKECODE_LEFT 0x4b /** @brief Makecode of left key */
+#define BREAKCODE_LEFT 0xcd /** @brief Breakcode of left key */
+#define BREAKCODE_RIGHT 0xcb /** @brief Breakcode of right key */
+#define MAKECODE_UP 0x48 /** @brief Makecode of up key */
+#define MAKECODE_DOWN 0x50 /** @brief Makecode of down key */
+#define MAKECODE_ENTER 0x1C /** @brief Makecode of enter key */
 
 // KBC Commands (written to CMD_REG):
 #define CMDBYTE_READ 0x20 /** @brief To be able to read Command Byte from KBC_OUTBUF */

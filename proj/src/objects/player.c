@@ -54,6 +54,22 @@ int player_get_Y(player *pl) {
   }
 }
 
+int player_get_xspeed(player *pl){
+  if(pl == NULL){
+    return -1;
+  }else{
+    return pl->xspeed;
+  }
+}
+
+int player_get_yspeed(player *pl){
+  if(pl == NULL){
+    return -1;
+  }else{
+    return pl->yspeed;
+  }
+}
+
 int player_get_width(player *pl) {
   if(pl == NULL){
     return -1;
