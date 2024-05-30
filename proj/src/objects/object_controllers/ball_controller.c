@@ -25,12 +25,15 @@ void update_ball_position_after_jump(ball *bola) {
   bola_x = bola->x;
 }
 
-void check_border(ball *bola) {
-  if (bola->x >= 800) {
-    bola->x -= 800;
-  }
-  if (bola->x <= 0) {
-    bola->x += 800;
+bool check_border(ball *bola, player *pl) {
+  if((bola->x <= pl->x + pl->width + 1) && (bola->x + bola->width + 1 >= pl->x)){
+    if((bola->y <= pl->y + pl->height + 1) && (bola->y + bola->height + 1 >= pl->y)){
+      return true;
+    }else{
+      return false;
+    }
+  }else{
+    return true;
   }
 }
 
@@ -47,8 +50,6 @@ void handle_jump(ball *bola, BallState *ball_state, int direction) {
   if (get_timer_intCounter() % 2 == 0) {
     if (chuta) {
       bola->x = bola_x + direction * (bola->xspeed * time_passed_x) + bounce_offset;
-
-      check_border(bola);
 
       if ((bola->x >= BARRIER_START) && (bola->x <= BARRIER_END)) { // ou qualquer outra barreira
         bola->x = direction == 1 ? BARRIER_START : BARRIER_END;
@@ -131,39 +132,28 @@ void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_tempora
       break;
 
     case STATE_MOVE_LEFT:
-      if (bola->xspeed != 0) {
-        if (get_timer_intCounter() % 2 == 0) {
-          bola->x -= bola->xspeed;
-          check_border(bola);
-          //draw_xpm(bola->x, bola->y, bola->img);
-          
-        }
-        if (get_timer_intCounter() % 30 == 0) {
-          bola->xspeed = bola->xspeed * SPEED_REDUCTION_FACTOR;
-          printf("%d", bola->xspeed);
-        }
-      }
-      else {
-        *ball_state = STATE_JUMP_END;
+      if (get_timer_intCounter() % 2 == 0) {
+        bola->x -= bola->xspeed;
+        //draw_xpm(bola->x, bola->y, bola->img);
+        
       }
       break;
 
     case STATE_MOVE_RIGHT:
-      if (bola->xspeed != 0) {
-        if (get_timer_intCounter() % 2 == 0) {
-          bola->x += bola->xspeed;
-          check_border(bola);
-          //draw_xpm(bola->x, bola->y, bola->img);
-        }
+      if (get_timer_intCounter() % 2 == 0) {
+        bola->x += bola->xspeed;
+        //draw_xpm(bola->x, bola->y, bola->img);
+      }
+      break;
+    case STATE_AFTER_MOVE:
+      if (bola->xspeed != 0){
         if (get_timer_intCounter() % 30 == 0) {
           bola->xspeed = bola->xspeed * SPEED_REDUCTION_FACTOR;
           printf("%d", bola->xspeed);
         }
-      }
-      else {
+      }else {
         *ball_state = STATE_JUMP_END;
       }
-      break;
     default:
       break;
   }
