@@ -9,7 +9,7 @@
 //struct Ball;
 
 struct Ball{
-  int x, y;
+  uint16_t x, y;
   int width, height;
   int xspeed, yspeed;
   uint32_t time_in_mov;

@@ -1,7 +1,7 @@
 /* XPM */
 static char * close_xpm[] = {
 "54 54 91 1",
-" 	c None",
+" 	c #00FF00",
 ".	c #010929",
 "+	c #0B0A2B",
 "@	c #111034",

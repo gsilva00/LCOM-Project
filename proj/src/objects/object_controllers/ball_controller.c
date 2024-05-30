@@ -37,13 +37,13 @@ void check_border(ball *bola) {
 void change_y(ball *bola) {
   bola->y = bola_y - ((bola->yspeed * time_passed_y) - 5 * (time_passed_y * time_passed_y));
 
-  if (bola->y >= 200) {
-    bola->y = 200;
+  if (bola->y >= bola_y_original) {
+    bola->y = bola_y_original;
     chuta = false;
   }
 }
 
-void handle_jump(ball *bola, BallState *ball_state, int direction) {
+void handle_jump(ball *bola, BallState *ball_state, int direction, player *player1) {
   if (get_timer_intCounter() % 2 == 0) {
     if (chuta) {
       bola->x = bola_x + direction * (bola->xspeed * time_passed_x) + bounce_offset;
@@ -59,6 +59,11 @@ void handle_jump(ball *bola, BallState *ball_state, int direction) {
 
       change_y(bola);
 
+      if( ball_player_collision(bola, player1)){
+        *ball_state = STATE_JUMP_END;
+        printf("Colisao\n");
+      }
+
       //draw_xpm(bola->x, bola->y, bola->img);
 
       time_passed_y++;
@@ -70,7 +75,7 @@ void handle_jump(ball *bola, BallState *ball_state, int direction) {
   }
 }
 
-void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_temporary) {
+void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_temporary, player *player1) {
   switch (*ball_state) {
     case STATE_START_JUMP_LEFT:
       initialize_ball_values(bola);
@@ -81,7 +86,7 @@ void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_tempora
       *ball_state = bola->yspeed > 0 ? STATE_JUMP_LEFT : STATE_JUMP_END;
       break;
     case STATE_JUMP_LEFT:
-      handle_jump(bola, ball_state, -1);
+      handle_jump(bola, ball_state, -1, player1);
       break;
     case STATE_AFTER_JUMP_LEFT:
       update_ball_position_after_jump(bola);
@@ -114,7 +119,7 @@ void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_tempora
       }
       break;
     case STATE_JUMP_RIGHT:
-      handle_jump(bola, ball_state, 1);
+      handle_jump(bola, ball_state, 1, player1);
       break;
     case STATE_AFTER_JUMP_RIGHT:
       update_ball_position_after_jump(bola);

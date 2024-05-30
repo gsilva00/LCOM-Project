@@ -26,6 +26,10 @@ int player_get_X(player *pl);
 
 int player_get_Y(player *pl);
 
+int player_get_xspeed(player *pl);
+
+int player_get_yspeed(player *pl);
+
 int player_get_width(player *pl);
 
 int player_get_height(player *pl);
