@@ -109,3 +109,19 @@ int player_get_header(player *pl){
     return pl->header;
   }
 }
+
+void move_player1_to_center(player *pl){
+  if(pl == NULL){
+    return;
+  }
+  pl->x = 200;
+  pl->y = 455;
+}
+
+void move_player2_to_center(player *pl){
+  if(pl == NULL){
+    return;
+  }
+  pl->x = 600;
+  pl->y = 455;
+}

@@ -20,12 +20,21 @@ void prepare_for_player_jump(player *player) {
 }
 
 void check_player_border(player *player) {
-  if (player->x >= 800) {
+
+  if ((player->x >= BARRIER_START) && (player->x <= BARRIER_END)) {
+    player->x = BARRIER_END;
+  }
+
+  if ((player->x + player->img.width >= BARRIER_START_1) && (player->x <= BARRIER_END_1)) {
+    player->x = BARRIER_START_1 - player->img.width;
+  }
+
+  /*if (player->x >= 800) {
     player->x -= 800;
   }
   if (player->x <= 0) {
     player->x += 800;
-  }
+  }*/
 }
 
 void change_player_y(player *player) {

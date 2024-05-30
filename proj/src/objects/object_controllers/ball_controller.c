@@ -27,10 +27,10 @@ void update_ball_position_after_jump(ball *bola) {
 
 void check_border(ball *bola) {
   if (bola->x >= 800) {
-    bola->x -= 800;
+    bola->x = 800;   //-=
   }
   if (bola->x <= 0) {
-    bola->x += 800;
+    bola->x = 0;  // += 800
   }
 }
 
@@ -50,8 +50,15 @@ void handle_jump(ball *bola, BallState *ball_state, int direction, player *playe
 
       check_border(bola);
 
-      if ((bola->x >= BARRIER_START) && (bola->x <= BARRIER_END)) { // ou qualquer outra barreira
-        bola->x = direction == 1 ? BARRIER_START : BARRIER_END;
+      if ((bola->x + bola->img.width >= BARRIER_START) && (bola->x <= BARRIER_END)) { // ou qualquer outra barreira
+        bola->x = direction == 1 ? BARRIER_START + bola->img.width : BARRIER_END + bola->img.width;
+        bounce_offset = BOUNCE_OFFSET;
+        bola->xspeed = -bola->xspeed * BOUNCE_SPEED_REDUCTION_FACTOR;
+        time_passed_x = -1;
+      }
+
+      if ((bola->x + bola->img.width >= BARRIER_START_1) && (bola->x <= BARRIER_END_1)) { // ou qualquer outra barreira
+        bola->x = direction == 1 ? BARRIER_START_1 - bola->img.width : BARRIER_END_1 - bola->img.width;
         bounce_offset = BOUNCE_OFFSET;
         bola->xspeed = -bola->xspeed * BOUNCE_SPEED_REDUCTION_FACTOR;
         time_passed_x = -1;
@@ -59,10 +66,11 @@ void handle_jump(ball *bola, BallState *ball_state, int direction, player *playe
 
       change_y(bola);
 
-      if( ball_player_collision(bola, player1)){
+
+      /*if( ball_player_collision(bola, player1)){
         *ball_state = STATE_JUMP_END;
         printf("Colisao\n");
-      }
+      }*/
 
       //draw_xpm(bola->x, bola->y, bola->img);
 
@@ -139,9 +147,7 @@ void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_tempora
       if (bola->xspeed != 0) {
         if (get_timer_intCounter() % 2 == 0) {
           bola->x -= bola->xspeed;
-          check_border(bola);
-          //draw_xpm(bola->x, bola->y, bola->img);
-          
+          check_border(bola);          
         }
         if (get_timer_intCounter() % 30 == 0) {
           bola->xspeed = bola->xspeed * SPEED_REDUCTION_FACTOR;
@@ -158,7 +164,6 @@ void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_tempora
         if (get_timer_intCounter() % 2 == 0) {
           bola->x += bola->xspeed;
           check_border(bola);
-          //draw_xpm(bola->x, bola->y, bola->img);
         }
         if (get_timer_intCounter() % 30 == 0) {
           bola->xspeed = bola->xspeed * SPEED_REDUCTION_FACTOR;
@@ -172,4 +177,87 @@ void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_tempora
     default:
       break;
   }
+}
+
+int check_ball_goal_height(ball *bl, goal *gl){
+  return (bl->y > goal_get_Y(gl)) && (bl->y <= goal_get_height(gl) + goal_get_Y(gl));
+}
+
+void verify_goal(ball *bl, goal *gl, scoreboard *sc, BallState *ball_state){
+  if(goal_get_orientation(gl) == 1){
+    if((bl->x >= goal_get_X(gl)) && bl->x <= goal_get_X(gl) + goal_get_width(gl)){
+      if (!bl->stop)
+      {
+        add_points_1(sc);
+        bl->stop = true;
+      }
+    }else{
+      //printf("not goal"); //not in the goal
+    }
+  }else if(goal_get_orientation(gl) == 0){
+    if((bl->x >= goal_get_X(gl)) && bl->x + bl->img.width <= goal_get_X(gl) + goal_get_width(gl)){
+      if (!bl->stop)
+      {
+        add_points_2(sc);
+        bl->stop = true;
+      }
+    }
+  } 
+}
+
+int ball_goal_collision(ball *bl, goal *gl, scoreboard *sc, BallState *ball_state){
+  if(bl == NULL || gl == NULL){
+    return 1;
+  }else{
+    if(goal_get_orientation(gl) == 1){ //on the left side of the pitch
+      if(check_ball_goal_height(bl,gl)){//below the
+        verify_goal(bl,gl, sc, ball_state);
+        return 0;
+      }else if(bl->y == goal_get_Y(gl)){
+        /*if(bl->x >= goal_get_X(gl) && bl->x < goal_get_X(gl) + goal_get_width(gl)){
+          bl->xspeed *= 9/10;
+          bl->yspeed *= -9/10;
+          return 0;
+        }else if(bl->x == goal_get_X(gl) + goal_get_width(gl)){
+          bl->yspeed *= -9/10;
+          if(bl->xspeed < 0){
+            bl->xspeed *= -9/10;
+          }else{
+            bl->xspeed *= 9/10;
+          }
+          return 0;
+        }else{
+          return 0; //not in the goal
+        }*/
+      }else{
+        return 0; //No collision between ball and goal
+      }
+    }else if(goal_get_orientation(gl) == 0){
+      if(check_ball_goal_height(bl,gl)){
+        verify_goal(bl,gl,sc, ball_state);
+        return 0;
+      }else if(bl->y == goal_get_Y(gl)){
+        /*if(bl->x > goal_get_X(gl) && bl->x <= goal_get_X(gl) + goal_get_width(gl)){
+          bl->xspeed *= 9/10;
+          bl->yspeed *= -9/10;
+          return 0;
+        }else if(bl->x == goal_get_X(gl)){
+          bl->yspeed *= -9/10;
+          if(bl->xspeed < 0){
+            bl->xspeed *= -9/10;
+          }else{
+            bl->xspeed *= 9/10;
+          }
+          return 0;
+        }else{
+          return 0; //not in the goal
+        }*/
+      }else{
+        return 0; //No collision between ball and goal
+      }
+    }else{
+      return 1; //Direction error
+    }
+  }
+  return 0;
 }

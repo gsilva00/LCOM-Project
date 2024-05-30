@@ -1,6 +1,6 @@
 #include "ball.h"
 
-ball *create_ball(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t time_in_mov) {
+ball *create_ball(xpm_map_t pic, int y, int xspeed, int yspeed, uint32_t time_in_mov) {
   //allocate space for the "object"
   ball *bl = (ball *) malloc ( sizeof(ball));
   if(bl == NULL){
@@ -14,11 +14,11 @@ ball *create_ball(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t 
     free(bl);
     return NULL;
   }
-  bl->x = x;
+  bl->img = img;
+  bl->x = 400 - bl->img.width;
   bl->y = y;
   bl->xspeed = xspeed;
   bl->yspeed = yspeed;
-  bl->img = img;
   bl->stop = false;
   return bl;
 }
@@ -476,69 +476,6 @@ int ball_player_collision(ball *bl, player *pl){
 }
 
 /*
-int ball_goal_collision(ball *bl, goal *gl){
-  if(bl == NULL || gl == NULL){
-    return 1;
-  }else{
-    if(goal_get_orientation(gl) == 1){ //on the left side of the pitch
-      if((bl->y > goal_get_Y(gl)) && (bl->y <= goal_get_height(gl) + goal_get_Y(gl))){//below the
-        if((bl->x >= goal_get_X(gl)) && bl->x <= goal_get_X(gl) + goal_get_width(gl)){
-          return 0; //a goal was scored
-        }else{
-          return 0; //not in the goal
-        }
-      }else if(bl->y == goal_get_Y(gl)){
-        if(bl->x >= goal_get_X(gl) && bl->x < goal_get_X(gl) + goal_get_width(gl)){
-          bl->xspeed *= 9/10;
-          bl->yspeed *= -9/10;
-          return 0;
-        }else if(bl->x == goal_get_X(gl) + goal_get_width(gl)){
-          bl->yspeed *= -9/10;
-          if(bl->xspeed < 0){
-            bl->xspeed *= -9/10;
-          }else{
-            bl->xspeed *= 9/10;
-          }
-          return 0;
-        }else{
-          return 0; //not in the goal
-        }
-      }else{
-        return 0; //No collision between ball and goal
-      }
-    }else if(goal_get_orientation(gl) == 0){
-      if((bl->y > goal_get_Y(gl)) && (bl->y < goal_get_height(gl) + goal_get_Y(gl))){
-        if((bl->x >= goal_get_X(gl)) && bl->x <= goal_get_X(gl) + goal_get_width(gl)){
-          return 0; //a goal was scored
-        }else{
-          return 0; //not in the goal
-        }
-      }else if(bl->y == goal_get_Y(gl)){
-        if(bl->x > goal_get_X(gl) && bl->x <= goal_get_X(gl) + goal_get_width(gl)){
-          bl->xspeed *= 9/10;
-          bl->yspeed *= -9/10;
-          return 0;
-        }else if(bl->x == goal_get_X(gl)){
-          bl->yspeed *= -9/10;
-          if(bl->xspeed < 0){
-            bl->xspeed *= -9/10;
-          }else{
-            bl->xspeed *= 9/10;
-          }
-          return 0;
-        }else{
-          return 0; //not in the goal
-        }
-      }else{
-        return 0; //No collision between ball and goal
-      }
-    }else{
-      return 1; //Direction error
-    }
-  }
-  return 0;
-}
-
 int detect_collisions(ball *bl, vbe_mode_info_t vmi_p, player *p1, player *p2, goal *gl1, goal *gl2){
   if(bl == NULL || p1 == NULL || p2 == NULL || gl1 == NULL || gl2 == NULL){
     return 1;
@@ -563,3 +500,10 @@ int detect_collisions(ball *bl, vbe_mode_info_t vmi_p, player *p1, player *p2, g
   }
   return 0;
 }*/
+
+void move_ball_to_center(ball *bl){
+  bl->x = 400 - bl->img.width;
+  bl->y = 490;
+  bl->stop = false;
+  return;
+}

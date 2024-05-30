@@ -37,9 +37,18 @@ void set_selected(button *bt, bool selected){
   bt->selected = selected;
 }
 
+bool get_selected(button *bt){
+  if(bt == NULL){
+    return false;
+  }
+  return bt->selected;
+}
+
 void set_image(button *bt, xpm_map_t map){
   if(bt == NULL){
     return;
   }
   bt->map = xpm_load(map, XPM_8_8_8, &bt->img);
 }
+
+
