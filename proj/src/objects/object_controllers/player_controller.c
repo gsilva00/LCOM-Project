@@ -19,22 +19,35 @@ void prepare_for_player_jump(player *player) {
   time_passed_player_x = 1;
 }
 
-void check_player_border(player *player) {
-
-  if ((player->x >= BARRIER_START) && (player->x <= BARRIER_END)) {
-    player->x = BARRIER_END;
-  }
-
-  if ((player->x + player->img.width >= BARRIER_START_1) && (player->x <= BARRIER_END_1)) {
-    player->x = BARRIER_START_1 - player->img.width;
-  }
-
-  /*if (player->x >= 800) {
-    player->x -= 800;
+bool check_player_border(player *player){
+  if (player->x + player->width >= 800) {
+    player->x--;
+    return true;
   }
   if (player->x <= 0) {
-    player->x += 800;
-  }*/
+    player->x++;
+    return true;
+  }
+  return false;
+}
+
+bool check_multiplayer_border(player *player1, player *player2) {
+  if ((player1->x <= player2->x + player2->width + 5) && (player1->x + player1->width + 5 >= player2->x)){
+    if ((player1->y <= player2->y + player2->height + 5) && (player1->y + player1->height + 5 >= player2->y)){
+      if(player1->x < player2->x){
+        player1->x--;
+        player2->x++;
+      }else{
+        player1->x++;
+        player2->x--;
+      }
+      return true;
+    }else{
+      return false;
+    }
+  }else{
+    return false;
+  }
 }
 
 void change_player_y(player *player) {
@@ -43,7 +56,6 @@ void change_player_y(player *player) {
 
 void handle_player_jump(player *player, PlayerStateJump *player_state_jump) {
   if (get_timer_intCounter() % 2 == 0) {
-    check_player_border(player);
 
     change_player_y(player);
     time_passed_player_y++;
@@ -77,14 +89,12 @@ void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStat
     case STATE_PLAYER_MOVE_LEFT:
       if (get_timer_intCounter() % 2 == 0) {
         player->x -= player->xspeed;
-        check_player_border(player);
       }
       break;
 
     case STATE_PLAYER_MOVE_RIGHT:
       if (get_timer_intCounter() % 2 == 0) {
         player->x += player->xspeed;
-        check_player_border(player);
       }
       break;
     case STATE_AFTER_PLAYER_MOVE_LEFT:

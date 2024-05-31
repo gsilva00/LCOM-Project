@@ -48,4 +48,8 @@
 
 void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStateMove *player_state_move_temporary, PlayerStateJump *player_state_jump, PlayerStateJump *player_state_jump_temporary);
 
+bool check_player_border(player *player);
+
+bool check_multiplayer_border(player *player1, player *player2);
+
 #endif
