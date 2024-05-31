@@ -4,6 +4,17 @@
 #include <lcom/lcf.h>
 #include <stdint.h>
 
+#include "objects/xpm/0.xpm"
+#include "objects/xpm/1.xpm"
+#include "objects/xpm/2.xpm"
+#include "objects/xpm/3.xpm"
+#include "objects/xpm/4.xpm"
+#include "objects/xpm/5.xpm"
+#include "objects/xpm/6.xpm"
+#include "objects/xpm/7.xpm"
+#include "objects/xpm/8.xpm"
+#include "objects/xpm/9.xpm"
+
 /**
  * @brief Changes the video mode to the specified mode.
  * 
@@ -23,9 +34,11 @@ int create_frame_buffer(uint16_t mode);
 int limpa_buffer();
 
 
-int draw_pixel(uint16_t x, uint16_t y, uint32_t color);
+int draw_pixel(uint16_t x, uint16_t y, uint32_t color, bool ignore);
 
 int draw_back(uint16_t xi, uint16_t yi, xpm_image_t img);
+
+int draw_back_scoreboard(uint16_t xi, uint16_t yi, uint8_t points1);
 
 int draw_background(uint32_t color);
 
@@ -33,7 +46,7 @@ int draw_frame_start();
 
 int draw_frame_end();
 
-int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img);
+int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img, bool ignore);
 
 
 // Getters

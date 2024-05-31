@@ -39,4 +39,9 @@ int player_get_orientation(player *pl);
 int player_get_power(player *pl);
 
 int player_get_header(player *pl);
+
+void move_player1_to_center(player *pl);
+
+void move_player2_to_center(player *pl);
+
 #endif
