@@ -309,7 +309,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
   // ======= Interrupt loop =======
   int ipc_status, r;
   message msg;
-  bool done = false, touching = false;
+  bool done = false, touching1 = false, touching2 = false;
   uint8_t bit_no;
   BallState ball_state = STATE_NONE;
   BallState ball_state_temporary = STATE_NONE;
@@ -607,10 +607,32 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 if (player1_state_move != STATE_PLAYER_MOVE_NONE || player2_state_move != STATE_PLAYER_MOVE_NONE) {
                   draw_frame_start();
                 }
+                move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary);
+                if(check_border(bola, player1) && !touching1){
+                  if(player1->x > bola->x + bola->width/2){
+                    if(ball_state != STATE_NONE){
+                      ball_state = STATE_JUMP_END;
+                      ball_state_temporary = STATE_MOVE_LEFT_START;
+                    }else{
+                      ball_state = STATE_MOVE_LEFT_START;
+                    }
+                  }else{
+                    if(ball_state != STATE_NONE){
+                      ball_state = STATE_JUMP_END;
+                      ball_state_temporary = STATE_MOVE_RIGHT_START;
+                    }else{
+                      ball_state = STATE_MOVE_RIGHT_START;
+                    }
+                  }
+                  touching1 = true;
+                }
+                else if(!check_border(bola, player1) && touching1){
+                  ball_state = STATE_AFTER_MOVE;
+                  touching1 = false;
+                }
                 move_ball(bola, &ball_state, &ball_state_temporary, player1);
                 ball_goal_collision(bola, goal_, scoreboard, &ball_state);
                 ball_goal_collision(bola, goal_right_, scoreboard, &ball_state);
-                move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary);
                 add_time(tb);
                 draw_game(muro_, goal_, goal_right_, scoreboard, tb, bola, player1, NULL, goal_img, goal_right_img, true);
                 if (tb->time == 0) {
@@ -629,7 +651,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary);
                 move_player(player2, &player2_state_move, &player2_state_move_temporary, &player2_state_jump, &player2_state_jump_temporary);
-                if(check_border(bola, player1) && !touching){
+                if(check_border(bola, player1) && !touching1){
                   if(player1->x > bola->x + bola->width/2){
                     if(ball_state != STATE_NONE){
                       ball_state = STATE_JUMP_END;
@@ -645,13 +667,13 @@ int(proj_main_loop)(int argc, char *argv[]) {
                       ball_state = STATE_MOVE_RIGHT_START;
                     }
                   }
-                  touching = true;
+                  touching1 = true;
                 }
-                else if(!check_border(bola, player1) && touching){
+                else if(!check_border(bola, player1) && touching1){
                   ball_state = STATE_AFTER_MOVE;
-                  touching = false;
+                  touching1 = false;
                 }
-                if(check_border(bola, player2) && !touching){
+                if(check_border(bola, player2) && !touching2){
                   if(player2->x > bola->x + bola->width/2){
                     if(ball_state != STATE_NONE){
                       ball_state = STATE_JUMP_END;
@@ -667,11 +689,11 @@ int(proj_main_loop)(int argc, char *argv[]) {
                       ball_state = STATE_MOVE_RIGHT_START;
                     }
                   }
-                  touching = true;
+                  touching2 = true;
                 }
-                else if(!check_border(bola, player2) && touching){
+                else if(!check_border(bola, player2) && touching2){
                   ball_state = STATE_AFTER_MOVE;
-                  touching = false;
+                  touching2 = false;
                 }
                 move_ball(bola, &ball_state, &ball_state_temporary, player1);
                 ball_goal_collision(bola, goal_, scoreboard, &ball_state);
@@ -720,13 +742,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
 
             if (MAKECODE_LEFT == scancode) { // 0x4b is the makecode for the left key
               if (game_state == STATE_GAME_PLAY || game_state == STATE_GAME_PLAY_MULTIPLAYER) {
-                if (ball_state != STATE_NONE) {
-                  ball_state = STATE_JUMP_END;
-                  ball_state_temporary = STATE_START_JUMP_LEFT;
-                }
-                else {
-                  ball_state = STATE_START_JUMP_LEFT;
-                }
                 if (player1_state_move == STATE_PLAYER_MOVE_NONE) {
                   if (player1_state_jump != STATE_PLAYER_JUMP_NONE) {
                     player1_state_move = STATE_PLAYER_MOVE_LEFT;
