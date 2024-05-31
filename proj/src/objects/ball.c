@@ -1,6 +1,6 @@
 #include "ball.h"
 
-ball *create_ball(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t time_in_mov) {
+ball *create_ball(xpm_map_t pic, int x, int y, int width, int height, int xspeed, int yspeed, uint32_t time_in_mov) {
   //allocate space for the "object"
   ball *bl = (ball *) malloc ( sizeof(ball));
   if(bl == NULL){
@@ -16,6 +16,8 @@ ball *create_ball(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t 
   }
   bl->x = x;
   bl->y = y;
+  bl->width = width;
+  bl->height = height;
   bl->xspeed = xspeed;
   bl->yspeed = yspeed;
   bl->img = img;

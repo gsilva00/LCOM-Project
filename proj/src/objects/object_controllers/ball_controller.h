@@ -39,8 +39,10 @@
     STATE_MOVE_RIGHT_START,
     STATE_MOVE_LEFT,
     STATE_MOVE_RIGHT,
+    STATE_AFTER_MOVE,
   } BallState;
 
 void(move_ball)(ball *bola, BallState *ball_state, BallState * ball_state_temporary, player *player1);
+bool check_border(ball *bola, player *pl);
 
 #endif

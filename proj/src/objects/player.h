@@ -16,7 +16,7 @@ struct Player{
 
 typedef struct Player player;
 
-player *create_player(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t time_in_mov);
+player *create_player(xpm_map_t pic, int x, int y, int width, int height, int xspeed, int yspeed, uint32_t time_in_mov);
 
 void destroy_player(player *pl);
 

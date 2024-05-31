@@ -20,7 +20,7 @@ struct Ball{
 
 typedef struct Ball ball;
 
-ball *create_ball(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t time_in_mov);
+ball *create_ball(xpm_map_t pic, int x, int y, int width, int height, int xspeed, int yspeed, uint32_t time_in_mov);
 
 void destroy_ball(ball *bl);
 

@@ -124,7 +124,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
   // ======= Interrupt loop =======
   int ipc_status, r;
   message msg;
-  bool done = false;
+  bool done = false, touching = false;
   uint8_t bit_no;
   BallState ball_state = STATE_NONE;
   BallState ball_state_temporary = STATE_NONE;
@@ -158,8 +158,8 @@ int(proj_main_loop)(int argc, char *argv[]) {
   xpm_map_t pause_menu_xpm = (xpm_map_t) pausa_menu_90_sem_background_xpm;
   xpm_image_t menu_img;
   xpm_image_t pause_menu_img;
-  bola = create_ball(bola_map, 20, 450, 10, 50, 0);
-  player = create_player(player_map, 400, 455, 10, 50, 0);
+  bola = create_ball(bola_map, 200, 490, 32, 32, 10, 50, 0);
+  player = create_player(player_map, 400, 450, 62, 78, 10, 50, 0);
   single = create_button(start_selected_map, 500, 155, true);
   multi = create_button(start_not_selected_map, 500, 219, false);
   end = create_button(end_not_selected_map, 500, 284, false);
@@ -307,8 +307,30 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 if (player_state_move !=  STATE_PLAYER_MOVE_NONE){
                   draw_frame_start();
                 }
-                move_ball(bola,&ball_state,&ball_state_temporary,player);
                 move_player(player, &player_state_move, &player_state_move_temporary, &player_state_jump, &player_state_jump_temporary);
+                if(check_border(bola, player) && !touching){
+                  if(player->x > bola->x + bola->width/2){
+                    if(ball_state != STATE_NONE){
+                      ball_state = STATE_JUMP_END;
+                      ball_state_temporary = STATE_MOVE_LEFT_START;
+                    }else{
+                      ball_state = STATE_MOVE_LEFT_START;
+                    }
+                  }else{
+                    if(ball_state != STATE_NONE){
+                      ball_state = STATE_JUMP_END;
+                      ball_state_temporary = STATE_MOVE_RIGHT_START;
+                    }else{
+                      ball_state = STATE_MOVE_RIGHT_START;
+                    }
+                  }
+                  touching = true;
+                }
+                else if(!check_border(bola, player) && touching){
+                  ball_state = STATE_AFTER_MOVE;
+                  touching = false;
+                }
+                move_ball(bola, &ball_state, &ball_state_temporary, player);
                 draw_game(muro_, goal_, goal_right_, bola, player, true);
                 draw_xpm(bola->x, bola->y, bola->img);
                 draw_xpm(player->x, player->y, player->img);
@@ -328,37 +350,8 @@ int(proj_main_loop)(int argc, char *argv[]) {
               return 1;
             }
 
-            if (scancode == MAKECODE_P) { // 0x19 is the makecode for the "P" key
-              if(game_state == STATE_GAME_PLAY){
-                if (ball_state != STATE_NONE) {
-                  ball_state = STATE_JUMP_END;
-                  ball_state_temporary = STATE_MOVE_RIGHT_START;
-                }else{
-                  ball_state = STATE_MOVE_RIGHT_START;
-                }
-              }
-            }
-
-            if (scancode == MAKECODE_A) { // 0x1e is the makecode for the "A" key
-              if(game_state == STATE_GAME_PLAY){
-                if (ball_state != STATE_NONE) {
-                  ball_state = STATE_JUMP_END;
-                  ball_state_temporary = STATE_MOVE_LEFT_START;
-                }else{
-                  ball_state = STATE_MOVE_LEFT_START;
-                }
-              }
-            }
-
             if (MAKECODE_RIGHT == scancode) { //0x4d is the makecode for the right key
               if(game_state == STATE_GAME_PLAY){
-                if (ball_state != STATE_NONE) {
-                  ball_state = STATE_JUMP_END;
-                  ball_state_temporary = STATE_START_JUMP_RIGHT;
-                }
-                else {
-                  ball_state = STATE_START_JUMP_RIGHT;
-                }
                 if (player_state_move != STATE_PLAYER_MOVE_NONE) {
                   //player_state_move = STATE_PLAYER_MOVE_END;
                   //player_state_move_temporary = STATE_PLAYER_MOVE_RIGHT_START;
@@ -374,13 +367,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
 
             if (MAKECODE_LEFT == scancode) { //0x4b is the makecode for the left key
               if(game_state == STATE_GAME_PLAY){
-                if (ball_state != STATE_NONE) {
-                  ball_state = STATE_JUMP_END;
-                  ball_state_temporary = STATE_START_JUMP_LEFT;
-                }
-                else {
-                  ball_state = STATE_START_JUMP_LEFT;
-                }
                 if (player_state_move != STATE_PLAYER_MOVE_NONE) {
                   //player_state_move = STATE_PLAYER_MOVE_END;
                   //player_state_move_temporary = STATE_PLAYER_MOVE_LEFT_START;
@@ -398,14 +384,14 @@ int(proj_main_loop)(int argc, char *argv[]) {
             if(BREAKCODE_LEFT == scancode){ //0xcd is the breakcode for the right key
               if(game_state == STATE_GAME_PLAY){
                 //player_state_move = STATE_AFTER_PLAYER_MOVE_RIGHT;
-                player_state_move = STATE_PLAYER_MOVE_END;
+                player_state_move = STATE_PLAYER_MOVE_LEFT_END;
               }
             }
 
             if(BREAKCODE_RIGHT == scancode){ //0xcb is the breakcode for the left key
               if(game_state == STATE_GAME_PLAY){
                 //player_state_move = STATE_AFTER_PLAYER_MOVE_LEFT;
-                 player_state_move = STATE_PLAYER_MOVE_END;
+                 player_state_move = STATE_PLAYER_MOVE_RIGHT_END;
               }
             }
 

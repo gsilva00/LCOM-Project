@@ -48,7 +48,7 @@ void handle_player_jump(player *player, PlayerStateJump *player_state_jump) {
   }
 }
 
-int restart_palyer_movement(player *player){
+int restart_player_movement(player *player){
   player->xspeed = player_xspeed;
   player->yspeed = player_yspeed;
   return 0;
@@ -85,7 +85,7 @@ void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStat
           printf("%d", player->xspeed);
         }
       }else{
-        *player_state_move = STATE_PLAYER_MOVE_END;
+        *player_state_move = STATE_PLAYER_MOVE_LEFT_END;
       }
       break;
     case STATE_AFTER_PLAYER_MOVE_RIGHT:
@@ -95,11 +95,15 @@ void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStat
           printf("%d", player->xspeed);
         }
       }else{
-        *player_state_move = STATE_PLAYER_MOVE_END;
+        *player_state_move = STATE_PLAYER_MOVE_RIGHT_END;
       }
       break;
-    case STATE_PLAYER_MOVE_END:
-      restart_palyer_movement(player);
+    case STATE_PLAYER_MOVE_LEFT_END:
+      restart_player_movement(player);
+      *player_state_move = STATE_PLAYER_MOVE_NONE;
+      break;
+    case STATE_PLAYER_MOVE_RIGHT_END:
+      restart_player_movement(player);
       *player_state_move = STATE_PLAYER_MOVE_NONE;
       break;
     case STATE_PLAYER_MOVE_NONE:
@@ -125,7 +129,7 @@ void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStat
       handle_player_jump(player, player_state_jump);
       break;
     case STATE_PLAYER_JUMP_END:
-      restart_palyer_movement(player);
+      restart_player_movement(player);
       *player_state_jump = STATE_PLAYER_JUMP_NONE;
       break;
     case STATE_PLAYER_JUMP_NONE:
