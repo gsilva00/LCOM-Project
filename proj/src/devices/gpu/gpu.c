@@ -104,7 +104,7 @@ int(vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, 
 int(vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
   // Draw the line - pixel by pixel
   for (uint16_t i = 0; i < len; i++) {
-    if (draw_pixel(x + i, y, color)) {
+    if (draw_pixel(x + i, y, color, true)) {
       printf("Error while drawing pixel!\n");
       return 1;
     }
@@ -113,14 +113,19 @@ int(vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
   return 0;
 }
 
-int draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
+int draw_pixel(uint16_t x, uint16_t y, uint32_t color, bool ignore) {
   if (y >= vmi.YResolution) {
     // printf("Pixel coordinates out of screen bounds!\n");
     return 1;
   }
 
   if (x >= vmi.XResolution) {
-    x = x - vmi.XResolution;
+    if (!ignore)
+    {
+      x = x - vmi.XResolution;
+    }else{
+      return 1;
+    }
   }
 
   // Pixel's position in the buffer
@@ -144,6 +149,56 @@ int draw_back(uint16_t xi, uint16_t yi, xpm_image_t img) {
 
       if (color != 0x00FF00) {
         uint8_t *pixel_pos = triple_buffer + (((y+yi) * vmi.XResolution + (x+xi)) * bytes_per_pixel);
+        memcpy(pixel_pos, &color, bytes_per_pixel);
+      }
+    }
+  }
+  return 0;
+}
+
+int draw_back_scoreboard(uint16_t xi, uint16_t yi, uint8_t points1) {
+  unsigned int pos;
+  xpm_image_t img;
+  if(points1 == 0){
+    xpm_map_t pic = (xpm_map_t) number_0_xpm;
+    xpm_load(pic, XPM_8_8_8,&img);
+  }else if(points1 == 1){
+    xpm_map_t pic = (xpm_map_t) number_1_xpm;
+    xpm_load(pic, XPM_8_8_8,&img);
+  }else if(points1 == 2){
+    xpm_map_t pic = (xpm_map_t) number_2_xpm;
+    xpm_load(pic, XPM_8_8_8,&img);
+  }else if(points1 == 3){
+    xpm_map_t pic = (xpm_map_t) number_3_xpm;
+    xpm_load(pic, XPM_8_8_8,&img);
+  }else if(points1 == 4){
+    xpm_map_t pic = (xpm_map_t) number_4_xpm;
+    xpm_load(pic, XPM_8_8_8,&img);
+  }else if(points1 == 5){
+    xpm_map_t pic = (xpm_map_t) number_5_xpm;
+    xpm_load(pic, XPM_8_8_8,&img);
+  }else if(points1 == 6){
+    xpm_map_t pic = (xpm_map_t) number_6_xpm;
+    xpm_load(pic, XPM_8_8_8,&img);
+  }else if(points1 == 7){
+    xpm_map_t pic = (xpm_map_t) number_7_xpm;
+    xpm_load(pic, XPM_8_8_8,&img);
+  }else if(points1 == 8){
+    xpm_map_t pic = (xpm_map_t) number_8_xpm;
+    xpm_load(pic, XPM_8_8_8,&img);
+  }else if(points1 == 9){
+    xpm_map_t pic = (xpm_map_t) number_9_xpm;
+    xpm_load(pic, XPM_8_8_8,&img);
+  }
+  
+
+  for (int y = 0; y < img.height; y++) {
+    for (int x = 0; x < img.width; x++) {
+      pos = (y * img.width + x) * bytes_per_pixel;
+      uint32_t color = (img.bytes[pos + 2]) << 16 | (img.bytes[pos + 1] << 8) | img.bytes[pos];
+
+      if (color != 0x00FF00) {
+        uint8_t *pixel_pos = triple_buffer + (((y + yi) * vmi.XResolution + (x + xi)) * bytes_per_pixel);
         memcpy(pixel_pos, &color, bytes_per_pixel);
       }
     }
@@ -181,7 +236,7 @@ int draw_frame_start(){
   return 0;
 }
 
-int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img) {
+int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img, bool ignore) {
   unsigned int pos;
   // printf("Reached draw_xpm!\n");
   for (int y = 0; y < img.height; y++) {
@@ -192,7 +247,7 @@ int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img) {
       uint32_t color = (img.bytes[pos + 2] << 16) | (img.bytes[pos + 1] << 8) | img.bytes[pos];
 
       if (color != 0x00FF00) {
-        if (draw_pixel(xi + x, yi + y, color)) {
+        if (draw_pixel(xi + x, yi + y, color, ignore)) {
           // printf("Error while drawing pixel!\n");
           continue;
         }

@@ -3,8 +3,10 @@
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 200
-#define BARRIER_START 400
-#define BARRIER_END 500
+#define BARRIER_START 0
+#define BARRIER_END 20
+#define BARRIER_START_1 780
+#define BARRIER_END_1 800
 #define SPEED_REDUCTION_FACTOR 0.65
 #define BOUNCE_SPEED_REDUCTION_FACTOR 0.85
 #define BOUNCE_OFFSET 50
@@ -40,7 +42,8 @@
     STATE_PLAYER_MOVE_RIGHT,
     STATE_AFTER_PLAYER_MOVE_LEFT,
     STATE_AFTER_PLAYER_MOVE_RIGHT,
-    STATE_PLAYER_MOVE_END,
+    STATE_PLAYER_MOVE_LEFT_END,
+    STATE_PLAYER_MOVE_RIGHT_END,
   } PlayerStateMove;
 
 void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStateMove *player_state_move_temporary, PlayerStateJump *player_state_jump, PlayerStateJump *player_state_jump_temporary);

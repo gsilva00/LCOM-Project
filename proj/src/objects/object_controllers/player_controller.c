@@ -19,19 +19,22 @@ void prepare_for_player_jump(player *player) {
   time_passed_player_x = 1;
 }
 
-void update_player_position_after_jump(player *player) {
-  player->yspeed = player->yspeed * 0.65;
-  player_y = player->y;
-  player_x = player->x;
-}
-
 void check_player_border(player *player) {
-  if (player->x >= 800) {
+
+  if ((player->x >= BARRIER_START) && (player->x <= BARRIER_END)) {
+    player->x = BARRIER_END;
+  }
+
+  if ((player->x + player->img.width >= BARRIER_START_1) && (player->x <= BARRIER_END_1)) {
+    player->x = BARRIER_START_1 - player->img.width;
+  }
+
+  /*if (player->x >= 800) {
     player->x -= 800;
   }
   if (player->x <= 0) {
     player->x += 800;
-  }
+  }*/
 }
 
 void change_player_y(player *player) {
@@ -43,13 +46,23 @@ void handle_player_jump(player *player, PlayerStateJump *player_state_jump) {
     check_player_border(player);
 
     change_player_y(player);
-    draw_xpm(player->x, player->y, player->img);
     time_passed_player_y++;
     time_passed_player_x++;
 
-    *player_state_jump = STATE_AFTER_PLAYER_JUMP;
+    if(player->y >= player_y_original){
+      player->y = player_y_original;
+      chuta = false;
+      *player_state_jump = STATE_PLAYER_JUMP_END;
+    }
   }
 }
+
+int restart_player_movement(player *player){
+  player->xspeed = player_xspeed;
+  player->yspeed = player_yspeed;
+  return 0;
+}
+
 
 void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStateMove *player_state_move_temporary, PlayerStateJump *player_state_jump, PlayerStateJump *player_state_jump_temporary) {
   switch (*player_state_move) {
@@ -65,7 +78,6 @@ void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStat
       if (get_timer_intCounter() % 2 == 0) {
         player->x -= player->xspeed;
         check_player_border(player);
-        draw_xpm(player->x, player->y, player->img);
       }
       break;
 
@@ -73,7 +85,6 @@ void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStat
       if (get_timer_intCounter() % 2 == 0) {
         player->x += player->xspeed;
         check_player_border(player);
-        draw_xpm(player->x, player->y, player->img);
       }
       break;
     case STATE_AFTER_PLAYER_MOVE_LEFT:
@@ -83,7 +94,7 @@ void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStat
           printf("%d", player->xspeed);
         }
       }else{
-        *player_state_move = STATE_PLAYER_MOVE_END;
+        *player_state_move = STATE_PLAYER_MOVE_LEFT_END;
       }
       break;
     case STATE_AFTER_PLAYER_MOVE_RIGHT:
@@ -93,11 +104,15 @@ void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStat
           printf("%d", player->xspeed);
         }
       }else{
-        *player_state_move = STATE_PLAYER_MOVE_END;
+        *player_state_move = STATE_PLAYER_MOVE_RIGHT_END;
       }
       break;
-    case STATE_PLAYER_MOVE_END:
-      player->xspeed = player_xspeed;
+    case STATE_PLAYER_MOVE_LEFT_END:
+      restart_player_movement(player);
+      *player_state_move = STATE_PLAYER_MOVE_NONE;
+      break;
+    case STATE_PLAYER_MOVE_RIGHT_END:
+      restart_player_movement(player);
       *player_state_move = STATE_PLAYER_MOVE_NONE;
       break;
     case STATE_PLAYER_MOVE_NONE:
@@ -119,17 +134,11 @@ void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStat
       prepare_for_player_jump(player);
       *player_state_jump = player->yspeed > 0 ? STATE_PLAYER_JUMP : STATE_PLAYER_JUMP_END;
       break;
-    case STATE_AFTER_PLAYER_JUMP:
-      update_player_position_after_jump(player);
-      *player_state_jump = STATE_BEFORE_PLAYER_JUMP;
-      break;
     case STATE_PLAYER_JUMP:
       handle_player_jump(player, player_state_jump);
       break;
     case STATE_PLAYER_JUMP_END:
-      player->xspeed = player_xspeed;
-      player->yspeed = player_yspeed;
-      player->y = player_y_original;
+      restart_player_movement(player);
       *player_state_jump = STATE_PLAYER_JUMP_NONE;
       break;
     case STATE_PLAYER_JUMP_NONE:

@@ -14,6 +14,8 @@
     "*.xpm": "c",
     "stdio.h": "c",
     "ball_controller.h": "c",
-    "ball.h": "c"
+    "ball.h": "c",
+    "timeboard.h": "c",
+    "aux_timer.h": "c"
   },
 }

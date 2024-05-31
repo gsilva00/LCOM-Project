@@ -3,8 +3,10 @@
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 200
-#define BARRIER_START 400
-#define BARRIER_END 500
+#define BARRIER_START 0
+#define BARRIER_END 20
+#define BARRIER_START_1 780
+#define BARRIER_END_1 800
 #define SPEED_REDUCTION_FACTOR 0.65
 #define BOUNCE_SPEED_REDUCTION_FACTOR 0.85
 #define BOUNCE_OFFSET 50
@@ -13,7 +15,8 @@
 #include <stdint.h>
 #include <objects/ball.h>
 #include <devices/timer/aux_timer.h>
-#include <devices/gpu/gpu.h>
+#include <objects/scoreboard.h>
+#include <objects/goal.h>
 
   int bola_y_original;
   int bola_y;
@@ -39,10 +42,12 @@
     STATE_MOVE_RIGHT_START,
     STATE_MOVE_LEFT,
     STATE_MOVE_RIGHT,
-    STATE_AFTER_MOVE
+    STATE_AFTER_MOVE,
   } BallState;
 
-void(move_ball)(ball *bola, BallState *ball_state, BallState * ball_state_temporary);
+void(move_ball)(ball *bola, BallState *ball_state, BallState * ball_state_temporary, player *player1);
 bool check_border(ball *bola, player *pl);
+
+int ball_goal_collision(ball *bl, goal *gl, scoreboard *sc,BallState * ball_state);
 
 #endif

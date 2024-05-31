@@ -20,7 +20,7 @@ struct Ball{
 
 typedef struct Ball ball;
 
-ball *create_ball(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t time_in_mov);
+ball *create_ball(xpm_map_t pic, int x, int y, int width, int height, int xspeed, int yspeed, uint32_t time_in_mov);
 
 void destroy_ball(ball *bl);
 
@@ -30,8 +30,8 @@ int ball_walls_collision(ball *bl, vbe_mode_info_t vmi_p);
 
 int ball_player_collision(ball *bl, player *pl);
 
-int ball_goal_collision(ball *bl, goal *gl);
-
 int detect_collisions(ball *bl, vbe_mode_info_t vmi_p, player *p1, player *p2, goal *gl1, goal *gl2);
+
+void move_ball_to_center(ball *bl);
 
 #endif

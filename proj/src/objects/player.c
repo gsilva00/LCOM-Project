@@ -1,6 +1,6 @@
 #include "player.h"
 
-player *create_player(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint32_t time_in_mov) {
+player *create_player(xpm_map_t pic, int x, int y, int width, int height, int xspeed, int yspeed, uint32_t time_in_mov) {
   player *pl = (player *) malloc ( sizeof(player));
   if(pl == NULL){
     return NULL;
@@ -15,6 +15,8 @@ player *create_player(xpm_map_t pic, int x, int y, int xspeed, int yspeed, uint3
   }
   pl->x = x;
   pl->y = y;
+  pl->width = width;
+  pl->height = height;
   pl->xspeed = xspeed;
   pl->yspeed = yspeed;
   pl->img = img;
@@ -108,4 +110,20 @@ int player_get_header(player *pl){
   }else{
     return pl->header;
   }
+}
+
+void move_player1_to_center(player *pl){
+  if(pl == NULL){
+    return;
+  }
+  pl->x = 200;
+  pl->y = 455;
+}
+
+void move_player2_to_center(player *pl){
+  if(pl == NULL){
+    return;
+  }
+  pl->x = 600;
+  pl->y = 455;
 }
