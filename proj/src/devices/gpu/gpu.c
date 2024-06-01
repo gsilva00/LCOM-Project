@@ -4,17 +4,9 @@
 
 static uint8_t *video_mem; // Process (virtual) address to which VRAM is mapped
 static uint8_t *double_buffer;
-
 static uint8_t *triple_buffer; // para nao estar sempre a copiar o background, ele vai guardar o background e depois so copia para o double buffer
 
 static vbe_mode_info_t vmi;
-/*
-Above replaced:
-static unsigned hres;             // Horizontal resolution in pixels
-static unsigned vres;	            // Vertical resolution in pixels
-static unsigned bits_per_pixel;   // Number of VRAM bits per pixel
-They are present in the struct's fields
-*/
 static uint8_t bytes_per_pixel;
 
 int change_video_mode(uint16_t mode) {
@@ -26,11 +18,6 @@ int change_video_mode(uint16_t mode) {
 
   // Set video mode to graphics mode
   r86.ax = INVOKE_VBE_FUNC << 8 | SET_VBE_MODE;
-  /*
-  Above replaced:
-  r86.ah = INVOKE_VBE_FUNC;
-  r86.al = SET_VBE_MODE;
-  */
 
   // Set the specified graphics mode
   r86.bx = SET_LINEAR_FB | mode;
@@ -81,7 +68,8 @@ int create_frame_buffer(uint16_t mode) {
   return 0;
 }
 
-int limpa_buffer(){
+int free_buffers() {
+  free(video_mem);
   free(double_buffer);
   free(triple_buffer);
   return 0;
@@ -120,7 +108,7 @@ int draw_pixel(uint16_t x, uint16_t y, uint32_t color, bool ignore) {
     if (!ignore)
     {
       x = x - vmi.XResolution;
-    }else{
+    }else {
       return 1;
     }
   }
@@ -156,36 +144,11 @@ int draw_back(uint16_t xi, uint16_t yi, xpm_image_t img) {
 int draw_back_scoreboard(uint16_t xi, uint16_t yi, uint8_t points1) {
   unsigned int pos;
   xpm_image_t img;
-  if(points1 == 0){
-    xpm_map_t pic = (xpm_map_t) number_0_xpm;
-    xpm_load(pic, XPM_8_8_8,&img);
-  }else if(points1 == 1){
-    xpm_map_t pic = (xpm_map_t) number_1_xpm;
-    xpm_load(pic, XPM_8_8_8,&img);
-  }else if(points1 == 2){
-    xpm_map_t pic = (xpm_map_t) number_2_xpm;
-    xpm_load(pic, XPM_8_8_8,&img);
-  }else if(points1 == 3){
-    xpm_map_t pic = (xpm_map_t) number_3_xpm;
-    xpm_load(pic, XPM_8_8_8,&img);
-  }else if(points1 == 4){
-    xpm_map_t pic = (xpm_map_t) number_4_xpm;
-    xpm_load(pic, XPM_8_8_8,&img);
-  }else if(points1 == 5){
-    xpm_map_t pic = (xpm_map_t) number_5_xpm;
-    xpm_load(pic, XPM_8_8_8,&img);
-  }else if(points1 == 6){
-    xpm_map_t pic = (xpm_map_t) number_6_xpm;
-    xpm_load(pic, XPM_8_8_8,&img);
-  }else if(points1 == 7){
-    xpm_map_t pic = (xpm_map_t) number_7_xpm;
-    xpm_load(pic, XPM_8_8_8,&img);
-  }else if(points1 == 8){
-    xpm_map_t pic = (xpm_map_t) number_8_xpm;
-    xpm_load(pic, XPM_8_8_8,&img);
-  }else if(points1 == 9){
-    xpm_map_t pic = (xpm_map_t) number_9_xpm;
-    xpm_load(pic, XPM_8_8_8,&img);
+
+  char **numbers_xpm[] = {number_0_xpm, number_1_xpm, number_2_xpm, number_3_xpm, number_4_xpm, number_5_xpm, number_6_xpm, number_7_xpm, number_8_xpm, number_9_xpm};
+
+  if (points1 >= 0 && points1 <= 9) {
+    xpm_load((xpm_map_t) numbers_xpm[points1], XPM_8_8_8, &img);
   }
   
 
@@ -228,7 +191,7 @@ int draw_background(uint32_t color) {
   return 0;
 }
 
-int draw_frame_start(){
+int draw_frame_start() {
   memcpy(double_buffer, triple_buffer, vmi.XResolution * vmi.YResolution * ((vmi.BitsPerPixel + 7) / 8));
   return 0;
 }
@@ -254,7 +217,7 @@ int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img, bool ignore) {
   return 0;
 }
 
-int draw_frame_end(){
+int draw_frame_end() {
     memcpy(video_mem, double_buffer, vmi.XResolution * vmi.YResolution * ((vmi.BitsPerPixel + 7) / 8));
   return 0;
 }

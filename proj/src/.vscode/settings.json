@@ -16,6 +16,8 @@
     "ball_controller.h": "c",
     "ball.h": "c",
     "timeboard.h": "c",
-    "aux_timer.h": "c"
+    "aux_timer.h": "c",
+    "button.h": "c",
+    "cursor.h": "c"
   },
 }

@@ -32,30 +32,30 @@ bool chuta;
 
 typedef enum {
   STATE_NONE,
-  STATE_START_JUMP_LEFT,
-  STATE_BEFORE_JUMP_LEFT,
-  STATE_JUMP_LEFT,
-  STATE_AFTER_JUMP_LEFT,
-  STATE_JUMP_END,
-  STATE_START_JUMP_RIGHT,
-  STATE_BEFORE_JUMP_RIGHT,
-  STATE_JUMP_RIGHT,
-  STATE_AFTER_JUMP_RIGHT,
+  START_JUMP_LEFT,
+  BEFORE_JUMP_LEFT,
+  JUMP_LEFT,
+  AFTER_JUMP_LEFT,
+  JUMP_END,
+  START_JUMP_RIGHT,
+  BEFORE_JUMP_RIGHT,
+  JUMP_RIGHT,
+  AFTER_JUMP_RIGHT,
 
-  STATE_MOVE_LEFT_START,
-  STATE_MOVE_RIGHT_START,
-  STATE_MOVE_LEFT,
-  STATE_MOVE_RIGHT,
-  STATE_AFTER_MOVE,
+  MOVE_LEFT_START,
+  MOVE_RIGHT_START,
+  MOVE_LEFT,
+  MOVE_RIGHT,
+  AFTER_MOVE,
 } BallState;
 
-void(move_ball)(ball *bola, BallState *ball_state, BallState * ball_state_temporary, player *player1);
-bool check_border(ball *bola, player *pl);
+void move_ball(Ball *bola, BallState *ball_state, BallState * ball_state_temporary, Player *player1);
+bool check_border(Ball *bola, Player *pl);
 
-int ball_goal_collision(ball *bl, goal *gl, scoreboard *sc,BallState * ball_state);
+int ball_goal_collision(Ball *bl, Goal *gl, Scoreboard *sc,BallState * ball_state);
 
-bool check_kicking_player1(ball *bola, player *pl);
+bool check_kicking_player1(Ball *bola, Player *pl);
 
-bool check_kicking_player2(ball *bola, player *pl);
+bool check_kicking_player2(Ball *bola, Player *pl);
 
 #endif

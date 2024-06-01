@@ -43,37 +43,37 @@ int bounce_offset;
 bool chuta;
 
 typedef enum {
-  STATE_PLAYER_JUMP_NONE,
-  STATE_START_PLAYER_JUMP,
-  STATE_BEFORE_PLAYER_JUMP,
-  STATE_PLAYER_JUMP,
-  STATE_AFTER_PLAYER_JUMP,
-  STATE_PLAYER_JUMP_END,
+  PLAYER_JUMP_NONE,
+  START_PLAYER_JUMP,
+  BEFORE_PLAYER_JUMP,
+  PLAYER_JUMP,
+  AFTER_PLAYER_JUMP,
+  PLAYER_JUMP_END,
 } PlayerStateJump;
 
 typedef enum {
-  STATE_PLAYER_MOVE_NONE,
-  STATE_PLAYER_MOVE_LEFT_START,
-  STATE_PLAYER_MOVE_RIGHT_START,
-  STATE_PLAYER_MOVE_LEFT,
-  STATE_PLAYER_MOVE_RIGHT,
-  STATE_AFTER_PLAYER_MOVE_LEFT,
-  STATE_AFTER_PLAYER_MOVE_RIGHT,
-  STATE_PLAYER_MOVE_LEFT_END,
-  STATE_PLAYER_MOVE_RIGHT_END,
+  PLAYER_MOVE_NONE,
+  PLAYER_MOVE_LEFT_START,
+  PLAYER_MOVE_RIGHT_START,
+  PLAYER_MOVE_LEFT,
+  PLAYER_MOVE_RIGHT,
+  AFTER_PLAYER_MOVE_LEFT,
+  AFTER_PLAYER_MOVE_RIGHT,
+  PLAYER_MOVE_LEFT_END,
+  PLAYER_MOVE_RIGHT_END,
 } PlayerStateMove;
 
 typedef enum {
-  STATE_PLAYER_KICK_NONE,
-  STATE_PLAYER_KICK_START,
-  STATE_PLAYER_KICK,
-  STATE_AFTER_PLAYER_KICK,
+  PLAYER_KICK_NONE,
+  PLAYER_KICK_START,
+  PLAYER_KICK,
+  AFTER_PLAYER_KICK,
 } PlayerStateKick;
 
-void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStateMove *player_state_move_temporary, PlayerStateJump *player_state_jump, PlayerStateJump *player_state_jump_temporary, PlayerStateKick *player_state_kick, PlayerStateKick *player_state_kick_temporary);
+void move_player(Player *player, PlayerStateMove *player_state_move, PlayerStateMove *player_state_move_temporary, PlayerStateJump *player_state_jump, PlayerStateJump *player_state_jump_temporary, PlayerStateKick *player_state_kick, PlayerStateKick *player_state_kick_temporary);
 
-bool check_player_border(player *player);
+bool check_player_border(Player *player);
 
-bool check_multiplayer_border(player *player1, player *player2);
+bool check_multiplayer_border(Player *player1, Player *player2);
 
 #endif

@@ -33,7 +33,7 @@ int change_video_mode(uint16_t mode);
  */
 int create_frame_buffer(uint16_t mode);
 
-int limpa_buffer();
+int free_buffers();
 
 
 int draw_pixel(uint16_t x, uint16_t y, uint32_t color, bool ignore);

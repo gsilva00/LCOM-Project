@@ -6,19 +6,18 @@
 #include "../devices/timer/aux_timer.h"
 
 
-struct Timeboard{
+typedef struct {
   uint16_t x, y;
   int time;
   xpm_image_t points1_img;
   uint8_t *map;
   xpm_image_t img;
-};
-typedef struct Timeboard timeboard;
+} Timeboard;
 
-timeboard *create_timeboard(xpm_map_t pic);
+Timeboard *create_timeboard(xpm_map_t pic);
 
-void destroy_timeboard(timeboard *sc);
+void destroy_timeboard(Timeboard *sc);
 
-void add_time(timeboard *sc);
+void decrease_time(Timeboard *sc);
 
 #endif
