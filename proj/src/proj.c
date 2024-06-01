@@ -307,7 +307,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
   // ======= Interrupt loop =======
   int ipc_status, r;
   message msg;
-  bool done = false, touching1 = false, touching2 = false;
+  bool done = false, touching1 = false, touching2 = false, kicking = false, kicking2 = false;
   uint8_t bit_no;
   BallState ball_state = STATE_NONE;
   BallState ball_state_temporary = STATE_NONE;
@@ -617,11 +617,13 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary, &player1_state_kick, &player1_state_kick_temporary);
                 if(check_border(bola, player1) && !touching1){
                   if(player1->x + player1->width/2 > bola->x + bola->width/2){
-                    if(ball_state != STATE_NONE){
-                      ball_state = STATE_JUMP_END;
-                      ball_state_temporary = STATE_MOVE_LEFT_START;
-                    }else{
-                      ball_state = STATE_MOVE_LEFT_START;
+                    if (ball_state != STATE_START_JUMP_LEFT && ball_state != STATE_START_JUMP_RIGHT && ball_state != STATE_JUMP_LEFT && ball_state != STATE_JUMP_RIGHT && ball_state != STATE_BEFORE_JUMP_LEFT && ball_state != STATE_BEFORE_JUMP_RIGHT && ball_state != STATE_AFTER_JUMP_LEFT && ball_state != STATE_AFTER_JUMP_RIGHT){
+                      if(ball_state != STATE_NONE){
+                        ball_state = STATE_JUMP_END;
+                        ball_state_temporary = STATE_MOVE_LEFT_START;
+                      }else{
+                        ball_state = STATE_MOVE_LEFT_START;
+                      }
                     }
                   }else{
                     if(ball_state != STATE_NONE){
@@ -637,13 +639,15 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   ball_state = STATE_AFTER_MOVE;
                   touching1 = false;
                 }
-                if(check_kicking_player1(bola, player1)){
+                if(check_kicking_player1(bola, player1) && kicking){
+                  printf("kick\n");
                   if(ball_state != STATE_NONE){
                     ball_state = STATE_JUMP_END;
                     ball_state_temporary = STATE_START_JUMP_RIGHT;
                   }else{
                     ball_state = STATE_START_JUMP_RIGHT;
                   }
+                  kicking = false;
                 }
                 move_ball(bola, &ball_state, &ball_state_temporary, player1);
                 ball_goal_collision(bola, goal_, scoreboard, &ball_state);
@@ -727,6 +731,26 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 else if(!check_border(bola, player2) && touching2){
                   ball_state = STATE_AFTER_MOVE;
                   touching2 = false;
+                }
+                if(check_kicking_player1(bola, player1) && kicking){
+                  printf("kick\n");
+                  if(ball_state != STATE_NONE){
+                    ball_state = STATE_JUMP_END;
+                    ball_state_temporary = STATE_START_JUMP_RIGHT;
+                  }else{
+                    ball_state = STATE_START_JUMP_RIGHT;
+                  }
+                  kicking = false;
+                }
+                if(check_kicking_player2(bola, player2) && kicking2){
+                  printf("kick\n");
+                  if(ball_state != STATE_NONE){
+                    ball_state = STATE_JUMP_END;
+                    ball_state_temporary = STATE_START_JUMP_LEFT;
+                  }else{
+                    ball_state = STATE_START_JUMP_LEFT;
+                  }
+                  kicking2 = false;
                 }
                 move_ball(bola, &ball_state, &ball_state_temporary, player1);
                 ball_goal_collision(bola, goal_, scoreboard, &ball_state);
@@ -865,6 +889,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 if (player2_state_kick == STATE_PLAYER_KICK_NONE) {
                   player2_state_kick = STATE_PLAYER_KICK_START;
                 }
+                kicking2 = true;
               }
             }
 
@@ -940,14 +965,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   player1_state_kick = STATE_AFTER_PLAYER_KICK;
                   player1_state_kick_temporary = STATE_PLAYER_KICK_START;
                 }
-                if(check_kicking_player1(bola, player1)){
-                  if (ball_state != STATE_NONE) {
-                    ball_state = STATE_JUMP_END;
-                    ball_state_temporary = STATE_START_JUMP_RIGHT;
-                  }else{
-                    ball_state = STATE_START_JUMP_RIGHT;
-                  }
-                }
+                kicking = true;
               }
             }
 

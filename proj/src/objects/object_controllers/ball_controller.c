@@ -26,8 +26,8 @@ void update_ball_position_after_jump(ball *bola) {
 }
 
 bool check_kicking_player1(ball *bola, player *pl) {
-  if ((bola->x <= pl->x + pl->width + 10) && (bola->x > pl->x)){
-    if ((bola->y <= pl->y + pl->height/4) && (bola->y + bola->height + 5 >= pl->y)){
+  if ((bola->x <= pl->x + pl->width + 10) && (bola->x > pl->x + pl->width)){
+    if ((bola->y >= pl->y + pl->height/4) && (bola->y + 5 <= pl->y + pl->height)){
       return true;
     }else{
       return false;
@@ -38,8 +38,8 @@ bool check_kicking_player1(ball *bola, player *pl) {
 }
 
 bool check_kicking_player2(ball *bola, player *pl) {
-  if ((bola->x + bola->width >= pl->x - 5) && (bola->x < pl->x)){
-    if ((bola->y <= pl->y + pl->height/3) && (bola->y + bola->height + 5 >= pl->y)){
+  if ((bola->x + bola->width >= pl->x - 10) && (bola->x + bola->width < pl->x)){
+    if ((bola->y >= pl->y + pl->height/4) && (bola->y + 5 >= pl->y + pl->height)){
       return true;
     }else{
       return false;
@@ -70,7 +70,7 @@ void change_y(ball *bola) {
   }
 }
 
-void handle_jump(ball *bola, BallState *ball_state, int direction, player *player1) {
+void handle_jump(ball *bola, BallState *ball_state, int direction) {
   if (get_timer_intCounter() % 2 == 0) {
     if (chuta) {
       bola->x = bola_x + direction * (bola->xspeed * time_passed_x) + bounce_offset;
@@ -119,7 +119,7 @@ void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_tempora
       *ball_state = bola->yspeed > 0 ? STATE_JUMP_LEFT : STATE_JUMP_END;
       break;
     case STATE_JUMP_LEFT:
-      handle_jump(bola, ball_state, -1, player1);
+      handle_jump(bola, ball_state, -1);
       break;
     case STATE_AFTER_JUMP_LEFT:
       update_ball_position_after_jump(bola);
@@ -144,10 +144,10 @@ void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_tempora
       break;
     case STATE_BEFORE_JUMP_RIGHT:
       prepare_for_jump(bola);
-      *ball_state = STATE_JUMP_RIGHT;
+      *ball_state = bola->yspeed != 0 ? STATE_JUMP_RIGHT : STATE_JUMP_END;
       break;
     case STATE_JUMP_RIGHT:
-      handle_jump(bola, ball_state, 1, player1);
+      handle_jump(bola, ball_state, 1);
       break;
     case STATE_AFTER_JUMP_RIGHT:
       update_ball_position_after_jump(bola);
