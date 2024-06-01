@@ -11,6 +11,11 @@
     "lcf.h": "c",
     "stdint.h": "c",
     "lab5.h": "c",
-    "*.xpm": "c"
+    "*.xpm": "c",
+    "stdio.h": "c",
+    "ball_controller.h": "c",
+    "ball.h": "c",
+    "timeboard.h": "c",
+    "aux_timer.h": "c"
   },
 }
