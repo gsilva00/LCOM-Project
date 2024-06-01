@@ -29,35 +29,3 @@ void destroy_goal(Goal *gl) {
   free(gl);
   gl = NULL;
 }
-
- 
-int goal_get_X(Goal *gl) {
-  if (gl == NULL) return -1;
-
-  return gl->x;
-}
-
-int goal_get_Y(Goal *gl) {
-  if (gl == NULL) return 1;
-  
-  return gl->y;
-}
-
-int goal_get_width(Goal *gl) {
-  if (gl == NULL) return -1;
-
-  return gl->img.width  ;
-}
-
-int goal_get_height(Goal *gl) {
-  if (gl == NULL) return -1;
-
-  return gl->img.height;
-}
-
-
-int goal_get_orientation(Goal *gl) {
-  if (gl == NULL) return -1;
-  
-  return gl->orientation;
-}
