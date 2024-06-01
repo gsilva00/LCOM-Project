@@ -127,3 +127,12 @@ void move_player2_to_center(player *pl){
   pl->x = 600;
   pl->y = 455;
 }
+
+void player_set_image(player *pl, xpm_map_t pic){
+  if(pl == NULL){
+    return;
+  }
+  xpm_image_t img;
+  pl->map = xpm_load(pic, XPM_8_8_8,&img);
+  pl->img = img;
+}

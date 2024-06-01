@@ -44,4 +44,6 @@ void move_player1_to_center(player *pl);
 
 void move_player2_to_center(player *pl);
 
+void player_set_image(player *pl, xpm_map_t pic);
+
 #endif

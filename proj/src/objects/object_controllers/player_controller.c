@@ -2,6 +2,20 @@
 
 uint8_t time_passed_player_y = 0;
 uint8_t time_passed_player_x = 0;
+int img = 0;
+
+xpm_map_t player1_map0 = (xpm_map_t) personagem_parado_xpm;
+xpm_map_t player2_map0 = (xpm_map_t) personagem_2_parado_xpm;
+xpm_map_t player1_map1 = (xpm_map_t) personagem_chutar_frente_1_xpm;
+xpm_map_t player1_map2 = (xpm_map_t) personagem_chutar_frente_2_xpm;
+xpm_map_t player1_map3 = (xpm_map_t) personagem_chutar_frente_3_xpm;
+xpm_map_t player1_map4 = (xpm_map_t) personagem_chutar_frente_4_xpm;
+xpm_map_t player1_map5 = (xpm_map_t) personagem_chutar_frente_5_xpm;
+xpm_map_t player1_map6 = (xpm_map_t) personagem_chutar_frente_6_xpm;
+xpm_map_t player1_map7 = (xpm_map_t) personagem_chutar_tras_1_xpm;
+xpm_map_t player1_map8 = (xpm_map_t) personagem_chutar_tras_2_xpm;
+xpm_map_t player1_map9 = (xpm_map_t) personagem_chutar_tras_3_xpm;
+xpm_map_t player1_map10 = (xpm_map_t) personagem_chutar_tras_4_xpm;
 
 void initialize_player_values(player *player) {
   player_y_original = player->y;
@@ -76,7 +90,7 @@ int restart_player_movement(player *player){
 }
 
 
-void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStateMove *player_state_move_temporary, PlayerStateJump *player_state_jump, PlayerStateJump *player_state_jump_temporary) {
+void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStateMove *player_state_move_temporary, PlayerStateJump *player_state_jump, PlayerStateJump *player_state_jump_temporary, PlayerStateKick *player_state_kick, PlayerStateKick *player_state_kick_temporary) {
   switch (*player_state_move) {
     case STATE_PLAYER_MOVE_LEFT_START:
       initialize_player_values(player);
@@ -155,6 +169,115 @@ void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStat
       if (*player_state_jump_temporary != STATE_PLAYER_JUMP_NONE) {
         *player_state_jump = *player_state_jump_temporary;
         *player_state_jump_temporary = STATE_PLAYER_JUMP_NONE;
+      }
+      break;
+    default:
+      break;
+  }
+
+  switch(*player_state_kick){
+    case STATE_PLAYER_KICK_START:
+      if (get_timer_intCounter() % 2 == 0){
+        switch(img){
+          case 0:
+            img++;
+            player_set_image(player, player1_map7);
+            break;
+          case 1:
+            img++;
+            player_set_image(player, player1_map8);
+            break;
+          case 2:
+            img++;
+            player_set_image(player, player1_map9);
+            break;
+          case 3:
+            img++;
+            player_set_image(player, player1_map10);
+            break;
+          default:
+            img = 0;
+            *player_state_kick = STATE_PLAYER_KICK;
+            break;
+        }
+      }
+      break;
+    case STATE_PLAYER_KICK:
+      if (get_timer_intCounter() % 2 == 0){
+        switch(img){
+          case 0:
+            img++;
+            player_set_image(player, player1_map1);
+            break;
+          case 1:
+            img++;
+            player_set_image(player, player1_map2);
+            break;
+          case 2:
+            img++;
+            player_set_image(player, player1_map3);
+            break;
+          case 3:
+            img++;
+            player_set_image(player, player1_map4);
+            break;
+          case 4:
+            img++;
+            player_set_image(player, player1_map5);
+            break;
+          case 5:
+            img++;
+            player_set_image(player, player1_map6);
+            break;
+          default:
+            img = 0;
+            *player_state_kick = STATE_AFTER_PLAYER_KICK;
+            break;
+        }
+      }
+      break;
+    case STATE_AFTER_PLAYER_KICK:
+      if (get_timer_intCounter() % 2 == 0){
+        switch(img){
+          case 0:
+            img++;
+            player_set_image(player, player1_map6);
+            break;
+          case 1:
+            img++;
+            player_set_image(player, player1_map5);
+            break;
+          case 2:
+            img++;
+            player_set_image(player, player1_map4);
+            break;
+          case 3:
+            img++;
+            player_set_image(player, player1_map3);
+            break;
+          case 4:
+            img++;
+            player_set_image(player, player1_map2);
+            break;
+          case 5:
+            img++;
+            player_set_image(player, player1_map1);
+            break;
+          case 6:
+            img++;
+            player_set_image(player, player1_map0);
+            break;
+          default:
+            img = 0;
+            *player_state_kick = STATE_PLAYER_KICK_NONE;
+            break;
+        }
+      }
+      break;
+    case STATE_PLAYER_KICK_NONE:
+      if (*player_state_kick_temporary != STATE_PLAYER_KICK_NONE) {
+        *player_state_kick = *player_state_kick_temporary;
+        *player_state_kick_temporary = STATE_PLAYER_KICK_NONE;
       }
       break;
     default:

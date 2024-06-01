@@ -16,6 +16,18 @@
 #include <objects/player.h>
 #include <devices/timer/aux_timer.h>
 #include <devices/gpu/gpu.h>
+#include "objects/xpm/personagem_2_parado.xpm"
+#include "objects/xpm/personagem_parado.xpm"
+#include "objects/xpm/personagem_chutar_frente_1.xpm"
+#include "objects/xpm/personagem_chutar_frente_2.xpm"
+#include "objects/xpm/personagem_chutar_frente_3.xpm"
+#include "objects/xpm/personagem_chutar_frente_4.xpm"
+#include "objects/xpm/personagem_chutar_frente_5.xpm"
+#include "objects/xpm/personagem_chutar_frente_6.xpm"
+#include "objects/xpm/personagem_chutar_tras_1.xpm"
+#include "objects/xpm/personagem_chutar_tras_2.xpm"
+#include "objects/xpm/personagem_chutar_tras_3.xpm"
+#include "objects/xpm/personagem_chutar_tras_4.xpm"
 
   int player_y_original;
   int player_y;
@@ -46,7 +58,14 @@
     STATE_PLAYER_MOVE_RIGHT_END,
   } PlayerStateMove;
 
-void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStateMove *player_state_move_temporary, PlayerStateJump *player_state_jump, PlayerStateJump *player_state_jump_temporary);
+  typedef enum {
+    STATE_PLAYER_KICK_NONE,
+    STATE_PLAYER_KICK_START,
+    STATE_PLAYER_KICK,
+    STATE_AFTER_PLAYER_KICK,
+  } PlayerStateKick;
+
+void(move_player)(player *player, PlayerStateMove *player_state_move, PlayerStateMove *player_state_move_temporary, PlayerStateJump *player_state_jump, PlayerStateJump *player_state_jump_temporary, PlayerStateKick *player_state_kick, PlayerStateKick *player_state_kick_temporary);
 
 bool check_player_border(player *player);
 

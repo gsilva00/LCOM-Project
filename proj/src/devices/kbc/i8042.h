@@ -51,6 +51,7 @@
 #define MAKECODE_W 0x11 /** @brief Makecode of W key */
 #define BREAKCODE_A 0x9e /** @brief Breakcode of A key */
 #define BREAKCODE_D 0xa0 /** @brief Breakcode of D key */
+#define MAKECODE_S 0x1F /** @brief Makecode of S key */
 
 // KBC Commands (written to CMD_REG):
 #define CMDBYTE_READ 0x20 /** @brief To be able to read Command Byte from KBC_OUTBUF */

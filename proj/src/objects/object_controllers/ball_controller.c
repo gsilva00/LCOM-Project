@@ -25,6 +25,30 @@ void update_ball_position_after_jump(ball *bola) {
   bola_x = bola->x;
 }
 
+bool check_kicking_player1(ball *bola, player *pl) {
+  if ((bola->x <= pl->x + pl->width + 10) && (bola->x > pl->x)){
+    if ((bola->y <= pl->y + pl->height/4) && (bola->y + bola->height + 5 >= pl->y)){
+      return true;
+    }else{
+      return false;
+    }
+  }else{
+    return false;
+  }
+}
+
+bool check_kicking_player2(ball *bola, player *pl) {
+  if ((bola->x + bola->width >= pl->x - 5) && (bola->x < pl->x)){
+    if ((bola->y <= pl->y + pl->height/3) && (bola->y + bola->height + 5 >= pl->y)){
+      return true;
+    }else{
+      return false;
+    }
+  }else{
+    return false;
+  }
+}
+
 bool check_border(ball *bola, player *pl) {
   if ((bola->x <= pl->x + pl->width + 5) && (bola->x + bola->width + 5 >= pl->x)){
     if ((bola->y <= pl->y + pl->height + 5) && (bola->y + bola->height + 5 >= pl->y)){
@@ -120,12 +144,7 @@ void(move_ball)(ball *bola, BallState *ball_state, BallState *ball_state_tempora
       break;
     case STATE_BEFORE_JUMP_RIGHT:
       prepare_for_jump(bola);
-      if (bola->yspeed > 0) {
-        *ball_state = STATE_JUMP_RIGHT;
-      }
-      else {
-        *ball_state = STATE_JUMP_END;
-      }
+      *ball_state = STATE_JUMP_RIGHT;
       break;
     case STATE_JUMP_RIGHT:
       handle_jump(bola, ball_state, 1, player1);

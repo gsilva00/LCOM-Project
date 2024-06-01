@@ -39,8 +39,6 @@
 #include "objects/xpm/menuuu.xpm"
 #include "objects/xpm/muro.xpm"
 #include "objects/xpm/pausa_menu_90_sem_background.xpm"
-#include "objects/xpm/personagem_2_parado.xpm"
-#include "objects/xpm/personagem_parado.xpm"
 #include "objects/xpm/play.xpm"
 #include "objects/xpm/play_sem.xpm"
 #include "objects/xpm/player1win_menu.xpm"
@@ -321,6 +319,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
   PlayerStateJump player2_state_jump_temporary = STATE_PLAYER_JUMP_NONE;
   PlayerStateMove player2_state_move = STATE_PLAYER_MOVE_NONE;
   PlayerStateMove player2_state_move_temporary = STATE_PLAYER_MOVE_NONE;
+  PlayerStateKick player1_state_kick = STATE_PLAYER_KICK_NONE;
+  PlayerStateKick player1_state_kick_temporary = STATE_PLAYER_KICK_NONE;
+  PlayerStateKick player2_state_kick = STATE_PLAYER_KICK_NONE;
+  PlayerStateKick player2_state_kick_temporary = STATE_PLAYER_KICK_NONE;
   GameState game_state = STATE_GAME_START;
   MenuState menu_state = STATE_MENU_HOVER_SINGLEPLAYER;
   MenuPauseState menu_pause_state = STATE_MENU_HOVER_RESUME;
@@ -351,14 +353,14 @@ int(proj_main_loop)(int argc, char *argv[]) {
   timeboard *tb = create_timeboard(tb_map);
   xpm_map_t cursor_map = (xpm_map_t) cursor_xpm;
   xpm_map_t bola_map = (xpm_map_t) bola_xpm;
-  xpm_map_t player_map = (xpm_map_t) personagem_parado_xpm;
-  xpm_map_t player2_map = (xpm_map_t) personagem_2_parado_xpm;
   xpm_map_t start_selected_map = (xpm_map_t) play_xpm;
   xpm_map_t start_not_selected_map = (xpm_map_t) play_sem_xpm;
   xpm_map_t end_selected_map = (xpm_map_t) close_xpm;
   xpm_map_t end_not_selected_map = (xpm_map_t) close_sem_xpm;
   xpm_map_t menu_xpm = (xpm_map_t) menuuu_xpm;
   xpm_map_t pause_menu_xpm = (xpm_map_t) pausa_menu_90_sem_background_xpm;
+  xpm_map_t player1_map0 = (xpm_map_t) personagem_parado_xpm;
+  xpm_map_t player2_map0 = (xpm_map_t) personagem_2_parado_xpm;
   // xpm_map_t win_menu_xpm = (xpm_map_t) win_menu_90_xpm;
   xpm_map_t player1_win_menu_xpm = (xpm_map_t) player1win_menu_xpm;
   xpm_map_t player2_win_menu_xpm = (xpm_map_t) player2win_menu_xpm;
@@ -375,8 +377,8 @@ int(proj_main_loop)(int argc, char *argv[]) {
   xpm_image_t goal_card_menu_img;
   cursor = create_cursor(cursor_map);
   bola = create_ball(bola_map, 400, 490, 32, 32, 10, 50, 0);
-  player1 = create_player(player_map, 200, 450, 62, 78, 10, 50, 0);
-  player2 = create_player(player2_map, 600, 450, 62, 78, 10, 50, 1);
+  player1 = create_player(player1_map0, 200, 450, 62, 78, 10, 50, 0);
+  player2 = create_player(player2_map0, 600, 450, 62, 78, 10, 50, 1);
   single = create_button(start_selected_map, 500, 155, true);
   multi = create_button(start_not_selected_map, 500, 219, false);
   end = create_button(end_not_selected_map, 500, 284, false);
@@ -612,7 +614,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                     player1_state_move = STATE_AFTER_PLAYER_MOVE_LEFT;
                   }
                 }
-                move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary);
+                move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary, &player1_state_kick, &player1_state_kick_temporary);
                 if(check_border(bola, player1) && !touching1){
                   if(player1->x + player1->width/2 > bola->x + bola->width/2){
                     if(ball_state != STATE_NONE){
@@ -634,6 +636,14 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 else if(!check_border(bola, player1) && touching1){
                   ball_state = STATE_AFTER_MOVE;
                   touching1 = false;
+                }
+                if(check_kicking_player1(bola, player1)){
+                  if(ball_state != STATE_NONE){
+                    ball_state = STATE_JUMP_END;
+                    ball_state_temporary = STATE_START_JUMP_RIGHT;
+                  }else{
+                    ball_state = STATE_START_JUMP_RIGHT;
+                  }
                 }
                 move_ball(bola, &ball_state, &ball_state_temporary, player1);
                 ball_goal_collision(bola, goal_, scoreboard, &ball_state);
@@ -672,8 +682,8 @@ int(proj_main_loop)(int argc, char *argv[]) {
                     player2_state_move = STATE_AFTER_PLAYER_MOVE_LEFT;
                   }
                 }
-                move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary);
-                move_player(player2, &player2_state_move, &player2_state_move_temporary, &player2_state_jump, &player2_state_jump_temporary);
+                move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary, &player1_state_kick, &player1_state_kick_temporary);
+                move_player(player2, &player2_state_move, &player2_state_move_temporary, &player2_state_jump, &player2_state_jump_temporary, &player2_state_kick, &player2_state_kick_temporary);
                 if(check_border(bola, player1) && !touching1){
                   if(player1->x > bola->x + bola->width/2){
                     if(ball_state != STATE_NONE){
@@ -850,6 +860,14 @@ int(proj_main_loop)(int argc, char *argv[]) {
               }
             }
 
+            if (MAKECODE_S == scancode) { // 0x1f is the makecode for the S key
+              if (game_state == STATE_GAME_PLAY_MULTIPLAYER) {
+                if (player2_state_kick == STATE_PLAYER_KICK_NONE) {
+                  player2_state_kick = STATE_PLAYER_KICK_START;
+                }
+              }
+            }
+
             if (MAKECODE_UP == scancode) { // 0x48 is the makecode for the up key
               if (game_state == STATE_GAME_PLAY || game_state == STATE_GAME_PLAY_MULTIPLAYER) {
                 if (player1_state_jump == STATE_PLAYER_JUMP_NONE) {
@@ -913,6 +931,22 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   game_state = STATE_GAME_PAUSE_TO_PLAY;
                 }else if(menu_pause_state == STATE_MENU_HOVER_GO_BACK){
                   game_state = STATE_GAME_PAUSE_TO_START;
+                }
+              }
+              if (game_state == STATE_GAME_PLAY || game_state == STATE_GAME_PLAY_MULTIPLAYER) {
+                if (player1_state_kick == STATE_PLAYER_KICK_NONE) {
+                  player1_state_kick = STATE_PLAYER_KICK_START;
+                }else{
+                  player1_state_kick = STATE_AFTER_PLAYER_KICK;
+                  player1_state_kick_temporary = STATE_PLAYER_KICK_START;
+                }
+                if(check_kicking_player1(bola, player1)){
+                  if (ball_state != STATE_NONE) {
+                    ball_state = STATE_JUMP_END;
+                    ball_state_temporary = STATE_START_JUMP_RIGHT;
+                  }else{
+                    ball_state = STATE_START_JUMP_RIGHT;
+                  }
                 }
               }
             }

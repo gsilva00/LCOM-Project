@@ -50,4 +50,8 @@ bool check_border(ball *bola, player *pl);
 
 int ball_goal_collision(ball *bl, goal *gl, scoreboard *sc,BallState * ball_state);
 
+bool check_kicking_player1(ball *bola, player *pl);
+
+bool check_kicking_player2(ball *bola, player *pl);
+
 #endif
