@@ -16,7 +16,7 @@ typedef struct rtc_data rtc_data_t;
 
 /**
  * @brief Configures the RTC's initial state
- * @details Initializes the rtc_binary member variable (is_rtc_binary()). Initializes the current_time (read_current_time()). Sets hourly alarm for background-image changing (set_hourly_alarm()).
+ * @details Initializes the rtc_binary member variable (is_rtc_binary()). Initializes the current_time (read_current_time()). Sets hourly alarm for background-image changing (set_hourly_alarm())
  * 
  * @return 0 upon success, non-zero otherwise
 */
@@ -126,6 +126,11 @@ bool equal_reads(rtc_data_t *read1, rtc_data_t *read2);
  * @return 0 upon success, 1 otherwise
 */
 int set_hourly_alarm();
+
+/**
+ * 
+*/
+uint8_t get_current_hour(); 
 
 
 #endif // RTC_H

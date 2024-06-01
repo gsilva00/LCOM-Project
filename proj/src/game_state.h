@@ -16,10 +16,10 @@ typedef enum {
   PAUSE,
   PAUSE_TO_PLAY,
   PAUSE_TO_MENU,
-  STATE_GAME_END,
+  MULTIPLAYER_END,
   TIME_LIMIT,
   GOAL,
-  STATE_GAME_OVER
+  GAME_OVER
 } GameState;
 
 typedef enum {
@@ -32,5 +32,13 @@ typedef enum {
   HOVER_RESUME,
   HOVER_GO_BACK
 } MenuPauseState;
+
+
+/**
+ * @brief
+ * @details
+*/
+void enter_new_state(GameState *game_state, MenuState *menu_state, MenuPauseState *menu_pause_state, bool *done, bool *cursor_active);
+
 
 #endif
