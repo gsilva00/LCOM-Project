@@ -39,6 +39,8 @@ int reset_uart() {
     return 1;
   }
   delete_queue(receive_q);
+
+  return 0;
 }
 
 int uart_subscribe_int(uint8_t *bit_no) {
