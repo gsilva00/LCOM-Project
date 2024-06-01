@@ -10,11 +10,19 @@
 
 /**
  * @brief Configures the UART's initial state
- * @details Enables interrupts ONLY for when data is available while maintaing the default configuration (by reading it first). Initializes the queue static global variable for receiving data
+ * @details Enables interrupts for when data is available and for when it's possible to send data. Stores the default configuration for resetting at the end of execution. Otherwise maintains the default configuration (by reading it first) except for the interrupts activated. Initializes the queue static global variable for receiving data
  *
  * @return 0 upon success, non-zero otherwise
  */
 int configure_uart();
+
+/**
+ * @brief Resets UART to its default state
+ * @details Sends the previously stored MINIX UART configuration (during configure_uart()) to the appropriate register. Deallocates the queue.
+ * 
+ * @return 0 upon success, non-zero otherwise
+*/
+int reset_uart();
 
 /**
  * @brief Subscribes and enables UART interrupts

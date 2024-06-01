@@ -6,25 +6,39 @@
 
 static int uart_hookId = COM1_IRQ;
 static queue_t *receive_q;
+static uint8_t minix_IER;
 
 int configure_uart() {
-  uint8_t enabled_ints;
-  if (util_sys_inb(COM1_PORT + UART_IER, &enabled_ints)) {
+  uint8_t new_ints;
+  if (util_sys_inb(COM1_PORT + UART_IER, &new_ints)) {
     printf("Error while reading initial IER state!\n");
     return 1;
   }
-  // Reset what interrupts are being generated (LSbit)
-  enabled_ints &= 0xF0;
 
-  // Set interrupts only for when there's data available to read
-  enabled_ints |= (THR_RDY_INT | DATA_RDY_INT);
-  if (sys_outb(COM1_PORT + UART_IER, enabled_ints)) {
+  // Store MINIX configuration for resetting later
+  minix_IER = new_ints;
+
+  // Ignore interrupts configured by MINIX (LSbit)
+  new_ints &= 0xF0;
+
+  // Set interrupts when there's data for reading and space for sending
+  new_ints |= (THR_RDY_INT | DATA_RDY_INT);
+  if (sys_outb(COM1_PORT + UART_IER, new_ints)) {
     printf("Error while enabling necessary ints!\n");
     return 1;
   }
 
   receive_q = new_queue(Q_INIT_SZ);
   return 0;
+}
+
+int reset_uart() {
+  // Revert back what was changed
+  if (sys_outb(COM1_PORT + UART_IER, minix_IER)) {
+    printf("Error while reverting IER change!\n");
+    return 1;
+  }
+  delete_queue(receive_q);
 }
 
 int uart_subscribe_int(uint8_t *bit_no) {

@@ -148,8 +148,73 @@ int interrupt_loop() {
 int keyboard_active = 1;
 int mouse_active = 1;
 
-uint8_t mouse_big_packet[3];
-uint8_t counter_byte_packet = 0;
+
+void draw_main_menu(xpm_image_t menu_img, Button *single, Button *multi, Button *end, Cursor *cursor_) {
+  draw_xpm(0, 0, menu_img, true);
+  if (single != NULL) draw_xpm(single->x, single->y, single->img, true);
+  if (multi != NULL) draw_xpm(multi->x, multi->y, multi->img, true);
+  if (end != NULL) draw_xpm(end->x, end->y, end->img, true);
+  if (cursor_ != NULL) draw_xpm(cursor_->x, cursor_->y, cursor_->img, true);
+}
+
+int draw_game(Wall *muro, Goal *goal, Goal *goal_right, Scoreboard *scoreboard, Timeboard *timeboard, Ball *bola, Player *player1, Player *player2, xpm_image_t goal_img, xpm_image_t goal_right_img, bool done) {
+
+  if (draw_back(0, 600 - 314, muro->img)) {
+    return 1; // epa nao deu pra desenhar background
+  }
+
+  if (draw_back(goal->x, goal->y, goal->img)) {
+    return 1; // epa nao deu pra desenhar background
+  }
+
+  if (draw_back(goal_right->x, goal_right->y, goal_right->img)) {
+    return 1; // epa nao deu pra desenhar background
+  }
+
+  if (draw_back(scoreboard->x, scoreboard->y, scoreboard->img)) {
+    return 1;
+  }
+
+  if (draw_back_scoreboard(scoreboard->x + scoreboard->img.width / 5, scoreboard->y + scoreboard->img.height / 3, scoreboard->points1)) {
+    printf("Error while drawing scoreboard\n");
+    return 1;
+  }
+
+  if (draw_back_scoreboard(scoreboard->x + scoreboard->img.width / 2 + scoreboard->img.width / 5, scoreboard->y + scoreboard->img.height / 3, scoreboard->points2)) {
+    return 1;
+  }
+
+  if (draw_back(timeboard->x, timeboard->y, timeboard->img)) {
+    return 1;
+  }
+
+  int minutes = timeboard->time / 60;
+  int seconds = timeboard->time % 60;
+
+  // To draw the minutes in the timeboard
+  draw_back_scoreboard(timeboard->x + 15, timeboard->y + timeboard->img.height / 3, minutes / 10);
+  draw_back_scoreboard(timeboard->x + 35, timeboard->y + timeboard->img.height / 3, minutes % 10);
+
+  // To draw the seconds in the timeboard
+  draw_back_scoreboard(timeboard->x + 80, timeboard->y + timeboard->img.height / 3, seconds / 10);
+  draw_back_scoreboard(timeboard->x + 100, timeboard->y + timeboard->img.height / 3, seconds % 10);
+
+  draw_frame_start();
+
+  // To draw characters from the game
+  draw_xpm(bola->x, bola->y, bola->img, false);
+
+  draw_xpm(player1->x, player1->y, player1->img, true);
+  if (player2 != NULL) {
+    draw_xpm(player2->x, player2->y, player2->img, true);
+  }
+
+  draw_xpm(goal->x - 8, goal->y - 18, goal_img, true);
+  draw_xpm(goal_right->x, goal_right->y - 18, goal_right_img, true);
+
+  if (done) draw_frame_end();
+  return 0;
+}
 
 void enter_new_state(GameState *game_state, MenuState *menu_state, MenuPauseState *menu_pause_state, bool *done) {
   if (*game_state == MENU) {
@@ -243,7 +308,7 @@ void reset_states(BallState *ball_state, PlayerStateMove *player1_state_move, Pl
   }
 }
 
-int reset_game_multiplayer(Scoreboard *scoreboard, Timeboard *timeboard, Ball *bola, Player *player1, Player *player2, BallState *ball_state, PlayerStateMove *player1_state_move, PlayerStateMove *player2_state_move, PlayerStateJump *player1_state_jump, PlayerStateJump *player2_state_jump) {
+int setup_multiplayer(Scoreboard *scoreboard, Timeboard *timeboard, Ball *bola, Player *player1, Player *player2, BallState *ball_state, PlayerStateMove *player1_state_move, PlayerStateMove *player2_state_move, PlayerStateJump *player1_state_jump, PlayerStateJump *player2_state_jump) {
   scoreboard->points1 = 0;
   scoreboard->points2 = 0;
   timeboard->time = 300;
@@ -254,7 +319,7 @@ int reset_game_multiplayer(Scoreboard *scoreboard, Timeboard *timeboard, Ball *b
   return 0;
 }
 
-int reset_game_singleplayer(Scoreboard *scoreboard, Timeboard *timeboard, Ball *bola, Player *player1, BallState *ball_state, PlayerStateMove *player1_state_move, PlayerStateJump *player1_state_jump) {
+int setup_singleplayer(Scoreboard *scoreboard, Timeboard *timeboard, Ball *bola, Player *player1, BallState *ball_state, PlayerStateMove *player1_state_move, PlayerStateJump *player1_state_jump) {
   scoreboard->points1 = 0;
   scoreboard->points2 = 0;
   timeboard->time = 600;
@@ -262,78 +327,6 @@ int reset_game_singleplayer(Scoreboard *scoreboard, Timeboard *timeboard, Ball *
   move_player1_to_center(player1);
   reset_states(ball_state, player1_state_move, NULL, player1_state_jump, NULL, false);
   return 0;
-}
-
-int draw_game(Wall *muro, Goal *goal, Goal *goal_right, Scoreboard *scoreboard, Timeboard *timeboard, Ball *bola, Player *player1, Player *player2, xpm_image_t goal_img, xpm_image_t goal_right_img, bool done) {
-
-  if (draw_back(0, 600 - 314, muro->img)) {
-    return 1; // epa nao deu pra desenhar background
-  }
-
-  if (draw_back(goal->x, goal->y, goal->img)) {
-    return 1; // epa nao deu pra desenhar background
-  }
-
-  if (draw_back(goal_right->x, goal_right->y, goal_right->img)) {
-    return 1; // epa nao deu pra desenhar background
-  }
-
-  if (draw_back(scoreboard->x, scoreboard->y, scoreboard->img)) {
-    return 1;
-  }
-
-  if (draw_back_scoreboard(scoreboard->x + scoreboard->img.width / 5, scoreboard->y + scoreboard->img.height / 3, scoreboard->points1)) {
-    printf("Error while drawing scoreboard\n");
-    return 1;
-  }
-
-  if (draw_back_scoreboard(scoreboard->x + scoreboard->img.width / 2 + scoreboard->img.width / 5, scoreboard->y + scoreboard->img.height / 3, scoreboard->points2)) {
-    return 1;
-  }
-
-  if (draw_back(timeboard->x, timeboard->y, timeboard->img)) {
-    return 1;
-  }
-
-  int minutes = timeboard->time / 60;
-  int seconds = timeboard->time % 60;
-
-  // To draw the minutes in the timeboard
-  draw_back_scoreboard(timeboard->x + 15, timeboard->y + timeboard->img.height / 3, minutes / 10);
-  draw_back_scoreboard(timeboard->x + 35, timeboard->y + timeboard->img.height / 3, minutes % 10);
-
-  // To draw the seconds in the timeboard
-  draw_back_scoreboard(timeboard->x + 80, timeboard->y + timeboard->img.height / 3, seconds / 10);
-  draw_back_scoreboard(timeboard->x + 100, timeboard->y + timeboard->img.height / 3, seconds % 10);
-
-  draw_frame_start();
-
-  // To draw characters from the game
-  draw_xpm(bola->x, bola->y, bola->img, false);
-
-  draw_xpm(player1->x, player1->y, player1->img, true);
-  if (player2 != NULL) {
-    draw_xpm(player2->x, player2->y, player2->img, true);
-  }
-
-  draw_xpm(goal->x - 8, goal->y - 18, goal_img, true);
-  draw_xpm(goal_right->x, goal_right->y - 18, goal_right_img, true);
-
-  if (done)
-    draw_frame_end();
-  return 0;
-}
-
-void draw_main_menu(xpm_image_t menu_img, Button *single, Button *multi, Button *end, Cursor *cursor_) {
-  draw_xpm(0, 0, menu_img, true);
-  if (single != NULL)
-    draw_xpm(single->x, single->y, single->img, true);
-  if (multi != NULL)
-    draw_xpm(multi->x, multi->y, multi->img, true);
-  if (end != NULL)
-    draw_xpm(end->x, end->y, end->img, true);
-  if (cursor_ != NULL)
-    draw_xpm(cursor_->x, cursor_->y, cursor_->img, true);
 }
 
 void restart_game(Ball *bl, BallState *ball_state, Player *player1, Player *player2, PlayerStateMove *player1_state_move, PlayerStateMove *player2_state_move, PlayerStateJump *player1_state_jump, PlayerStateJump *player2_state_jump) {
@@ -356,10 +349,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
     return 1;
   }
 
-  // ======= Interrupt loop =======
-  bool done = false, touching1 = false, touching2 = false, kicking = false, kicking2 = false;
-
-  // Loading images without a class
+  // ======= Loading non-objects =======
   xpm_image_t goal_img;
   xpm_image_t goal_right_img;
   xpm_load(goal_front_map, XPM_8_8_8, &goal_img);
@@ -398,10 +388,18 @@ int(proj_main_loop)(int argc, char *argv[]) {
   scoreboard = create_scoreboard(scoreboard_map);
   timeboard = create_timeboard(tb_map);
 
+  // ======= Drawing Start =======
+  if (game_state == MENU) {
+    printf("The menu IF was entered! Somehow!!\n");
+    draw_frame_start();
+    draw_main_menu(menu_img, single, multi, end, cursor);
+    draw_frame_end();
+  }
 
+  // ======= Interrupt loop =======
   int ipc_status, r;
   message msg;
-  
+
   uint8_t bit_no;
   if (timer_subscribe_int(&bit_no)) {
     printf("Error while subscribing timer ints!\n");
@@ -430,24 +428,9 @@ int(proj_main_loop)(int argc, char *argv[]) {
   uint32_t uart_int_bit = BIT(bit_no);
 
 
-  if (game_state == MENU) {
-    draw_frame_start();
-    draw_main_menu(menu_img, single, multi, end, cursor);
-    draw_frame_end();
-  }
-
-  if (game_state == SINGLEPLAYER) {
-    if (draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, NULL, goal_img, goal_right_img, true)) {
-      return 1;
-    }
-  }
-  if (game_state == MULTIPLAYER) {
-    if (draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, player2, goal_img, goal_right_img, true)) {
-      return 1;
-    }
-  }
-
-
+  bool done = false, touching1 = false, touching2 = false, kicking = false, kicking2 = false;
+  uint8_t mouse_big_packet[3];
+  uint8_t counter_byte_packet = 0;
   while (!done) {
     // Get a request message.
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
@@ -495,7 +478,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 set_selected(single, true);
                 set_selected(multi, false);
                 set_selected(end, false);
-                reset_game_singleplayer(scoreboard, timeboard, bola, player1, &ball_state, &player1_state_move, &player1_state_jump);
+                setup_singleplayer(scoreboard, timeboard, bola, player1, &ball_state, &player1_state_move, &player1_state_jump);
                 draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, NULL, goal_img, goal_right_img, true);
                 game_state = SINGLEPLAYER;
               }
@@ -503,7 +486,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 set_selected(single, false);
                 set_selected(multi, true);
                 set_selected(end, false);
-                reset_game_multiplayer(scoreboard, timeboard, bola, player1, player2, &ball_state, &player1_state_move, &player2_state_move, &player1_state_jump, &player2_state_jump);
+                setup_multiplayer(scoreboard, timeboard, bola, player1, player2, &ball_state, &player1_state_move, &player2_state_move, &player1_state_jump, &player2_state_jump);
                 draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, player2, goal_img, goal_right_img, true);
                 game_state = MULTIPLAYER;
               }
