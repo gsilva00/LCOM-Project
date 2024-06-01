@@ -357,7 +357,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
   }
 
   // ======= Interrupt loop =======
-  bool done = false, touching1 = false, touching2 = false;
+  bool done = false, touching1 = false, touching2 = false, kicking = false, kicking2 = false;
 
   // Loading images without a class
   xpm_image_t goal_img;
@@ -460,7 +460,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
           if (msg.m_notify.interrupts & timer_int_bit) {
             timer_int_handler();
 
-            if (get_timer_intCounter() % 2 == 0) {
+            if (get_timer_intCounter() % 2 == 0) { // 30 fps
               if (game_state == MENU) {
                 if (menu_state == HOVER_SINGLEPLAYER && single->selected == false) {
                   set_selected(single, true);
@@ -491,14 +491,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 check_cursor_position(cursor, single, multi, end, game_state, &menu_state, NULL);
                 draw_frame_end();
               }
-              else if (game_state == PREPARE_MULTIPLAYER) {
-                set_selected(single, false);
-                set_selected(multi, true);
-                set_selected(end, false);
-                reset_game_multiplayer(scoreboard, timeboard, bola, player1, player2, &ball_state, &player1_state_move, &player2_state_move, &player1_state_jump, &player2_state_jump);
-                draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, player2, goal_img, goal_right_img, true);
-                game_state = MULTIPLAYER;
-              }
               else if (game_state == PREPARE_SINGLEPLAYER) {
                 set_selected(single, true);
                 set_selected(multi, false);
@@ -507,36 +499,18 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, NULL, goal_img, goal_right_img, true);
                 game_state = SINGLEPLAYER;
               }
-              else if (game_state == PAUSE_TO_MENU) {
-                set_selected(resume, true);
-                set_selected(go_back, false);
-                draw_frame_start();
-                draw_main_menu(menu_img, single, multi, end, cursor);
-                draw_frame_end();
-                game_state = MENU;
+              else if (game_state == PREPARE_MULTIPLAYER) {
+                set_selected(single, false);
+                set_selected(multi, true);
+                set_selected(end, false);
+                reset_game_multiplayer(scoreboard, timeboard, bola, player1, player2, &ball_state, &player1_state_move, &player2_state_move, &player1_state_jump, &player2_state_jump);
+                draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, player2, goal_img, goal_right_img, true);
+                game_state = MULTIPLAYER;
               }
               else if (game_state == PREPARE_PAUSE) {
                 game_state = PAUSE;
                 draw_main_menu(pause_menu_img, resume, go_back, NULL, cursor);
                 draw_frame_end();
-              }
-              else if (game_state == PAUSE_TO_PLAY) {
-                set_selected(resume, true);
-                set_selected(go_back, false);
-                if (get_selected(multi)) {
-                  draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, player2, goal_img, goal_right_img, true);
-                }
-                else {
-                  draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, NULL, goal_img, goal_right_img, true);
-                }
-
-                if (player_get_xspeed(player1) != 0) {
-                  player1_state_move = player_get_xspeed(player1) < 0 ? AFTER_PLAYER_MOVE_LEFT : AFTER_PLAYER_MOVE_RIGHT;
-                }
-                if (player_get_xspeed(player2) != 0) {
-                  player2_state_move = player_get_xspeed(player2) < 0 ? AFTER_PLAYER_MOVE_LEFT : AFTER_PLAYER_MOVE_RIGHT;
-                }
-                game_state = get_selected(multi) ? MULTIPLAYER : SINGLEPLAYER;
               }
               else if (game_state == PAUSE) {
                 if (menu_pause_state == HOVER_RESUME && resume->selected == false) {
@@ -560,6 +534,32 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 draw_main_menu(pause_menu_img, resume, go_back, NULL, cursor);
                 check_cursor_position(cursor, single, multi, NULL, game_state, NULL, &menu_pause_state);
                 draw_frame_end();
+              }
+              else if (game_state == PAUSE_TO_PLAY) {
+                set_selected(resume, true);
+                set_selected(go_back, false);
+                if (get_selected(multi)) {
+                  draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, player2, goal_img, goal_right_img, true);
+                }
+                else {
+                  draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, NULL, goal_img, goal_right_img, true);
+                }
+
+                if (player_get_xspeed(player1) != 0) {
+                  player1_state_move = player_get_xspeed(player1) < 0 ? AFTER_PLAYER_MOVE_LEFT : AFTER_PLAYER_MOVE_RIGHT;
+                }
+                if (player_get_xspeed(player2) != 0) {
+                  player2_state_move = player_get_xspeed(player2) < 0 ? AFTER_PLAYER_MOVE_LEFT : AFTER_PLAYER_MOVE_RIGHT;
+                }
+                game_state = get_selected(multi) ? MULTIPLAYER : SINGLEPLAYER;
+              }
+              else if (game_state == PAUSE_TO_MENU) {
+                set_selected(resume, true);
+                set_selected(go_back, false);
+                draw_frame_start();
+                draw_main_menu(menu_img, single, multi, end, cursor);
+                draw_frame_end();
+                game_state = MENU;
               }
               else if (game_state == STATE_GAME_END) {
                 set_selected(go_back, true);
@@ -602,7 +602,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 draw_main_menu(goal_card_menu_img, NULL, NULL, NULL, NULL);
                 draw_frame_end();
-                sleep(3);
+                sleep(1);
                 if (get_selected(multi)) {
                   restart_game(bola, &ball_state, player1, player2, &player1_state_move, &player2_state_move, &player1_state_jump, &player2_state_jump);
                   draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, player2, goal_img, goal_right_img, true);
@@ -635,11 +635,13 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary, &player1_state_kick, &player1_state_kick_temporary);
                 if (check_border(bola, player1) && !touching1) {
                   if (player1->x + player1->width/2 > bola->x + bola->width/2) {
-                    if (ball_state != STATE_NONE) {
-                      ball_state = JUMP_END;
-                      ball_state_temporary = MOVE_LEFT_START;
-                    }else {
-                      ball_state = MOVE_LEFT_START;
+                    if (ball_state != START_JUMP_LEFT && ball_state != START_JUMP_RIGHT && ball_state != JUMP_LEFT && ball_state != JUMP_RIGHT && ball_state != BEFORE_JUMP_LEFT && ball_state != BEFORE_JUMP_RIGHT && ball_state != AFTER_JUMP_LEFT && ball_state != AFTER_JUMP_RIGHT){
+                      if(ball_state != STATE_NONE){
+                        ball_state = JUMP_END;
+                        ball_state_temporary = MOVE_LEFT_START;
+                      }else{
+                        ball_state = MOVE_LEFT_START;
+                      }
                     }
                   }else {
                     if (ball_state != STATE_NONE) {
@@ -655,20 +657,24 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   ball_state = AFTER_MOVE;
                   touching1 = false;
                 }
-                if (check_kicking_player1(bola, player1)) {
+                if(check_kicking_player1(bola, player1) && kicking){
+                  printf("kick\n");
                   if (ball_state != STATE_NONE) {
                     ball_state = JUMP_END;
                     ball_state_temporary = START_JUMP_RIGHT;
-                  }else {
+                  }
+                  else {
                     ball_state = START_JUMP_RIGHT;
                   }
+                  kicking = false;
+
                 }
                 move_ball(bola, &ball_state, &ball_state_temporary, player1);
                 ball_goal_collision(bola, goal, scoreboard, &ball_state);
                 ball_goal_collision(bola, goal_right, scoreboard, &ball_state);
                 decrease_time(timeboard);
                 draw_game(muro, goal, goal_right, scoreboard, timeboard, bola, player1, NULL, goal_img, goal_right_img, true);
-                if (timeboard->time == 0) {
+                if (scoreboard->points1 == 9 || scoreboard->points2 == 9 || timeboard->time == 0) {
                   game_state = TIME_LIMIT;
                 }
                 if (bola->stop) {
@@ -745,6 +751,26 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 else if (!check_border(bola, player2) && touching2) {
                   ball_state = AFTER_MOVE;
                   touching2 = false;
+                }
+                if(check_kicking_player1(bola, player1) && kicking){
+                  printf("kick\n");
+                  if(ball_state != STATE_NONE){
+                    ball_state = JUMP_END;
+                    ball_state_temporary = START_JUMP_RIGHT;
+                  }else{
+                    ball_state = START_JUMP_RIGHT;
+                  }
+                  kicking = false;
+                }
+                if(check_kicking_player2(bola, player2) && kicking2){
+                  printf("kick\n");
+                  if(ball_state != STATE_NONE){
+                    ball_state = JUMP_END;
+                    ball_state_temporary = START_JUMP_LEFT;
+                  }else{
+                    ball_state = START_JUMP_LEFT;
+                  }
+                  kicking2 = false;
                 }
                 move_ball(bola, &ball_state, &ball_state_temporary, player1);
                 ball_goal_collision(bola, goal, scoreboard, &ball_state);
@@ -884,6 +910,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 if (player2_state_kick == PLAYER_KICK_NONE) {
                   player2_state_kick = PLAYER_KICK_START;
                 }
+                kicking2 = true;
               }
             }
 
@@ -949,15 +976,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   player1_state_kick = AFTER_PLAYER_KICK;
                   player1_state_kick_temporary = PLAYER_KICK_START;
                 }
-                if (check_kicking_player1(bola, player1)) {
-                  if (ball_state != STATE_NONE) {
-                    ball_state = JUMP_END;
-                    ball_state_temporary = START_JUMP_RIGHT;
-                  }
-                  else {
-                    ball_state = START_JUMP_RIGHT;
-                  }
-                }
+                kicking = true;
               }
             }
 

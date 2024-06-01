@@ -26,19 +26,25 @@ void update_ball_position_after_jump(Ball *bola) {
 }
 
 bool check_kicking_player1(Ball *bola, Player *pl) {
-  if ((bola->x <= pl->x + pl->width + 10) && (bola->x > pl->x)) {
-    return (bola->y <= pl->y + pl->height/4) && (bola->y + bola->height + 5 >= pl->y);
-  }
-  else {
+  if ((bola->x <= pl->x + pl->width + 10) && (bola->x > pl->x + pl->width)){
+    if ((bola->y >= pl->y + pl->height/4) && (bola->y + 5 <= pl->y + pl->height)){
+      return true;
+    }else{
+      return false;
+    }
+  }else{
     return false;
   }
 }
 
 bool check_kicking_player2(Ball *bola, Player *pl) {
-  if ((bola->x + bola->width >= pl->x - 5) && (bola->x < pl->x)) {
-    return (bola->y <= pl->y + pl->height/3) && (bola->y + bola->height + 5 >= pl->y);
-  }
-  else {
+  if ((bola->x + bola->width >= pl->x - 10) && (bola->x + bola->width < pl->x)){
+    if ((bola->y >= pl->y + pl->height/4) && (bola->y + 5 >= pl->y + pl->height)){
+      return true;
+    }else{
+      return false;
+    }
+  }else{
     return false;
   }
 }
@@ -61,7 +67,7 @@ void change_y(Ball *bola) {
   }
 }
 
-void handle_jump(Ball *bola, BallState *ball_state, int direction, Player *player1) {
+void handle_jump(Ball *bola, BallState *ball_state, int direction) {
   if (get_timer_intCounter() % 2 == 0) {
     if (chuta) {
       bola->x = bola_x + direction * (bola->xspeed * time_passed_x) + bounce_offset;
@@ -83,8 +89,8 @@ void handle_jump(Ball *bola, BallState *ball_state, int direction, Player *playe
       change_y(bola);
 
 
-      /*if ( ball_player_collision(bola, player1)) {
-        *ball_state = JUMP_END;
+      /*if( ball_player_collision(bola, player1)){
+        *ball_state = STATE_JUMP_END;
         printf("Colisao\n");
       }*/
 
@@ -99,7 +105,7 @@ void handle_jump(Ball *bola, BallState *ball_state, int direction, Player *playe
   }
 }
 
-void move_ball (Ball *bola, BallState *ball_state, BallState *ball_state_temporary, Player *player1) {
+void move_ball(Ball *bola, BallState *ball_state, BallState *ball_state_temporary, Player *player1) {
   switch (*ball_state) {
     case START_JUMP_LEFT:
       initialize_ball_values(bola);
@@ -110,7 +116,7 @@ void move_ball (Ball *bola, BallState *ball_state, BallState *ball_state_tempora
       *ball_state = bola->yspeed > 0 ? JUMP_LEFT : JUMP_END;
       break;
     case JUMP_LEFT:
-      handle_jump(bola, ball_state, -1, player1);
+      handle_jump(bola, ball_state, -1);
       break;
     case AFTER_JUMP_LEFT:
       update_ball_position_after_jump(bola);
@@ -135,10 +141,10 @@ void move_ball (Ball *bola, BallState *ball_state, BallState *ball_state_tempora
       break;
     case BEFORE_JUMP_RIGHT:
       prepare_for_jump(bola);
-      *ball_state = JUMP_RIGHT;
+      *ball_state = bola->yspeed != 0 ? JUMP_RIGHT : JUMP_END;
       break;
     case JUMP_RIGHT:
-      handle_jump(bola, ball_state, 1, player1);
+      handle_jump(bola, ball_state, 1);
       break;
     case AFTER_JUMP_RIGHT:
       update_ball_position_after_jump(bola);
@@ -168,11 +174,11 @@ void move_ball (Ball *bola, BallState *ball_state, BallState *ball_state_tempora
       }
       break;
     case AFTER_MOVE:
-      if (bola->xspeed != 0) {
+      if (bola->xspeed != 0){
         if (get_timer_intCounter() % 30 == 0) {
           bola->xspeed = bola->xspeed * SPEED_REDUCTION_FACTOR;
         }
-      }else {
+      }else{
         *ball_state = JUMP_END;
       }
     default:
