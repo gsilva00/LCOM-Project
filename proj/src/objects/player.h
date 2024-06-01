@@ -13,7 +13,6 @@ struct Player{
   bool orientation; //bool that tells which direction is facing, if true he is facing the right side of the screen, if false he is facing the right side of the screen
   xpm_image_t img;
 };
-
 typedef struct Player player;
 
 player *create_player(xpm_map_t pic, int x, int y, int width, int height, int xspeed, int yspeed, uint32_t time_in_mov);

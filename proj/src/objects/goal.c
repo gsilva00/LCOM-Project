@@ -3,7 +3,7 @@
 goal *create_goal(xpm_map_t pic, bool orientation) {
   //allocate space for the "object"
   goal *gl = (goal *) malloc ( sizeof(goal));
-  if(gl == NULL)
+  if (gl == NULL)
     return NULL;
 
   xpm_image_t img;
@@ -27,7 +27,7 @@ goal *create_goal(xpm_map_t pic, bool orientation) {
 /*void destroy_goal(goal *gl) {
   if( gl == NULL )
     return;
-  if( gl->map )
+  if ( gl->map )
     free(gl->map);
   free(gl);
   gl = NULL;

@@ -1,5 +1,6 @@
 #include "wall.h"
 
+
 wall *create_wall(xpm_map_t pic) {
   wall *wl = (wall *) malloc ( sizeof(wall));
   if(wl == NULL){

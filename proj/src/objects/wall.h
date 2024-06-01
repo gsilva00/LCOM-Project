@@ -3,14 +3,15 @@
 
 #include <lcom/lcf.h>
 
-//struct Wall;
+
+
 struct Wall{
   int width, height;
   uint8_t *map;
   xpm_image_t img;
 };
-
 typedef struct Wall wall;
+
 
 wall *create_wall(xpm_map_t pic);
 

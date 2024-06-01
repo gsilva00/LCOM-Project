@@ -2,11 +2,11 @@
 #define BALL_H
 
 #include <lcom/lcf.h>
+
 #include "ball.h"
 #include "player.h"
 #include "goal.h"
 
-//struct Ball;
 
 struct Ball{
   uint16_t x, y;
@@ -17,8 +17,8 @@ struct Ball{
   bool stop;
   xpm_image_t img;
 };
-
 typedef struct Ball ball;
+
 
 ball *create_ball(xpm_map_t pic, int x, int y, int width, int height, int xspeed, int yspeed, uint32_t time_in_mov);
 

@@ -1,9 +1,6 @@
-#include <lcom/lcf.h>
-
-#include <stdint.h>
-
 #include "gpu.h"
 #include "gpu_macros.h"
+
 
 static uint8_t *video_mem; // Process (virtual) address to which VRAM is mapped
 static uint8_t *double_buffer;

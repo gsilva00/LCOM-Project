@@ -1,35 +1,56 @@
-#include <lcom/lcf.h>
-
-#include <stdint.h>
-
-#include "rtc.h"
+#include "../../objects/object_controllers/sky_controller.h"
 #include "rtc_macros.h"
+#include "rtc.h"
 
+
+/**
+ * @struct rtc_data
+ * @brief Implementation of the rtc_data struct to hold real time clock data.
+ * @details It includes seconds, minutes, hours, weekday, day, month, and year.
+ * 
+ * @var rtc_data::seconds
+ * The seconds component of the time.
+ * 
+ * @var rtc_data::minutes
+ * The minutes component of the time.
+ * 
+ * @var rtc_data::hours
+ * The hours component of the time.
+ * 
+ * @var rtc_data::weekday
+ * The current day of the week.
+ * 
+ * @var rtc_data::day
+ * The current day of the month.
+ * 
+ * @var rtc_data::month
+ * The current month.
+ * 
+ * @var rtc_data::year
+ * The current year.
+ */
+struct rtc_data {
+  uint8_t seconds;
+  uint8_t minutes;
+  uint8_t hours;
+  uint8_t weekday;
+  uint8_t day;
+  uint8_t month;
+  uint8_t year;
+};
 
 
 static bool rtc_binary;
 static rtc_data_t current_time;
 
 int configure_rtc() {
-  if (is_rtc_binary()) {print("%s: Error while reading data format!", __func__); return 1;}
-  if (get_current_time()) {print("%s: Error while reading data format!", __func__); return 1;}
+  if (is_rtc_binary()) {printf("Error: reading data format!\n"); return 1;}
+  if (read_current_time()) {printf("Error: reading current time!\n"); return 1;}
+  if (set_hourly_alarm()) {printf("Error: setting hourly alarm!\n"); return 1;}
 
-  return 0;
-}
+  // Initialize current sky
+  if (change_sky_image(current_time.hours)) {printf("Error: initializing first sky!\n"); return 1;}
 
-int is_rtc_binary() {
-  uint8_t res_rb;
-
-  if (sys_outb(RTC_ADDR_REG, RB_ADDR)) {
-    printf("Error while writing address to %x port\n", RTC_ADDR_REG); 
-    return 1;
-  }
-  if (sys_outb(RTC_DATA_REG, &res_rb)) {
-    print("Error while writing value to %x port", RTC_DATA_REG);
-    return 1;
-  }
-
-  rtc_binary = res_rb & RB_DM;
   return 0;
 }
 
@@ -39,7 +60,6 @@ int rtc_subscribe_int(uint8_t *bit_no) {
   if (bit_no == NULL) {printf("Pointer to store bit_no points to NULL!\n"); return 1;}
   *bit_no = rtc_hookId;
 
-  // No need for IRQ_EXCLUSIVE - By default MINIX3 doesn't have driver for RTC
   return sys_irqsetpolicy(RTC_IRQ, IRQ_REENABLE, &rtc_hookId);
 }
 int rtc_unsubscribe_int() {
@@ -49,124 +69,141 @@ int rtc_unsubscribe_int() {
 void rtc_ih(void) {
   uint8_t cause; // Cause of the interrupt
 
-  if (read_rtc(RC_ADDR, &cause)) {printf("Error while reading from %x RTC address\n", RC_ADDR);}
+  if (rtc_read(RC_ADDR, &cause)) {printf("Error while reading from %x RTC address\n", RC_ADDR);}
 
-  if (cause & RC_UF) handle_update_int();
-  if (cause & RC_AF) handle_alarm_int();
-  if (cause & RC_PF) handle_periodic_int();
+  if (cause & RC_AF) {
+    // Call sky changer
+    if (handle_alarm_int()) {
+      printf("Error while handling the RTC's alarm interrupt!\n");
+    }
+  }
+}
+
+int handle_alarm_int() {
+  if (read_current_time()) {
+    printf("%s: Error while reading current time!\n", __func__);
+    return 1;
+  }
+
+  if (change_sky_image(current_time.hours)) {
+    printf("Error while changing sky\n");
+    return 1;
+  }
+
+  return 0;
 }
 
 
-int read_rtc(uint8_t reg_addr, uint8_t *output) {
+int rtc_read(uint8_t reg_addr, uint8_t *output) {
   if (sys_outb(RTC_ADDR_REG, reg_addr)) {
     printf("Error while writing address to %x port\n", RTC_ADDR_REG); 
     return 1;
   }
 	if (util_sys_inb(RTC_DATA_REG, output)) {
-    print("Error while reading value from %x port", RTC_DATA_REG);
+    printf("Error while reading value from %x port\n", RTC_DATA_REG);
     return 1;
   }
 
   return 0;
 }
 
-int write_rtc(uint8_t reg_addr, uint8_t byte) {
+int rtc_write(uint8_t reg_addr, uint8_t byte) {
   if (sys_outb(RTC_ADDR_REG, reg_addr)) {
     printf("Error while writing address to %x port\n", RTC_ADDR_REG); 
     return 1;
   }
 	if (sys_outb(RTC_DATA_REG, byte)) {
-    print("Error while writing value to %x port", RTC_DATA_REG);
+    printf("Error while writing value to %x port", RTC_DATA_REG);
     return 1;
   }
 
   return 0;
 }
 
-/*
-int is_rtc_updating(bool *isUpdating) {
-  uint8_t update_st;
 
-  if (read_rtc(RA_ADDR, &update_st)) {
-    printf("Error while reading from %x RTC address\n", RA_ADDR); 
-    return 1;
-  }
-  
-  isUpdating = update_st & RA_UIP;
-  return 0;
-}
-*/
-
-// RTC 1B registers can be in BCD data-format
-// Decimal: 12
-// Binary: 1100 - how it's stored
-// BCD: 0001 0010 - 1 * 10^1 + 2 * 10^0
 uint8_t to_decimal(uint8_t bcd_num) {
-  return (bcd_num >> 4 * 10) + (bcd_num & 0x0F);
+  return ((bcd_num >> 4) * 10) + (bcd_num & 0x0F);
+}
+
+int is_rtc_binary() {
+  uint8_t res_rb;
+
+  if (sys_outb(RTC_ADDR_REG, RB_ADDR)) {
+    printf("Error while writing address to %x port\n", RTC_ADDR_REG); 
+    return 1;
+  }
+  if (util_sys_inb(RTC_DATA_REG, &res_rb)) {
+    printf("Error while writing value to %x port", RTC_DATA_REG);
+    return 1;
+  }
+
+  rtc_binary = res_rb & RB_DM;
+  return 0;
 }
 
 
-int get_current_time() {
-  uint8_t tries = 10;
+int read_current_time() {
+  uint8_t tries = MAX_READS;
   rtc_data_t read1, read2;
 
   // Keep going until both reads are the same
   while (tries--) {
-    if (read_time_regs(&read1)) {print("Error during first rtc read\n"); return 1;}
-    if (read_time_regs(&read2)) {print("Error during second rtc read\n"); return 1;}
+    if (read_time_regs(&read1)) {printf("Error during first rtc read\n"); return 1;}
+    if (read_time_regs(&read2)) {printf("Error during second rtc read\n"); return 1;}
     if (equal_reads(&read1, &read2)) {
       current_time = read1;
       return 0;
     }
   }
 
+  printf("%s ERROR! Ran for %d tries and didn't succeed!\n", __func__, tries);
   return 1;
 }
 
 int read_time_regs(rtc_data_t *read) {
   uint8_t info;
 
-  if (read_rtc(SECS_REG, &info)) {
+  if (rtc_read(SECS_ADDR, &info)) {
     printf("%s: Error while reading seconds\n", __func__);
     return 1;
   }
-  current_time.seconds = (rtc_binary) ? info : to_decimal(info);
+  read->seconds = (rtc_binary) ? info : to_decimal(info);
 
-  if (read_rtc(MINS_REG, &info)) {
+  if (rtc_read(MINS_ADDR, &info)) {
     printf("%s: Error while reading minutes\n", __func__);
     return 1;
   }
-  current_time.minutes = (rtc_binary) ? info : to_decimal(info);
+  read->minutes = (rtc_binary) ? info : to_decimal(info);
 
-  if (read_rtc(HOURS_REG, &info)) {
+  if (rtc_read(HOURS_ADDR, &info)) {
     printf("%s: Error while reading hours\n", __func__);
     return 1;
   }
-  current_time.hours = (rtc_binary) ? info : to_decimal(info);
+  read->hours = (rtc_binary) ? info : to_decimal(info);
 
-  if (read_rtc(WEEKDAY_REG, &info)) {
+  if (rtc_read(WEEKDAY_ADDR, &info)) {
     printf("%s: Error while reading weekday\n", __func__);
     return 1;
   }
-  current_time.weekday = (rtc_binary) ? info : to_decimal(info);
+  read->weekday = (rtc_binary) ? info : to_decimal(info);
 
-  if (read_rtc(DAY_REG, &info)) {
+  if (rtc_read(DAY_ADDR, &info)) {
     printf("%s: Error while reading day\n", __func__);
     return 1;
   }
-  current_time.day = (rtc_binary) ? info : to_decimal(info);
+  read->day = (rtc_binary) ? info : to_decimal(info);
 
-  if (read_rtc(MONTH_REG, &info)) {
+  if (rtc_read(MONTH_ADDR, &info)) {
     printf("%s: Error while reading month\n", __func__);
     return 1;
   }
-  current_time.month = (rtc_binary) ? info : to_decimal(info);
+  read->month = (rtc_binary) ? info : to_decimal(info);
 
-  if (read_rtc(YEAR_REG, &info)) {
+  if (rtc_read(YEAR_ADDR, &info)) {
     printf("%s: Error while reading year\n", __func__);
     return 1;
   }
-  current_time.year = (rtc_binary) ? info : to_decimal(info);
+  read->year = (rtc_binary) ? info : to_decimal(info);
 
   return 0;
 }
@@ -182,10 +219,28 @@ bool equal_reads(rtc_data_t *read1, rtc_data_t *read2) {
 }
 
 
-// Getters
-bool get_RTC_binary() {
-  return rtc_binary;
+int set_hourly_alarm() {
+  uint8_t rb_status;
+
+  if (rtc_read(RB_ADDR, &rb_status)) {printf("Error while reading Reg B\n"); return 1;}
+  // Activate alarm interrupts
+  rb_status |= RB_AIE;
+  if (rtc_write(RB_ADDR, rb_status)) {printf("Error while writing to Reg B\n"); return 1;}
+  
+  // Set hourly alarm
+  if (rtc_write(SECS_AL_ADDR, 0)) { // Everytime seconds reach 0
+    printf("Error while writing to SECS_AL reg\n"); 
+    return 1;
+  }
+  if (rtc_write(MINS_AL_ADDR, 0)) { // Everytime minutes reach 0
+    printf("Error while writing to MINS_AL reg\n"); 
+    return 1;
+  }
+  if (rtc_write(HOURS_AL_ADDR, AL_DONTCARE)) { // Every hour
+    printf("Error while writing to HOURS_AL reg\n"); 
+    return 1;
+  }
+
+  return 0;
 }
-rtc_data_t get_current_time() {
-  return current_time;
-}
+

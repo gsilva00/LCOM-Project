@@ -11,7 +11,6 @@ struct Scoreboard{
   uint8_t *map;
   xpm_image_t img;
 };
-
 typedef struct Scoreboard scoreboard;
 
 scoreboard *create_scoreboard(xpm_map_t pic);

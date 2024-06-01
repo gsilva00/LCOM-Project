@@ -10,43 +10,48 @@
 #include "devices/kbc/i8042.h"
 #include "devices/kbc/keyboard.h"
 #include "devices/kbc/mouse.h"
-#include "devices/kbc/mouse_sm.h"
 
-#include "devices/gpu/colors_utils.h"
 #include "devices/gpu/gpu.h"
 #include "devices/gpu/gpu_macros.h"
 
+#include "devices/rtc/rtc.h"
+
+#include "devices/serial_port/uart.h"
+
 #include "menu.h"
+
 #include "objects/ball.h"
 #include "objects/button.h"
 #include "objects/cursor.h"
 #include "objects/goal.h"
-#include "objects/object_controllers/ball_controller.h"
-#include "objects/object_controllers/player_controller.h"
 #include "objects/scoreboard.h"
 #include "objects/timeboard.h"
 #include "objects/wall.h"
-#include "objects/xpm/baliza-tras-right.xpm"
-#include "objects/xpm/bola.xpm"
-#include "objects/xpm/close.xpm"
-#include "objects/xpm/close_sem.xpm"
-#include "objects/xpm/cursor.xpm"
-#include "objects/xpm/draw_menu.xpm"
-#include "objects/xpm/goal_back.xpm"
-#include "objects/xpm/goal_card.xpm"
-#include "objects/xpm/goal_front.xpm"
-#include "objects/xpm/goal_front_right.xpm"
-#include "objects/xpm/menuuu.xpm"
-#include "objects/xpm/muro.xpm"
-#include "objects/xpm/pausa_menu_90_sem_background.xpm"
-#include "objects/xpm/play.xpm"
-#include "objects/xpm/play_sem.xpm"
-#include "objects/xpm/player1win_menu.xpm"
-#include "objects/xpm/player2win_menu.xpm"
-#include "objects/xpm/scoreboard_90.xpm"
-#include "objects/xpm/timeboard_90.xpm"
-#include "objects/xpm/timereached_menu.xpm"
-#include "objects/xpm/win_menu.xpm"
+
+#include "objects/object_controllers/ball_controller.h"
+#include "objects/object_controllers/player_controller.h"
+
+#include "images/objects/baliza-tras-right.xpm"
+#include "images/objects/bola.xpm"
+#include "images/objects/cursor.xpm"
+#include "images/objects/goal_back.xpm"
+#include "images/objects/goal_front.xpm"
+#include "images/objects/goal_front_right.xpm"
+#include "images/objects/goal_card.xpm"
+#include "images/objects/scoreboard_90.xpm"
+#include "images/objects/timeboard_90.xpm"
+#include "images/backgrounds/muro.xpm"
+#include "images/buttons/play.xpm"
+#include "images/buttons/play_sem.xpm"
+#include "images/buttons/close.xpm"
+#include "images/buttons/close_sem.xpm"
+#include "images/menus/draw_menu.xpm"
+#include "images/menus/menu.xpm"
+#include "images/menus/pausa_menu_90_sem_background.xpm"
+#include "images/menus/player1win_menu.xpm"
+#include "images/menus/player2win_menu.xpm"
+#include "images/menus/timereached_menu.xpm"
+
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -357,11 +362,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
   xpm_map_t start_not_selected_map = (xpm_map_t) play_sem_xpm;
   xpm_map_t end_selected_map = (xpm_map_t) close_xpm;
   xpm_map_t end_not_selected_map = (xpm_map_t) close_sem_xpm;
-  xpm_map_t menu_xpm = (xpm_map_t) menuuu_xpm;
+  xpm_map_t menu_xpm_ = (xpm_map_t) menu_xpm;
   xpm_map_t pause_menu_xpm = (xpm_map_t) pausa_menu_90_sem_background_xpm;
   xpm_map_t player1_map0 = (xpm_map_t) personagem_parado_xpm;
   xpm_map_t player2_map0 = (xpm_map_t) personagem_2_parado_xpm;
-  // xpm_map_t win_menu_xpm = (xpm_map_t) win_menu_90_xpm;
   xpm_map_t player1_win_menu_xpm = (xpm_map_t) player1win_menu_xpm;
   xpm_map_t player2_win_menu_xpm = (xpm_map_t) player2win_menu_xpm;
   xpm_map_t windraw_menu_xpm = (xpm_map_t) draw_menu_xpm;
@@ -369,7 +373,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
   xpm_map_t goal_card_menu_xpm = (xpm_map_t) goal_card_xpm;
   xpm_image_t menu_img;
   xpm_image_t pause_menu_img;
-  // xpm_image_t win_menu_img;
   xpm_image_t player1win_menu_img;
   xpm_image_t player2win_menu_img;
   xpm_image_t draw_menu_img;
@@ -400,13 +403,20 @@ int(proj_main_loop)(int argc, char *argv[]) {
     return 1;
   }
   uint32_t mouse_int_bit = BIT(bit_no);
-  // if (rtc_subscribe_int(&bit_no)) return 1
-  // uint32_t rtc_int_bit = BIT(bit_no);
-  // Serial port subscribe
-  uint32_t serial_int_bit = BIT(bit_no);
+  if (rtc_subscribe_int(&bit_no)) {
+    printf("Error while subscribing rtc ints!\n"); 
+    return 1;
+  }
+  uint32_t rtc_int_bit = BIT(bit_no);
+  if (uart_subscribe_int(&bit_no)) {
+    printf("Error while subscribing uart ints!\n"); 
+    return 1;
+  }
+  uint32_t uart_int_bit = BIT(bit_no);
+
 
   if (game_state == STATE_GAME_START) {
-    xpm_load(menu_xpm, XPM_8_8_8, &menu_img);
+    xpm_load(menu_xpm_, XPM_8_8_8, &menu_img);
     draw_frame_start();
     draw_main_menu(menu_img, single, multi, end, cursor);
     draw_frame_end();
@@ -1018,7 +1028,14 @@ int(proj_main_loop)(int argc, char *argv[]) {
               counter_byte_packet = 0;
             }
           }
-          if (msg.m_notify.interrupts & serial_int_bit) { // subscribed mouse interrupt
+          if (msg.m_notify.interrupts & rtc_int_bit) { // subscribed mouse interrupt
+            rtc_ih();
+
+            // For debugging: Only works if struct is public
+            // rtc_data_t date_time = get_current_time();
+            // printf("Today is: %d/%d/%d, %d. Current time is %d:%d:%d\n", date_time.day, date_time.month, date_time.year, date_time.weekday, date_time.hours, date_time.minutes, date_time.seconds);
+          }
+          if (msg.m_notify.interrupts & uart_int_bit) { // subscribed mouse interrupt
           }
           break;
         default:

@@ -3,11 +3,11 @@
 
 #include <lcom/lcf.h>
 
+
 struct Cursor{
   uint16_t x, y;
   xpm_image_t img;
 };
-
 typedef struct Cursor cursor;
 
 cursor *create_cursor(xpm_map_t pic);

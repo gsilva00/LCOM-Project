@@ -24,9 +24,9 @@ player *create_player(xpm_map_t pic, int x, int y, int width, int height, int xs
 }
 
 void destroy_player(player *pl) {
-  if( pl == NULL )
+  if ( pl == NULL )
     return;
-  if( pl->map )
+  if ( pl->map )
     free(pl->map);
   free(pl);
   pl = NULL;
@@ -41,7 +41,7 @@ void destroy_player(player *pl) {
 }*/
 
 int player_get_X(player *pl) {
-  if(pl == NULL){
+  if (pl == NULL){
     return -1;
   }else{
     return pl->x;
@@ -49,7 +49,7 @@ int player_get_X(player *pl) {
 }
 
 int player_get_Y(player *pl) {
-  if(pl == NULL){
+  if (pl == NULL){
     return -1;
   }else{
     return pl->y;
@@ -81,7 +81,7 @@ int player_get_width(player *pl) {
 }
 
 int player_get_height(player *pl) {
-  if(pl == NULL){
+  if (pl == NULL){
     return -1;
   }else{
     return pl->height;
@@ -89,7 +89,7 @@ int player_get_height(player *pl) {
 }
 
 int player_get_orientation(player *pl){
-  if(pl == NULL) {
+  if (pl == NULL) {
     return -1;
   }else{
     return pl->orientation;
@@ -97,7 +97,7 @@ int player_get_orientation(player *pl){
 }
 
 int player_get_power(player *pl){
-  if(pl == NULL){
+  if (pl == NULL){
     return -1;
   }else{
     return pl->power;
@@ -105,7 +105,7 @@ int player_get_power(player *pl){
 }
 
 int player_get_header(player *pl){
-  if(pl == NULL){
+  if (pl == NULL){
     return -1;
   }else{
     return pl->header;

@@ -3,7 +3,7 @@
 ball *create_ball(xpm_map_t pic, int x, int y, int width, int height, int xspeed, int yspeed, uint32_t time_in_mov) {
   //allocate space for the "object"
   ball *bl = (ball *) malloc ( sizeof(ball));
-  if(bl == NULL){
+  if (bl == NULL){
     return NULL;
   }
   xpm_image_t img;
@@ -26,9 +26,9 @@ ball *create_ball(xpm_map_t pic, int x, int y, int width, int height, int xspeed
 }
 
 void destroy_ball(ball *bl) {
-  if(bl == NULL)
+  if (bl == NULL)
     return;
-  if(bl->map )
+  if (bl->map)
     free(bl->map);
   free(bl);
   bl = NULL;
@@ -50,7 +50,7 @@ int ball_walls_collision(ball *bl, vbe_mode_info_t vmi){
     bl->xspeed = -((bl->xspeed/10)*9); //xspeed reduces by 10% add changes direction
     bl->yspeed = (bl->yspeed/10)*9; //yspeed reduces by 10%
     return 0; 
-  }else if(bl->y <= 0 || bl->y >= vmi.YResolution){ //hitting floor or ceiling
+  }else if (bl->y <= 0 || bl->y >= vmi.YResolution){ //hitting floor or ceiling
     bl->xspeed = (bl->xspeed/10)*9; //xspeed reduces by 10%
     bl->yspeed = -((bl->yspeed/10)*9); //yspeed reduces by 10% and changes direction
     return 0;
@@ -172,8 +172,8 @@ int ball_player_collision(ball *bl, player *pl){
           }else{
             return 1; //ball impossible to be hit by that player at that angle
           }
-        }else if(bl->xspeed == 0){
-          if(bl->yspeed < 0){
+        }else if (bl->xspeed == 0){
+          if (bl->yspeed < 0){
             bl->xspeed = (bl->xspeed*9)/10;
             bl->yspeed *= -(bl->yspeed*9)/10;
             return 0;
@@ -181,7 +181,7 @@ int ball_player_collision(ball *bl, player *pl){
             return 1; //ball impossible to be hit by that player at that angle
           }
         }else{
-          if(bl->yspeed < 0){
+          if (bl->yspeed < 0){
             bl->xspeed = (bl->xspeed*9)/10;
             bl->yspeed = -(bl->yspeed*9)/10;
             return 0;
@@ -234,12 +234,12 @@ int ball_player_collision(ball *bl, player *pl){
           }else{
             return 1; //ball impossible to be hit by that player at that angle
           }
-        }else if(bl->xspeed == 0){
-          if(bl->yspeed < 0){
+        }else if (bl->xspeed == 0){
+          if (bl->yspeed < 0){
             bl->xspeed = (bl->xspeed*9)/10;
             bl->yspeed *= -(bl->yspeed*9)/10;
             return 0;
-          }else if(bl->yspeed == 0){
+          }else if (bl->yspeed == 0){
             bl->xspeed = 9/10;
             bl->yspeed = 9/10;
             return 0;
@@ -247,7 +247,7 @@ int ball_player_collision(ball *bl, player *pl){
             return 1; //ball impossible to be hit by that player at that angle
           }
         }else{
-          if(bl->yspeed < 0){
+          if (bl->yspeed < 0){
             bl->xspeed = -(bl->xspeed*9)/10;
             bl->yspeed = (bl->yspeed*9)/10;
             return 0;
@@ -378,8 +378,8 @@ int ball_player_collision(ball *bl, player *pl){
           }else{
             return 1; //ball impossible to be hit by that player at that angle
           }
-        }else if(bl->xspeed == 0){
-          if(bl->yspeed < 0){
+        }else if (bl->xspeed == 0){
+          if (bl->yspeed < 0){
             bl->xspeed = (bl->xspeed*9)/10;
             bl->yspeed *= -(bl->yspeed*9)/10;
             return 0;
@@ -387,7 +387,7 @@ int ball_player_collision(ball *bl, player *pl){
             return 1; //ball impossible to be hit by that player at that angle
           }
         }else{
-          if(bl->yspeed < 0){
+          if (bl->yspeed < 0){
             bl->xspeed = (bl->xspeed*9)/10;
             bl->yspeed = -(bl->yspeed*9)/10;
             return 0;
@@ -438,12 +438,12 @@ int ball_player_collision(ball *bl, player *pl){
           }else{
             return 1; //ball impossible to be hit by that player at that angle
           }
-        }else if(bl->xspeed == 0){
-          if(bl->yspeed < 0){
+        }else if (bl->xspeed == 0){
+          if (bl->yspeed < 0){
             bl->xspeed = (bl->xspeed*9)/10;
             bl->yspeed *= -(bl->yspeed*9)/10;
             return 0;
-          }else if(bl->yspeed == 0){
+          }else if (bl->yspeed == 0){
             bl->xspeed = 9/10;
             bl->yspeed = 9/10;
             return 0;
@@ -451,7 +451,7 @@ int ball_player_collision(ball *bl, player *pl){
             return 1; //ball impossible to be hit by that player at that angle
           }
         }else{
-          if(bl->yspeed < 0){
+          if (bl->yspeed < 0){
             bl->xspeed = -(bl->xspeed*9)/10;
             bl->yspeed = (bl->yspeed*9)/10;
             return 0;

@@ -2,7 +2,9 @@
 #define TIMEBOARD_H
 
 #include <lcom/lcf.h>
-#include <devices/timer/aux_timer.h>
+
+#include "../devices/timer/aux_timer.h"
+
 
 struct Timeboard{
   uint16_t x, y;
@@ -11,7 +13,6 @@ struct Timeboard{
   uint8_t *map;
   xpm_image_t img;
 };
-
 typedef struct Timeboard timeboard;
 
 timeboard *create_timeboard(xpm_map_t pic);

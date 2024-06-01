@@ -9,7 +9,6 @@ struct Goal{
   uint8_t *map;
   xpm_image_t img;
 };
-
 typedef struct Goal goal;
 
 goal *create_goal(xpm_map_t pic, bool orientation);

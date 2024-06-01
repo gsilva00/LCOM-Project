@@ -3,6 +3,7 @@
 
 #include <lcom/lcf.h>
 
+
 struct Button{
   int x, y;
   int width, height;
@@ -10,8 +11,8 @@ struct Button{
   bool selected;
   xpm_image_t img;
 };
-
 typedef struct Button button;
+
 button *create_button(xpm_map_t pic, int x, int y, bool selected);
 void destroy_button(button *bl);
 void set_selected(button *bt, bool selected);
