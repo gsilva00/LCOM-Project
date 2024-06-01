@@ -3,17 +3,16 @@
 
 #include <lcom/lcf.h>
 
-struct Cursor{
+
+typedef struct {
   uint16_t x, y;
   xpm_image_t img;
-};
+} Cursor;
 
-typedef struct Cursor cursor;
+Cursor *create_cursor(xpm_map_t pic);
 
-cursor *create_cursor(xpm_map_t pic);
+void destroy_cursor(Cursor *bl);
 
-void destroy_cursor(cursor *bl);
-
-void set_coordinates(cursor *cr, uint16_t x, uint16_t y, bool negative_x , bool negative_y);
+void set_coordinates(Cursor *cr, uint16_t x, uint16_t y, bool negative_x , bool negative_y);
 
 #endif

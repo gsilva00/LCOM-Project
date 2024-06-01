@@ -1,10 +1,7 @@
-#include <lcom/lcf.h>
-
-#include <stdint.h>
-
 #include "keyboard.h"
 #include "kbc.h"
 #include "i8042.h"
+
 
 static int kbd_hookId = KBD_IRQ;
 static uint8_t scancode;
@@ -20,8 +17,9 @@ int kbd_unsubscribe_int() {
 }
 
 void (kbc_ih)() {
-  // Might need message to detect error
-  kbc_read_outbuf(OUTBUF_REG, &scancode, false);
+  if (kbc_read_outbuf(OUTBUF_REG, &scancode, false)) {
+    printf("Error while handling keyboard interrupt!\n");
+  }
 }
 
 int reset_keyboard() {

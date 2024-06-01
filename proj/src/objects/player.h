@@ -3,7 +3,7 @@
 
 #include <lcom/lcf.h>
 
-struct Player{
+typedef struct {
   int x, y;
   int width, height;
   int xspeed, yspeed;
@@ -12,38 +12,36 @@ struct Player{
   uint8_t *map;
   bool orientation; //bool that tells which direction is facing, if true he is facing the right side of the screen, if false he is facing the right side of the screen
   xpm_image_t img;
-};
+} Player;
 
-typedef struct Player player;
+Player *create_player(xpm_map_t pic, int x, int y, int width, int height, int xspeed, int yspeed, uint32_t time_in_mov);
 
-player *create_player(xpm_map_t pic, int x, int y, int width, int height, int xspeed, int yspeed, uint32_t time_in_mov);
-
-void destroy_player(player *pl);
+void destroy_player(Player *pl);
 
 //int move_player(player *pl);
 
-int player_get_X(player *pl);
+int player_get_X(Player *pl);
 
-int player_get_Y(player *pl);
+int player_get_Y(Player *pl);
 
-int player_get_xspeed(player *pl);
+int player_get_xspeed(Player *pl);
 
-int player_get_yspeed(player *pl);
+int player_get_yspeed(Player *pl);
 
-int player_get_width(player *pl);
+int player_get_width(Player *pl);
 
-int player_get_height(player *pl);
+int player_get_height(Player *pl);
 
-int player_get_orientation(player *pl);
+int player_get_orientation(Player *pl);
 
-int player_get_power(player *pl);
+int player_get_power(Player *pl);
 
-int player_get_header(player *pl);
+int player_get_header(Player *pl);
 
-void move_player1_to_center(player *pl);
+void move_player1_to_center(Player *pl);
 
-void move_player2_to_center(player *pl);
+void move_player2_to_center(Player *pl);
 
-void player_set_image(player *pl, xpm_map_t pic);
+void player_set_image(Player *pl, xpm_map_t pic);
 
 #endif

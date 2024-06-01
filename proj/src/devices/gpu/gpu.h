@@ -2,18 +2,20 @@
 #define GPU_H
 
 #include <lcom/lcf.h>
+
 #include <stdint.h>
 
-#include "objects/xpm/0.xpm"
-#include "objects/xpm/1.xpm"
-#include "objects/xpm/2.xpm"
-#include "objects/xpm/3.xpm"
-#include "objects/xpm/4.xpm"
-#include "objects/xpm/5.xpm"
-#include "objects/xpm/6.xpm"
-#include "objects/xpm/7.xpm"
-#include "objects/xpm/8.xpm"
-#include "objects/xpm/9.xpm"
+#include "../../images/numbers/0.xpm"
+#include "../../images/numbers/1.xpm"
+#include "../../images/numbers/2.xpm"
+#include "../../images/numbers/3.xpm"
+#include "../../images/numbers/4.xpm"
+#include "../../images/numbers/5.xpm"
+#include "../../images/numbers/6.xpm"
+#include "../../images/numbers/7.xpm"
+#include "../../images/numbers/8.xpm"
+#include "../../images/numbers/9.xpm"
+
 
 /**
  * @brief Changes the video mode to the specified mode.
@@ -24,14 +26,14 @@
 int change_video_mode(uint16_t mode);
 
 /**
- * Creates a frame buffer for the specified VBE mode.
+ * @brief Creates a frame buffer for the specified VBE mode.
  *
  * @param mode VBE mode to set.
  * @return 0 on success, non-zero otherwise.
  */
 int create_frame_buffer(uint16_t mode);
 
-int limpa_buffer();
+int free_buffers();
 
 
 int draw_pixel(uint16_t x, uint16_t y, uint32_t color, bool ignore);

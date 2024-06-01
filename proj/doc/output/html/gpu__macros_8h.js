@@ -1,0 +1,25 @@
+var gpu__macros_8h =
+[
+    [ "AH_CALL_FAIL", "group___failed_call.html#gae5e1a11604d6d00b8fa09491bb4e2e3f", null ],
+    [ "Ah_FUNC_INV_FAIL", "group___failed_call.html#ga7384877ac24c6e4dedbade64bdd7e0c7", null ],
+    [ "Ah_FUNC_SUP_FAIL", "group___failed_call.html#ga7b66d754071d15b3ad7cdbe0fbd52873", null ],
+    [ "BIOS_VIDEO_MODE", "group___b_i_o_s_funcs.html#gabb44a77dfe682aab6d88afd3c20d2119", null ],
+    [ "DIRECT_COLOR", "group___color_modes.html#gaa1736cd349cf2b4f9dbe368c2a13e5be", null ],
+    [ "INDEXED", "group___color_modes.html#gae3d2e350b27d1f320bd01a528e795706", null ],
+    [ "INT_10", "group___i_n_txx.html#ga6bf63122d6c92ab0e8ba69c88cc1109d", null ],
+    [ "INT_11", "group___i_n_txx.html#ga133fe707d45ac0b45019346acac572f4", null ],
+    [ "INT_12", "group___i_n_txx.html#ga474732bbd6e6c485541a39fb44b88325", null ],
+    [ "INT_16", "group___i_n_txx.html#ga8fb3b38604ddf998bbd0cdda087be9fb", null ],
+    [ "INVOKE_VBE_FUNC", "group___g_p_u_macros.html#ga1f168a40ed2b09b3a91ff643c91dbf77", null ],
+    [ "MINIX_TEXT_MODE", "group___b_i_o_s_funcs.html#ga67c303c315b8cd35acf0e6e425e02027", null ],
+    [ "PRESERVE_DISP_MEM", "group___v_b_e_functions.html#ga21e586ce26c14a8b36c7e3800fa9e330", null ],
+    [ "SET_LINEAR_FB", "group___v_b_e_functions.html#ga9acb445e46a9b7c6e0741215252e6adc", null ],
+    [ "SET_VBE_MODE", "group___v_b_e_functions.html#gab32156e1d72cb92b120bb16883c87eea", null ],
+    [ "VBE_CONTROLLER_INFO", "group___v_b_e_functions.html#gab3ae6cab04af0d37663adf157287f987", null ],
+    [ "VBE_MODE_105", "group___v_b_e_modes.html#gaefc0bcefa44b288191e6568336f31251", null ],
+    [ "VBE_MODE_110", "group___v_b_e_modes.html#gaa4e12f19b9d2a3b343272a5fcf51cfbf", null ],
+    [ "VBE_MODE_115", "group___v_b_e_modes.html#ga7e925d45a720f0e3780cdcd6142503ab", null ],
+    [ "VBE_MODE_11A", "group___v_b_e_modes.html#gaa1af464e680d71cae046bb85727d4094", null ],
+    [ "VBE_MODE_14C", "group___v_b_e_modes.html#gabdae92fdefb7acdf858a8b298b86e003", null ],
+    [ "VBE_MODE_INFO", "group___v_b_e_functions.html#ga2ecbf8f92f9322fedec91461747c4843", null ]
+];

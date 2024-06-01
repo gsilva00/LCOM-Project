@@ -3,29 +3,28 @@
 
 #include <lcom/lcf.h>
 
-struct Goal{
+
+typedef struct {
   int x,y;
   bool orientation;
   uint8_t *map;
   xpm_image_t img;
-};
+} Goal;
 
-typedef struct Goal goal;
+Goal *create_goal(xpm_map_t pic, bool orientation);
 
-goal *create_goal(xpm_map_t pic, bool orientation);
+void destroy_goal(Goal *pl);
 
-void destroy_goal(goal *pl);
+int move_goal(Goal *pl);
 
-int move_goal(goal *pl);
+int goal_get_X(Goal *gl);
 
-int goal_get_X(goal *gl);
+int goal_get_Y(Goal *gl);
 
-int goal_get_Y(goal *gl);
+int goal_get_width(Goal *gl);
 
-int goal_get_width(goal *gl);
+int goal_get_height(Goal *gl);
 
-int goal_get_height(goal *gl);
-
-int goal_get_orientation(goal *gl);
+int goal_get_orientation(Goal *gl);
 
 #endif

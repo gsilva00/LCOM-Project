@@ -3,23 +3,21 @@
 
 #include <lcom/lcf.h>
 
-struct Scoreboard{
+typedef struct {
   uint16_t x, y;
   uint8_t points1;
   uint8_t points2;
   xpm_image_t points1_img;
   uint8_t *map;
   xpm_image_t img;
-};
+} Scoreboard;
 
-typedef struct Scoreboard scoreboard;
+Scoreboard *create_scoreboard(xpm_map_t pic);
 
-scoreboard *create_scoreboard(xpm_map_t pic);
+void destroy_scoreboard(Scoreboard *sc);
 
-void destroy_scoreboard(scoreboard *sc);
+void add_points_1(Scoreboard *sc);
 
-void add_points_1(scoreboard *sc);
-
-void add_points_2(scoreboard *sc);
+void add_points_2(Scoreboard *sc);
 
 #endif

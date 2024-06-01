@@ -3,19 +3,19 @@
 
 #include <lcom/lcf.h>
 
-struct Button{
+
+typedef struct {
   int x, y;
   int width, height;
   uint8_t *map;
   bool selected;
   xpm_image_t img;
-};
+} Button;
 
-typedef struct Button button;
-button *create_button(xpm_map_t pic, int x, int y, bool selected);
-void destroy_button(button *bl);
-void set_selected(button *bt, bool selected);
-bool get_selected(button *bt);
-void set_image(button *bt, xpm_map_t map);
+Button *create_button(xpm_map_t pic, int x, int y, bool selected);
+void destroy_button(Button *bl);
+void set_selected(Button *bt, bool selected);
+bool get_selected(Button *bt);
+void set_image(Button *bt, xpm_map_t map);
 
 #endif
