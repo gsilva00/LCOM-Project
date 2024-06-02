@@ -43,7 +43,7 @@ void initialize_player_values(Player *player) {
   player_yspeed = player->yspeed;
   player_xspeed = player->xspeed;
   chuta = false;
-  printf("player_y_original: %d\n", player_y_original);
+  //printf("player_y_original: %d\n", player_y_original);
 }
 
 void prepare_for_player_jump(Player *player) {

@@ -9,21 +9,21 @@ static queue_t *receive_q;
 static uint8_t minix_IER;
 
 int configure_uart() {
-  uint8_t new_ints;
-  if (util_sys_inb(COM1_PORT + UART_IER, &new_ints)) {
+  uint8_t og_config;
+  if (util_sys_inb(COM1_PORT + UART_IER, &og_config)) {
     printf("Error while reading initial IER state!\n");
     return 1;
   }
 
-  // Store MINIX configuration for resetting later
-  minix_IER = new_ints;
+  // Store MINIX IER configuration for resetting later
+  minix_IER = og_config;
 
-  // Ignore interrupts configured by MINIX (LSbit)
-  new_ints &= 0xF0;
+  // Ignore interrupts configured by MINIX (4 LSbits)
+  uint8_t new_config = og_config & 0xF0;
 
   // Set interrupts when there's data for reading
-  new_ints |= DATA_RDY_INT;
-  if (sys_outb(COM1_PORT + UART_IER, new_ints)) {
+  new_config |= DATA_RDY_INT;
+  if (sys_outb(COM1_PORT + UART_IER, new_config)) {
     printf("Error while enabling necessary ints!\n");
     return 1;
   }
@@ -56,6 +56,7 @@ int uart_unsubscribe_int() {
 }
 
 void uart_ih() {
+  printf("There's interrupt\n");
   // Store value from interrupt identification register
   uint8_t iir;
   // Store the status
@@ -107,6 +108,8 @@ int receive_char(uint8_t st) {
     return 1;
   }
 
+  printf("The character received is: 0x%08x\n", chr);
+
   if (put_queue(receive_q, chr)) {
     printf("Error while pushing character to queue\n");
     return 1;
@@ -116,6 +119,8 @@ int receive_char(uint8_t st) {
 }
 
 int send_char(uint8_t chr) {
+  printf("The character being sent is: 0x%08x\n", chr);
+
   if (sys_outb(COM1_PORT + UART_THR, chr)) {
     printf("Error while writing to THR!\n");
     return 1;

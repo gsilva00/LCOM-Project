@@ -15,6 +15,7 @@
 #include "devices/gpu/gpu_macros.h"
 #include "devices/rtc/rtc.h"
 #include "devices/serial_port/uart.h"
+#include "devices/serial_port/uart_macros.h"
 
 #include "objects/ball.h"
 #include "objects/button.h"
@@ -42,11 +43,12 @@
 #include "images/buttons/play_sem.xpm"
 #include "images/buttons/close.xpm"
 #include "images/buttons/close_sem.xpm"
-#include "images/menus/draw_menu.xpm"
 #include "images/menus/menu.xpm"
+#include "images/menus/connection_menu.xpm"
 #include "images/menus/pausa_menu_90_sem_background.xpm"
 #include "images/menus/player1win_menu.xpm"
 #include "images/menus/player2win_menu.xpm"
+#include "images/menus/draw_menu.xpm"
 #include "images/menus/timereached_menu.xpm"
 
 
@@ -114,6 +116,7 @@ static xpm_map_t start_not_selected_map = (xpm_map_t) play_sem_xpm;
 static xpm_map_t end_selected_map = (xpm_map_t) close_xpm;
 static xpm_map_t end_not_selected_map = (xpm_map_t) close_sem_xpm;
 static xpm_map_t menu_map = (xpm_map_t) menu_xpm;
+static xpm_map_t connection_menu_map = (xpm_map_t) connection_menu_xpm;
 static xpm_map_t pause_menu_map = (xpm_map_t) pausa_menu_90_sem_background_xpm;
 static xpm_map_t player1win_menu_map = (xpm_map_t) player1win_menu_xpm;
 static xpm_map_t player2win_menu_map = (xpm_map_t) player2win_menu_xpm;
@@ -126,6 +129,7 @@ static xpm_image_t goal_img;
 static xpm_image_t goal_right_img;
 static xpm_image_t sky_img;
 static xpm_image_t menu_img;
+static xpm_image_t connection_menu_img;
 static xpm_image_t pause_menu_img;
 static xpm_image_t player1win_menu_img;
 static xpm_image_t player2win_menu_img;
@@ -340,7 +344,16 @@ int(proj_main_loop)(int argc, char *argv[]) {
     printf("Error while configuring RTC!\n");
     return 1;
   }
-  // uint8_t sync_tries = 60; // 60 frames of tries to sync (2 seconds)
+
+  // Seed that changes every second and adds additional randomness with process id
+  srandom(time(NULL) ^ getpid());
+  int sync_frames = UART_SYNC_MAX_FRAMES; // no of frames left to establish UART communication  (20 seconds)
+  int untie_frames = random() % sync_frames; // To "untie" the machines if they start the synchronization at the same time (after untie_frames it will send the ACK)
+  printf("Untie frames: %d!\n", untie_frames);
+
+  bool connected = false;
+  bool initiated = false;
+  bool is_player1 = false; // Know which player after synchronization
   if (configure_uart()) {
     printf("Error while configuring UART!\n");
     return 1;
@@ -351,6 +364,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
   xpm_load(goal_right_front_map, XPM_8_8_8, &goal_right_img);
   xpm_load((xpm_map_t) sky_10am_xpm, XPM_8_8_8, &sky_img);
   xpm_load(menu_map, XPM_8_8_8, &menu_img);
+  xpm_load(connection_menu_map, XPM_8_8_8, &connection_menu_img);
   xpm_load(pause_menu_map, XPM_8_8_8, &pause_menu_img);
   xpm_load(player1win_menu_map, XPM_8_8_8, &player1win_menu_img);
   xpm_load(player2win_menu_map, XPM_8_8_8, &player2win_menu_img);
@@ -432,6 +446,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
   bool touching1 = false, touching2 = false, kicking = false, kicking2 = false;
   bool done = false;
 
+  uint8_t prev_scancode = 0x00;
   uint8_t mouse_big_packet[3];
   uint8_t counter_byte_packet = 0;
   while (!done) {
@@ -446,7 +461,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
           if (msg.m_notify.interrupts & timer_int_bit) {
             timer_int_handler();
 
-            if (get_timer_intCounter() % 2 == 0) { // 30 fps
+            if (get_timer_intCounter() % 2 == 0) { // 30 FPS
               if (game_state == MENU) {
                 if (menu_state == HOVER_SINGLEPLAYER && single->selected == false) {
                   single->selected = true;
@@ -490,20 +505,44 @@ int(proj_main_loop)(int argc, char *argv[]) {
               }
               else if (game_state == PREPARE_MULTIPLAYER) {
                 // If there's nothing in the queue - other machine didn't send anything, it will remain at 0xFF
-                // uint8_t chr = 0xFF;
-                // get_queue(get_receive_q(), &chr);
+                uint8_t chr = 0xFF;
+                get_queue(get_receive_q(), &chr);
 
-                // if (sync_tries) {
-                //   if (chr == 0xFF) {
-                //     sync_tries--;
+                if (sync_frames && !connected) {
+                  printf("Number of tries left: %d\n", sync_frames);
+                  if (chr == 0xFF) { // Didn't receive anything
+                    send_char(UART_SYNC); // Synchronization code
+                    initiated = true;
+                    sync_frames--;
+                  }
+                  else if (chr == UART_ACK) { // Received ACK
+                    sync_frames = 0;
+                    is_player1 = true;
+                    connected = true;
+                    printf("Connection established!\n");
+                  }
+                  else if (chr == UART_SYNC) {
+                    if (!initiated || (initiated && untie_frames == (UART_SYNC_MAX_FRAMES - sync_frames))) {
+                      // Received synchronization code (but didn't send one - both machines didnt send at the same time) OR
+                      // Both sent at the same time - untie them by the first one to enter here becoming passive
+                      send_char(UART_ACK);
+                      sync_frames = 0;
+                      is_player1 = false;
+                      connected = true;
+                      printf("Connection established!\n");
+                    }
+                    else {
+                      sync_frames--;
+                    }
+                  }
 
-                //     send_char(0x00);
-                //   }
-                //   else if (chr == ) {
-                    
-                //   }
-                // }
-                // else if (sync_tries == -1) { // Connection was established successfully
+                  // Waiting menu
+                  cursor_active = false;
+                  prep_next_frame();
+                  draw_menus(connection_menu_img, NULL, NULL, NULL, cursor, cursor_active);
+                  end_next_frame();
+                }
+                else if (connected) { // Connection was established successfully
                   single->selected = false;
                   multi->selected = true;
                   end->selected = false;
@@ -512,13 +551,21 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   draw_game(true, true);
                   game_state = MULTIPLAYER;
                   cursor_active = false;
-                // }
-                // else { // Connection can't be established after all the tries, go back to menu
-                //   prep_next_frame();
-                //   draw_menus(menu_img, single, multi, end, cursor, cursor_active);
-                //   end_next_frame();
-                //   game_state = MENU;
-                // }
+                }
+                else { // Connection can't be established after all the tries, go back to menu
+                  printf("Connection failed!\n");
+
+                  // Reset to try again
+                  connected = false;
+                  initiated = false;
+                  is_player1 = false;
+                  sync_frames = UART_SYNC_MAX_FRAMES;
+
+                  prep_next_frame();
+                  draw_menus(menu_img, single, multi, end, cursor, cursor_active);
+                  end_next_frame();
+                  game_state = MENU;
+                }
               }
               else if (game_state == PREPARE_PAUSE) {
                 game_state = PAUSE;
@@ -591,6 +638,12 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 check_cursor_position(cursor, cursor_active, NULL, go_back, NULL, game_state, NULL, &menu_pause_state);
                 end_next_frame();
+
+                // Reset for another connection
+                connected = false;
+                initiated = false;
+                is_player1 = false;
+                sync_frames = UART_SYNC_MAX_FRAMES;
               }
               else if (game_state == TIME_LIMIT) {
                 go_back->selected = true;
@@ -798,27 +851,41 @@ int(proj_main_loop)(int argc, char *argv[]) {
             kbc_ih();
 
             uint8_t scancode = get_scancode();
-
             if (scancode == SCANCODE_E0) {
               continue;
             }
 
-            /* For debugging
-            bool make = !(scancode & BREAKCODE);
-            if (kbd_print_scancode(make, 1, &scancode)) {
-              return 1;
+            // Communicate the player moves
+            bool diff = (scancode != prev_scancode);
+            if (diff) prev_scancode = scancode;
+
+            if (game_state == MULTIPLAYER && diff) {
+              if (scancode == MAKECODE_UP || scancode == MAKECODE_LEFT || scancode == MAKECODE_DOWN || scancode == MAKECODE_RIGHT || scancode == BREAKCODE_LEFT || scancode == BREAKCODE_RIGHT) {
+                send_char(scancode);
+              }
             }
-            */
 
 
-            // PLAYER 1 CONTROLS
+            // PLAYER CONTROLS
             cursor_active = false;
             if (scancode == MAKECODE_UP) {
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
+              // Game controls
+              if (game_state == SINGLEPLAYER || (game_state == MULTIPLAYER && is_player1)) { 
+                // Got assigned to palyer on left
                 if (player1_state_jump == PLAYER_JUMP_NONE) {
                   player1_state_jump = START_PLAYER_JUMP;
                 }
               }
+              else if (game_state == MULTIPLAYER && !is_player1) { 
+                // Got assigned to player on right
+                if (game_state == MULTIPLAYER) {
+                  if (player2_state_jump == PLAYER_JUMP_NONE) {
+                    player2_state_jump = START_PLAYER_JUMP;
+                  }
+                }
+              }
+
+              // Menus controls
               else if (game_state == MENU) {
                 if (menu_state == HOVER_SINGLEPLAYER) {
                   menu_state = HOVER_EXIT;
@@ -837,18 +904,14 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   menu_pause_state = HOVER_RESUME;
                 }
               }
-              else if (game_state == PAUSE) {
-                if (menu_pause_state == HOVER_RESUME) {
-                  menu_pause_state = HOVER_GO_BACK;
-                }
-                else if (menu_pause_state == HOVER_GO_BACK) {
-                  menu_pause_state = HOVER_RESUME;
-                }
+              else if (game_state == MULTIPLAYER_END) {
+                menu_pause_state = HOVER_GO_BACK;
               }
             }
 
             if (scancode == MAKECODE_LEFT) {
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
+              // Game controls
+              if (game_state == SINGLEPLAYER || (game_state == MULTIPLAYER && is_player1)) {
                 if (player1_state_move == PLAYER_MOVE_NONE) {
                   if (player1_state_jump != PLAYER_JUMP_NONE) {
                     player1_state_move = PLAYER_MOVE_LEFT;
@@ -858,77 +921,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   }
                 }
               }
-            }
-
-            if (scancode == MAKECODE_DOWN) {
-              if (game_state == MENU) {
-                if (menu_state == HOVER_SINGLEPLAYER) {
-                  menu_state = HOVER_MULTIPLAYER;
-                }
-                else if (menu_state == HOVER_MULTIPLAYER) {
-                  menu_state = HOVER_EXIT;
-                }
-                else if (menu_state == HOVER_EXIT) {
-                  menu_state = HOVER_SINGLEPLAYER;
-                }
-              }
-              else if (game_state == PAUSE) {
-                if (menu_pause_state == HOVER_RESUME) {
-                  menu_pause_state = HOVER_GO_BACK;
-                }
-                else if (menu_pause_state == HOVER_GO_BACK) {
-                  menu_pause_state = HOVER_RESUME;
-                }
-              }
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
-                if (player1_state_kick == PLAYER_KICK_NONE) {
-                  player1_state_kick = PLAYER_KICK_START;
-                }
-                else {
-                  player1_state_kick = AFTER_PLAYER_KICK;
-                  player1_state_kick_temporary = PLAYER_KICK_START;
-                }
-                kicking = true;
-              }
-            }
-
-            if (scancode == MAKECODE_RIGHT) {
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
-                if (player1_state_move != PLAYER_MOVE_NONE) {
-                  //player_state_move = STATE_PLAYER_MOVE_END;
-                  //player_state_move_temporary = PLAYER_MOVE_RIGHT_START;
-                } else {
-                  if (player1_state_jump != PLAYER_JUMP_NONE) {
-                     player1_state_move = PLAYER_MOVE_RIGHT;
-                  } else {
-                    player1_state_move = PLAYER_MOVE_RIGHT_START;
-                  }
-                }
-              }
-            }
-
-            if (scancode == BREAKCODE_LEFT) {
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
-                player1_state_move = PLAYER_MOVE_LEFT_END;
-              }
-            }
-
-            if (scancode == BREAKCODE_RIGHT) {
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
-                player1_state_move = PLAYER_MOVE_RIGHT_END;
-              }
-            }
-
-            // PLAYER 2 CONTROLS
-            if (scancode == MAKECODE_W) {
-              if (game_state == MULTIPLAYER) {
-                if (player2_state_jump == PLAYER_JUMP_NONE) {
-                  player2_state_jump = START_PLAYER_JUMP;
-                }
-              }
-            }
-            if (scancode == MAKECODE_A) {
-              if (game_state == MULTIPLAYER) {
+              else if (game_state == MULTIPLAYER && !is_player1) {
                 if (player2_state_move == PLAYER_MOVE_NONE) {
                   if (player2_state_jump != PLAYER_JUMP_NONE) {
                     player2_state_move = PLAYER_MOVE_LEFT;
@@ -947,8 +940,20 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
               }
             }
-            if (scancode == MAKECODE_S) {
-              if (game_state == MULTIPLAYER) {
+
+            if (scancode == MAKECODE_DOWN) {
+              // Game controls
+              if (game_state == SINGLEPLAYER || (game_state == MULTIPLAYER && is_player1)) {
+                if (player1_state_kick == PLAYER_KICK_NONE) {
+                  player1_state_kick = PLAYER_KICK_START;
+                }
+                else {
+                  player1_state_kick = AFTER_PLAYER_KICK;
+                  player1_state_kick_temporary = PLAYER_KICK_START;
+                }
+                kicking = true;
+              }
+              else if (game_state == MULTIPLAYER && !is_player1) {
                 if (player2_state_kick == PLAYER_KICK_NONE) {
                   player2_state_kick = PLAYER_KICK_START;
                 }
@@ -958,9 +963,44 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 kicking2 = true;
               }
+
+              // Menus controls
+              else if (game_state == MENU) {
+                if (menu_state == HOVER_SINGLEPLAYER) {
+                  menu_state = HOVER_MULTIPLAYER;
+                }
+                else if (menu_state == HOVER_MULTIPLAYER) {
+                  menu_state = HOVER_EXIT;
+                }
+                else if (menu_state == HOVER_EXIT) {
+                  menu_state = HOVER_SINGLEPLAYER;
+                }
+              }
+              else if (game_state == PAUSE) {
+                if (menu_pause_state == HOVER_RESUME) {
+                  menu_pause_state = HOVER_GO_BACK;
+                }
+                else if (menu_pause_state == HOVER_GO_BACK) {
+                  menu_pause_state = HOVER_RESUME;
+                }
+              }
+              else if (game_state == MULTIPLAYER_END) {
+                menu_pause_state = HOVER_GO_BACK;
+              }
             }
-            if (scancode == MAKECODE_D) {
-              if (game_state == MULTIPLAYER) {
+
+            if (scancode == MAKECODE_RIGHT) {
+              // Game controls
+              if (game_state == SINGLEPLAYER || (game_state == MULTIPLAYER && is_player1)) {
+                if (player1_state_move == PLAYER_MOVE_NONE) {
+                  if (player1_state_jump != PLAYER_JUMP_NONE) {
+                    player1_state_move = PLAYER_MOVE_RIGHT;
+                  } else {
+                    player1_state_move = PLAYER_MOVE_RIGHT_START;
+                  }
+                }
+              }
+              else if (game_state == MULTIPLAYER && !is_player1) {
                 if (player2_state_move == PLAYER_MOVE_NONE) {
                   if (player2_state_jump != PLAYER_JUMP_NONE) {
                     player2_state_move = PLAYER_MOVE_RIGHT;
@@ -980,24 +1020,31 @@ int(proj_main_loop)(int argc, char *argv[]) {
               }
             }
 
-            if (scancode == BREAKCODE_A) {
-              if (game_state == MULTIPLAYER) {
+            if (scancode == BREAKCODE_LEFT) {
+              if (game_state == SINGLEPLAYER || (game_state == MULTIPLAYER && is_player1)) {
+                player1_state_move = PLAYER_MOVE_LEFT_END;
+              }
+              else if (game_state == MULTIPLAYER && !is_player1) {
                 player2_state_move = PLAYER_MOVE_LEFT_END;
               }
             }
 
-            if (scancode == BREAKCODE_D) {
-              if (game_state == MULTIPLAYER) {
+            if (scancode == BREAKCODE_RIGHT) {
+              if (game_state == SINGLEPLAYER || (game_state == MULTIPLAYER && is_player1)) {
+                player1_state_move = PLAYER_MOVE_RIGHT_END;
+              }
+              else if (game_state == MULTIPLAYER && !is_player1) {
                 player2_state_move = PLAYER_MOVE_RIGHT_END;
               }
             }
+
 
             if (scancode == MAKECODE_ENTER) {
               enter_new_state(&game_state, &menu_state, &menu_pause_state, &done, &cursor_active);
             }
 
             if (scancode == BREAKCODE_ESC) {
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
+              if (game_state == SINGLEPLAYER) { // Removed pause from multiplayer
                 if (game_state != MULTIPLAYER_END && game_state != TIME_LIMIT && bola->stop == false && game_state != GOAL) {
                   game_state = PREPARE_PAUSE;
                 }
@@ -1078,6 +1125,129 @@ int(proj_main_loop)(int argc, char *argv[]) {
 
           if (msg.m_notify.interrupts & uart_int_bit) { 
             uart_ih();
+
+            if (connected) {
+              printf("Entered drawing the other!\n");
+              uint8_t uart_scancode;
+              get_queue(get_receive_q(), &uart_scancode);
+            
+              if (uart_scancode == MAKECODE_UP) {
+                if (is_player1) { // If you're player1, data from UART is player2
+                  if (player2_state_jump == PLAYER_JUMP_NONE) {
+                    player2_state_jump = START_PLAYER_JUMP;
+                  }
+                }
+                else { // If you're player2, data from UART is player1
+                  if (player1_state_jump == PLAYER_JUMP_NONE) {
+                    player1_state_jump = START_PLAYER_JUMP;
+                  }
+                }
+              }
+              if (uart_scancode == MAKECODE_LEFT) {
+                printf("Clciked left!\n");
+                if (is_player1) {
+                  if (player2_state_move == PLAYER_MOVE_NONE) {
+                    if (player2_state_jump != PLAYER_JUMP_NONE) {
+                      player2_state_move = PLAYER_MOVE_LEFT;
+                    }
+                    else {
+                      player2_state_move = PLAYER_MOVE_LEFT_START;
+                    }
+                  }
+                  if (ball_player_collision(bola, player2)) {
+                    if (ball_state != STATE_NONE) {
+                      ball_state = JUMP_END;
+                      ball_state_temporary = MOVE_RIGHT_START;
+                    } else {
+                      ball_state = MOVE_RIGHT_START;
+                    }
+                  }
+                }
+                else {
+                  if (player1_state_move == PLAYER_MOVE_NONE) {
+                    if (player1_state_jump != PLAYER_JUMP_NONE) {
+                      player1_state_move = PLAYER_MOVE_LEFT;
+                    }
+                    else {
+                      player1_state_move = PLAYER_MOVE_LEFT_START;
+                    }
+                  }
+                }
+              }
+              if (uart_scancode == MAKECODE_DOWN) {
+                if (is_player1) {
+                  if (player2_state_kick == PLAYER_KICK_NONE) {
+                    player2_state_kick = PLAYER_KICK_START;
+                  }
+                  else {
+                    player2_state_kick = AFTER_PLAYER_KICK;
+                    player2_state_kick_temporary = PLAYER_KICK_START;
+                  }
+                  kicking2 = true;
+                }
+                else {
+                  if (player1_state_kick == PLAYER_KICK_NONE) {
+                    player1_state_kick = PLAYER_KICK_START;
+                  }
+                  else {
+                    player1_state_kick = AFTER_PLAYER_KICK;
+                    player1_state_kick_temporary = PLAYER_KICK_START;
+                  }
+                  kicking = true;
+                }
+              }
+              if (uart_scancode == MAKECODE_RIGHT) {
+                printf("Right cliedk!\n");
+                if (is_player1) {
+                  if (player2_state_move == PLAYER_MOVE_NONE) {
+                    if (player2_state_jump != PLAYER_JUMP_NONE) {
+                      player2_state_move = PLAYER_MOVE_RIGHT;
+                    }
+                    else {
+                      player2_state_move = PLAYER_MOVE_RIGHT_START;
+                    }
+                  }
+                  if (ball_player_collision(bola, player2)) {
+                    if (ball_state != STATE_NONE) {
+                      ball_state = JUMP_END;
+                      ball_state_temporary = MOVE_LEFT_START;
+                    } else {
+                      ball_state = MOVE_LEFT_START;
+                    }
+                  }
+                }
+                else {
+                  if (player1_state_move == PLAYER_MOVE_NONE) {
+                    if (player1_state_jump != PLAYER_JUMP_NONE) {
+                      player1_state_move = PLAYER_MOVE_RIGHT;
+                    } else {
+                      player1_state_move = PLAYER_MOVE_RIGHT_START;
+                    }
+                  }
+                }
+              }
+
+              if (uart_scancode == BREAKCODE_LEFT) {
+                if (is_player1) {
+                  player2_state_move = PLAYER_MOVE_LEFT_END;
+                } 
+                else {
+                  player1_state_move = PLAYER_MOVE_LEFT_END;
+                }
+              }
+
+              if (uart_scancode == BREAKCODE_RIGHT) {
+                if (is_player1) {
+                  player2_state_move = PLAYER_MOVE_RIGHT_END;
+                }
+                else {
+                  player1_state_move = PLAYER_MOVE_RIGHT_END;
+                }
+              }
+            }
+            else {
+              printf("Wasn't conected!\n");
+            }
           }
           break;
         default:

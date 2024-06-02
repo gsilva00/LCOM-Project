@@ -42,7 +42,7 @@ int kbc_read_outbuf(uint8_t port, uint8_t *output, bool mouse) {
     return 0;
   }
 
-  printf("%s Error: Ran for %d tries and didn't succeed!\n", __func__, tries);
+  printf("%s Error: Ran for %d tries and didn't succeed!\n", __func__, MAX_TRIES);
   return 1;
 }
 
@@ -66,7 +66,7 @@ int kbc_write_cmd(uint8_t port, uint8_t command) {
     return 0;
   }
 
-  printf("%s Error: Ran for %d tries and didn't succeed!\n", __func__, tries);
+  printf("%s Error: Ran for %d tries and didn't succeed!\n", __func__, MAX_TRIES);
   return 1;
 }
 
@@ -93,6 +93,6 @@ int kbc_write_mouse(uint8_t arg) {
     if (ack_message == PS2_ACK) return 0;
   }
 
-  printf("%s Error: Ran for %d tries and didn't succeed!\n", __func__, tries);
+  printf("%s Error: Ran for %d tries and didn't succeed!\n", __func__, MAX_TRIES);
   return 1;
 }
