@@ -1,0 +1,4 @@
+<map id="INT instructions" name="INT instructions">
+<area shape="rect" id="Node000002" href="$group___g_p_u_macros.html" title="Constants for programming the video&#45;card driver." alt="" coords="5,5,107,31"/>
+<area shape="rect" id="Node000001" title="Software interrupt instructions INT xx &#45; Access to BIOS&#39; services. Executed in real&#45;mode." alt="" coords="155,5,279,31"/>
+</map>

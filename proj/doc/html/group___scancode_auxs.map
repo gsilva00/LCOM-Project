@@ -1,0 +1,4 @@
+<map id="Auxiliars for scancodes" name="Auxiliars for scancodes">
+<area shape="rect" id="Node000001" title="Auxiliars values for scancode manipulation." alt="" coords="163,5,336,31"/>
+<area shape="rect" id="Node000002" href="$group__i8042.html" title="Constants for programming the i8042 KBC &#45; Keyboard (and Mouse) Controller." alt="" coords="5,5,115,31"/>
+</map>

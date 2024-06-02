@@ -1,0 +1,4 @@
+<map id="MOUSE_WRITE Command&apos;s arguments" name="MOUSE_WRITE Command&apos;s arguments">
+<area shape="rect" id="Node000001" title="Passed in KBC_INBUF; Responses to them in KBC_OUTBUF &#45; Directly to the mouse:" alt="" coords="163,5,364,45"/>
+<area shape="rect" id="Node000002" href="$group__i8042.html" title="Constants for programming the i8042 KBC &#45; Keyboard (and Mouse) Controller." alt="" coords="5,13,115,38"/>
+</map>

@@ -1,0 +1,88 @@
+\doxysection{player\+\_\+controller.\+h}
+\hypertarget{player__controller_8h_source}{}\label{player__controller_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/object\_controllers/player\_controller.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/object\_controllers/player\_controller.h}}
+\mbox{\hyperlink{player__controller_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PLAYER\_CONTROLLER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PLAYER\_CONTROLLER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{player_8h}{objects/player.h}}>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{aux__timer_8h}{devices/timer/aux\_timer.h}}>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{gpu_8h}{devices/gpu/gpu.h}}>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_2\_parado.xpm"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_parado.xpm"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_chutar\_frente\_1.xpm"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_chutar\_frente\_2.xpm"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_chutar\_frente\_3.xpm"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_chutar\_frente\_4.xpm"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_chutar\_frente\_5.xpm"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_chutar\_frente\_6.xpm"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_chutar\_tras\_1.xpm"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_chutar\_tras\_2.xpm"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_chutar\_tras\_3.xpm"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_chutar\_tras\_4.xpm"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_2\_chutar\_frente\_1.xpm"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_2\_chutar\_frente\_2.xpm"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_2\_chutar\_frente\_3.xpm"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_2\_chutar\_frente\_4.xpm"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_2\_chutar\_frente\_5.xpm"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_2\_chutar\_frente\_6.xpm"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_2\_chutar\_tras\_1.xpm"{}}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_2\_chutar\_tras\_2.xpm"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_2\_chutar\_tras\_3.xpm"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}../../images/objects/personagem\_2\_chutar\_tras\_4.xpm"{}}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ SPEED\_REDUCTION\_FACTOR\ 0.65}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a871895a848d0b5a7e7ce7fed2f353554}{PLAYER\_MOVE\_NONE}},}
+\DoxyCodeLine{00045\ \ \ \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a41014f9a88dec6f975680932aa055a53}{PLAYER\_MOVE\_LEFT\_START}},}
+\DoxyCodeLine{00046\ \ \ \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a148b6f1a4266876740275ef91170bc13}{PLAYER\_MOVE\_RIGHT\_START}},}
+\DoxyCodeLine{00047\ \ \ \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a3a26fe647fab3b9db9023a44e5c8c486}{PLAYER\_MOVE\_LEFT}},}
+\DoxyCodeLine{00048\ \ \ \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a5b714015fbe60a90f82629b8b191d229}{PLAYER\_MOVE\_RIGHT}},}
+\DoxyCodeLine{00049\ \ \ \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94adc5c472ee9984282e570243955040185}{AFTER\_PLAYER\_MOVE\_LEFT}},}
+\DoxyCodeLine{00050\ \ \ \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a4053106a146d55ada3b134eb9d40d5ec}{AFTER\_PLAYER\_MOVE\_RIGHT}},}
+\DoxyCodeLine{00051\ \ \ \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94ae3fd543d137b3f01529888fb6d6967e5}{PLAYER\_MOVE\_END}},}
+\DoxyCodeLine{00052\ \}\ \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{PlayerStateMove}};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00059\ \ \ \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca8ef5eeec0f3891d614f6ec711548cae5}{PLAYER\_JUMP\_NONE}},}
+\DoxyCodeLine{00060\ \ \ \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca966f6fa4342b769e8a1a496547ff6e00}{START\_PLAYER\_JUMP}},}
+\DoxyCodeLine{00061\ \ \ \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fccab7bd99cc7d7613ad92541ac81df62b57}{BEFORE\_PLAYER\_JUMP}},}
+\DoxyCodeLine{00062\ \ \ \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fccac6e06004f9416d9ca4c9f2d575d31830}{PLAYER\_JUMP}},}
+\DoxyCodeLine{00063\ \ \ \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca0900220d7e9076f78c60cc113e6f1f79}{AFTER\_PLAYER\_JUMP}},}
+\DoxyCodeLine{00064\ \ \ \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fccaf021f1dc75bd9edaa0a736839933f0b4}{PLAYER\_JUMP\_END}},}
+\DoxyCodeLine{00065\ \}\ \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{PlayerStateJump}};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00072\ \ \ \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96acb1f09367b8449564a9bfb5ce02eaddd}{PLAYER\_KICK\_NONE}},}
+\DoxyCodeLine{00073\ \ \ \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96af63c7839cfeac8f05d10a945e17e82e2}{PLAYER\_KICK\_START}},}
+\DoxyCodeLine{00074\ \ \ \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96a4844e72c35be46867a96a983f1eab051}{PLAYER\_KICK}},}
+\DoxyCodeLine{00075\ \ \ \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96a51c272aed72359d65677232bb88a3711}{AFTER\_PLAYER\_KICK}},}
+\DoxyCodeLine{00076\ \}\ \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{PlayerStateKick}};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player__controller_8h_a60bf2039888bc2e1de0ae4f65841f69a}{move\_player}}(\mbox{\hyperlink{struct_player}{Player}}\ *player,\ \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{PlayerStateMove}}\ *player\_state\_move,\ \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{PlayerStateMove}}\ *player\_state\_move\_temporary,\ \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{PlayerStateJump}}\ *player\_state\_jump,\ \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{PlayerStateJump}}\ *player\_state\_jump\_temporary,\ \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{PlayerStateKick}}\ *player\_state\_kick,\ \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{PlayerStateKick}}\ *player\_state\_kick\_temporary);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{player__controller_8h_acd16eb81aa9a47c1ed8bff9eafe87ed3}{player\_border\_collision}}(\mbox{\hyperlink{struct_player}{Player}}\ *player);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00109\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{player__controller_8h_a27c8228c1e7a90e401305a54caf0d042}{player\_player\_collision}}(\mbox{\hyperlink{struct_player}{Player}}\ *\mbox{\hyperlink{proj_8c_a427622cef5fab821a8baf9d51e68450b}{player1}},\ \mbox{\hyperlink{struct_player}{Player}}\ *\mbox{\hyperlink{proj_8c_aa1ad9a3d30291b7fbfbabd79cc45d4f9}{player2}});}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00117\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player__controller_8h_a46d3eddfcdbc55979be5e954a30733c8}{initialize\_player\_values}}(\mbox{\hyperlink{struct_player}{Player}}\ *player);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00125\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player__controller_8h_a9d4e2f27c2191e556ccc1cea41049e88}{prepare\_for\_player\_jump}}(\mbox{\hyperlink{struct_player}{Player}}\ *player);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player__controller_8h_a238061bfefbe3029a722e7680ea40d42}{change\_player\_y}}(\mbox{\hyperlink{struct_player}{Player}}\ *player);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00142\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player__controller_8h_aed07cf74ee169467f39f1184b6d3bbe1}{handle\_player\_jump}}(\mbox{\hyperlink{struct_player}{Player}}\ *player,\ \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{PlayerStateJump}}\ *player\_state\_jump);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00150\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{player__controller_8h_a39c0d0b8c6774b7965e43ab8128c10fb}{restart\_player\_movement}}(\mbox{\hyperlink{struct_player}{Player}}\ *player);}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,5 @@
+<map id="player_border_collision" name="player_border_collision">
+<area shape="rect" id="Node000001" title="Collision detecting function between a player and a border." alt="" coords="176,5,349,31"/>
+<area shape="rect" id="Node000002" href="$proj_8c.html#a7a72220d8366dd84709e79ce415862e5" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,21,129,21,129,15,162,15"/>
+</map>

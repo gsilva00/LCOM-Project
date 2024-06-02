@@ -1,0 +1,515 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/objects/object\+\_\+controllers/player\+\_\+controller.c File Reference}
+\hypertarget{player__controller_8c}{}\label{player__controller_8c}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/object\_controllers/player\_controller.c@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/object\_controllers/player\_controller.c}}
+{\ttfamily \#include "{}player\+\_\+controller.\+h"{}}\newline
+Include dependency graph for player\+\_\+controller.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{player__controller_8c_a46d3eddfcdbc55979be5e954a30733c8}{initialize\+\_\+player\+\_\+values}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Function that saves the initial values of the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player__controller_8c_a9d4e2f27c2191e556ccc1cea41049e88}{prepare\+\_\+for\+\_\+player\+\_\+jump}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Function that prepares the player for the jump. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{player__controller_8c_acd16eb81aa9a47c1ed8bff9eafe87ed3}{player\+\_\+border\+\_\+collision}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Collision detecting function between a player and a border. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{player__controller_8c_a27c8228c1e7a90e401305a54caf0d042}{player\+\_\+player\+\_\+collision}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a427622cef5fab821a8baf9d51e68450b}{player1}}, \mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_aa1ad9a3d30291b7fbfbabd79cc45d4f9}{player2}})
+\begin{DoxyCompactList}\small\item\em Collision detecting function between a player and another player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player__controller_8c_a238061bfefbe3029a722e7680ea40d42}{change\+\_\+player\+\_\+y}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Function that changes the player\textquotesingle{}s y value along the jump. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player__controller_8c_aed07cf74ee169467f39f1184b6d3bbe1}{handle\+\_\+player\+\_\+jump}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player, \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+jump)
+\begin{DoxyCompactList}\small\item\em Function that performs the player\textquotesingle{}s jump. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{player__controller_8c_a39c0d0b8c6774b7965e43ab8128c10fb}{restart\+\_\+player\+\_\+movement}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Function that resets the values of the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player__controller_8c_a60bf2039888bc2e1de0ae4f65841f69a}{move\+\_\+player}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player, \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+move, \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+move\+\_\+temporary, \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+jump, \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+jump\+\_\+temporary, \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+kick, \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+kick\+\_\+temporary)
+\begin{DoxyCompactList}\small\item\em Main function that changes the player\textquotesingle{}s atributes according to the current state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{player__controller_8c_a3f48da8615b055a9a6fa07bc88e7337c}{time\+\_\+passed\+\_\+player\+\_\+y}} = 0
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{player__controller_8c_ac1bcf6f84895c0211e69b10027957587}{time\+\_\+passed\+\_\+player\+\_\+x}} = 0
+\item 
+static int \mbox{\hyperlink{player__controller_8c_a0afddbd3a0f436aa235fa53c6750b6c6}{player\+\_\+y\+\_\+original}}
+\item 
+static int \mbox{\hyperlink{player__controller_8c_a7b1a7175078ec67b0e88cc383cc7400c}{player\+\_\+y}}
+\item 
+static int \mbox{\hyperlink{player__controller_8c_a3e0fc7221ce28519cfbedeec759fbdaa}{player\+\_\+x}}
+\item 
+static int \mbox{\hyperlink{player__controller_8c_a8cd6fdbdd449f21d7072cc43fb1b1351}{player\+\_\+yspeed}}
+\item 
+static int \mbox{\hyperlink{player__controller_8c_ac88489ce097bc510ed9f1f944ced7a2c}{player\+\_\+xspeed}}
+\item 
+static bool \mbox{\hyperlink{player__controller_8c_ad7ca5de0a66877da005299af04a533fc}{chuta}}
+\item 
+static int \mbox{\hyperlink{player__controller_8c_a1849af5600dd99d11a7cae774e4121e4}{img}} = 0
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a805d825c5ab40bb6e8f3714028453403}{player1\+\_\+map0}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+parado\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a0492c1f7b288fd1e5b2fe792c420b646}{player1\+\_\+map1}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+frente\+\_\+1\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_abf8f8b62a236cf80c49bdae679538e5b}{player1\+\_\+map2}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+frente\+\_\+2\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_ae1a6160e75f2ba48f4562fc1258abc57}{player1\+\_\+map3}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+frente\+\_\+3\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_ad6bc95264e17dd033d037c0007742577}{player1\+\_\+map4}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+frente\+\_\+4\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a4f6ebbab9b2c8edb843f1fe8bfdfaa5f}{player1\+\_\+map5}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+frente\+\_\+5\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a0f2b62852b71895880005c99409c4ccd}{player1\+\_\+map6}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+frente\+\_\+6\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a9eda374fbd8852a7cded41958d806992}{player1\+\_\+map7}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+tras\+\_\+1\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a31cc4d0c65d6f551c08e4d1c743f03f1}{player1\+\_\+map8}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+tras\+\_\+2\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a4db102a2d3fea5996081d502a8cdd240}{player1\+\_\+map9}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+tras\+\_\+3\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a8a150be4a995f697ccbb5c2e46f0e859}{player1\+\_\+map10}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+tras\+\_\+4\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_ac4de97313bafac1c955f0a088403c635}{player2\+\_\+map0}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+parado\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a3fe7d65423d256c6fa2427d536915213}{player2\+\_\+map1}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+1\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_aa3f77db151621aef3caf164f8e21f5c6}{player2\+\_\+map2}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+2\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a46df30f8d713514db9f8596cee9a0fbf}{player2\+\_\+map3}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+3\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_ac1f94a826df2023dc26c8c1341ac04be}{player2\+\_\+map4}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+4\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a07ec6f261d6251b90b59baa125562b8f}{player2\+\_\+map5}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+5\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_ac8444212727fba493a26e8fbdddd0eba}{player2\+\_\+map6}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+6\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a9bb96bbe908a165caa25cef6e79b1915}{player2\+\_\+map7}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+tras\+\_\+1\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_a790cf4bb9fb5221879a7d564a4c26159}{player2\+\_\+map8}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+tras\+\_\+2\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_aa996f19292a3f9c839c76436683b81f0}{player2\+\_\+map9}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+tras\+\_\+3\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{player__controller_8c_ab6bf9742c4e318457ba625b372254985}{player2\+\_\+map10}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+tras\+\_\+4\+\_\+xpm
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{player__controller_8c_a238061bfefbe3029a722e7680ea40d42}\label{player__controller_8c_a238061bfefbe3029a722e7680ea40d42} 
+\index{player\_controller.c@{player\_controller.c}!change\_player\_y@{change\_player\_y}}
+\index{change\_player\_y@{change\_player\_y}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{change\_player\_y()}{change\_player\_y()}}
+{\footnotesize\ttfamily void change\+\_\+player\+\_\+y (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Function that changes the player\textquotesingle{}s y value along the jump. 
+
+Changes the player\textquotesingle{}s y value according to the player\textquotesingle{}s current speed values in the y axis, as well as the time spent above the ground. Auxiliary function of \doxylink{player__controller_8h_aed07cf74ee169467f39f1184b6d3bbe1}{handle\+\_\+player\+\_\+jump()}
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8c_a238061bfefbe3029a722e7680ea40d42_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8c_aed07cf74ee169467f39f1184b6d3bbe1}\label{player__controller_8c_aed07cf74ee169467f39f1184b6d3bbe1} 
+\index{player\_controller.c@{player\_controller.c}!handle\_player\_jump@{handle\_player\_jump}}
+\index{handle\_player\_jump@{handle\_player\_jump}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{handle\_player\_jump()}{handle\_player\_jump()}}
+{\footnotesize\ttfamily void handle\+\_\+player\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{\mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+jump }\end{DoxyParamCaption})}
+
+
+
+Function that performs the player\textquotesingle{}s jump. 
+
+Performs the player\textquotesingle{}s entire jump, from the beginning to the bouncing in the end. It is the function used in the action state of the state machine. Auxiliary function of \doxylink{player__controller_8h_a60bf2039888bc2e1de0ae4f65841f69a}{move\+\_\+player()}
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+{\em player\+\_\+state\+\_\+jump} & Pointer to the player\textquotesingle{}s current jump state, refering to the state machine Player\+State\+Jump. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8c_aed07cf74ee169467f39f1184b6d3bbe1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8c_aed07cf74ee169467f39f1184b6d3bbe1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8c_a46d3eddfcdbc55979be5e954a30733c8}\label{player__controller_8c_a46d3eddfcdbc55979be5e954a30733c8} 
+\index{player\_controller.c@{player\_controller.c}!initialize\_player\_values@{initialize\_player\_values}}
+\index{initialize\_player\_values@{initialize\_player\_values}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{initialize\_player\_values()}{initialize\_player\_values()}}
+{\footnotesize\ttfamily void initialize\+\_\+player\+\_\+values (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Function that saves the initial values of the player. 
+
+Takes the current values of position and speed of the player, and saves them in variables. This function is used in the preparation state of the various player\textquotesingle{}s state machine, so that these values are reset in the end. Auxiliary function of \doxylink{player__controller_8h_a60bf2039888bc2e1de0ae4f65841f69a}{move\+\_\+player()}
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8c_a46d3eddfcdbc55979be5e954a30733c8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8c_a60bf2039888bc2e1de0ae4f65841f69a}\label{player__controller_8c_a60bf2039888bc2e1de0ae4f65841f69a} 
+\index{player\_controller.c@{player\_controller.c}!move\_player@{move\_player}}
+\index{move\_player@{move\_player}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{move\_player()}{move\_player()}}
+{\footnotesize\ttfamily void move\+\_\+player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{\mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+move,  }\item[{\mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+move\+\_\+temporary,  }\item[{\mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+jump,  }\item[{\mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+jump\+\_\+temporary,  }\item[{\mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+kick,  }\item[{\mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+kick\+\_\+temporary }\end{DoxyParamCaption})}
+
+
+
+Main function that changes the player\textquotesingle{}s atributes according to the current state. 
+
+This is the function that controls every one of the player\textquotesingle{}s movements and atributes, depending on the state it is in.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+{\em player\+\_\+state\+\_\+move} & Pointer to the main player move state, can vary depending on the action chosen, the phase it\textquotesingle{}s in, and the direction it\textquotesingle{}s going \\
+\hline
+{\em player\+\_\+state\+\_\+move\+\_\+temporary} & Pointer to the auxiliary player move state. Used when an action is requested before the other finishes \\
+\hline
+{\em player\+\_\+state\+\_\+jump} & Pointer to the main player jump state, can vary depending on the action chosen, the phase it\textquotesingle{}s in, and the direction it\textquotesingle{}s going \\
+\hline
+{\em player\+\_\+state\+\_\+jump\+\_\+temporary} & Pointer to the auxiliary player jump state. Used when an action is requested before the other finishes \\
+\hline
+{\em player\+\_\+state\+\_\+kick} & Pointer to the main player kick state, can vary depending on the action chosen, the phase it\textquotesingle{}s in, and the direction it\textquotesingle{}s going \\
+\hline
+{\em player\+\_\+state\+\_\+kick\+\_\+temporary} & Pointer to the auxiliary player kick state. Used when an action is requested before the other finishes \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8c_a60bf2039888bc2e1de0ae4f65841f69a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{player__controller_8c_a60bf2039888bc2e1de0ae4f65841f69a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8c_acd16eb81aa9a47c1ed8bff9eafe87ed3}\label{player__controller_8c_acd16eb81aa9a47c1ed8bff9eafe87ed3} 
+\index{player\_controller.c@{player\_controller.c}!player\_border\_collision@{player\_border\_collision}}
+\index{player\_border\_collision@{player\_border\_collision}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player\_border\_collision()}{player\_border\_collision()}}
+{\footnotesize\ttfamily bool player\+\_\+border\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Collision detecting function between a player and a border. 
+
+Analyses the player\textquotesingle{}s position, and determines if it is colliding with any border
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if they are colliding, and false if not 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{player__controller_8c_acd16eb81aa9a47c1ed8bff9eafe87ed3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8c_a27c8228c1e7a90e401305a54caf0d042}\label{player__controller_8c_a27c8228c1e7a90e401305a54caf0d042} 
+\index{player\_controller.c@{player\_controller.c}!player\_player\_collision@{player\_player\_collision}}
+\index{player\_player\_collision@{player\_player\_collision}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player\_player\_collision()}{player\_player\_collision()}}
+{\footnotesize\ttfamily bool player\+\_\+player\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player1,  }\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player2 }\end{DoxyParamCaption})}
+
+
+
+Collision detecting function between a player and another player. 
+
+Analyses both players positions, and determines if the two items are colliding ~\newline
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em player1} & Pointer to the first player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+{\em player2} & Pointer to the second player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if they are colliding, and false if not 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{player__controller_8c_a27c8228c1e7a90e401305a54caf0d042_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8c_a9d4e2f27c2191e556ccc1cea41049e88}\label{player__controller_8c_a9d4e2f27c2191e556ccc1cea41049e88} 
+\index{player\_controller.c@{player\_controller.c}!prepare\_for\_player\_jump@{prepare\_for\_player\_jump}}
+\index{prepare\_for\_player\_jump@{prepare\_for\_player\_jump}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{prepare\_for\_player\_jump()}{prepare\_for\_player\_jump()}}
+{\footnotesize\ttfamily void prepare\+\_\+for\+\_\+player\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Function that prepares the player for the jump. 
+
+Changes the time passed on every axis and the bounce offset value to prepare the player for its jump. This function is used in the preparation state of the player\textquotesingle{}s state machine. Auxiliary function of \doxylink{player__controller_8h_a60bf2039888bc2e1de0ae4f65841f69a}{move\+\_\+player()}
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8c_a9d4e2f27c2191e556ccc1cea41049e88_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8c_a39c0d0b8c6774b7965e43ab8128c10fb}\label{player__controller_8c_a39c0d0b8c6774b7965e43ab8128c10fb} 
+\index{player\_controller.c@{player\_controller.c}!restart\_player\_movement@{restart\_player\_movement}}
+\index{restart\_player\_movement@{restart\_player\_movement}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{restart\_player\_movement()}{restart\_player\_movement()}}
+{\footnotesize\ttfamily int restart\+\_\+player\+\_\+movement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Function that resets the values of the player. 
+
+Takes the values saved in the beginning by \doxylink{player__controller_8h_a46d3eddfcdbc55979be5e954a30733c8}{initialize\+\_\+player\+\_\+values()}, and sets the player\textquotesingle{}s values to those variables, restoring its previous state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8c_a39c0d0b8c6774b7965e43ab8128c10fb_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{player__controller_8c_ad7ca5de0a66877da005299af04a533fc}\label{player__controller_8c_ad7ca5de0a66877da005299af04a533fc} 
+\index{player\_controller.c@{player\_controller.c}!chuta@{chuta}}
+\index{chuta@{chuta}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{chuta}{chuta}}
+{\footnotesize\ttfamily bool chuta\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a1849af5600dd99d11a7cae774e4121e4}\label{player__controller_8c_a1849af5600dd99d11a7cae774e4121e4} 
+\index{player\_controller.c@{player\_controller.c}!img@{img}}
+\index{img@{img}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{img}{img}}
+{\footnotesize\ttfamily int img = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a805d825c5ab40bb6e8f3714028453403}\label{player__controller_8c_a805d825c5ab40bb6e8f3714028453403} 
+\index{player\_controller.c@{player\_controller.c}!player1\_map0@{player1\_map0}}
+\index{player1\_map0@{player1\_map0}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player1\_map0}{player1\_map0}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1\+\_\+map0 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+parado\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a0492c1f7b288fd1e5b2fe792c420b646}\label{player__controller_8c_a0492c1f7b288fd1e5b2fe792c420b646} 
+\index{player\_controller.c@{player\_controller.c}!player1\_map1@{player1\_map1}}
+\index{player1\_map1@{player1\_map1}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player1\_map1}{player1\_map1}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1\+\_\+map1 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+frente\+\_\+1\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a8a150be4a995f697ccbb5c2e46f0e859}\label{player__controller_8c_a8a150be4a995f697ccbb5c2e46f0e859} 
+\index{player\_controller.c@{player\_controller.c}!player1\_map10@{player1\_map10}}
+\index{player1\_map10@{player1\_map10}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player1\_map10}{player1\_map10}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1\+\_\+map10 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+tras\+\_\+4\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_abf8f8b62a236cf80c49bdae679538e5b}\label{player__controller_8c_abf8f8b62a236cf80c49bdae679538e5b} 
+\index{player\_controller.c@{player\_controller.c}!player1\_map2@{player1\_map2}}
+\index{player1\_map2@{player1\_map2}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player1\_map2}{player1\_map2}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1\+\_\+map2 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+frente\+\_\+2\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_ae1a6160e75f2ba48f4562fc1258abc57}\label{player__controller_8c_ae1a6160e75f2ba48f4562fc1258abc57} 
+\index{player\_controller.c@{player\_controller.c}!player1\_map3@{player1\_map3}}
+\index{player1\_map3@{player1\_map3}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player1\_map3}{player1\_map3}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1\+\_\+map3 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+frente\+\_\+3\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_ad6bc95264e17dd033d037c0007742577}\label{player__controller_8c_ad6bc95264e17dd033d037c0007742577} 
+\index{player\_controller.c@{player\_controller.c}!player1\_map4@{player1\_map4}}
+\index{player1\_map4@{player1\_map4}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player1\_map4}{player1\_map4}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1\+\_\+map4 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+frente\+\_\+4\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a4f6ebbab9b2c8edb843f1fe8bfdfaa5f}\label{player__controller_8c_a4f6ebbab9b2c8edb843f1fe8bfdfaa5f} 
+\index{player\_controller.c@{player\_controller.c}!player1\_map5@{player1\_map5}}
+\index{player1\_map5@{player1\_map5}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player1\_map5}{player1\_map5}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1\+\_\+map5 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+frente\+\_\+5\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a0f2b62852b71895880005c99409c4ccd}\label{player__controller_8c_a0f2b62852b71895880005c99409c4ccd} 
+\index{player\_controller.c@{player\_controller.c}!player1\_map6@{player1\_map6}}
+\index{player1\_map6@{player1\_map6}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player1\_map6}{player1\_map6}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1\+\_\+map6 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+frente\+\_\+6\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a9eda374fbd8852a7cded41958d806992}\label{player__controller_8c_a9eda374fbd8852a7cded41958d806992} 
+\index{player\_controller.c@{player\_controller.c}!player1\_map7@{player1\_map7}}
+\index{player1\_map7@{player1\_map7}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player1\_map7}{player1\_map7}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1\+\_\+map7 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+tras\+\_\+1\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a31cc4d0c65d6f551c08e4d1c743f03f1}\label{player__controller_8c_a31cc4d0c65d6f551c08e4d1c743f03f1} 
+\index{player\_controller.c@{player\_controller.c}!player1\_map8@{player1\_map8}}
+\index{player1\_map8@{player1\_map8}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player1\_map8}{player1\_map8}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1\+\_\+map8 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+tras\+\_\+2\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a4db102a2d3fea5996081d502a8cdd240}\label{player__controller_8c_a4db102a2d3fea5996081d502a8cdd240} 
+\index{player\_controller.c@{player\_controller.c}!player1\_map9@{player1\_map9}}
+\index{player1\_map9@{player1\_map9}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player1\_map9}{player1\_map9}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1\+\_\+map9 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+chutar\+\_\+tras\+\_\+3\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_ac4de97313bafac1c955f0a088403c635}\label{player__controller_8c_ac4de97313bafac1c955f0a088403c635} 
+\index{player\_controller.c@{player\_controller.c}!player2\_map0@{player2\_map0}}
+\index{player2\_map0@{player2\_map0}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player2\_map0}{player2\_map0}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2\+\_\+map0 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+parado\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a3fe7d65423d256c6fa2427d536915213}\label{player__controller_8c_a3fe7d65423d256c6fa2427d536915213} 
+\index{player\_controller.c@{player\_controller.c}!player2\_map1@{player2\_map1}}
+\index{player2\_map1@{player2\_map1}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player2\_map1}{player2\_map1}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2\+\_\+map1 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+1\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_ab6bf9742c4e318457ba625b372254985}\label{player__controller_8c_ab6bf9742c4e318457ba625b372254985} 
+\index{player\_controller.c@{player\_controller.c}!player2\_map10@{player2\_map10}}
+\index{player2\_map10@{player2\_map10}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player2\_map10}{player2\_map10}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2\+\_\+map10 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+tras\+\_\+4\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_aa3f77db151621aef3caf164f8e21f5c6}\label{player__controller_8c_aa3f77db151621aef3caf164f8e21f5c6} 
+\index{player\_controller.c@{player\_controller.c}!player2\_map2@{player2\_map2}}
+\index{player2\_map2@{player2\_map2}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player2\_map2}{player2\_map2}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2\+\_\+map2 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+2\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a46df30f8d713514db9f8596cee9a0fbf}\label{player__controller_8c_a46df30f8d713514db9f8596cee9a0fbf} 
+\index{player\_controller.c@{player\_controller.c}!player2\_map3@{player2\_map3}}
+\index{player2\_map3@{player2\_map3}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player2\_map3}{player2\_map3}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2\+\_\+map3 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+3\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_ac1f94a826df2023dc26c8c1341ac04be}\label{player__controller_8c_ac1f94a826df2023dc26c8c1341ac04be} 
+\index{player\_controller.c@{player\_controller.c}!player2\_map4@{player2\_map4}}
+\index{player2\_map4@{player2\_map4}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player2\_map4}{player2\_map4}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2\+\_\+map4 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+4\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a07ec6f261d6251b90b59baa125562b8f}\label{player__controller_8c_a07ec6f261d6251b90b59baa125562b8f} 
+\index{player\_controller.c@{player\_controller.c}!player2\_map5@{player2\_map5}}
+\index{player2\_map5@{player2\_map5}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player2\_map5}{player2\_map5}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2\+\_\+map5 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+5\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_ac8444212727fba493a26e8fbdddd0eba}\label{player__controller_8c_ac8444212727fba493a26e8fbdddd0eba} 
+\index{player\_controller.c@{player\_controller.c}!player2\_map6@{player2\_map6}}
+\index{player2\_map6@{player2\_map6}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player2\_map6}{player2\_map6}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2\+\_\+map6 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+6\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a9bb96bbe908a165caa25cef6e79b1915}\label{player__controller_8c_a9bb96bbe908a165caa25cef6e79b1915} 
+\index{player\_controller.c@{player\_controller.c}!player2\_map7@{player2\_map7}}
+\index{player2\_map7@{player2\_map7}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player2\_map7}{player2\_map7}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2\+\_\+map7 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+tras\+\_\+1\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a790cf4bb9fb5221879a7d564a4c26159}\label{player__controller_8c_a790cf4bb9fb5221879a7d564a4c26159} 
+\index{player\_controller.c@{player\_controller.c}!player2\_map8@{player2\_map8}}
+\index{player2\_map8@{player2\_map8}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player2\_map8}{player2\_map8}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2\+\_\+map8 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+tras\+\_\+2\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_aa996f19292a3f9c839c76436683b81f0}\label{player__controller_8c_aa996f19292a3f9c839c76436683b81f0} 
+\index{player\_controller.c@{player\_controller.c}!player2\_map9@{player2\_map9}}
+\index{player2\_map9@{player2\_map9}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player2\_map9}{player2\_map9}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2\+\_\+map9 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+chutar\+\_\+tras\+\_\+3\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a3e0fc7221ce28519cfbedeec759fbdaa}\label{player__controller_8c_a3e0fc7221ce28519cfbedeec759fbdaa} 
+\index{player\_controller.c@{player\_controller.c}!player\_x@{player\_x}}
+\index{player\_x@{player\_x}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player\_x}{player\_x}}
+{\footnotesize\ttfamily int player\+\_\+x\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_ac88489ce097bc510ed9f1f944ced7a2c}\label{player__controller_8c_ac88489ce097bc510ed9f1f944ced7a2c} 
+\index{player\_controller.c@{player\_controller.c}!player\_xspeed@{player\_xspeed}}
+\index{player\_xspeed@{player\_xspeed}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player\_xspeed}{player\_xspeed}}
+{\footnotesize\ttfamily int player\+\_\+xspeed\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a7b1a7175078ec67b0e88cc383cc7400c}\label{player__controller_8c_a7b1a7175078ec67b0e88cc383cc7400c} 
+\index{player\_controller.c@{player\_controller.c}!player\_y@{player\_y}}
+\index{player\_y@{player\_y}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player\_y}{player\_y}}
+{\footnotesize\ttfamily int player\+\_\+y\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a0afddbd3a0f436aa235fa53c6750b6c6}\label{player__controller_8c_a0afddbd3a0f436aa235fa53c6750b6c6} 
+\index{player\_controller.c@{player\_controller.c}!player\_y\_original@{player\_y\_original}}
+\index{player\_y\_original@{player\_y\_original}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player\_y\_original}{player\_y\_original}}
+{\footnotesize\ttfamily int player\+\_\+y\+\_\+original\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a8cd6fdbdd449f21d7072cc43fb1b1351}\label{player__controller_8c_a8cd6fdbdd449f21d7072cc43fb1b1351} 
+\index{player\_controller.c@{player\_controller.c}!player\_yspeed@{player\_yspeed}}
+\index{player\_yspeed@{player\_yspeed}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{player\_yspeed}{player\_yspeed}}
+{\footnotesize\ttfamily int player\+\_\+yspeed\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_ac1bcf6f84895c0211e69b10027957587}\label{player__controller_8c_ac1bcf6f84895c0211e69b10027957587} 
+\index{player\_controller.c@{player\_controller.c}!time\_passed\_player\_x@{time\_passed\_player\_x}}
+\index{time\_passed\_player\_x@{time\_passed\_player\_x}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{time\_passed\_player\_x}{time\_passed\_player\_x}}
+{\footnotesize\ttfamily uint8\+\_\+t time\+\_\+passed\+\_\+player\+\_\+x = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{player__controller_8c_a3f48da8615b055a9a6fa07bc88e7337c}\label{player__controller_8c_a3f48da8615b055a9a6fa07bc88e7337c} 
+\index{player\_controller.c@{player\_controller.c}!time\_passed\_player\_y@{time\_passed\_player\_y}}
+\index{time\_passed\_player\_y@{time\_passed\_player\_y}!player\_controller.c@{player\_controller.c}}
+\doxysubsubsection{\texorpdfstring{time\_passed\_player\_y}{time\_passed\_player\_y}}
+{\footnotesize\ttfamily uint8\+\_\+t time\+\_\+passed\+\_\+player\+\_\+y = 0\hspace{0.3cm}{\ttfamily [static]}}
+

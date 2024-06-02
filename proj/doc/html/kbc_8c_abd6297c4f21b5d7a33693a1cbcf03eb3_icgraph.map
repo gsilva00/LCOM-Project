@@ -1,0 +1,14 @@
+<map id="kbc_write_cmd" name="kbc_write_cmd">
+<area shape="rect" id="Node000001" title="Bottom layer function: Writes a command to an input register." alt="" coords="567,55,687,80"/>
+<area shape="rect" id="Node000002" href="$kbc_8c.html#aa90443358c3c8f173e5b2365494e1ec8" title="Bottom layer function: Writes a command directly to the mouse." alt="" coords="383,29,519,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="553,59,519,54,519,49,553,54"/>
+<area shape="rect" id="Node000006" href="$keyboard_8c.html#aee81e59c2a9baaacf9c588e40546dd48" title="Re&#45;enables keyboard interrupts (that lcf_start() disabled) by writing the appropriate command byte." alt="" coords="389,79,512,104"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="554,80,513,86,512,80,553,75"/>
+<area shape="rect" id="Node000003" href="$mouse_8c.html#a688f1d461a4123d5ea03dc0a8436aea8" title="Disable stream mode data reporting." alt="" coords="176,5,335,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="369,35,335,30,335,25,369,29"/>
+<area shape="rect" id="Node000005" href="$mouse_8c.html#a35052583452452b694ea86a1c5b6c346" title="Enable stream mode data reporting." alt="" coords="178,55,333,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="370,55,333,60,333,55,369,50"/>
+<area shape="rect" id="Node000004" href="$proj_8c.html#a7a72220d8366dd84709e79ce415862e5" title=" " alt="" coords="5,31,128,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="163,33,129,38,128,32,162,28"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="164,58,128,54,129,48,165,53"/>
+</map>

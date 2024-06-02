@@ -1,0 +1,10 @@
+<map id="i8254 Macros" name="i8254 Macros">
+<area shape="rect" id="Node000007" href="$group___count_mode.html" title="Counting mode: bit 0 of Control Word." alt="" coords="163,5,393,31"/>
+<area shape="rect" id="Node000002" href="$group___num_consts8254.html" title="Numeric Constants (frequencies and other miscellaneous stuff)" alt="" coords="179,55,377,80"/>
+<area shape="rect" id="Node000006" href="$group___op_mode.html" title="Operating mode: bits 3, 2 and 1 of Control Word." alt="" coords="203,105,353,145"/>
+<area shape="rect" id="Node000008" href="$group___r_b_command.html" title="Meaning of each of the bits of the Read&#45;Back Command Byte." alt="" coords="180,169,376,195"/>
+<area shape="rect" id="Node000005" href="$group___reg_sel.html" title="Register selection: bits 5 and 4 of Control Word." alt="" coords="209,219,347,259"/>
+<area shape="rect" id="Node000003" href="$group___timer_ports.html" title="Timer&#39;s ports&#39; addresses." alt="" coords="213,284,343,309"/>
+<area shape="rect" id="Node000004" href="$group___timer_sel.html" title="Counter selection: bits 7 and 6." alt="" coords="205,334,351,374"/>
+<area shape="rect" id="Node000001" title="Constants for programming the i8254 Timer." alt="" coords="5,169,115,195"/>
+</map>

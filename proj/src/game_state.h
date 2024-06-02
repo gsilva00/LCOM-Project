@@ -35,8 +35,8 @@ typedef enum {
 
 
 /**
- * @brief
- * @details
+ * @brief Given the current states, changes them to progress the game
+ * @param game_state, menu_state, menu_pause_state, done, cursor_active Current states Current states of the game
 */
 void enter_new_state(GameState *game_state, MenuState *menu_state, MenuPauseState *menu_pause_state, bool *done, bool *cursor_active);
 

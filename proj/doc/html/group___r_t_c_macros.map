@@ -1,0 +1,10 @@
+<map id="RTC Macros" name="RTC Macros">
+<area shape="rect" id="Node000002" href="$group___num_consts_r_t_c.html" title="Numeric Constants." alt="" coords="153,5,328,31"/>
+<area shape="rect" id="Node000005" href="$group___r_t_c_a.html" title="REGISTER 10." alt="" coords="151,55,330,80"/>
+<area shape="rect" id="Node000006" href="$group___r_t_c_b.html" title="REGISTER 11." alt="" coords="151,104,330,129"/>
+<area shape="rect" id="Node000007" href="$group___r_t_c_c.html" title="REGISTER 12." alt="" coords="151,153,330,179"/>
+<area shape="rect" id="Node000008" href="$group___r_t_c_d.html" title="REGISTER 13." alt="" coords="151,203,331,228"/>
+<area shape="rect" id="Node000001" title="Constants for programming the RTC &#45; Real&#45;Time Clock." alt="" coords="5,153,103,179"/>
+<area shape="rect" id="Node000003" href="$group___r_t_c_main.html" title="RTC&#39;s Main Register&#39;s Addresses." alt="" coords="167,252,314,277"/>
+<area shape="rect" id="Node000004" href="$group___r_t_c_registers.html" title="RTC has 64 1B Registers." alt="" coords="159,301,323,327"/>
+</map>

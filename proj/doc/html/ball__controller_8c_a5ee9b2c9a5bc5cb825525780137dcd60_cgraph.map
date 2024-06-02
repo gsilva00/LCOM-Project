@@ -1,0 +1,7 @@
+<map id="verify_goal" name="verify_goal">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,100,56"/>
+<area shape="rect" id="Node000002" href="$scoreboard_8c.html#aad4115d4c0221f58c45ad453f75e1e04" title="Function that adds a goal to the first player&#39;s score." alt="" coords="148,5,256,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,33,134,27,135,32,100,38"/>
+<area shape="rect" id="Node000003" href="$scoreboard_8c.html#a6baf68ab05f5b4985090043e7a425277" title="Function that adds a goal to the second player&#39;s score." alt="" coords="148,55,256,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="100,48,135,54,134,59,100,53"/>
+</map>

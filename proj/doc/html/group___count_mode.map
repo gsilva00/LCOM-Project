@@ -1,0 +1,4 @@
+<map id="Counting Mode for Control Word" name="Counting Mode for Control Word">
+<area shape="rect" id="Node000001" title="Counting mode: bit 0 of Control Word." alt="" coords="163,5,393,31"/>
+<area shape="rect" id="Node000002" href="$group__i8254.html" title="Constants for programming the i8254 Timer." alt="" coords="5,5,115,31"/>
+</map>

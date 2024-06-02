@@ -1,0 +1,11 @@
+<map id="ball_goal_collision" name="ball_goal_collision">
+<area shape="rect" id="Node000001" title="Collision detecting function between a ball and a goal." alt="" coords="5,31,148,56"/>
+<area shape="rect" id="Node000002" href="$ball__controller_8c.html#a1e8dc55045e169c25e6adda6e8d3c383" title=" " alt="" coords="196,5,371,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,32,182,28,183,33,149,37"/>
+<area shape="rect" id="Node000003" href="$ball__controller_8c.html#a5ee9b2c9a5bc5cb825525780137dcd60" title=" " alt="" coords="236,55,331,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="149,49,222,58,221,63,148,54"/>
+<area shape="rect" id="Node000004" href="$scoreboard_8c.html#aad4115d4c0221f58c45ad453f75e1e04" title="Function that adds a goal to the first player&#39;s score." alt="" coords="419,29,527,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="330,58,405,48,405,54,331,64"/>
+<area shape="rect" id="Node000005" href="$scoreboard_8c.html#a6baf68ab05f5b4985090043e7a425277" title="Function that adds a goal to the second player&#39;s score." alt="" coords="419,79,527,104"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="331,71,405,80,405,85,330,76"/>
+</map>

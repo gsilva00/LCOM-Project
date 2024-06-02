@@ -1,0 +1,22 @@
+<map id="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/devices/timer/aux_timer.h" name="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/devices/timer/aux_timer.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="351,5,547,60"/>
+<area shape="rect" id="Node000002" href="$timer_8c.html" title=" " alt="" coords="5,115,193,170"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="350,67,205,111,182,118,181,113,204,105,348,61"/>
+<area shape="rect" id="Node000003" href="$ball__controller_8h.html" title=" " alt="" coords="217,108,411,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="407,71,358,110,355,106,404,67"/>
+<area shape="rect" id="Node000005" href="$proj_8c.html" title=" " alt="" coords="355,233,543,287"/>
+<area shape="poly" id="edge11_Node000001_Node000005" title=" " alt="" coords="451,74,451,233,446,233,446,74"/>
+<area shape="rect" id="Node000006" href="$player__controller_8h.html" title=" " alt="" coords="487,108,680,177"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="494,67,543,106,539,110,490,71"/>
+<area shape="rect" id="Node000008" href="$timeboard_8h.html" title=" " alt="" coords="704,115,892,170"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="549,61,693,105,717,113,715,118,692,111,548,67"/>
+<area shape="rect" id="Node000004" href="$ball__controller_8c.html" title=" " alt="" coords="137,225,331,295"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="285,191,260,227,255,224,280,187"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="366,184,420,231,416,235,362,188"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="535,188,481,235,478,231,532,184"/>
+<area shape="rect" id="Node000007" href="$player__controller_8c.html" title=" " alt="" coords="567,225,760,295"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="617,187,642,224,638,227,613,191"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="707,177,529,235,527,230,705,172"/>
+<area shape="rect" id="Node000009" href="$timeboard_8c.html" title=" " alt="" coords="784,233,972,287"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="826,180,862,231,857,234,822,183"/>
+</map>

@@ -1,0 +1,77 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/objects/button.c File Reference}
+\hypertarget{button_8c}{}\label{button_8c}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/button.c@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/button.c}}
+{\ttfamily \#include "{}button.\+h"{}}\newline
+Include dependency graph for button.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{button_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{button_8c_a640e73a284c530b654dc7cfd9d1dcea4}{create\+\_\+button}} (xpm\+\_\+map\+\_\+t pic, int x, int y, bool selected)
+\begin{DoxyCompactList}\small\item\em Constructor of the \doxylink{struct_button}{Button} "{}class"{} (C-\/class == struct + functions) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{button_8c_a905101e90b9c5d475594862d98830d25}{destroy\+\_\+button}} (\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}bt)
+\begin{DoxyCompactList}\small\item\em Destructor of the \doxylink{struct_button}{Button} "{}class"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{button_8c_a640e73a284c530b654dc7cfd9d1dcea4}\label{button_8c_a640e73a284c530b654dc7cfd9d1dcea4} 
+\index{button.c@{button.c}!create\_button@{create\_button}}
+\index{create\_button@{create\_button}!button.c@{button.c}}
+\doxysubsubsection{\texorpdfstring{create\_button()}{create\_button()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*} create\+\_\+button (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{pic,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{bool}]{selected }\end{DoxyParamCaption})}
+
+
+
+Constructor of the \doxylink{struct_button}{Button} "{}class"{} (C-\/class == struct + functions) 
+
+Dynamically allocates in memory a \doxylink{struct_button}{Button} instance, effectively initializing the object
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic} & XPM map used to make the button\textquotesingle{}s image \\
+\hline
+{\em x} & Value of the button\textquotesingle{}s position in the x axis \\
+\hline
+{\em y} & Value of the button\textquotesingle{}s position in the y axis \\
+\hline
+{\em selected} & Variable that says if the \doxylink{struct_button}{Button} was selected \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the \doxylink{struct_button}{Button} struct dynamically allocated in memory. If memory allocation fails, returns NULL 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{button_8c_a640e73a284c530b654dc7cfd9d1dcea4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{button_8c_a905101e90b9c5d475594862d98830d25}\label{button_8c_a905101e90b9c5d475594862d98830d25} 
+\index{button.c@{button.c}!destroy\_button@{destroy\_button}}
+\index{destroy\_button@{destroy\_button}!button.c@{button.c}}
+\doxysubsubsection{\texorpdfstring{destroy\_button()}{destroy\_button()}}
+{\footnotesize\ttfamily void destroy\+\_\+button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}}]{bt }\end{DoxyParamCaption})}
+
+
+
+Destructor of the \doxylink{struct_button}{Button} "{}class"{}. 
+
+Frees the memory allocated for the \doxylink{struct_button}{Button} instance and its buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em bt} & Pointer to the \doxylink{struct_button}{Button} struct to be deallocated. If bt is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{button_8c_a905101e90b9c5d475594862d98830d25_icgraph}
+\end{center}
+\end{figure}

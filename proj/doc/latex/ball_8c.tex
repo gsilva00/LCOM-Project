@@ -1,0 +1,109 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/objects/ball.c File Reference}
+\hypertarget{ball_8c}{}\label{ball_8c}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/ball.c@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/ball.c}}
+{\ttfamily \#include "{}ball.\+h"{}}\newline
+Include dependency graph for ball.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{ball_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ball_8c_a3e0cb746ba7654144a010598d2d66b6d}{create\+\_\+ball}} (xpm\+\_\+map\+\_\+t pic, int x, int y, int width, int height, int xspeed, int yspeed)
+\begin{DoxyCompactList}\small\item\em Constructor of the ball "{}class"{} (C-\/class == struct + functions) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ball_8c_a8e2c265bd455108cb0ca461370589a5a}{destroy\+\_\+ball}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}bl)
+\begin{DoxyCompactList}\small\item\em Destructor of the ball "{}class"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ball_8c_ad71ed0890e15f2b92bd95f5a58a6ae5c}{move\+\_\+ball\+\_\+to\+\_\+center}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}bl)
+\begin{DoxyCompactList}\small\item\em Function that moves the ball to the center. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ball_8c_a3e0cb746ba7654144a010598d2d66b6d}\label{ball_8c_a3e0cb746ba7654144a010598d2d66b6d} 
+\index{ball.c@{ball.c}!create\_ball@{create\_ball}}
+\index{create\_ball@{create\_ball}!ball.c@{ball.c}}
+\doxysubsubsection{\texorpdfstring{create\_ball()}{create\_ball()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*} create\+\_\+ball (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{pic,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{int}]{xspeed,  }\item[{int}]{yspeed }\end{DoxyParamCaption})}
+
+
+
+Constructor of the ball "{}class"{} (C-\/class == struct + functions) 
+
+Dynamically allocates in memory a \doxylink{struct_ball}{Ball} instance, effectively initializing the object
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic} & XPM map used to make the ball\textquotesingle{}s image \\
+\hline
+{\em x} & Value of the ball\textquotesingle{}s position in the x axis \\
+\hline
+{\em y} & Value of the ball\textquotesingle{}s position in the y axis \\
+\hline
+{\em width} & Value of the ball\textquotesingle{}s image width \\
+\hline
+{\em height} & Value of the ball\textquotesingle{}s image height \\
+\hline
+{\em xspeed} & Value of the ball\textquotesingle{}s speed in the x axis \\
+\hline
+{\em yspeed} & Value of the ball\textquotesingle{}s speed in the y axis \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the \doxylink{struct_ball}{Ball} struct dynamically allocated in memory. If memory allocation fails, returns NULL 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{ball_8c_a3e0cb746ba7654144a010598d2d66b6d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ball_8c_a8e2c265bd455108cb0ca461370589a5a}\label{ball_8c_a8e2c265bd455108cb0ca461370589a5a} 
+\index{ball.c@{ball.c}!destroy\_ball@{destroy\_ball}}
+\index{destroy\_ball@{destroy\_ball}!ball.c@{ball.c}}
+\doxysubsubsection{\texorpdfstring{destroy\_ball()}{destroy\_ball()}}
+{\footnotesize\ttfamily void destroy\+\_\+ball (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bl }\end{DoxyParamCaption})}
+
+
+
+Destructor of the ball "{}class"{}. 
+
+Frees the memory allocated for the \doxylink{struct_ball}{Ball} instance and its buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em bl} & Pointer to the \doxylink{struct_ball}{Ball} struct to be deallocated. If bl is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{ball_8c_a8e2c265bd455108cb0ca461370589a5a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ball_8c_ad71ed0890e15f2b92bd95f5a58a6ae5c}\label{ball_8c_ad71ed0890e15f2b92bd95f5a58a6ae5c} 
+\index{ball.c@{ball.c}!move\_ball\_to\_center@{move\_ball\_to\_center}}
+\index{move\_ball\_to\_center@{move\_ball\_to\_center}!ball.c@{ball.c}}
+\doxysubsubsection{\texorpdfstring{move\_ball\_to\_center()}{move\_ball\_to\_center()}}
+{\footnotesize\ttfamily void move\+\_\+ball\+\_\+to\+\_\+center (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bl }\end{DoxyParamCaption})}
+
+
+
+Function that moves the ball to the center. 
+
+Moves the ball to the center of the field. It is used whenever the game is reset, either by beginning a new game or when someone scores a goal
+
+
+\begin{DoxyParams}{Parameters}
+{\em bl} & Pointer to the \doxylink{struct_ball}{Ball} struct to be reallocated. If bl is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ball_8c_ad71ed0890e15f2b92bd95f5a58a6ae5c_icgraph}
+\end{center}
+\end{figure}

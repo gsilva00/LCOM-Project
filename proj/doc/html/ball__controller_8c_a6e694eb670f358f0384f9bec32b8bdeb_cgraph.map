@@ -1,0 +1,7 @@
+<map id="handle_jump" name="handle_jump">
+<area shape="rect" id="Node000001" title="Function that performs the ball&#39;s jump." alt="" coords="5,31,112,56"/>
+<area shape="rect" id="Node000002" href="$ball__controller_8c.html#a40f80270ca86d1e6d96dffe5fc8331df" title="Function that changes the ball&#39;s y value along the jump." alt="" coords="198,5,282,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,33,183,23,184,28,113,39"/>
+<area shape="rect" id="Node000003" href="$timer_8c.html#a3fbc33679c2fa1eaeaee5d24da9e88a9" title="Getter for timer_intCounter static global variable in timer.c." alt="" coords="160,55,320,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="113,48,147,52,146,58,112,53"/>
+</map>

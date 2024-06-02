@@ -1,0 +1,7 @@
+<map id="configure_uart" name="configure_uart">
+<area shape="rect" id="Node000001" title="Configures the UART&#39;s initial state." alt="" coords="5,31,120,56"/>
+<area shape="rect" id="Node000002" href="$queue_8c.html#a6a638120d872a29988a8da517d0ddfc9" title="Constructor of the queue &quot;class&quot; (C&#45;class == struct + functions)" alt="" coords="169,5,265,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,31,155,25,156,31,121,37"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="168,55,267,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="121,50,155,55,154,60,120,55"/>
+</map>

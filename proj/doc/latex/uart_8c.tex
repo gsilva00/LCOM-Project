@@ -1,0 +1,274 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/devices/serial\+\_\+port/uart.c File Reference}
+\hypertarget{uart_8c}{}\label{uart_8c}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/uart.c@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/uart.c}}
+{\ttfamily \#include "{}uart.\+h"{}}\newline
+{\ttfamily \#include "{}uart\+\_\+macros.\+h"{}}\newline
+{\ttfamily \#include "{}../kbc/keyboard.\+h"{}}\newline
+Include dependency graph for uart.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{uart_8c_ae07d385c874c8d1052f87a687369ffad}{configure\+\_\+uart}} ()
+\begin{DoxyCompactList}\small\item\em Configures the UART\textquotesingle{}s initial state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{uart_8c_ac1ff1066d01d7718b732e60cba0100b1}{reset\+\_\+uart}} ()
+\begin{DoxyCompactList}\small\item\em Resets UART to its default state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{uart_8c_ac0d5ac077c28fa582ed60b1c3d977d83}{uart\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes and enables UART interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{uart_8c_af1ff3ad84fc50b3da2bf271b569af0da}{uart\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes RTC interrupts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uart_8c_a67d2da4dd20c731989c130bbe2cd4c85}{uart\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em RTC\textquotesingle{}s Interrupt Handler. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{uart_8c_af4a0072ca599d14d9d68c413ebb91c0c}{receive\+\_\+char}} (uint8\+\_\+t st)
+\begin{DoxyCompactList}\small\item\em Receives a character from the UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{uart_8c_a12929a81887e553365bcae668d01efb2}{send\+\_\+char}} (uint8\+\_\+t chr)
+\begin{DoxyCompactList}\small\item\em Sends a character to the UART. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{uart_8c_a05d02c3e9f5e5c3ac886a8420a48ba71}{get\+\_\+receive\+\_\+q}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the receiving queue (stores the data read from the UART) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{uart_8c_a05559e161d945787ce230276a4855729}{uart\+\_\+hook\+Id}} = \mbox{\hyperlink{group___u_a_r_t_i_r_q_ga3685c78b9bd6dd0fa3861807e24a4e1b}{COM1\+\_\+\+IRQ}}
+\item 
+static \mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{uart_8c_a6078ba2c012572cd72d5a98223b297f9}{receive\+\_\+q}}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{uart_8c_a4c1b1399f8ab5d795b0968dce378eeb8}{minix\+\_\+\+IER}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{uart_8c_ae07d385c874c8d1052f87a687369ffad}\label{uart_8c_ae07d385c874c8d1052f87a687369ffad} 
+\index{uart.c@{uart.c}!configure\_uart@{configure\_uart}}
+\index{configure\_uart@{configure\_uart}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{configure\_uart()}{configure\_uart()}}
+{\footnotesize\ttfamily int configure\+\_\+uart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Configures the UART\textquotesingle{}s initial state. 
+
+Enables interrupts ONLY when data is available. Stores the default configuration for resetting at the end of execution. Otherwise maintains the default configuration (by reading it first) except for the interrupts activated. Initializes the queue static global variable for receiving data
+
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{uart_8c_ae07d385c874c8d1052f87a687369ffad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{uart_8c_ae07d385c874c8d1052f87a687369ffad_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{uart_8c_a05d02c3e9f5e5c3ac886a8420a48ba71}\label{uart_8c_a05d02c3e9f5e5c3ac886a8420a48ba71} 
+\index{uart.c@{uart.c}!get\_receive\_q@{get\_receive\_q}}
+\index{get\_receive\_q@{get\_receive\_q}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{get\_receive\_q()}{get\_receive\_q()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*} get\+\_\+receive\+\_\+q (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the receiving queue (stores the data read from the UART) 
+
+Getter is needed because of the use of the static keyword (makes the variable only accesible in the file it\textquotesingle{}s declared). Provides encapsulation
+
+\begin{DoxyReturn}{Returns}
+Pointer to the queue struct corresponding to the receiving queue 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{uart_8c_a05d02c3e9f5e5c3ac886a8420a48ba71_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{uart_8c_af4a0072ca599d14d9d68c413ebb91c0c}\label{uart_8c_af4a0072ca599d14d9d68c413ebb91c0c} 
+\index{uart.c@{uart.c}!receive\_char@{receive\_char}}
+\index{receive\_char@{receive\_char}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{receive\_char()}{receive\_char()}}
+{\footnotesize\ttfamily int receive\+\_\+char (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{st }\end{DoxyParamCaption})}
+
+
+
+Receives a character from the UART. 
+
+Reads a character from the Receiver Buffer Register. If there are no errors, it pushes the character into the queue
+
+
+\begin{DoxyParams}{Parameters}
+{\em st} & int8\+\_\+t variable holding the status \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8c_af4a0072ca599d14d9d68c413ebb91c0c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8c_af4a0072ca599d14d9d68c413ebb91c0c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{uart_8c_ac1ff1066d01d7718b732e60cba0100b1}\label{uart_8c_ac1ff1066d01d7718b732e60cba0100b1} 
+\index{uart.c@{uart.c}!reset\_uart@{reset\_uart}}
+\index{reset\_uart@{reset\_uart}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{reset\_uart()}{reset\_uart()}}
+{\footnotesize\ttfamily int reset\+\_\+uart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets UART to its default state. 
+
+Sends the previously stored MINIX UART configuration (during \doxylink{uart_8h_ae07d385c874c8d1052f87a687369ffad}{configure\+\_\+uart()}) to the appropriate register. Deallocates the queue.
+
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{uart_8c_ac1ff1066d01d7718b732e60cba0100b1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{uart_8c_ac1ff1066d01d7718b732e60cba0100b1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{uart_8c_a12929a81887e553365bcae668d01efb2}\label{uart_8c_a12929a81887e553365bcae668d01efb2} 
+\index{uart.c@{uart.c}!send\_char@{send\_char}}
+\index{send\_char@{send\_char}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{send\_char()}{send\_char()}}
+{\footnotesize\ttfamily int send\+\_\+char (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{chr }\end{DoxyParamCaption})}
+
+
+
+Sends a character to the UART. 
+
+Outputs a character to the Transmitter Holding Register.
+
+
+\begin{DoxyParams}{Parameters}
+{\em chr} & int8\+\_\+t variable holding the character to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{uart_8c_a12929a81887e553365bcae668d01efb2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{uart_8c_a67d2da4dd20c731989c130bbe2cd4c85}\label{uart_8c_a67d2da4dd20c731989c130bbe2cd4c85} 
+\index{uart.c@{uart.c}!uart\_ih@{uart\_ih}}
+\index{uart\_ih@{uart\_ih}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{uart\_ih()}{uart\_ih()}}
+{\footnotesize\ttfamily void uart\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+RTC\textquotesingle{}s Interrupt Handler. 
+
+Only 1 type of interrupt is being handled (Received Data Available Interrupt), because the others aren\textquotesingle{}t activated \doxylink{uart_8h_ae07d385c874c8d1052f87a687369ffad}{configure\+\_\+uart()}. While there is data in the Receiver Buffer Register, \doxylink{uart_8h_af4a0072ca599d14d9d68c413ebb91c0c}{receive\+\_\+char()} is called. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8c_a67d2da4dd20c731989c130bbe2cd4c85_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{uart_8c_a67d2da4dd20c731989c130bbe2cd4c85_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{uart_8c_ac0d5ac077c28fa582ed60b1c3d977d83}\label{uart_8c_ac0d5ac077c28fa582ed60b1c3d977d83} 
+\index{uart.c@{uart.c}!uart\_subscribe\_int@{uart\_subscribe\_int}}
+\index{uart\_subscribe\_int@{uart\_subscribe\_int}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{uart\_subscribe\_int()}{uart\_subscribe\_int()}}
+{\footnotesize\ttfamily int uart\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Subscribes and enables UART interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & address of memory to be initialized with the bit number to be set in the mask returned upon an interrupt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{uart_8c_ac0d5ac077c28fa582ed60b1c3d977d83_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{uart_8c_af1ff3ad84fc50b3da2bf271b569af0da}\label{uart_8c_af1ff3ad84fc50b3da2bf271b569af0da} 
+\index{uart.c@{uart.c}!uart\_unsubscribe\_int@{uart\_unsubscribe\_int}}
+\index{uart\_unsubscribe\_int@{uart\_unsubscribe\_int}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{uart\_unsubscribe\_int()}{uart\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int uart\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes RTC interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{uart_8c_af1ff3ad84fc50b3da2bf271b569af0da_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{uart_8c_a4c1b1399f8ab5d795b0968dce378eeb8}\label{uart_8c_a4c1b1399f8ab5d795b0968dce378eeb8} 
+\index{uart.c@{uart.c}!minix\_IER@{minix\_IER}}
+\index{minix\_IER@{minix\_IER}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{minix\_IER}{minix\_IER}}
+{\footnotesize\ttfamily uint8\+\_\+t minix\+\_\+\+IER\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{uart_8c_a6078ba2c012572cd72d5a98223b297f9}\label{uart_8c_a6078ba2c012572cd72d5a98223b297f9} 
+\index{uart.c@{uart.c}!receive\_q@{receive\_q}}
+\index{receive\_q@{receive\_q}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{receive\_q}{receive\_q}}
+{\footnotesize\ttfamily \mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}}\texorpdfstring{$\ast$}{*} receive\+\_\+q\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{uart_8c_a05559e161d945787ce230276a4855729}\label{uart_8c_a05559e161d945787ce230276a4855729} 
+\index{uart.c@{uart.c}!uart\_hookId@{uart\_hookId}}
+\index{uart\_hookId@{uart\_hookId}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{uart\_hookId}{uart\_hookId}}
+{\footnotesize\ttfamily int uart\+\_\+hook\+Id = \mbox{\hyperlink{group___u_a_r_t_i_r_q_ga3685c78b9bd6dd0fa3861807e24a4e1b}{COM1\+\_\+\+IRQ}}\hspace{0.3cm}{\ttfamily [static]}}
+

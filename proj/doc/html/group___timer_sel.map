@@ -1,0 +1,4 @@
+<map id="Timer selection for Control Word" name="Timer selection for Control Word">
+<area shape="rect" id="Node000001" title="Counter selection: bits 7 and 6." alt="" coords="163,5,308,45"/>
+<area shape="rect" id="Node000002" href="$group__i8254.html" title="Constants for programming the i8254 Timer." alt="" coords="5,13,115,38"/>
+</map>

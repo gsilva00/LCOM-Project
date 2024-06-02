@@ -1,279 +1,1255 @@
-Untie frames: 124!QThere's interrupt
-The character received is: 0x00000000
-Wasn't conected!
+Untie frames: 210!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
+The character received is: 0x00000000
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
 There's interrupt
 The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-There's interrupt
-The character received is: 0x00000000
-Wasn't conected!
-Number of tries left: 300
 The character being sent is: 0x00000001
-Connection established!
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
 The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
 The character being sent is: 0x000000cb
 The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x00000048
+player_y_original: 455
 The character being sent is: 0x0000004d
 The character being sent is: 0x000000cd
 The character being sent is: 0x0000004b
+player_y_original: 455
 The character being sent is: 0x000000cb
 The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x00000050
+The character being sent is: 0x0000004d
+player_y_original: 455
 The character being sent is: 0x000000cd
 The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+The character being sent is: 0x000000cb
+player_y_original: 455
 The character being sent is: 0x0000004b
 The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x0000004b
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x00000001
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x0000004b
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x00000050
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+liedk!
+player_y_original: 455
 There's interrupt
 The character received is: 0x0000004b
 Entered drawing the other!
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+There's interrupt
+The character received is: 0x00000048
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+There's interrupt
+The character received is: 0x00000048
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+There's interrupt
+The character received is: 0x00000048
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x00000048
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+Clciked left!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+There's interrupt
+The character received is: 0x00000048
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x0000004d
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x0000004d
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+63player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+63player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+player_y_original: 455
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+Queue is empty! No item to get.
+The character being sent is: 0x00000000
+There's interrupt
+The character received is: 0x00000001
+Queue is empty! No item to get.
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x00000048
+Entered drawing the other!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cb
 Entered drawing the other!
 There's interrupt
 The character received is: 0x00000048
 Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
+player_y_original: 455
 There's interrupt
 The character received is: 0x0000004b
 Entered drawing the other!
+Clciked left!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cb
 Entered drawing the other!
 There's interrupt
 The character received is: 0x0000004d
 Entered drawing the other!
+Right cliedk!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cd
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cb
 Entered drawing the other!
 There's interrupt
 The character received is: 0x00000048
+Entered drawing the other!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x00000048
+Entered drawing the other!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x00000048
+player_y_original: 455
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x0000004d
+player_y_original: 455
+The character being sent is: 0x000000cd
+The character being sent is: 0x00000050
+kick
+The character being sent is: 0x0000004b
+player_y_original: 455
+The character being sent is: 0x000000cb
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x00000048
+Entered drawing the other!
+player_y_original: 455
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
 Entered drawing the other!
 There's interrupt
 The character received is: 0x00000050
 Entered drawing the other!
 There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-There's interrupt
 The character received is: 0x0000004b
 Entered drawing the other!
+Clciked left!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cb
-Entered drawing the other!
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x00000048
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x00000048
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x00000048
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x00000048
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x00000048
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x00000048
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x00000048
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
 Entered drawing the other!
 There's interrupt
 The character received is: 0x0000004b
 Entered drawing the other!
 Clciked left!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
+player_y_original: 455
 There's interrupt
 The character received is: 0x00000048
 Entered drawing the other!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
 There's interrupt
 The character received is: 0x0000004d
 Entered drawing the other!
@@ -284,278 +1260,237 @@ Entered drawing the other!
 There's interrupt
 The character received is: 0x0000004b
 Entered drawing the other!
-Right cliedk!
+Clciked left!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cb
 Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
 There's interrupt
 The character received is: 0x00000048
 Entered drawing the other!
-Clciked left!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cb
 Entered drawing the other!
-Right cliedk!
-6There's interrupt
+There's interrupt
 The character received is: 0x0000004d
 Entered drawing the other!
+Right cliedk!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cd
 Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
 Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cb
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
 There's interrupt
 The character received is: 0x00000048
 Entered drawing the other!
-63There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cb
 Entered drawing the other!
-1There's interrupt
+There's interrupt
 The character received is: 0x0000004d
 Entered drawing the other!
 Right cliedk!
-1There's interrupt
+player_y_original: 455
+There's interrupt
 The character received is: 0x000000cd
 Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004b
+Entered drawing the other!
+Clciked left!
+player_y_original: 455
 There's interrupt
 The character received is: 0x00000048
 Entered drawing the other!
-Right cliedk!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cb
 Entered drawing the other!
-Right cliedk!
 There's interrupt
 The character received is: 0x0000004d
 Entered drawing the other!
+Right cliedk!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cd
 Entered drawing the other!
-Clciked left!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
+Right cliedk!
+player_y_original: 455
+There's interrupt
+The character received is: 0x000000cd
+Entered drawing the other!
 There's interrupt
 The character received is: 0x0000004b
 Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
-Right cliedk!
+Clciked left!
+player_y_original: 455
 There's interrupt
 The character received is: 0x00000048
 Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-Clciked left!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-There's interrupt
-The character received is: 0x00000048
-Entered drawing the other!
-Clciked left!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cb
-Entered drawing the other!
-Right cliedk!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-Clciked left!
-There's interrupt
-The character received is: 0x00000048
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
-Right cliedk!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-Clciked left!
-There's interrupt
-The character received is: 0x00000048
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
-Clciked left!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-Right cliedk!
-There's interrupt
-The character received is: 0x00000048
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
-Clciked left!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-Right cliedk!
-There's interrupt
-The character received is: 0x00000048
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
-Clciked left!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-Right cliedk!
-There's interrupt
-The character received is: 0x00000048
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-Clciked left!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-Right cliedk!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-There's interrupt
-The character received is: 0x00000048
-Entered drawing the other!
-Clciked left!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
-Right cliedk!TThere's interrupt
-The character receiveThe character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x00000048
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x00000048
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-The character being sent is: 0x0000004d
-The character being sent is: 0x000000cd
-The character being sent is: 0x0000004b
-The character being sent is: 0x000000cb
-terrupt
-The character received is: 0x00000048
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-Right cliedk!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004d
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cd
-Entered drawing the other!
-Clciked left!
-There's interrupt
-The character received is: 0x00000048
 Entered drawing the other!
 There's interrupt
 The character received is: 0x0000004d
 Entered drawing the other!
 Right cliedk!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cd
 Entered drawing the other!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
-Clciked left!
-10There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
-Right cliedk!
 There's interrupt
 The character received is: 0x0000004d
 Entered drawing the other!
+Right cliedk!
+player_y_original: 455
 There's interrupt
 The character received is: 0x000000cd
 Entered drawing the other!
+There's interrupt
+The character received is: 0x0000004d
+Entered drawing the other!
 Right cliedk!
-There's interrupt
-The character received is: 0x0000004b
-Entered drawing the other!
-There's interrupt
-The character received is: 0x000000cb
-Entered drawing the other!
+player_y_original: 455

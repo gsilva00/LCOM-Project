@@ -53,7 +53,7 @@ bool check_kicking_player(Ball *bola, Player *pl) {
   }
   else { // Right player
     if ((bola->x + bola->width >= pl->x - 10) && (bola->x + bola->width < pl->x)) {
-      if ((bola->y >= pl->y + pl->height/4) && (bola->y + 5 >= pl->y + pl->height)) {
+      if ((bola->y >= pl->y + pl->height/4) && (bola->y + 5 <= pl->y + pl->height)) {
         return true;
       }
       else {
@@ -67,12 +67,11 @@ bool check_kicking_player(Ball *bola, Player *pl) {
 }
 
 bool ball_player_collision(Ball *bola, Player *pl) {
-  if ((bola->x <= pl->x + pl->width + 5) && (bola->x + bola->width + 5 >= pl->x)) {
-    return (bola->y <= pl->y + pl->height + 5) && (bola->y + bola->height + 5 >= pl->y);
-  }
-  else {
-    return false;
-  }
+  uint16_t bola_end = bola->x + bola->img.width;
+  uint16_t bola_bottom = bola->y + bola->img.height;
+  uint16_t pl_end = pl->x + pl->img.width;
+  uint16_t pl_bottom = pl->y + pl->img.height;
+  return !((bola_bottom < pl->y || pl_bottom < bola->y) || (bola_end < pl->x || pl_end < bola->x));
 }
 
 void change_y(Ball *bola) {

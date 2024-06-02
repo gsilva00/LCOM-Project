@@ -1,0 +1,61 @@
+\doxysection{ball\+\_\+controller.\+h}
+\hypertarget{ball__controller_8h_source}{}\label{ball__controller_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/object\_controllers/ball\_controller.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/object\_controllers/ball\_controller.h}}
+\mbox{\hyperlink{ball__controller_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BALL\_CONTROLLER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BALL\_CONTROLLER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{aux__timer_8h}{devices/timer/aux\_timer.h}}>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{ball_8h}{objects/ball.h}}>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{scoreboard_8h}{objects/scoreboard.h}}>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{goal_8h}{objects/goal.h}}>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ SPEED\_REDUCTION\_FACTOR\ 0.65\ }}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ BOUNCE\_SPEED\_REDUCTION\_FACTOR\ 0.85\ }}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ BOUNCE\_OFFSET\ 50\ }}
+\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9ac36e5c9ac597253191be83acf0b51d25}{STATE\_NONE}},}
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9a54429520c9b0512ec2b826742914a6b0}{START\_JUMP\_LEFT}},}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9af532bcef975666366695777d5f913e41}{BEFORE\_JUMP\_LEFT}},}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9a5d3f9dd9bf9baafc8a4d45593035a2e7}{JUMP\_LEFT}},}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9a2a1168a4a7e13fafa95f2f655bbdba7b}{AFTER\_JUMP\_LEFT}},}
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9ab5bb39de560c4bc8fb63be94454fab43}{JUMP\_END}},}
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9a298ea97ef7d94a468e1ab7764d182010}{START\_JUMP\_RIGHT}},}
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9a33469d2804b0d7cde9c863ccecf24ff9}{BEFORE\_JUMP\_RIGHT}},}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9a07f56c372bb5d150de884063843a2649}{JUMP\_RIGHT}},}
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9aa1339cc5d66e92129d297ad3d66b950b}{AFTER\_JUMP\_RIGHT}},}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9a3d7f9ef21abd81a9d66dfd21df8ec78b}{MOVE\_LEFT\_START}},}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9a30c2b72542fe9d581ac65d126cd08ad1}{MOVE\_RIGHT\_START}},}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9ae890746014b644c289999b83d5287c11}{MOVE\_LEFT}},}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9a05e150c88137543939f82e607e3a77e3}{MOVE\_RIGHT}},}
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9aabbb7b548fab43b31db14a93d34b2a04}{AFTER\_MOVE}},}
+\DoxyCodeLine{00041\ \}\ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{BallState}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ball__controller_8h_ae682a2e7727d219e592f6ee4c95398e3}{move\_ball}}(\mbox{\hyperlink{struct_ball}{Ball}}\ *\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}},\ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{BallState}}\ *\mbox{\hyperlink{proj_8c_a9dd36b367eb32385d9cabfe5c1ae1aed}{ball\_state}},\ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{BallState}}\ *\ \mbox{\hyperlink{proj_8c_a366778f061532ce05e331a6a004318b3}{ball\_state\_temporary}});}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{ball__controller_8h_a9fc675a573cfc0ac3db2f051b6f9eff8}{ball\_player\_collision}}(\mbox{\hyperlink{struct_ball}{Ball}}\ *\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}},\ \mbox{\hyperlink{struct_player}{Player}}\ *pl);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ball__controller_8h_a5dd601d5b34cfb88df1bd449936285f5}{ball\_goal\_collision}}(\mbox{\hyperlink{struct_ball}{Ball}}\ *bl,\ \mbox{\hyperlink{struct_goal}{Goal}}\ *gl,\ \mbox{\hyperlink{struct_scoreboard}{Scoreboard}}\ *sc,\ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{BallState}}\ *\ \mbox{\hyperlink{proj_8c_a9dd36b367eb32385d9cabfe5c1ae1aed}{ball\_state}});}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{ball__controller_8h_a13a4798c6f9db1b2a8ee8e806e440c25}{check\_kicking\_player}}(\mbox{\hyperlink{struct_ball}{Ball}}\ *\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}},\ \mbox{\hyperlink{struct_player}{Player}}\ *pl);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ball__controller_8h_a38785a5b9212e94df950365c57db0f6d}{initialize\_ball\_values}}(\mbox{\hyperlink{struct_ball}{Ball}}\ *\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}});}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ball__controller_8h_ab9158092f8a622ce728ecbb06ab1191a}{prepare\_for\_jump}}(\mbox{\hyperlink{struct_ball}{Ball}}\ *\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}});}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00107\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ball__controller_8h_a28516e78c8a62cb15250a024ee2b7798}{update\_ball\_position\_after\_jump}}(\mbox{\hyperlink{struct_ball}{Ball}}\ *\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}});}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00117\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ball__controller_8h_a6e694eb670f358f0384f9bec32b8bdeb}{handle\_jump}}(\mbox{\hyperlink{struct_ball}{Ball}}\ *\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}},\ \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{BallState}}\ *\mbox{\hyperlink{proj_8c_a9dd36b367eb32385d9cabfe5c1ae1aed}{ball\_state}},\ \textcolor{keywordtype}{int}\ direction);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00125\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ball__controller_8h_a40f80270ca86d1e6d96dffe5fc8331df}{change\_y}}(\mbox{\hyperlink{struct_ball}{Ball}}\ *\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}});}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

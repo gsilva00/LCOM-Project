@@ -1,0 +1,11 @@
+<map id="setup_multiplayer" name="setup_multiplayer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,145,105"/>
+<area shape="rect" id="Node000002" href="$ball_8c.html#ad71ed0890e15f2b92bd95f5a58a6ae5c" title="Function that moves the ball to the center." alt="" coords="205,5,364,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,77,192,39,216,32,218,37,194,45,104,82"/>
+<area shape="rect" id="Node000003" href="$player_8c.html#a196e2a0e7ae1fef15cc96b432fcc9f35" title="Function that moves the player to the left." alt="" coords="193,55,376,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="145,82,179,77,180,83,146,87"/>
+<area shape="rect" id="Node000004" href="$player_8c.html#a79765031f66452343b8f3c31a19768de" title="Function that moves the player to the right." alt="" coords="193,104,376,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="146,98,180,102,179,107,145,103"/>
+<area shape="rect" id="Node000005" href="$proj_8c.html#a91783592376f138dbba0a39c5053fae7" title=" " alt="" coords="233,153,336,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="106,103,194,138,221,147,220,152,192,143,104,108"/>
+</map>

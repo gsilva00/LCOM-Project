@@ -1,0 +1,4 @@
+<map id="Register selection for Control Word" name="Register selection for Control Word">
+<area shape="rect" id="Node000001" title="Register selection: bits 5 and 4 of Control Word." alt="" coords="163,5,301,45"/>
+<area shape="rect" id="Node000002" href="$group__i8254.html" title="Constants for programming the i8254 Timer." alt="" coords="5,13,115,38"/>
+</map>

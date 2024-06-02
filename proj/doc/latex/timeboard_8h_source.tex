@@ -1,0 +1,29 @@
+\doxysection{timeboard.\+h}
+\hypertarget{timeboard_8h_source}{}\label{timeboard_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/timeboard.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/timeboard.h}}
+\mbox{\hyperlink{timeboard_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TIMEBOARD\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TIMEBOARD\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{aux__timer_8h}{../devices/timer/aux\_timer.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00029\ \ \ uint16\_t\ \mbox{\hyperlink{struct_timeboard_a9336ebf25087d91c818ee6e9ec29f8c1}{x}},\ y;}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_timeboard_a70c092a6aebace0b1ea406e14da78a40}{time}};}
+\DoxyCodeLine{00031\ \ \ xpm\_image\_t\ \mbox{\hyperlink{struct_timeboard_a67db3a333cf587f8ded839100d814271}{points1\_img}};}
+\DoxyCodeLine{00032\ \ \ uint8\_t\ *\mbox{\hyperlink{struct_timeboard_a9ec9dda576db2a36c42c1c3af155d07c}{map}};}
+\DoxyCodeLine{00033\ \ \ xpm\_image\_t\ \mbox{\hyperlink{struct_timeboard_a86d0d51ceb4bc3bd26707520f257a5a4}{img}};}
+\DoxyCodeLine{00034\ \}\ \mbox{\hyperlink{struct_timeboard}{Timeboard}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00043\ \mbox{\hyperlink{struct_timeboard}{Timeboard}}\ *\mbox{\hyperlink{timeboard_8h_abefa91c136c49d4d8d386356ac185467}{create\_timeboard}}(xpm\_map\_t\ pic);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{timeboard_8h_ab061dc80b132bf7bc599a2afb3ab0526}{destroy\_timeboard}}(\mbox{\hyperlink{struct_timeboard}{Timeboard}}\ *tb);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{timeboard_8h_a79adf9ea298ffe4e8822ca151c97873c}{decrease\_time}}(\mbox{\hyperlink{struct_timeboard}{Timeboard}}\ *tb);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

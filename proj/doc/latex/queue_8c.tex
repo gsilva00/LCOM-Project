@@ -1,0 +1,182 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/devices/serial\+\_\+port/queue.c File Reference}
+\hypertarget{queue_8c}{}\label{queue_8c}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/queue.c@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/queue.c}}
+{\ttfamily \#include "{}queue.\+h"{}}\newline
+Include dependency graph for queue.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{queue_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structqueue}{queue}}
+\begin{DoxyCompactList}\small\item\em Implementation of the queue struct as a circular queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{queue_8c_a6a638120d872a29988a8da517d0ddfc9}{new\+\_\+queue}} (unsigned int in\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Constructor of the queue "{}class"{} (C-\/class == struct + functions) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8c_a7b0221e1c302d1af3349ffa0a71b7c08}{delete\+\_\+queue}} (\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}q)
+\begin{DoxyCompactList}\small\item\em Destructor of the queue "{}class"{}. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{queue_8c_a23ffe6852e9b5ea19c22c24c28a8d01f}{adjust\+\_\+queue}} (\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}q)
+\item 
+static int \mbox{\hyperlink{queue_8c_a096e3bdc6b77904ffa72605ef1935e23}{resize\+\_\+queue}} (\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}q)
+\item 
+int \mbox{\hyperlink{queue_8c_aa0da74506c2597c9c6f18775d6442bf9}{put\+\_\+queue}} (\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}q, uint8\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em Enqueues a value into the queue. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8c_a2dde85e0bc789908043e26bd10af62fb}{get\+\_\+queue}} (\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}q, uint8\+\_\+t \texorpdfstring{$\ast$}{*}n)
+\begin{DoxyCompactList}\small\item\em Dequeues a value from the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{queue_8c_a23ffe6852e9b5ea19c22c24c28a8d01f}\label{queue_8c_a23ffe6852e9b5ea19c22c24c28a8d01f} 
+\index{queue.c@{queue.c}!adjust\_queue@{adjust\_queue}}
+\index{adjust\_queue@{adjust\_queue}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{adjust\_queue()}{adjust\_queue()}}
+{\footnotesize\ttfamily static void adjust\+\_\+queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{q }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queue_8c_a23ffe6852e9b5ea19c22c24c28a8d01f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{queue_8c_a7b0221e1c302d1af3349ffa0a71b7c08}\label{queue_8c_a7b0221e1c302d1af3349ffa0a71b7c08} 
+\index{queue.c@{queue.c}!delete\_queue@{delete\_queue}}
+\index{delete\_queue@{delete\_queue}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{delete\_queue()}{delete\_queue()}}
+{\footnotesize\ttfamily void delete\+\_\+queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{q }\end{DoxyParamCaption})}
+
+
+
+Destructor of the queue "{}class"{}. 
+
+Frees the memory allocated for the queue\+\_\+t instance and its buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Pointer to the queue\+\_\+t struct to be deallocated. If q is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queue_8c_a7b0221e1c302d1af3349ffa0a71b7c08_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{queue_8c_a2dde85e0bc789908043e26bd10af62fb}\label{queue_8c_a2dde85e0bc789908043e26bd10af62fb} 
+\index{queue.c@{queue.c}!get\_queue@{get\_queue}}
+\index{get\_queue@{get\_queue}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{get\_queue()}{get\_queue()}}
+{\footnotesize\ttfamily int get\+\_\+queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{q,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{n }\end{DoxyParamCaption})}
+
+
+
+Dequeues a value from the queue. 
+
+If the queue is empty, it returns an error. After successfully dequeuing, it adjusts the queue
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Pointer to the queue struct from where the value will be dequeued \\
+\hline
+{\em n} & Pointer to a variable where the dequeued value will be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{queue_8c_a2dde85e0bc789908043e26bd10af62fb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{queue_8c_a2dde85e0bc789908043e26bd10af62fb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{queue_8c_a6a638120d872a29988a8da517d0ddfc9}\label{queue_8c_a6a638120d872a29988a8da517d0ddfc9} 
+\index{queue.c@{queue.c}!new\_queue@{new\_queue}}
+\index{new\_queue@{new\_queue}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{new\_queue()}{new\_queue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*} new\+\_\+queue (\begin{DoxyParamCaption}\item[{unsigned int}]{ini\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Constructor of the queue "{}class"{} (C-\/class == struct + functions) 
+
+Dynamically allocates in memory a queue\+\_\+t instance, effectively initializing the queue
+
+
+\begin{DoxyParams}{Parameters}
+{\em ini\+\_\+size} & Initial queue size. If ini\+\_\+size is 0, the queue is initialized with a size of 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the queue\+\_\+t struct dynamically allocated in memory. If memory allocation fails, returns NULL 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queue_8c_a6a638120d872a29988a8da517d0ddfc9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{queue_8c_aa0da74506c2597c9c6f18775d6442bf9}\label{queue_8c_aa0da74506c2597c9c6f18775d6442bf9} 
+\index{queue.c@{queue.c}!put\_queue@{put\_queue}}
+\index{put\_queue@{put\_queue}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{put\_queue()}{put\_queue()}}
+{\footnotesize\ttfamily int put\+\_\+queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{q,  }\item[{uint8\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+
+
+Enqueues a value into the queue. 
+
+If the queue is full, it tries to resize the queue. After successfully enqueuing, it adjusts the queue
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Pointer to the queue struct where the value will be enqueued \\
+\hline
+{\em n} & 8-\/bit unsigned value to be enqueued (what is passed through the serial port) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{queue_8c_aa0da74506c2597c9c6f18775d6442bf9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queue_8c_aa0da74506c2597c9c6f18775d6442bf9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{queue_8c_a096e3bdc6b77904ffa72605ef1935e23}\label{queue_8c_a096e3bdc6b77904ffa72605ef1935e23} 
+\index{queue.c@{queue.c}!resize\_queue@{resize\_queue}}
+\index{resize\_queue@{resize\_queue}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{resize\_queue()}{resize\_queue()}}
+{\footnotesize\ttfamily static int resize\+\_\+queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{q }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queue_8c_a096e3bdc6b77904ffa72605ef1935e23_icgraph}
+\end{center}
+\end{figure}

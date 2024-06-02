@@ -1,0 +1,186 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/devices/serial\+\_\+port/queue.h File Reference}
+\hypertarget{queue_8h}{}\label{queue_8h}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/queue.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/queue.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for queue.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{queue_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queue_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{queue_8h_a65b3d26abb9e69ef97a4c3840e2077a0}{Q\+\_\+\+INIT\+\_\+\+SZ}}~128
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structqueue}{queue}} \mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Alias for struct queue type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{queue_8h_af495852cd0c44ff448d3ca18216fc82f}{new\+\_\+queue}} (unsigned int ini\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Constructor of the queue "{}class"{} (C-\/class == struct + functions) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_a7b0221e1c302d1af3349ffa0a71b7c08}{delete\+\_\+queue}} (\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}q)
+\begin{DoxyCompactList}\small\item\em Destructor of the queue "{}class"{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8h_aa0da74506c2597c9c6f18775d6442bf9}{put\+\_\+queue}} (\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}q, uint8\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em Enqueues a value into the queue. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8h_a2dde85e0bc789908043e26bd10af62fb}{get\+\_\+queue}} (\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}q, uint8\+\_\+t \texorpdfstring{$\ast$}{*}n)
+\begin{DoxyCompactList}\small\item\em Dequeues a value from the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{queue_8h_a65b3d26abb9e69ef97a4c3840e2077a0}\label{queue_8h_a65b3d26abb9e69ef97a4c3840e2077a0} 
+\index{queue.h@{queue.h}!Q\_INIT\_SZ@{Q\_INIT\_SZ}}
+\index{Q\_INIT\_SZ@{Q\_INIT\_SZ}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{Q\_INIT\_SZ}{Q\_INIT\_SZ}}
+{\footnotesize\ttfamily \#define Q\+\_\+\+INIT\+\_\+\+SZ~128}
+
+Queue\textquotesingle{}s initial size 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}\label{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7} 
+\index{queue.h@{queue.h}!queue\_t@{queue\_t}}
+\index{queue\_t@{queue\_t}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{queue\_t}{queue\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structqueue}{queue}} \mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}}}
+
+
+
+Alias for struct queue type. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{queue_8h_a7b0221e1c302d1af3349ffa0a71b7c08}\label{queue_8h_a7b0221e1c302d1af3349ffa0a71b7c08} 
+\index{queue.h@{queue.h}!delete\_queue@{delete\_queue}}
+\index{delete\_queue@{delete\_queue}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{delete\_queue()}{delete\_queue()}}
+{\footnotesize\ttfamily void delete\+\_\+queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{q }\end{DoxyParamCaption})}
+
+
+
+Destructor of the queue "{}class"{}. 
+
+Frees the memory allocated for the queue\+\_\+t instance and its buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Pointer to the queue\+\_\+t struct to be deallocated. If q is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queue_8h_a7b0221e1c302d1af3349ffa0a71b7c08_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{queue_8h_a2dde85e0bc789908043e26bd10af62fb}\label{queue_8h_a2dde85e0bc789908043e26bd10af62fb} 
+\index{queue.h@{queue.h}!get\_queue@{get\_queue}}
+\index{get\_queue@{get\_queue}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{get\_queue()}{get\_queue()}}
+{\footnotesize\ttfamily int get\+\_\+queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{q,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{n }\end{DoxyParamCaption})}
+
+
+
+Dequeues a value from the queue. 
+
+If the queue is empty, it returns an error. After successfully dequeuing, it adjusts the queue
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Pointer to the queue struct from where the value will be dequeued \\
+\hline
+{\em n} & Pointer to a variable where the dequeued value will be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{queue_8h_a2dde85e0bc789908043e26bd10af62fb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{queue_8h_a2dde85e0bc789908043e26bd10af62fb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{queue_8h_af495852cd0c44ff448d3ca18216fc82f}\label{queue_8h_af495852cd0c44ff448d3ca18216fc82f} 
+\index{queue.h@{queue.h}!new\_queue@{new\_queue}}
+\index{new\_queue@{new\_queue}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{new\_queue()}{new\_queue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*} new\+\_\+queue (\begin{DoxyParamCaption}\item[{unsigned int}]{ini\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Constructor of the queue "{}class"{} (C-\/class == struct + functions) 
+
+Dynamically allocates in memory a queue\+\_\+t instance, effectively initializing the queue
+
+
+\begin{DoxyParams}{Parameters}
+{\em ini\+\_\+size} & Initial queue size. If ini\+\_\+size is 0, the queue is initialized with a size of 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the queue\+\_\+t struct dynamically allocated in memory. If memory allocation fails, returns NULL 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queue_8h_af495852cd0c44ff448d3ca18216fc82f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{queue_8h_aa0da74506c2597c9c6f18775d6442bf9}\label{queue_8h_aa0da74506c2597c9c6f18775d6442bf9} 
+\index{queue.h@{queue.h}!put\_queue@{put\_queue}}
+\index{put\_queue@{put\_queue}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{put\_queue()}{put\_queue()}}
+{\footnotesize\ttfamily int put\+\_\+queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{q,  }\item[{uint8\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+
+
+Enqueues a value into the queue. 
+
+If the queue is full, it tries to resize the queue. After successfully enqueuing, it adjusts the queue
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Pointer to the queue struct where the value will be enqueued \\
+\hline
+{\em n} & 8-\/bit unsigned value to be enqueued (what is passed through the serial port) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{queue_8h_aa0da74506c2597c9c6f18775d6442bf9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queue_8h_aa0da74506c2597c9c6f18775d6442bf9_icgraph}
+\end{center}
+\end{figure}

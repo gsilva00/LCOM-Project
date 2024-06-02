@@ -1,0 +1,10 @@
+<map id="kbc_write_mouse" name="kbc_write_mouse">
+<area shape="rect" id="Node000001" title="Bottom layer function: Writes a command directly to the mouse." alt="" coords="383,31,519,56"/>
+<area shape="rect" id="Node000002" href="$mouse_8c.html#a688f1d461a4123d5ea03dc0a8436aea8" title="Disable stream mode data reporting." alt="" coords="176,5,335,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="369,35,335,31,335,26,369,30"/>
+<area shape="rect" id="Node000004" href="$mouse_8c.html#a35052583452452b694ea86a1c5b6c346" title="Enable stream mode data reporting." alt="" coords="178,55,333,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="369,56,333,60,333,55,369,51"/>
+<area shape="rect" id="Node000003" href="$proj_8c.html#a7a72220d8366dd84709e79ce415862e5" title=" " alt="" coords="5,31,128,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="163,33,129,38,128,32,162,28"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="164,58,128,54,129,48,165,53"/>
+</map>

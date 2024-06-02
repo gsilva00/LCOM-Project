@@ -1,0 +1,10 @@
+<map id="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/objects/timeboard.c" name="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/objects/timeboard.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,193,60"/>
+<area shape="rect" id="Node000002" href="$timeboard_8h.html" title=" " alt="" coords="49,108,150,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,60,102,94,97,94,97,60"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="57,269,142,295"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,135,81,156,71,182,68,201,71,221,87,256,82,259,66,222,63,201,66,181,76,154,89,132"/>
+<area shape="rect" id="Node000004" href="$aux__timer_8h.html" title=" " alt="" coords="81,181,232,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="110,132,137,169,133,172,106,135"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="145,223,118,260,114,256,141,220"/>
+</map>

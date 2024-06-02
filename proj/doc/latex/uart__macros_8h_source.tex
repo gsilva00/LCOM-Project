@@ -1,0 +1,50 @@
+\doxysection{uart\+\_\+macros.\+h}
+\hypertarget{uart__macros_8h_source}{}\label{uart__macros_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/uart\_macros.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/uart\_macros.h}}
+\mbox{\hyperlink{uart__macros_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UART\_MACROS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UART\_MACROS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ UART\_SYNC\_MAX\_FRAMES\ 300}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ UART\_SYNC\ 0x00}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ UART\_ACK\ 0x01}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ COM1\_IRQ\ 4\ }}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ COM2\_IRQ\ 3\ }}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ COM1\_PORT\ 0x3F8\ }}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ COM2\_PORT\ 0x2F8\ }}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ UART\_SR\ 7\ \ \ }}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ UART\_MSR\ 6\ \ }}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ UART\_LSR\ 5\ \ }}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ UART\_MCR\ 4\ \ }}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ UART\_LCR\ 3\ \ }}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ UART\_FCR\ 2\ \ }}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ UART\_IIR\ 2\ \ }}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ UART\_DLM\ 1\ \ }}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ UART\_IER\ 1\ \ }}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ UART\_DLL\ 0\ \ }}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ UART\_THR\ 0\ \ }}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ UART\_RBR\ 0\ \ }}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ LSR\_ERRFIFO\ BIT(7)\ \ }}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ LSR\_TMT\_MT\ BIT(6)\ \ \ }}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ LSR\_THR\_RDY\ BIT(5)\ \ }}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ LSR\_BREAKINT\ BIT(4)\ }}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ LSR\_ERRFRAME\ BIT(3)\ }}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ LSR\_ERRPAR\ BIT(2)\ \ \ }}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ LSR\_ERROVER\ BIT(1)\ \ }}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ LSR\_DATA\ BIT(0)\ \ \ \ \ }}
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ Modem\ status\ interrupt\ omitted}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ LSRERR\_INT\ BIT(2)\ \ }}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ THR\_RDY\_INT\ BIT(1)\ \ }}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ DATA\_RDY\_INT\ BIT(0)\ }}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ IIR\_LSRERR\ BIT(2)\ |\ BIT(1)\ \ \ \ }}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ IIR\_DATA\_RDY\ BIT(2)\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ IIR\_CHAR\_TOUT\ BIT(3)\ |\ BIT(2)\ }}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ IIR\_THR\_RDY\ BIT(1)\ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00121\ \textcolor{comment}{//\ Modem\ status\ interrupt\ omitted}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ IIR\_NONE\ BIT(0)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ UART\_MACROS\_H}}
+
+\end{DoxyCode}

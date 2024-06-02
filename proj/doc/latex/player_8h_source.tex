@@ -1,0 +1,30 @@
+\doxysection{player.\+h}
+\hypertarget{player_8h_source}{}\label{player_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/player.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/player.h}}
+\mbox{\hyperlink{player_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PLAYER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PLAYER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_player_a9336ebf25087d91c818ee6e9ec29f8c1}{x}},\ y;}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{int}\ width,\ \mbox{\hyperlink{struct_player_a509290c21d570ff479c1b9d9b1fe8810}{height}};}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_player_a98f2e0dfcdbd3de203bc2e72c511fe68}{xspeed}},\ yspeed;}
+\DoxyCodeLine{00042\ \ \ uint8\_t\ *\mbox{\hyperlink{struct_player_a9ec9dda576db2a36c42c1c3af155d07c}{map}};}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_player_ac5fc6e200c34376449ba20a234061eb4}{orientation}};\ }
+\DoxyCodeLine{00044\ \ \ xpm\_image\_t\ \mbox{\hyperlink{struct_player_a86d0d51ceb4bc3bd26707520f257a5a4}{img}};}
+\DoxyCodeLine{00045\ \}\ \mbox{\hyperlink{struct_player}{Player}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00061\ \mbox{\hyperlink{struct_player}{Player}}\ *\mbox{\hyperlink{player_8h_a6bb4826862a934d5f61baee4da2261cc}{create\_player}}(xpm\_map\_t\ pic,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \textcolor{keywordtype}{int}\ xspeed,\ \textcolor{keywordtype}{int}\ yspeed,\ \textcolor{keywordtype}{bool}\ orientation);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player_8h_aec5769b18f1f21021cc3d1423b0182d2}{destroy\_player}}(\mbox{\hyperlink{struct_player}{Player}}\ *pl);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player_8h_a196e2a0e7ae1fef15cc96b432fcc9f35}{move\_player1\_to\_center}}(\mbox{\hyperlink{struct_player}{Player}}\ *pl);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player_8h_a79765031f66452343b8f3c31a19768de}{move\_player2\_to\_center}}(\mbox{\hyperlink{struct_player}{Player}}\ *pl);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

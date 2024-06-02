@@ -1,0 +1,11 @@
+<map id="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/devices/serial_port/queue.h" name="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/devices/serial_port/queue.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="115,5,321,60"/>
+<area shape="rect" id="Node000002" href="$queue_8c.html" title=" " alt="" coords="5,108,209,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,71,138,110,134,106,177,67"/>
+<area shape="rect" id="Node000003" href="$uart_8h.html" title=" " alt="" coords="233,108,424,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="259,67,302,106,298,110,255,71"/>
+<area shape="rect" id="Node000004" href="$uart_8c.html" title=" " alt="" coords="127,211,317,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="293,174,252,213,248,209,289,170"/>
+<area shape="rect" id="Node000005" href="$proj_8c.html" title=" " alt="" coords="341,211,529,265"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="368,170,409,209,406,213,365,174"/>
+</map>

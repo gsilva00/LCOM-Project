@@ -1,0 +1,9 @@
+<map id="set_hourly_alarm" name="set_hourly_alarm">
+<area shape="rect" id="Node000001" title="Activates alarm interrupts and sets the alarm to generate an interrupt every hour." alt="" coords="5,31,140,56"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#a69fd5a2cda35b5ac189d8db459142290" title="Reads the value in the specified RTC internal register." alt="" coords="190,5,265,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,30,176,24,177,29,141,35"/>
+<area shape="rect" id="Node000004" href="$rtc_8c.html#a87889a81ecf0db2a1c281e1c474af054" title="Writes the specified value in the specified RTC internal register." alt="" coords="188,55,267,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="141,51,175,57,174,62,140,56"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="315,5,413,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="265,15,301,15,301,21,265,21"/>
+</map>

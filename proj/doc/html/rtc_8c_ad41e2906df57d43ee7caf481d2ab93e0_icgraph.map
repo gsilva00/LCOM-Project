@@ -1,0 +1,12 @@
+<map id="read_current_time" name="read_current_time">
+<area shape="rect" id="Node000001" title="Reads the current time in the Real&#45;Time Clock." alt="" coords="513,29,655,55"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#a0045351c03a6f33fc89e406c76914159" title="Configures the RTC&#39;s initial state." alt="" coords="176,5,283,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="499,39,283,24,283,19,500,34"/>
+<area shape="rect" id="Node000004" href="$rtc_8c.html#a1314376c5de773828a9824b11cca2502" title="Handler for Alarm Interrupts." alt="" coords="331,55,465,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="500,56,466,61,465,56,499,51"/>
+<area shape="rect" id="Node000003" href="$proj_8c.html#a7a72220d8366dd84709e79ce415862e5" title=" " alt="" coords="5,31,128,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="163,31,129,36,128,31,162,26"/>
+<area shape="rect" id="Node000005" href="$rtc_8c.html#a46a3900840f7cfabdc6225622ffd88c6" title="RTC&#39;s Interrupt Handler." alt="" coords="200,55,259,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="317,70,259,70,259,65,317,65"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="186,64,128,55,128,50,187,58"/>
+</map>

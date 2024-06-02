@@ -1,0 +1,85 @@
+\doxysubsection{KBC\textquotesingle{}s Status Byte}
+\hypertarget{group___k_b_c_status}{}\label{group___k_b_c_status}\index{KBC\textquotesingle{}s Status Byte@{KBC\textquotesingle{}s Status Byte}}
+
+
+Meaning of each of bits in the Status Byte.  
+
+
+Collaboration diagram for KBC\textquotesingle{}s Status Byte\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{group___k_b_c_status}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___k_b_c_status_gae5d0621fce7c1a2fbd3ab94a44456e36}{ST\+\_\+\+ERRPAR}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Status byte\textquotesingle{}s parity error bit -\/ invalid data (error in serial communication) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_status_ga3207fa52d8970bdf8577f054208f8e87}{ST\+\_\+\+ERRTOUT}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em Status byte\textquotesingle{}s timeout error bit -\/ invalid data (error in serial communication) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_status_ga94fef0df0fd49e7e35f33b3adb33bf81}{ST\+\_\+\+AUX}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Status byte\textquotesingle{}s mouse data bit. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_status_ga6798fb96300a7f4fa75882e48eb1c93f}{ST\+\_\+\+IBF}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Status byte\textquotesingle{}s input buffer full bit. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_status_ga63a033358fabe9da751ae14d6b64975a}{ST\+\_\+\+OBF}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em Status byte\textquotesingle{}s output buffer full bit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Meaning of each of bits in the Status Byte. 
+
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___k_b_c_status_ga94fef0df0fd49e7e35f33b3adb33bf81}\label{group___k_b_c_status_ga94fef0df0fd49e7e35f33b3adb33bf81} 
+\index{KBC\textquotesingle{}s Status Byte@{KBC\textquotesingle{}s Status Byte}!ST\_AUX@{ST\_AUX}}
+\index{ST\_AUX@{ST\_AUX}!KBC\textquotesingle{}s Status Byte@{KBC\textquotesingle{}s Status Byte}}
+\doxysubsubsubsection{\texorpdfstring{ST\_AUX}{ST\_AUX}}
+{\footnotesize\ttfamily \#define ST\+\_\+\+AUX~BIT(5)}
+
+
+
+Status byte\textquotesingle{}s mouse data bit. 
+
+\Hypertarget{group___k_b_c_status_gae5d0621fce7c1a2fbd3ab94a44456e36}\label{group___k_b_c_status_gae5d0621fce7c1a2fbd3ab94a44456e36} 
+\index{KBC\textquotesingle{}s Status Byte@{KBC\textquotesingle{}s Status Byte}!ST\_ERRPAR@{ST\_ERRPAR}}
+\index{ST\_ERRPAR@{ST\_ERRPAR}!KBC\textquotesingle{}s Status Byte@{KBC\textquotesingle{}s Status Byte}}
+\doxysubsubsubsection{\texorpdfstring{ST\_ERRPAR}{ST\_ERRPAR}}
+{\footnotesize\ttfamily \#define ST\+\_\+\+ERRPAR~BIT(7)}
+
+
+
+Status byte\textquotesingle{}s parity error bit -\/ invalid data (error in serial communication) 
+
+\Hypertarget{group___k_b_c_status_ga3207fa52d8970bdf8577f054208f8e87}\label{group___k_b_c_status_ga3207fa52d8970bdf8577f054208f8e87} 
+\index{KBC\textquotesingle{}s Status Byte@{KBC\textquotesingle{}s Status Byte}!ST\_ERRTOUT@{ST\_ERRTOUT}}
+\index{ST\_ERRTOUT@{ST\_ERRTOUT}!KBC\textquotesingle{}s Status Byte@{KBC\textquotesingle{}s Status Byte}}
+\doxysubsubsubsection{\texorpdfstring{ST\_ERRTOUT}{ST\_ERRTOUT}}
+{\footnotesize\ttfamily \#define ST\+\_\+\+ERRTOUT~BIT(6)}
+
+
+
+Status byte\textquotesingle{}s timeout error bit -\/ invalid data (error in serial communication) 
+
+\Hypertarget{group___k_b_c_status_ga6798fb96300a7f4fa75882e48eb1c93f}\label{group___k_b_c_status_ga6798fb96300a7f4fa75882e48eb1c93f} 
+\index{KBC\textquotesingle{}s Status Byte@{KBC\textquotesingle{}s Status Byte}!ST\_IBF@{ST\_IBF}}
+\index{ST\_IBF@{ST\_IBF}!KBC\textquotesingle{}s Status Byte@{KBC\textquotesingle{}s Status Byte}}
+\doxysubsubsubsection{\texorpdfstring{ST\_IBF}{ST\_IBF}}
+{\footnotesize\ttfamily \#define ST\+\_\+\+IBF~BIT(1)}
+
+
+
+Status byte\textquotesingle{}s input buffer full bit. 
+
+\Hypertarget{group___k_b_c_status_ga63a033358fabe9da751ae14d6b64975a}\label{group___k_b_c_status_ga63a033358fabe9da751ae14d6b64975a} 
+\index{KBC\textquotesingle{}s Status Byte@{KBC\textquotesingle{}s Status Byte}!ST\_OBF@{ST\_OBF}}
+\index{ST\_OBF@{ST\_OBF}!KBC\textquotesingle{}s Status Byte@{KBC\textquotesingle{}s Status Byte}}
+\doxysubsubsubsection{\texorpdfstring{ST\_OBF}{ST\_OBF}}
+{\footnotesize\ttfamily \#define ST\+\_\+\+OBF~BIT(0)}
+
+
+
+Status byte\textquotesingle{}s output buffer full bit. 
+

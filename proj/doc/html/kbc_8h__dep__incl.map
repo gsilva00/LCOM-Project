@@ -1,0 +1,9 @@
+<map id="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/devices/kbc/kbc.h" name="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/devices/kbc/kbc.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="217,5,405,60"/>
+<area shape="rect" id="Node000002" href="$kbc_8c.html" title=" " alt="" coords="5,108,193,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="245,68,156,110,153,106,243,63"/>
+<area shape="rect" id="Node000003" href="$keyboard_8c.html" title=" " alt="" coords="217,108,405,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="314,74,314,108,309,108,309,74"/>
+<area shape="rect" id="Node000004" href="$mouse_8c.html" title=" " alt="" coords="429,108,617,163"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="380,63,469,106,467,110,377,68"/>
+</map>

@@ -1,0 +1,18 @@
+<map id="rtc_ih" name="rtc_ih">
+<area shape="rect" id="Node000001" title="RTC&#39;s Interrupt Handler." alt="" coords="5,80,64,105"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#a1314376c5de773828a9824b11cca2502" title="Handler for Alarm Interrupts." alt="" coords="112,55,247,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,85,98,79,99,84,65,90"/>
+<area shape="rect" id="Node000006" href="$rtc_8c.html#a69fd5a2cda35b5ac189d8db459142290" title="Reads the value in the specified RTC internal register." alt="" coords="665,104,739,129"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="64,91,651,112,651,118,64,96"/>
+<area shape="rect" id="Node000003" href="$rtc_8c.html#ad41e2906df57d43ee7caf481d2ab93e0" title="Reads the current time in the Real&#45;Time Clock." alt="" coords="295,55,436,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="247,65,281,65,281,70,247,70"/>
+<area shape="rect" id="Node000004" href="$rtc_8c.html#a7211989be235eddc771c4057ad5dfe77" title="Compares 2 rtc_data_t variables for equality." alt="" coords="495,5,596,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="412,52,484,32,485,37,413,57"/>
+<area shape="rect" id="Node000005" href="$rtc_8c.html#a388d5a9020707af17db740911902bfd3" title="Reads all the time registers." alt="" coords="484,55,607,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="436,65,470,65,470,70,436,70"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="587,77,652,98,650,103,586,83"/>
+<area shape="rect" id="Node000008" href="$rtc_8c.html#a0b4a586a73bd16970971d2b52b6a5366" title="Converts BCD value into decimal." alt="" coords="655,55,749,80"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="607,65,641,65,641,70,607,70"/>
+<area shape="rect" id="Node000007" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="797,104,896,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="740,114,783,114,783,119,740,119"/>
+</map>

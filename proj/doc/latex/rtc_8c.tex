@@ -1,0 +1,460 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/devices/rtc/rtc.c File Reference}
+\hypertarget{rtc_8c}{}\label{rtc_8c}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/rtc/rtc.c@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/rtc/rtc.c}}
+{\ttfamily \#include "{}../../objects/object\+\_\+controllers/sky\+\_\+controller.\+h"{}}\newline
+{\ttfamily \#include "{}rtc\+\_\+macros.\+h"{}}\newline
+{\ttfamily \#include "{}rtc.\+h"{}}\newline
+Include dependency graph for rtc.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structrtc__data}{rtc\+\_\+data}}
+\begin{DoxyCompactList}\small\item\em Implementation of the \doxylink{structrtc__data}{rtc\+\_\+data} struct to hold real time clock data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{rtc_8c_a0045351c03a6f33fc89e406c76914159}{configure\+\_\+rtc}} ()
+\begin{DoxyCompactList}\small\item\em Configures the RTC\textquotesingle{}s initial state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8c_a5171a9c0f54940fe60f7500896afcc86}{rtc\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes and enables RTC interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8c_ab8f17bf5280c908c8b199a90fefcc758}{rtc\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes RTC interrupts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rtc_8c_a46a3900840f7cfabdc6225622ffd88c6}{rtc\+\_\+ih}} (void)
+\begin{DoxyCompactList}\small\item\em RTC\textquotesingle{}s Interrupt Handler. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8c_a1314376c5de773828a9824b11cca2502}{handle\+\_\+alarm\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Handler for Alarm Interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8c_a69fd5a2cda35b5ac189d8db459142290}{rtc\+\_\+read}} (uint8\+\_\+t reg\+\_\+addr, uint8\+\_\+t \texorpdfstring{$\ast$}{*}output)
+\begin{DoxyCompactList}\small\item\em Reads the value in the specified RTC internal register. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8c_a87889a81ecf0db2a1c281e1c474af054}{rtc\+\_\+write}} (uint8\+\_\+t reg\+\_\+addr, uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Writes the specified value in the specified RTC internal register. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{rtc_8c_a0b4a586a73bd16970971d2b52b6a5366}{to\+\_\+decimal}} (uint8\+\_\+t bcd\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Converts BCD value into decimal. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8c_a2bccb45fe57bd2fdceef07ab2a16637f}{is\+\_\+rtc\+\_\+binary}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the RTC has its registers\textquotesingle{} values in binary format or BCD. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8c_ad41e2906df57d43ee7caf481d2ab93e0}{read\+\_\+current\+\_\+time}} ()
+\begin{DoxyCompactList}\small\item\em Reads the current time in the Real-\/\+Time Clock. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8c_a388d5a9020707af17db740911902bfd3}{read\+\_\+time\+\_\+regs}} (\mbox{\hyperlink{rtc_8h_a363a8726c6dfd911f706633f7ccd31c6}{rtc\+\_\+data\+\_\+t}} \texorpdfstring{$\ast$}{*}read)
+\begin{DoxyCompactList}\small\item\em Reads all the time registers. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{rtc_8c_a7211989be235eddc771c4057ad5dfe77}{equal\+\_\+reads}} (\mbox{\hyperlink{rtc_8h_a363a8726c6dfd911f706633f7ccd31c6}{rtc\+\_\+data\+\_\+t}} \texorpdfstring{$\ast$}{*}read1, \mbox{\hyperlink{rtc_8h_a363a8726c6dfd911f706633f7ccd31c6}{rtc\+\_\+data\+\_\+t}} \texorpdfstring{$\ast$}{*}read2)
+\begin{DoxyCompactList}\small\item\em Compares 2 rtc\+\_\+data\+\_\+t variables for equality. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8c_a3d1ff5763600a995360272da8adef21a}{set\+\_\+hourly\+\_\+alarm}} ()
+\begin{DoxyCompactList}\small\item\em Activates alarm interrupts and sets the alarm to generate an interrupt every hour. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{rtc_8c_ac8ca9da60db21908502da2cb5aaef883}{get\+\_\+current\+\_\+hour}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{rtc_8c_a6adda4904aa864c0b8ad1f00783ce8ba}{rtc\+\_\+binary}}
+\item 
+static \mbox{\hyperlink{rtc_8h_a363a8726c6dfd911f706633f7ccd31c6}{rtc\+\_\+data\+\_\+t}} \mbox{\hyperlink{rtc_8c_a989a98d7b97e40fc4af1a5f4413ad081}{current\+\_\+time}}
+\item 
+static int \mbox{\hyperlink{rtc_8c_a12504408d01dd494296f4f969dfc91f1}{rtc\+\_\+hook\+Id}} = \mbox{\hyperlink{group___r_t_c_macros_ga4e22feb6ffbc1cda32fadff5c740dc51}{RTC\+\_\+\+IRQ}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{rtc_8c_a0045351c03a6f33fc89e406c76914159}\label{rtc_8c_a0045351c03a6f33fc89e406c76914159} 
+\index{rtc.c@{rtc.c}!configure\_rtc@{configure\_rtc}}
+\index{configure\_rtc@{configure\_rtc}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{configure\_rtc()}{configure\_rtc()}}
+{\footnotesize\ttfamily int configure\+\_\+rtc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Configures the RTC\textquotesingle{}s initial state. 
+
+Initializes the rtc\+\_\+binary member variable (\doxylink{rtc_8h_a2bccb45fe57bd2fdceef07ab2a16637f}{is\+\_\+rtc\+\_\+binary()}). Initializes the current\+\_\+time (\doxylink{rtc_8h_ad41e2906df57d43ee7caf481d2ab93e0}{read\+\_\+current\+\_\+time()}). Sets hourly alarm for background-\/image changing (\doxylink{rtc_8h_a3d1ff5763600a995360272da8adef21a}{set\+\_\+hourly\+\_\+alarm()})
+
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a0045351c03a6f33fc89e406c76914159_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{rtc_8c_a0045351c03a6f33fc89e406c76914159_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_a7211989be235eddc771c4057ad5dfe77}\label{rtc_8c_a7211989be235eddc771c4057ad5dfe77} 
+\index{rtc.c@{rtc.c}!equal\_reads@{equal\_reads}}
+\index{equal\_reads@{equal\_reads}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{equal\_reads()}{equal\_reads()}}
+{\footnotesize\ttfamily bool equal\+\_\+reads (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{rtc_8h_a363a8726c6dfd911f706633f7ccd31c6}{rtc\+\_\+data\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{read1,  }\item[{\mbox{\hyperlink{rtc_8h_a363a8726c6dfd911f706633f7ccd31c6}{rtc\+\_\+data\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{read2 }\end{DoxyParamCaption})}
+
+
+
+Compares 2 rtc\+\_\+data\+\_\+t variables for equality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em read1,read2} & The two time structs to be compared\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if every struct member is equal, false otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a7211989be235eddc771c4057ad5dfe77_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_ac8ca9da60db21908502da2cb5aaef883}\label{rtc_8c_ac8ca9da60db21908502da2cb5aaef883} 
+\index{rtc.c@{rtc.c}!get\_current\_hour@{get\_current\_hour}}
+\index{get\_current\_hour@{get\_current\_hour}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{get\_current\_hour()}{get\_current\_hour()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+current\+\_\+hour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{rtc_8c_ac8ca9da60db21908502da2cb5aaef883_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_a1314376c5de773828a9824b11cca2502}\label{rtc_8c_a1314376c5de773828a9824b11cca2502} 
+\index{rtc.c@{rtc.c}!handle\_alarm\_int@{handle\_alarm\_int}}
+\index{handle\_alarm\_int@{handle\_alarm\_int}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{handle\_alarm\_int()}{handle\_alarm\_int()}}
+{\footnotesize\ttfamily int handle\+\_\+alarm\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handler for Alarm Interrupts. 
+
+Updates the current time and changes the sky background according to the real-\/time sky
+
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a1314376c5de773828a9824b11cca2502_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a1314376c5de773828a9824b11cca2502_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_a2bccb45fe57bd2fdceef07ab2a16637f}\label{rtc_8c_a2bccb45fe57bd2fdceef07ab2a16637f} 
+\index{rtc.c@{rtc.c}!is\_rtc\_binary@{is\_rtc\_binary}}
+\index{is\_rtc\_binary@{is\_rtc\_binary}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{is\_rtc\_binary()}{is\_rtc\_binary()}}
+{\footnotesize\ttfamily int is\+\_\+rtc\+\_\+binary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the RTC has its registers\textquotesingle{} values in binary format or BCD. 
+
+updates the rtc\+\_\+binary global variable
+
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{rtc_8c_a2bccb45fe57bd2fdceef07ab2a16637f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a2bccb45fe57bd2fdceef07ab2a16637f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_ad41e2906df57d43ee7caf481d2ab93e0}\label{rtc_8c_ad41e2906df57d43ee7caf481d2ab93e0} 
+\index{rtc.c@{rtc.c}!read\_current\_time@{read\_current\_time}}
+\index{read\_current\_time@{read\_current\_time}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{read\_current\_time()}{read\_current\_time()}}
+{\footnotesize\ttfamily int read\+\_\+current\+\_\+time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads the current time in the Real-\/\+Time Clock. 
+
+Software implementation to avoid race conditions while reading the time. Reads all the time registers in the RTC (\doxylink{rtc_8h_a388d5a9020707af17db740911902bfd3}{read\+\_\+time\+\_\+regs()}) -\/ TWICE -\/ and compares the values (\doxylink{rtc_8h_a7211989be235eddc771c4057ad5dfe77}{equal\+\_\+reads()})\+:
+\begin{DoxyItemize}
+\item If the values are the same, there weren\textquotesingle{}t any updates while reading that might cause significant value changes.
+\item If the values are different, it means that there was an update while reading and it tries to read the values again.
+\item After 10 times, if it wasn\textquotesingle{}t successful, it gives up.
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_ad41e2906df57d43ee7caf481d2ab93e0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_ad41e2906df57d43ee7caf481d2ab93e0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_a388d5a9020707af17db740911902bfd3}\label{rtc_8c_a388d5a9020707af17db740911902bfd3} 
+\index{rtc.c@{rtc.c}!read\_time\_regs@{read\_time\_regs}}
+\index{read\_time\_regs@{read\_time\_regs}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{read\_time\_regs()}{read\_time\_regs()}}
+{\footnotesize\ttfamily int read\+\_\+time\+\_\+regs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{rtc_8h_a363a8726c6dfd911f706633f7ccd31c6}{rtc\+\_\+data\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{read }\end{DoxyParamCaption})}
+
+
+
+Reads all the time registers. 
+
+The time registers are\+: seconds, minutes, hours, weekday, day, month, year 
+\begin{DoxyParams}{Parameters}
+{\em read} & Pointer to a struct rtc\+\_\+data\+\_\+t variable that stores the values read\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a388d5a9020707af17db740911902bfd3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a388d5a9020707af17db740911902bfd3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_a46a3900840f7cfabdc6225622ffd88c6}\label{rtc_8c_a46a3900840f7cfabdc6225622ffd88c6} 
+\index{rtc.c@{rtc.c}!rtc\_ih@{rtc\_ih}}
+\index{rtc\_ih@{rtc\_ih}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_ih()}{rtc\_ih()}}
+{\footnotesize\ttfamily void rtc\+\_\+ih (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+RTC\textquotesingle{}s Interrupt Handler. 
+
+Only 1 type of interrupt is being handled, because the others aren\textquotesingle{}t activated in \doxylink{rtc_8h_a0045351c03a6f33fc89e406c76914159}{configure\+\_\+rtc()} Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a46a3900840f7cfabdc6225622ffd88c6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{rtc_8c_a46a3900840f7cfabdc6225622ffd88c6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_a69fd5a2cda35b5ac189d8db459142290}\label{rtc_8c_a69fd5a2cda35b5ac189d8db459142290} 
+\index{rtc.c@{rtc.c}!rtc\_read@{rtc\_read}}
+\index{rtc\_read@{rtc\_read}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_read()}{rtc\_read()}}
+{\footnotesize\ttfamily int rtc\+\_\+read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+\_\+addr,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output }\end{DoxyParamCaption})}
+
+
+
+Reads the value in the specified RTC internal register. 
+
+Loads the RTC Address Register with the register from reg\+\_\+addr. Reads the RTC Data Register and stores the value in output
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+\_\+addr} & Register to be read \\
+\hline
+{\em output} & Pointer to a uint8\+\_\+t variable to store the value read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{rtc_8c_a69fd5a2cda35b5ac189d8db459142290_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a69fd5a2cda35b5ac189d8db459142290_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_a5171a9c0f54940fe60f7500896afcc86}\label{rtc_8c_a5171a9c0f54940fe60f7500896afcc86} 
+\index{rtc.c@{rtc.c}!rtc\_subscribe\_int@{rtc\_subscribe\_int}}
+\index{rtc\_subscribe\_int@{rtc\_subscribe\_int}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_subscribe\_int()}{rtc\_subscribe\_int()}}
+{\footnotesize\ttfamily int rtc\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Subscribes and enables RTC interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & address of memory to be initialized with the bit number to be set in the mask returned upon an interrupt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{rtc_8c_a5171a9c0f54940fe60f7500896afcc86_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_ab8f17bf5280c908c8b199a90fefcc758}\label{rtc_8c_ab8f17bf5280c908c8b199a90fefcc758} 
+\index{rtc.c@{rtc.c}!rtc\_unsubscribe\_int@{rtc\_unsubscribe\_int}}
+\index{rtc\_unsubscribe\_int@{rtc\_unsubscribe\_int}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_unsubscribe\_int()}{rtc\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int rtc\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes RTC interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{rtc_8c_ab8f17bf5280c908c8b199a90fefcc758_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_a87889a81ecf0db2a1c281e1c474af054}\label{rtc_8c_a87889a81ecf0db2a1c281e1c474af054} 
+\index{rtc.c@{rtc.c}!rtc\_write@{rtc\_write}}
+\index{rtc\_write@{rtc\_write}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_write()}{rtc\_write()}}
+{\footnotesize\ttfamily int rtc\+\_\+write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+\_\+addr,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Writes the specified value in the specified RTC internal register. 
+
+Loads the RTC Address Register with the register from reg\+\_\+addr. Loads that address with the value from byte
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+\_\+addr} & Register to be read \\
+\hline
+{\em byte} & uint8\+\_\+t value to written to the register in reg\+\_\+addr \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a87889a81ecf0db2a1c281e1c474af054_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_a3d1ff5763600a995360272da8adef21a}\label{rtc_8c_a3d1ff5763600a995360272da8adef21a} 
+\index{rtc.c@{rtc.c}!set\_hourly\_alarm@{set\_hourly\_alarm}}
+\index{set\_hourly\_alarm@{set\_hourly\_alarm}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{set\_hourly\_alarm()}{set\_hourly\_alarm()}}
+{\footnotesize\ttfamily int set\+\_\+hourly\+\_\+alarm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Activates alarm interrupts and sets the alarm to generate an interrupt every hour. 
+
+The sky\textquotesingle{}s background will change every couple of hours, so there\textquotesingle{}s a need to keep track of the current hour
+
+\begin{DoxyReturn}{Returns}
+0 upon success, 1 otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a3d1ff5763600a995360272da8adef21a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a3d1ff5763600a995360272da8adef21a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_a0b4a586a73bd16970971d2b52b6a5366}\label{rtc_8c_a0b4a586a73bd16970971d2b52b6a5366} 
+\index{rtc.c@{rtc.c}!to\_decimal@{to\_decimal}}
+\index{to\_decimal@{to\_decimal}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{to\_decimal()}{to\_decimal()}}
+{\footnotesize\ttfamily uint8\+\_\+t to\+\_\+decimal (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bcd\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Converts BCD value into decimal. 
+
+Called for every value read from a time register to ensure that it is stored in decimal form. RTC 1B registers can be in BCD data-\/format. Conversion is done according to the following example\+: Decimal\+: 12 BCD\+: 0001 0010 -\/\texorpdfstring{$>$}{>} 1 \texorpdfstring{$\ast$}{*} 10\texorpdfstring{$^\wedge$}{\string^}1 + 2 \texorpdfstring{$\ast$}{*} 10\texorpdfstring{$^\wedge$}{\string^}0 
+\begin{DoxyParams}{Parameters}
+{\em bcd\+\_\+num} & uint8\+\_\+t BCD value to be converted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+BCD value in binary 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a0b4a586a73bd16970971d2b52b6a5366_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{rtc_8c_a989a98d7b97e40fc4af1a5f4413ad081}\label{rtc_8c_a989a98d7b97e40fc4af1a5f4413ad081} 
+\index{rtc.c@{rtc.c}!current\_time@{current\_time}}
+\index{current\_time@{current\_time}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{current\_time}{current\_time}}
+{\footnotesize\ttfamily \mbox{\hyperlink{rtc_8h_a363a8726c6dfd911f706633f7ccd31c6}{rtc\+\_\+data\+\_\+t}} current\+\_\+time\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{rtc_8c_a6adda4904aa864c0b8ad1f00783ce8ba}\label{rtc_8c_a6adda4904aa864c0b8ad1f00783ce8ba} 
+\index{rtc.c@{rtc.c}!rtc\_binary@{rtc\_binary}}
+\index{rtc\_binary@{rtc\_binary}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_binary}{rtc\_binary}}
+{\footnotesize\ttfamily bool rtc\+\_\+binary\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{rtc_8c_a12504408d01dd494296f4f969dfc91f1}\label{rtc_8c_a12504408d01dd494296f4f969dfc91f1} 
+\index{rtc.c@{rtc.c}!rtc\_hookId@{rtc\_hookId}}
+\index{rtc\_hookId@{rtc\_hookId}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_hookId}{rtc\_hookId}}
+{\footnotesize\ttfamily int rtc\+\_\+hook\+Id = \mbox{\hyperlink{group___r_t_c_macros_ga4e22feb6ffbc1cda32fadff5c740dc51}{RTC\+\_\+\+IRQ}}\hspace{0.3cm}{\ttfamily [static]}}
+

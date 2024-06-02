@@ -1,0 +1,30 @@
+\doxysection{scoreboard.\+h}
+\hypertarget{scoreboard_8h_source}{}\label{scoreboard_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/scoreboard.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/scoreboard.h}}
+\mbox{\hyperlink{scoreboard_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SCOREBOARD\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SCOREBOARD\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00033\ \ \ uint16\_t\ \mbox{\hyperlink{struct_scoreboard_a9336ebf25087d91c818ee6e9ec29f8c1}{x}},\ y;}
+\DoxyCodeLine{00034\ \ \ uint8\_t\ \mbox{\hyperlink{struct_scoreboard_a024097af54db2ff84c8ac25254af0d48}{points1}};}
+\DoxyCodeLine{00035\ \ \ uint8\_t\ \mbox{\hyperlink{struct_scoreboard_af82a37c214e98b15708250ce4dd860b6}{points2}};}
+\DoxyCodeLine{00036\ \ \ xpm\_image\_t\ \mbox{\hyperlink{struct_scoreboard_a67db3a333cf587f8ded839100d814271}{points1\_img}};}
+\DoxyCodeLine{00037\ \ \ uint8\_t\ *\mbox{\hyperlink{struct_scoreboard_a9ec9dda576db2a36c42c1c3af155d07c}{map}};}
+\DoxyCodeLine{00038\ \ \ xpm\_image\_t\ \mbox{\hyperlink{struct_scoreboard_a86d0d51ceb4bc3bd26707520f257a5a4}{img}};}
+\DoxyCodeLine{00039\ \}\ \mbox{\hyperlink{struct_scoreboard}{Scoreboard}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00048\ \mbox{\hyperlink{struct_scoreboard}{Scoreboard}}\ *\mbox{\hyperlink{scoreboard_8h_a7f4651ba26de9460b5d9a5ce842dd870}{create\_scoreboard}}(xpm\_map\_t\ pic);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{scoreboard_8h_aad6cc7ea3c053596b32851593bc9bc69}{destroy\_scoreboard}}(\mbox{\hyperlink{struct_scoreboard}{Scoreboard}}\ *sc);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{scoreboard_8h_aad4115d4c0221f58c45ad453f75e1e04}{add\_points\_1}}(\mbox{\hyperlink{struct_scoreboard}{Scoreboard}}\ *sc);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{scoreboard_8h_a6baf68ab05f5b4985090043e7a425277}{add\_points\_2}}(\mbox{\hyperlink{struct_scoreboard}{Scoreboard}}\ *sc);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

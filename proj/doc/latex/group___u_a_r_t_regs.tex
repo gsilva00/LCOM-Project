@@ -1,0 +1,169 @@
+\doxysubsection{UART\textquotesingle{}s Registers}
+\hypertarget{group___u_a_r_t_regs}{}\label{group___u_a_r_t_regs}\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+
+
+8-\/bit registers\textquotesingle{} addresses  
+
+
+Collaboration diagram for UART\textquotesingle{}s Registers\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{group___u_a_r_t_regs}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga88135060cd7c85ef5c49d605ea9b4cae}{UART\+\_\+\+SR}}~7
+\begin{DoxyCompactList}\small\item\em Scratchpad Register (Read / Write) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga71067c48bdde7dc6c5d0a1c56746e776}{UART\+\_\+\+MSR}}~6
+\begin{DoxyCompactList}\small\item\em Modem Status Register (R) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga0f8ac527073d763bac90daba987361c6}{UART\+\_\+\+LSR}}~5
+\begin{DoxyCompactList}\small\item\em Line Status Register (R) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga8ef39bc0942ddd0411d87001d12224f4}{UART\+\_\+\+MCR}}~4
+\begin{DoxyCompactList}\small\item\em Modem Control Register (R/W) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga36c30861e332468c7f1998648e706740}{UART\+\_\+\+LCR}}~3
+\begin{DoxyCompactList}\small\item\em Line Control Register (R/W) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga220a678f91ca8244b30fe813200c26c1}{UART\+\_\+\+FCR}}~2
+\begin{DoxyCompactList}\small\item\em FIFO Control Register (W) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga16add7e6b9f91a6698c5910704111b68}{UART\+\_\+\+IIR}}~2
+\begin{DoxyCompactList}\small\item\em Interrupt Identification Reg (R) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga63f95172026aa533407e357e73b04551}{UART\+\_\+\+DLM}}~1
+\begin{DoxyCompactList}\small\item\em Divisor Latch MSB (Overloaded address -\/ accessible if DLAB of LCR is 1) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_gaaf7aaa372e86b3aa99e6c78242be2722}{UART\+\_\+\+IER}}~1
+\begin{DoxyCompactList}\small\item\em Interrupt Enable Register (R/W) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga7ff21e0cfc73a2db80c3907c5cac5a61}{UART\+\_\+\+DLL}}~0
+\begin{DoxyCompactList}\small\item\em Divisor Latch LSB (Overloaded address -\/ accessible if DLAB of LCR is 1) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga7a676f075475e46d27eb878977b867ec}{UART\+\_\+\+THR}}~0
+\begin{DoxyCompactList}\small\item\em Transmitter Holding Register -\/ Sending character (W) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga3eb7d5a767dae7774aa2b4be28e20a7e}{UART\+\_\+\+RBR}}~0
+\begin{DoxyCompactList}\small\item\em RBR Receiver Buffer Register -\/ Read received character (R) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+8-\/bit registers\textquotesingle{} addresses 
+
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___u_a_r_t_regs_ga7ff21e0cfc73a2db80c3907c5cac5a61}\label{group___u_a_r_t_regs_ga7ff21e0cfc73a2db80c3907c5cac5a61} 
+\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}!UART\_DLL@{UART\_DLL}}
+\index{UART\_DLL@{UART\_DLL}!UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+\doxysubsubsubsection{\texorpdfstring{UART\_DLL}{UART\_DLL}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+DLL~0}
+
+
+
+Divisor Latch LSB (Overloaded address -\/ accessible if DLAB of LCR is 1) 
+
+\Hypertarget{group___u_a_r_t_regs_ga63f95172026aa533407e357e73b04551}\label{group___u_a_r_t_regs_ga63f95172026aa533407e357e73b04551} 
+\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}!UART\_DLM@{UART\_DLM}}
+\index{UART\_DLM@{UART\_DLM}!UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+\doxysubsubsubsection{\texorpdfstring{UART\_DLM}{UART\_DLM}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+DLM~1}
+
+
+
+Divisor Latch MSB (Overloaded address -\/ accessible if DLAB of LCR is 1) 
+
+\Hypertarget{group___u_a_r_t_regs_ga220a678f91ca8244b30fe813200c26c1}\label{group___u_a_r_t_regs_ga220a678f91ca8244b30fe813200c26c1} 
+\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}!UART\_FCR@{UART\_FCR}}
+\index{UART\_FCR@{UART\_FCR}!UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+\doxysubsubsubsection{\texorpdfstring{UART\_FCR}{UART\_FCR}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+FCR~2}
+
+
+
+FIFO Control Register (W) 
+
+\Hypertarget{group___u_a_r_t_regs_gaaf7aaa372e86b3aa99e6c78242be2722}\label{group___u_a_r_t_regs_gaaf7aaa372e86b3aa99e6c78242be2722} 
+\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}!UART\_IER@{UART\_IER}}
+\index{UART\_IER@{UART\_IER}!UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+\doxysubsubsubsection{\texorpdfstring{UART\_IER}{UART\_IER}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+IER~1}
+
+
+
+Interrupt Enable Register (R/W) 
+
+\Hypertarget{group___u_a_r_t_regs_ga16add7e6b9f91a6698c5910704111b68}\label{group___u_a_r_t_regs_ga16add7e6b9f91a6698c5910704111b68} 
+\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}!UART\_IIR@{UART\_IIR}}
+\index{UART\_IIR@{UART\_IIR}!UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+\doxysubsubsubsection{\texorpdfstring{UART\_IIR}{UART\_IIR}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+IIR~2}
+
+
+
+Interrupt Identification Reg (R) 
+
+\Hypertarget{group___u_a_r_t_regs_ga36c30861e332468c7f1998648e706740}\label{group___u_a_r_t_regs_ga36c30861e332468c7f1998648e706740} 
+\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}!UART\_LCR@{UART\_LCR}}
+\index{UART\_LCR@{UART\_LCR}!UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+\doxysubsubsubsection{\texorpdfstring{UART\_LCR}{UART\_LCR}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+LCR~3}
+
+
+
+Line Control Register (R/W) 
+
+\Hypertarget{group___u_a_r_t_regs_ga0f8ac527073d763bac90daba987361c6}\label{group___u_a_r_t_regs_ga0f8ac527073d763bac90daba987361c6} 
+\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}!UART\_LSR@{UART\_LSR}}
+\index{UART\_LSR@{UART\_LSR}!UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+\doxysubsubsubsection{\texorpdfstring{UART\_LSR}{UART\_LSR}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+LSR~5}
+
+
+
+Line Status Register (R) 
+
+\Hypertarget{group___u_a_r_t_regs_ga8ef39bc0942ddd0411d87001d12224f4}\label{group___u_a_r_t_regs_ga8ef39bc0942ddd0411d87001d12224f4} 
+\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}!UART\_MCR@{UART\_MCR}}
+\index{UART\_MCR@{UART\_MCR}!UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+\doxysubsubsubsection{\texorpdfstring{UART\_MCR}{UART\_MCR}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+MCR~4}
+
+
+
+Modem Control Register (R/W) 
+
+\Hypertarget{group___u_a_r_t_regs_ga71067c48bdde7dc6c5d0a1c56746e776}\label{group___u_a_r_t_regs_ga71067c48bdde7dc6c5d0a1c56746e776} 
+\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}!UART\_MSR@{UART\_MSR}}
+\index{UART\_MSR@{UART\_MSR}!UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+\doxysubsubsubsection{\texorpdfstring{UART\_MSR}{UART\_MSR}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+MSR~6}
+
+
+
+Modem Status Register (R) 
+
+\Hypertarget{group___u_a_r_t_regs_ga3eb7d5a767dae7774aa2b4be28e20a7e}\label{group___u_a_r_t_regs_ga3eb7d5a767dae7774aa2b4be28e20a7e} 
+\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}!UART\_RBR@{UART\_RBR}}
+\index{UART\_RBR@{UART\_RBR}!UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+\doxysubsubsubsection{\texorpdfstring{UART\_RBR}{UART\_RBR}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+RBR~0}
+
+
+
+RBR Receiver Buffer Register -\/ Read received character (R) 
+
+\Hypertarget{group___u_a_r_t_regs_ga88135060cd7c85ef5c49d605ea9b4cae}\label{group___u_a_r_t_regs_ga88135060cd7c85ef5c49d605ea9b4cae} 
+\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}!UART\_SR@{UART\_SR}}
+\index{UART\_SR@{UART\_SR}!UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+\doxysubsubsubsection{\texorpdfstring{UART\_SR}{UART\_SR}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+SR~7}
+
+
+
+Scratchpad Register (Read / Write) 
+
+\Hypertarget{group___u_a_r_t_regs_ga7a676f075475e46d27eb878977b867ec}\label{group___u_a_r_t_regs_ga7a676f075475e46d27eb878977b867ec} 
+\index{UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}!UART\_THR@{UART\_THR}}
+\index{UART\_THR@{UART\_THR}!UART\textquotesingle{}s Registers@{UART\textquotesingle{}s Registers}}
+\doxysubsubsubsection{\texorpdfstring{UART\_THR}{UART\_THR}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+THR~0}
+
+
+
+Transmitter Holding Register -\/ Sending character (W) 
+

@@ -1,0 +1,4 @@
+<map id="Operating mode for Control Word" name="Operating mode for Control Word">
+<area shape="rect" id="Node000001" title="Operating mode: bits 3, 2 and 1 of Control Word." alt="" coords="163,5,312,45"/>
+<area shape="rect" id="Node000002" href="$group__i8254.html" title="Constants for programming the i8254 Timer." alt="" coords="5,13,115,38"/>
+</map>

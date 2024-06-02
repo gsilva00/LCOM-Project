@@ -1,0 +1,162 @@
+\doxysubsection{RTC\textquotesingle{}s 1-\/byte registers}
+\hypertarget{group___r_t_c_registers}{}\label{group___r_t_c_registers}\index{RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}}
+
+
+RTC has 64 1B Registers.  
+
+
+Collaboration diagram for RTC\textquotesingle{}s 1-\/byte registers\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{group___r_t_c_registers}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_gac6365d7f429ac4e05ecb88880d32a551}{YEAR\+\_\+\+ADDR}}~0x9
+\begin{DoxyCompactList}\small\item\em Year Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_gae615679819fcbd214d60f9104bdb8bf9}{MONTH\+\_\+\+ADDR}}~0x8
+\begin{DoxyCompactList}\small\item\em Month Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_ga059a7ffd66c8cef5421397925e6d8230}{DAY\+\_\+\+ADDR}}~0x7
+\begin{DoxyCompactList}\small\item\em Day Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_gaa0c12c43f2201683f530ab69b14dc08e}{WEEKDAY\+\_\+\+ADDR}}~0x6
+\begin{DoxyCompactList}\small\item\em Weekday Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_gad8fcf1eca789c118eee3bf654152896d}{HOURS\+\_\+\+AL\+\_\+\+ADDR}}~0x5
+\begin{DoxyCompactList}\small\item\em Hours Alarm Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_ga9397a8a942f648404f12d1f362ea20f7}{HOURS\+\_\+\+ADDR}}~0x4
+\begin{DoxyCompactList}\small\item\em Hours Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_gaddd245199c5dc6de4787c87d5e0cd962}{MINS\+\_\+\+AL\+\_\+\+ADDR}}~0x3
+\begin{DoxyCompactList}\small\item\em Minutes Alarm Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_ga28c667b5676f847028436ecd4e6b96bf}{MINS\+\_\+\+ADDR}}~0x2
+\begin{DoxyCompactList}\small\item\em Minutes Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_ga7d6b9ba880a462dd1db2edd34926cd02}{SECS\+\_\+\+AL\+\_\+\+ADDR}}~0x1
+\begin{DoxyCompactList}\small\item\em Seconds Alarm Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_ga4851c19f07c835bd907e7954255bfe69}{SECS\+\_\+\+ADDR}}~0x0
+\begin{DoxyCompactList}\small\item\em Seconds Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_ga487ea2164e3f2607ca628d40d2c1c9dd}{AL\+\_\+\+DONTCARE}}~BIT(7)\texorpdfstring{$\vert$}{|}BIT(6)
+\begin{DoxyCompactList}\small\item\em Don\textquotesingle{}t-\/\+Care value for Alarm Registers -\/ match any value in the register (alarms in multiple times of day) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+RTC has 64 1B Registers. 
+
+Those are\+:
+\begin{DoxyItemize}
+\item First 10 -\/\texorpdfstring{$>$}{>} Time-\/related functionality
+\item Following 4 -\/\texorpdfstring{$>$}{>} Control of RTC
+\item Last 50 -\/\texorpdfstring{$>$}{>} Arbitrary purposes 
+\end{DoxyItemize}
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___r_t_c_registers_ga487ea2164e3f2607ca628d40d2c1c9dd}\label{group___r_t_c_registers_ga487ea2164e3f2607ca628d40d2c1c9dd} 
+\index{RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}!AL\_DONTCARE@{AL\_DONTCARE}}
+\index{AL\_DONTCARE@{AL\_DONTCARE}!RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}}
+\doxysubsubsubsection{\texorpdfstring{AL\_DONTCARE}{AL\_DONTCARE}}
+{\footnotesize\ttfamily \#define AL\+\_\+\+DONTCARE~BIT(7)\texorpdfstring{$\vert$}{|}BIT(6)}
+
+
+
+Don\textquotesingle{}t-\/\+Care value for Alarm Registers -\/ match any value in the register (alarms in multiple times of day) 
+
+\Hypertarget{group___r_t_c_registers_ga059a7ffd66c8cef5421397925e6d8230}\label{group___r_t_c_registers_ga059a7ffd66c8cef5421397925e6d8230} 
+\index{RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}!DAY\_ADDR@{DAY\_ADDR}}
+\index{DAY\_ADDR@{DAY\_ADDR}!RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}}
+\doxysubsubsubsection{\texorpdfstring{DAY\_ADDR}{DAY\_ADDR}}
+{\footnotesize\ttfamily \#define DAY\+\_\+\+ADDR~0x7}
+
+
+
+Day Register\textquotesingle{}s Address. 
+
+\Hypertarget{group___r_t_c_registers_ga9397a8a942f648404f12d1f362ea20f7}\label{group___r_t_c_registers_ga9397a8a942f648404f12d1f362ea20f7} 
+\index{RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}!HOURS\_ADDR@{HOURS\_ADDR}}
+\index{HOURS\_ADDR@{HOURS\_ADDR}!RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}}
+\doxysubsubsubsection{\texorpdfstring{HOURS\_ADDR}{HOURS\_ADDR}}
+{\footnotesize\ttfamily \#define HOURS\+\_\+\+ADDR~0x4}
+
+
+
+Hours Register\textquotesingle{}s Address. 
+
+\Hypertarget{group___r_t_c_registers_gad8fcf1eca789c118eee3bf654152896d}\label{group___r_t_c_registers_gad8fcf1eca789c118eee3bf654152896d} 
+\index{RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}!HOURS\_AL\_ADDR@{HOURS\_AL\_ADDR}}
+\index{HOURS\_AL\_ADDR@{HOURS\_AL\_ADDR}!RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}}
+\doxysubsubsubsection{\texorpdfstring{HOURS\_AL\_ADDR}{HOURS\_AL\_ADDR}}
+{\footnotesize\ttfamily \#define HOURS\+\_\+\+AL\+\_\+\+ADDR~0x5}
+
+
+
+Hours Alarm Register\textquotesingle{}s Address. 
+
+\Hypertarget{group___r_t_c_registers_ga28c667b5676f847028436ecd4e6b96bf}\label{group___r_t_c_registers_ga28c667b5676f847028436ecd4e6b96bf} 
+\index{RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}!MINS\_ADDR@{MINS\_ADDR}}
+\index{MINS\_ADDR@{MINS\_ADDR}!RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}}
+\doxysubsubsubsection{\texorpdfstring{MINS\_ADDR}{MINS\_ADDR}}
+{\footnotesize\ttfamily \#define MINS\+\_\+\+ADDR~0x2}
+
+
+
+Minutes Register\textquotesingle{}s Address. 
+
+\Hypertarget{group___r_t_c_registers_gaddd245199c5dc6de4787c87d5e0cd962}\label{group___r_t_c_registers_gaddd245199c5dc6de4787c87d5e0cd962} 
+\index{RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}!MINS\_AL\_ADDR@{MINS\_AL\_ADDR}}
+\index{MINS\_AL\_ADDR@{MINS\_AL\_ADDR}!RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}}
+\doxysubsubsubsection{\texorpdfstring{MINS\_AL\_ADDR}{MINS\_AL\_ADDR}}
+{\footnotesize\ttfamily \#define MINS\+\_\+\+AL\+\_\+\+ADDR~0x3}
+
+
+
+Minutes Alarm Register\textquotesingle{}s Address. 
+
+\Hypertarget{group___r_t_c_registers_gae615679819fcbd214d60f9104bdb8bf9}\label{group___r_t_c_registers_gae615679819fcbd214d60f9104bdb8bf9} 
+\index{RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}!MONTH\_ADDR@{MONTH\_ADDR}}
+\index{MONTH\_ADDR@{MONTH\_ADDR}!RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}}
+\doxysubsubsubsection{\texorpdfstring{MONTH\_ADDR}{MONTH\_ADDR}}
+{\footnotesize\ttfamily \#define MONTH\+\_\+\+ADDR~0x8}
+
+
+
+Month Register\textquotesingle{}s Address. 
+
+\Hypertarget{group___r_t_c_registers_ga4851c19f07c835bd907e7954255bfe69}\label{group___r_t_c_registers_ga4851c19f07c835bd907e7954255bfe69} 
+\index{RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}!SECS\_ADDR@{SECS\_ADDR}}
+\index{SECS\_ADDR@{SECS\_ADDR}!RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}}
+\doxysubsubsubsection{\texorpdfstring{SECS\_ADDR}{SECS\_ADDR}}
+{\footnotesize\ttfamily \#define SECS\+\_\+\+ADDR~0x0}
+
+
+
+Seconds Register\textquotesingle{}s Address. 
+
+\Hypertarget{group___r_t_c_registers_ga7d6b9ba880a462dd1db2edd34926cd02}\label{group___r_t_c_registers_ga7d6b9ba880a462dd1db2edd34926cd02} 
+\index{RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}!SECS\_AL\_ADDR@{SECS\_AL\_ADDR}}
+\index{SECS\_AL\_ADDR@{SECS\_AL\_ADDR}!RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}}
+\doxysubsubsubsection{\texorpdfstring{SECS\_AL\_ADDR}{SECS\_AL\_ADDR}}
+{\footnotesize\ttfamily \#define SECS\+\_\+\+AL\+\_\+\+ADDR~0x1}
+
+
+
+Seconds Alarm Register\textquotesingle{}s Address. 
+
+\Hypertarget{group___r_t_c_registers_gaa0c12c43f2201683f530ab69b14dc08e}\label{group___r_t_c_registers_gaa0c12c43f2201683f530ab69b14dc08e} 
+\index{RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}!WEEKDAY\_ADDR@{WEEKDAY\_ADDR}}
+\index{WEEKDAY\_ADDR@{WEEKDAY\_ADDR}!RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}}
+\doxysubsubsubsection{\texorpdfstring{WEEKDAY\_ADDR}{WEEKDAY\_ADDR}}
+{\footnotesize\ttfamily \#define WEEKDAY\+\_\+\+ADDR~0x6}
+
+
+
+Weekday Register\textquotesingle{}s Address. 
+
+\Hypertarget{group___r_t_c_registers_gac6365d7f429ac4e05ecb88880d32a551}\label{group___r_t_c_registers_gac6365d7f429ac4e05ecb88880d32a551} 
+\index{RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}!YEAR\_ADDR@{YEAR\_ADDR}}
+\index{YEAR\_ADDR@{YEAR\_ADDR}!RTC\textquotesingle{}s 1-\/byte registers@{RTC\textquotesingle{}s 1-\/byte registers}}
+\doxysubsubsubsection{\texorpdfstring{YEAR\_ADDR}{YEAR\_ADDR}}
+{\footnotesize\ttfamily \#define YEAR\+\_\+\+ADDR~0x9}
+
+
+
+Year Register\textquotesingle{}s Address. 
+

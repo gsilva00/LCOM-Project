@@ -1,0 +1,4 @@
+<map id="Timer&apos;s I/O Ports" name="Timer&apos;s I/O Ports">
+<area shape="rect" id="Node000001" title="Timer&#39;s ports&#39; addresses." alt="" coords="163,5,293,31"/>
+<area shape="rect" id="Node000002" href="$group__i8254.html" title="Constants for programming the i8254 Timer." alt="" coords="5,5,115,31"/>
+</map>

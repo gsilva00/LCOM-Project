@@ -1,0 +1,25 @@
+\doxysection{queue.\+h}
+\hypertarget{queue_8h_source}{}\label{queue_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/queue.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/queue.h}}
+\mbox{\hyperlink{queue_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ QUEUE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ QUEUE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structqueue}{queue}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structqueue}{queue}}\ \mbox{\hyperlink{structqueue}{queue\_t}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ Q\_INIT\_SZ\ 128\ }}
+\DoxyCodeLine{00025\ \mbox{\hyperlink{structqueue}{queue\_t}}\ *\mbox{\hyperlink{queue_8h_af495852cd0c44ff448d3ca18216fc82f}{new\_queue}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ ini\_size);}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{queue_8h_a7b0221e1c302d1af3349ffa0a71b7c08}{delete\_queue}}(\mbox{\hyperlink{structqueue}{queue\_t}}\ *q);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{queue_8h_aa0da74506c2597c9c6f18775d6442bf9}{put\_queue}}(\mbox{\hyperlink{structqueue}{queue\_t}}\ *q,\ uint8\_t\ n);\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{queue_8h_a2dde85e0bc789908043e26bd10af62fb}{get\_queue}}(\mbox{\hyperlink{structqueue}{queue\_t}}\ *q,\ uint8\_t\ *n);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

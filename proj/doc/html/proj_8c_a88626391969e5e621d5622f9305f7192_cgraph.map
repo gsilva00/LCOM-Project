@@ -1,0 +1,9 @@
+<map id="setup_singleplayer" name="setup_singleplayer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,151,80"/>
+<area shape="rect" id="Node000002" href="$ball_8c.html#ad71ed0890e15f2b92bd95f5a58a6ae5c" title="Function that moves the ball to the center." alt="" coords="211,5,369,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,52,221,31,222,36,134,57"/>
+<area shape="rect" id="Node000003" href="$player_8c.html#a196e2a0e7ae1fef15cc96b432fcc9f35" title="Function that moves the player to the left." alt="" coords="199,55,381,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,65,185,65,185,70,151,70"/>
+<area shape="rect" id="Node000004" href="$proj_8c.html#a91783592376f138dbba0a39c5053fae7" title=" " alt="" coords="239,104,341,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="134,77,226,99,225,104,133,83"/>
+</map>

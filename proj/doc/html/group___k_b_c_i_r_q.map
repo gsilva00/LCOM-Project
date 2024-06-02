@@ -1,0 +1,4 @@
+<map id="KBC&apos;s IRQs" name="KBC&apos;s IRQs">
+<area shape="rect" id="Node000001" title="KBC Interrupt Request Lines:" alt="" coords="163,5,257,31"/>
+<area shape="rect" id="Node000002" href="$group__i8042.html" title="Constants for programming the i8042 KBC &#45; Keyboard (and Mouse) Controller." alt="" coords="5,5,115,31"/>
+</map>

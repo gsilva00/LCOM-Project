@@ -1,0 +1,7 @@
+<map id="put_queue" name="put_queue">
+<area shape="rect" id="Node000001" title="Enqueues a value into the queue." alt="" coords="5,31,96,56"/>
+<area shape="rect" id="Node000002" href="$queue_8c.html#a23ffe6852e9b5ea19c22c24c28a8d01f" title=" " alt="" coords="144,5,253,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,33,130,27,131,32,97,38"/>
+<area shape="rect" id="Node000003" href="$queue_8c.html#a096e3bdc6b77904ffa72605ef1935e23" title=" " alt="" coords="145,55,253,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="97,48,132,54,131,59,96,53"/>
+</map>

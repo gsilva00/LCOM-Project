@@ -1,0 +1,13 @@
+<map id="move_ball_to_center" name="move_ball_to_center">
+<area shape="rect" id="Node000001" title="Function that moves the ball to the center." alt="" coords="369,55,528,80"/>
+<area shape="rect" id="Node000002" href="$proj_8c.html#a7e55dc276a3b154dfa09b3a28eb1178c" title=" " alt="" coords="194,5,303,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="383,54,300,33,302,28,384,49"/>
+<area shape="rect" id="Node000004" href="$proj_8c.html#a41b14608b773ea06f3da769856742aab" title=" " alt="" coords="179,55,319,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="355,70,319,70,319,65,355,65"/>
+<area shape="rect" id="Node000005" href="$proj_8c.html#a88626391969e5e621d5622f9305f7192" title=" " alt="" coords="176,104,321,129"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="384,86,302,107,300,101,383,81"/>
+<area shape="rect" id="Node000003" href="$proj_8c.html#a7a72220d8366dd84709e79ce415862e5" title=" " alt="" coords="5,55,128,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="189,37,115,57,114,52,188,32"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="165,70,128,70,128,65,165,65"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="188,103,114,83,115,78,189,98"/>
+</map>

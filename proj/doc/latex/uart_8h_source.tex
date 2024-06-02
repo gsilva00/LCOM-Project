@@ -1,0 +1,33 @@
+\doxysection{uart.\+h}
+\hypertarget{uart_8h_source}{}\label{uart_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/uart.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/uart.h}}
+\mbox{\hyperlink{uart_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UART\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UART\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{queue_8h}{queue.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{uart_8h_ae07d385c874c8d1052f87a687369ffad}{configure\_uart}}();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{uart_8h_ac1ff1066d01d7718b732e60cba0100b1}{reset\_uart}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{uart_8h_ac0d5ac077c28fa582ed60b1c3d977d83}{uart\_subscribe\_int}}(uint8\_t\ *bit\_no);}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{uart_8h_af1ff3ad84fc50b3da2bf271b569af0da}{uart\_unsubscribe\_int}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{uart_8h_a67d2da4dd20c731989c130bbe2cd4c85}{uart\_ih}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{uart_8h_af4a0072ca599d14d9d68c413ebb91c0c}{receive\_char}}(uint8\_t\ st);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{uart_8h_a12929a81887e553365bcae668d01efb2}{send\_char}}(uint8\_t\ chr);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00071\ \mbox{\hyperlink{structqueue}{queue\_t}}*\ \mbox{\hyperlink{uart_8h_a05d02c3e9f5e5c3ac886a8420a48ba71}{get\_receive\_q}}();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

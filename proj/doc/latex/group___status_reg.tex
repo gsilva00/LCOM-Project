@@ -1,0 +1,121 @@
+\doxysubsection{Line Status Register (LST)}
+\hypertarget{group___status_reg}{}\label{group___status_reg}\index{Line Status Register (LST)@{Line Status Register (LST)}}
+
+
+Bits 0 to 4 reset on LSR read.  
+
+
+Collaboration diagram for Line Status Register (LST)\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{group___status_reg}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___status_reg_gaad7697bcfac0bf1e0effd1c766c856f7}{LSR\+\_\+\+ERRFIFO}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em ERRPAR/\+ERRFRAME/\+BREAK in the FIFO; Resets to 0 on LSR read if no errors. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_gadaea8572f90ee57d5137ef69ff51bf50}{LSR\+\_\+\+TMT\+\_\+\+MT}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em Both THR and Transmitter Shift Register Empty. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_gab0904d456196c9551cef9f7d2f07a229}{LSR\+\_\+\+THR\+\_\+\+RDY}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Ready to accept new character for transmitting. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_gafa4a5e9b6122093d0e21afaee6b60a8b}{LSR\+\_\+\+BREAKINT}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em Serial data input line at low for longer than full-\/word transmission. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_gafbdf2477580ca6379ad8dd6b8b970744}{LSR\+\_\+\+ERRFRAME}}~BIT(3)
+\begin{DoxyCompactList}\small\item\em Received character with no valid stop bit. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_ga962d57b2f3158e4739235d45e4d15c9a}{LSR\+\_\+\+ERRPAR}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em Received character has parity error. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_ga11f25e648a2b213c6130245aa2d393f3}{LSR\+\_\+\+ERROVER}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Received character overwritten by another one. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_gacc953afbc113851e8d35e30e4d1bdc24}{LSR\+\_\+\+DATA}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em There is data for receiving. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Bits 0 to 4 reset on LSR read. 
+
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___status_reg_gafa4a5e9b6122093d0e21afaee6b60a8b}\label{group___status_reg_gafa4a5e9b6122093d0e21afaee6b60a8b} 
+\index{Line Status Register (LST)@{Line Status Register (LST)}!LSR\_BREAKINT@{LSR\_BREAKINT}}
+\index{LSR\_BREAKINT@{LSR\_BREAKINT}!Line Status Register (LST)@{Line Status Register (LST)}}
+\doxysubsubsubsection{\texorpdfstring{LSR\_BREAKINT}{LSR\_BREAKINT}}
+{\footnotesize\ttfamily \#define LSR\+\_\+\+BREAKINT~BIT(4)}
+
+
+
+Serial data input line at low for longer than full-\/word transmission. 
+
+\Hypertarget{group___status_reg_gacc953afbc113851e8d35e30e4d1bdc24}\label{group___status_reg_gacc953afbc113851e8d35e30e4d1bdc24} 
+\index{Line Status Register (LST)@{Line Status Register (LST)}!LSR\_DATA@{LSR\_DATA}}
+\index{LSR\_DATA@{LSR\_DATA}!Line Status Register (LST)@{Line Status Register (LST)}}
+\doxysubsubsubsection{\texorpdfstring{LSR\_DATA}{LSR\_DATA}}
+{\footnotesize\ttfamily \#define LSR\+\_\+\+DATA~BIT(0)}
+
+
+
+There is data for receiving. 
+
+\Hypertarget{group___status_reg_gaad7697bcfac0bf1e0effd1c766c856f7}\label{group___status_reg_gaad7697bcfac0bf1e0effd1c766c856f7} 
+\index{Line Status Register (LST)@{Line Status Register (LST)}!LSR\_ERRFIFO@{LSR\_ERRFIFO}}
+\index{LSR\_ERRFIFO@{LSR\_ERRFIFO}!Line Status Register (LST)@{Line Status Register (LST)}}
+\doxysubsubsubsection{\texorpdfstring{LSR\_ERRFIFO}{LSR\_ERRFIFO}}
+{\footnotesize\ttfamily \#define LSR\+\_\+\+ERRFIFO~BIT(7)}
+
+
+
+ERRPAR/\+ERRFRAME/\+BREAK in the FIFO; Resets to 0 on LSR read if no errors. 
+
+\Hypertarget{group___status_reg_gafbdf2477580ca6379ad8dd6b8b970744}\label{group___status_reg_gafbdf2477580ca6379ad8dd6b8b970744} 
+\index{Line Status Register (LST)@{Line Status Register (LST)}!LSR\_ERRFRAME@{LSR\_ERRFRAME}}
+\index{LSR\_ERRFRAME@{LSR\_ERRFRAME}!Line Status Register (LST)@{Line Status Register (LST)}}
+\doxysubsubsubsection{\texorpdfstring{LSR\_ERRFRAME}{LSR\_ERRFRAME}}
+{\footnotesize\ttfamily \#define LSR\+\_\+\+ERRFRAME~BIT(3)}
+
+
+
+Received character with no valid stop bit. 
+
+\Hypertarget{group___status_reg_ga11f25e648a2b213c6130245aa2d393f3}\label{group___status_reg_ga11f25e648a2b213c6130245aa2d393f3} 
+\index{Line Status Register (LST)@{Line Status Register (LST)}!LSR\_ERROVER@{LSR\_ERROVER}}
+\index{LSR\_ERROVER@{LSR\_ERROVER}!Line Status Register (LST)@{Line Status Register (LST)}}
+\doxysubsubsubsection{\texorpdfstring{LSR\_ERROVER}{LSR\_ERROVER}}
+{\footnotesize\ttfamily \#define LSR\+\_\+\+ERROVER~BIT(1)}
+
+
+
+Received character overwritten by another one. 
+
+\Hypertarget{group___status_reg_ga962d57b2f3158e4739235d45e4d15c9a}\label{group___status_reg_ga962d57b2f3158e4739235d45e4d15c9a} 
+\index{Line Status Register (LST)@{Line Status Register (LST)}!LSR\_ERRPAR@{LSR\_ERRPAR}}
+\index{LSR\_ERRPAR@{LSR\_ERRPAR}!Line Status Register (LST)@{Line Status Register (LST)}}
+\doxysubsubsubsection{\texorpdfstring{LSR\_ERRPAR}{LSR\_ERRPAR}}
+{\footnotesize\ttfamily \#define LSR\+\_\+\+ERRPAR~BIT(2)}
+
+
+
+Received character has parity error. 
+
+\Hypertarget{group___status_reg_gab0904d456196c9551cef9f7d2f07a229}\label{group___status_reg_gab0904d456196c9551cef9f7d2f07a229} 
+\index{Line Status Register (LST)@{Line Status Register (LST)}!LSR\_THR\_RDY@{LSR\_THR\_RDY}}
+\index{LSR\_THR\_RDY@{LSR\_THR\_RDY}!Line Status Register (LST)@{Line Status Register (LST)}}
+\doxysubsubsubsection{\texorpdfstring{LSR\_THR\_RDY}{LSR\_THR\_RDY}}
+{\footnotesize\ttfamily \#define LSR\+\_\+\+THR\+\_\+\+RDY~BIT(5)}
+
+
+
+Ready to accept new character for transmitting. 
+
+\Hypertarget{group___status_reg_gadaea8572f90ee57d5137ef69ff51bf50}\label{group___status_reg_gadaea8572f90ee57d5137ef69ff51bf50} 
+\index{Line Status Register (LST)@{Line Status Register (LST)}!LSR\_TMT\_MT@{LSR\_TMT\_MT}}
+\index{LSR\_TMT\_MT@{LSR\_TMT\_MT}!Line Status Register (LST)@{Line Status Register (LST)}}
+\doxysubsubsubsection{\texorpdfstring{LSR\_TMT\_MT}{LSR\_TMT\_MT}}
+{\footnotesize\ttfamily \#define LSR\+\_\+\+TMT\+\_\+\+MT~BIT(6)}
+
+
+
+Both THR and Transmitter Shift Register Empty. 
+

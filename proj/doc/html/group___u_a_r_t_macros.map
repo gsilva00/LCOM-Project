@@ -1,0 +1,10 @@
+<map id="UART Macros" name="UART Macros">
+<area shape="rect" id="Node000007" href="$group___int_enable_reg.html" title="Controlls UART interrupts on some events." alt="" coords="161,5,345,45"/>
+<area shape="rect" id="Node000008" href="$group___int_id_reg.html" title=" " alt="" coords="170,69,337,109"/>
+<area shape="rect" id="Node000002" href="$group___num_consts8042.html" title="Numeric Constants (frequencies and other miscellaneous stuff)" alt="" coords="165,134,342,159"/>
+<area shape="rect" id="Node000006" href="$group___status_reg.html" title="Bits 0 to 4 reset on LSR read." alt="" coords="177,184,329,224"/>
+<area shape="rect" id="Node000003" href="$group___u_a_r_t_i_r_q.html" title="UART Interrupt Request Lines:" alt="" coords="202,249,305,274"/>
+<area shape="rect" id="Node000001" title="Constants for programming the UART &#45; Universal Asynchronous Receiver&#45;Transmitter (Serial&#45;Port)." alt="" coords="5,191,113,217"/>
+<area shape="rect" id="Node000004" href="$group___u_a_r_t_ports.html" title="Each UART takes:" alt="" coords="201,298,306,323"/>
+<area shape="rect" id="Node000005" href="$group___u_a_r_t_regs.html" title="8&#45;bit registers&#39; addresses" alt="" coords="187,347,320,373"/>
+</map>

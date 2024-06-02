@@ -1,0 +1,85 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/objects/goal.h File Reference}
+\hypertarget{goal_8h}{}\label{goal_8h}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/goal.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/goal.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for goal.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{goal_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{goal_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_goal}{Goal}}
+\begin{DoxyCompactList}\small\item\em Implementation of the \doxylink{struct_goal}{Goal} as an object usable in game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_goal}{Goal}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{goal_8h_a1d9f4a44650e36613a7f23e087ba86a2}{create\+\_\+goal}} (xpm\+\_\+map\+\_\+t pic, bool orientation)
+\begin{DoxyCompactList}\small\item\em Constructor of the \doxylink{struct_goal}{Goal} "{}class"{} (C-\/class == struct + functions) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{goal_8h_aa9721db827339dbeb365c9609cb12942}{destroy\+\_\+goal}} (\mbox{\hyperlink{struct_goal}{Goal}} \texorpdfstring{$\ast$}{*}gl)
+\begin{DoxyCompactList}\small\item\em Destructor of the \doxylink{struct_goal}{Goal} "{}class"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{goal_8h_a1d9f4a44650e36613a7f23e087ba86a2}\label{goal_8h_a1d9f4a44650e36613a7f23e087ba86a2} 
+\index{goal.h@{goal.h}!create\_goal@{create\_goal}}
+\index{create\_goal@{create\_goal}!goal.h@{goal.h}}
+\doxysubsubsection{\texorpdfstring{create\_goal()}{create\_goal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_goal}{Goal}} \texorpdfstring{$\ast$}{*} create\+\_\+goal (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{pic,  }\item[{bool}]{orientation }\end{DoxyParamCaption})}
+
+
+
+Constructor of the \doxylink{struct_goal}{Goal} "{}class"{} (C-\/class == struct + functions) 
+
+Dynamically allocates in memory a \doxylink{struct_goal}{Goal} instance, effectively initializing the object
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic} & XPM map used to make the goal\textquotesingle{}s image \\
+\hline
+{\em orientation} & Value of the orientation of the goal \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the \doxylink{struct_goal}{Goal} struct dynamically allocated in memory. If memory allocation fails, returns NULL 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{goal_8h_a1d9f4a44650e36613a7f23e087ba86a2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{goal_8h_aa9721db827339dbeb365c9609cb12942}\label{goal_8h_aa9721db827339dbeb365c9609cb12942} 
+\index{goal.h@{goal.h}!destroy\_goal@{destroy\_goal}}
+\index{destroy\_goal@{destroy\_goal}!goal.h@{goal.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_goal()}{destroy\_goal()}}
+{\footnotesize\ttfamily void destroy\+\_\+goal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_goal}{Goal}} \texorpdfstring{$\ast$}{*}}]{gl }\end{DoxyParamCaption})}
+
+
+
+Destructor of the \doxylink{struct_goal}{Goal} "{}class"{}. 
+
+Frees the memory allocated for the \doxylink{struct_goal}{Goal} instance and its buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em gl} & Pointer to the \doxylink{struct_goal}{Goal} struct to be deallocated. If gl is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{goal_8h_aa9721db827339dbeb365c9609cb12942_icgraph}
+\end{center}
+\end{figure}

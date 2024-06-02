@@ -1,0 +1,83 @@
+\doxysubsection{Interrupt Identification Register (IIR)}
+\hypertarget{group___int_id_reg}{}\label{group___int_id_reg}\index{Interrupt Identification Register (IIR)@{Interrupt Identification Register (IIR)}}
+Collaboration diagram for Interrupt Identification Register (IIR)\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{group___int_id_reg}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___int_id_reg_ga2bc1e4757d4be3e5cc32633b18d7d3ef}{IIR\+\_\+\+LSRERR}}~BIT(2) \texorpdfstring{$\vert$}{|} BIT(1)
+\begin{DoxyCompactList}\small\item\em Receiver Line Status. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_id_reg_ga99204928d0bfb9e3b08b4483c31d05f4}{IIR\+\_\+\+DATA\+\_\+\+RDY}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em Received Data Available. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_id_reg_ga3ea4e5538ef8d80d481b71e3a7919092}{IIR\+\_\+\+CHAR\+\_\+\+TOUT}}~BIT(3) \texorpdfstring{$\vert$}{|} BIT(2)
+\begin{DoxyCompactList}\small\item\em Character Timeout (FIFO) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_id_reg_ga449d598879e08018235600302c38238d}{IIR\+\_\+\+THR\+\_\+\+RDY}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Transmitter Holding Register Empty. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_id_reg_gad329bde1d6b6429ada5ea03d1c1f6b26}{IIR\+\_\+\+NONE}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em When set, no interrupt is pending. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+This register\+:
+\begin{DoxyItemize}
+\item Records source of interrupts;
+\item Priority of interrupts\+: LSRERR then DATARDY then THRRDY then Modem Status;
+\item When read, UART freezes all interrupts and indicates the highest priority pending one; When there\textquotesingle{}s an interrupt, bits 3,2,1 are the important ones. The interrupt sources are ordered by priority. 
+\end{DoxyItemize}
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___int_id_reg_ga3ea4e5538ef8d80d481b71e3a7919092}\label{group___int_id_reg_ga3ea4e5538ef8d80d481b71e3a7919092} 
+\index{Interrupt Identification Register (IIR)@{Interrupt Identification Register (IIR)}!IIR\_CHAR\_TOUT@{IIR\_CHAR\_TOUT}}
+\index{IIR\_CHAR\_TOUT@{IIR\_CHAR\_TOUT}!Interrupt Identification Register (IIR)@{Interrupt Identification Register (IIR)}}
+\doxysubsubsubsection{\texorpdfstring{IIR\_CHAR\_TOUT}{IIR\_CHAR\_TOUT}}
+{\footnotesize\ttfamily \#define IIR\+\_\+\+CHAR\+\_\+\+TOUT~BIT(3) \texorpdfstring{$\vert$}{|} BIT(2)}
+
+
+
+Character Timeout (FIFO) 
+
+\Hypertarget{group___int_id_reg_ga99204928d0bfb9e3b08b4483c31d05f4}\label{group___int_id_reg_ga99204928d0bfb9e3b08b4483c31d05f4} 
+\index{Interrupt Identification Register (IIR)@{Interrupt Identification Register (IIR)}!IIR\_DATA\_RDY@{IIR\_DATA\_RDY}}
+\index{IIR\_DATA\_RDY@{IIR\_DATA\_RDY}!Interrupt Identification Register (IIR)@{Interrupt Identification Register (IIR)}}
+\doxysubsubsubsection{\texorpdfstring{IIR\_DATA\_RDY}{IIR\_DATA\_RDY}}
+{\footnotesize\ttfamily \#define IIR\+\_\+\+DATA\+\_\+\+RDY~BIT(2)}
+
+
+
+Received Data Available. 
+
+\Hypertarget{group___int_id_reg_ga2bc1e4757d4be3e5cc32633b18d7d3ef}\label{group___int_id_reg_ga2bc1e4757d4be3e5cc32633b18d7d3ef} 
+\index{Interrupt Identification Register (IIR)@{Interrupt Identification Register (IIR)}!IIR\_LSRERR@{IIR\_LSRERR}}
+\index{IIR\_LSRERR@{IIR\_LSRERR}!Interrupt Identification Register (IIR)@{Interrupt Identification Register (IIR)}}
+\doxysubsubsubsection{\texorpdfstring{IIR\_LSRERR}{IIR\_LSRERR}}
+{\footnotesize\ttfamily \#define IIR\+\_\+\+LSRERR~BIT(2) \texorpdfstring{$\vert$}{|} BIT(1)}
+
+
+
+Receiver Line Status. 
+
+\Hypertarget{group___int_id_reg_gad329bde1d6b6429ada5ea03d1c1f6b26}\label{group___int_id_reg_gad329bde1d6b6429ada5ea03d1c1f6b26} 
+\index{Interrupt Identification Register (IIR)@{Interrupt Identification Register (IIR)}!IIR\_NONE@{IIR\_NONE}}
+\index{IIR\_NONE@{IIR\_NONE}!Interrupt Identification Register (IIR)@{Interrupt Identification Register (IIR)}}
+\doxysubsubsubsection{\texorpdfstring{IIR\_NONE}{IIR\_NONE}}
+{\footnotesize\ttfamily \#define IIR\+\_\+\+NONE~BIT(0)}
+
+
+
+When set, no interrupt is pending. 
+
+\Hypertarget{group___int_id_reg_ga449d598879e08018235600302c38238d}\label{group___int_id_reg_ga449d598879e08018235600302c38238d} 
+\index{Interrupt Identification Register (IIR)@{Interrupt Identification Register (IIR)}!IIR\_THR\_RDY@{IIR\_THR\_RDY}}
+\index{IIR\_THR\_RDY@{IIR\_THR\_RDY}!Interrupt Identification Register (IIR)@{Interrupt Identification Register (IIR)}}
+\doxysubsubsubsection{\texorpdfstring{IIR\_THR\_RDY}{IIR\_THR\_RDY}}
+{\footnotesize\ttfamily \#define IIR\+\_\+\+THR\+\_\+\+RDY~BIT(1)}
+
+
+
+Transmitter Holding Register Empty. 
+

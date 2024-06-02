@@ -1,0 +1,7 @@
+<map id="initialize_ball_values" name="initialize_ball_values">
+<area shape="rect" id="Node000001" title="Function that saves the initial values of the ball." alt="" coords="315,5,473,31"/>
+<area shape="rect" id="Node000002" href="$ball__controller_8c.html#ae682a2e7727d219e592f6ee4c95398e3" title="Main function that changes the ball&#39;s atributes according to the current state." alt="" coords="176,5,267,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="301,21,267,21,267,15,301,15"/>
+<area shape="rect" id="Node000003" href="$proj_8c.html#a7a72220d8366dd84709e79ce415862e5" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="162,21,129,21,129,15,162,15"/>
+</map>
