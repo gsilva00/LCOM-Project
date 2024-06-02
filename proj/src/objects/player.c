@@ -36,7 +36,7 @@ void destroy_player(Player *pl) {
 void move_player1_to_center(Player *pl) {
   if (pl == NULL) return;
   
-  pl->x = 200;
+  pl->x = 200 - pl->width;
   pl->y = 455;
 }
 

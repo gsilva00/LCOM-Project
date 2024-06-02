@@ -20,7 +20,7 @@ var ball__controller_8h =
       [ "MOVE_RIGHT", "ball__controller_8h.html#a2b4b482e0212ec7af64560b24c4623c9a05e150c88137543939f82e607e3a77e3", null ],
       [ "AFTER_MOVE", "ball__controller_8h.html#a2b4b482e0212ec7af64560b24c4623c9aabbb7b548fab43b31db14a93d34b2a04", null ]
     ] ],
-    [ "ball_goal_collision", "ball__controller_8h.html#a63feb29f30b26f08ad092d971c7f4af0", null ],
+    [ "ball_goal_collision", "ball__controller_8h.html#a5dd601d5b34cfb88df1bd449936285f5", null ],
     [ "ball_player_collision", "ball__controller_8h.html#a9fc675a573cfc0ac3db2f051b6f9eff8", null ],
     [ "change_y", "ball__controller_8h.html#a40f80270ca86d1e6d96dffe5fc8331df", null ],
     [ "check_kicking_player", "ball__controller_8h.html#a13a4798c6f9db1b2a8ee8e806e440c25", null ],

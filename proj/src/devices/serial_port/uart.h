@@ -10,7 +10,7 @@
 
 /**
  * @brief Configures the UART's initial state
- * @details Enables interrupts for when data is available and for when it's possible to send data. Stores the default configuration for resetting at the end of execution. Otherwise maintains the default configuration (by reading it first) except for the interrupts activated. Initializes the queue static global variable for receiving data
+ * @details Enables interrupts ONLY when data is available. Stores the default configuration for resetting at the end of execution. Otherwise maintains the default configuration (by reading it first) except for the interrupts activated. Initializes the queue static global variable for receiving data
  *
  * @return 0 upon success, non-zero otherwise
  */
@@ -66,7 +66,7 @@ int send_char(uint8_t chr);
  * @brief Getter for the receiving queue (stores the data read from the UART)
  * @details Getter is needed because of the use of the static keyword (makes the variable only accesible in the file it's declared). Provides encapsulation
  * 
- * @return Pointer to the queue_t struct corresponding to the receiving queue
+ * @return Pointer to the queue struct corresponding to the receiving queue
  */
 queue_t* get_receive_q();
 

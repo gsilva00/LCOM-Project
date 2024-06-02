@@ -2,8 +2,6 @@
 
 
 int change_sky_image(uint8_t current_hour, xpm_image_t *sky_img) {
-  printf("%s called!\n", __func__);
-  printf("Current hour: %d!\n", current_hour);
   char **next_xpm = NULL;
 
   if (current_hour >= 5 && current_hour < 7) next_xpm = sky_5am_xpm;
@@ -16,7 +14,6 @@ int change_sky_image(uint8_t current_hour, xpm_image_t *sky_img) {
   else if (current_hour >= 22 || current_hour < 5) next_xpm = sky_10pm_xpm;
 
   if (next_xpm != NULL) { // If a new sky needs to be loaded
-    printf("Entered loading phase!\n");
     xpm_map_t next_map = (xpm_map_t) next_xpm;
 
     uint8_t *sky_map = xpm_load(next_map, XPM_8_8_8, sky_img);

@@ -1,6 +1,6 @@
 var ball__controller_8c =
 [
-    [ "ball_goal_collision", "ball__controller_8c.html#a63feb29f30b26f08ad092d971c7f4af0", null ],
+    [ "ball_goal_collision", "ball__controller_8c.html#a5dd601d5b34cfb88df1bd449936285f5", null ],
     [ "ball_player_collision", "ball__controller_8c.html#a9fc675a573cfc0ac3db2f051b6f9eff8", null ],
     [ "change_y", "ball__controller_8c.html#a40f80270ca86d1e6d96dffe5fc8331df", null ],
     [ "check_ball_goal_height", "ball__controller_8c.html#a1e8dc55045e169c25e6adda6e8d3c383", null ],

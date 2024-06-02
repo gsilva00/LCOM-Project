@@ -34,7 +34,7 @@ void destroy_ball(Ball *bl) {
 }
 
 void move_ball_to_center(Ball *bl) {
-  bl->x = 400 - bl->img.width;
+  bl->x = 400;
   bl->y = 490;
   bl->stop = false;
   return;

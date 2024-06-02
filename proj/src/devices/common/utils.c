@@ -19,7 +19,7 @@ int (util_sys_inb)(int port, uint8_t *value) {
   if (value == NULL) {printf("Pointer to store value points to NULL!\n"); return 1;}
   
   uint32_t temp;
-  if (sys_inb(port, &temp)) {printf("sys_inb kernel call error!\n"); return 1;}
+  if (sys_inb(port, &temp)) {printf("Error: sys_inb kernel call!\n"); return 1;}
   
   *value = temp;
 

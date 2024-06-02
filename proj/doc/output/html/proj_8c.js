@@ -1,6 +1,6 @@
 var proj_8c =
 [
-    [ "check_cursor_position", "proj_8c.html#a2c237ec4fc66e5c5f9f570245ad2018c", null ],
+    [ "check_cursor_position", "proj_8c.html#a635d68173893303f79247edb1fe9c369", null ],
     [ "draw_game", "proj_8c.html#aeb62b55840be42aa9ff5cb318f3b57b1", null ],
     [ "draw_menus", "proj_8c.html#a0ba929c0faf835631a2b834e42409e4d", null ],
     [ "interrupt_loop", "proj_8c.html#abffa0619dc6e991b421cad8c54bd45d0", null ],

@@ -122,12 +122,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a7b0221e1c302d1af3349ffa0a71b7c08" id="r_a7b0221e1c302d1af3349ffa0a71b7c08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b0221e1c302d1af3349ffa0a71b7c08">delete_queue</a> (<a class="el" href="#aa8acf648f3b0c69d7e132fcc61dc58c7">queue_t</a> *q)</td></tr>
 <tr class="memdesc:a7b0221e1c302d1af3349ffa0a71b7c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of the queue "class".  <br /></td></tr>
 <tr class="separator:a7b0221e1c302d1af3349ffa0a71b7c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a196b6894c701273a6b45ac70fcbb504c" id="r_a196b6894c701273a6b45ac70fcbb504c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a196b6894c701273a6b45ac70fcbb504c">put_queue</a> (<a class="el" href="#aa8acf648f3b0c69d7e132fcc61dc58c7">queue_t</a> *q, int n)</td></tr>
-<tr class="memdesc:a196b6894c701273a6b45ac70fcbb504c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues an integer into the queue.  <br /></td></tr>
-<tr class="separator:a196b6894c701273a6b45ac70fcbb504c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cf3364a3bd45d3d5b41ba1c97f25241" id="r_a9cf3364a3bd45d3d5b41ba1c97f25241"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cf3364a3bd45d3d5b41ba1c97f25241">get_queue</a> (<a class="el" href="#aa8acf648f3b0c69d7e132fcc61dc58c7">queue_t</a> *q, int *n)</td></tr>
-<tr class="memdesc:a9cf3364a3bd45d3d5b41ba1c97f25241"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dequeues an integer from the queue.  <br /></td></tr>
-<tr class="separator:a9cf3364a3bd45d3d5b41ba1c97f25241"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0da74506c2597c9c6f18775d6442bf9" id="r_aa0da74506c2597c9c6f18775d6442bf9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0da74506c2597c9c6f18775d6442bf9">put_queue</a> (<a class="el" href="#aa8acf648f3b0c69d7e132fcc61dc58c7">queue_t</a> *q, uint8_t n)</td></tr>
+<tr class="memdesc:aa0da74506c2597c9c6f18775d6442bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues a value into the queue.  <br /></td></tr>
+<tr class="separator:aa0da74506c2597c9c6f18775d6442bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dde85e0bc789908043e26bd10af62fb" id="r_a2dde85e0bc789908043e26bd10af62fb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dde85e0bc789908043e26bd10af62fb">get_queue</a> (<a class="el" href="#aa8acf648f3b0c69d7e132fcc61dc58c7">queue_t</a> *q, uint8_t *n)</td></tr>
+<tr class="memdesc:a2dde85e0bc789908043e26bd10af62fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dequeues a value from the queue.  <br /></td></tr>
+<tr class="separator:a2dde85e0bc789908043e26bd10af62fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a65b3d26abb9e69ef97a4c3840e2077a0" name="a65b3d26abb9e69ef97a4c3840e2077a0"></a>
@@ -189,8 +189,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9cf3364a3bd45d3d5b41ba1c97f25241" name="a9cf3364a3bd45d3d5b41ba1c97f25241"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cf3364a3bd45d3d5b41ba1c97f25241">&#9670;&#160;</a></span>get_queue()</h2>
+<a id="a2dde85e0bc789908043e26bd10af62fb" name="a2dde85e0bc789908043e26bd10af62fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dde85e0bc789908043e26bd10af62fb">&#9670;&#160;</a></span>get_queue()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -203,17 +203,17 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Dequeues an integer from the queue. </p>
+<p>Dequeues a value from the queue. </p>
 <p>If the queue is empty, it returns an error. After successfully dequeuing, it adjusts the queue</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">q</td><td>Pointer to the queue_t struct from where the integer will be dequeued </td></tr>
-    <tr><td class="paramname">n</td><td>Pointer to an integer where the dequeued value will be stored </td></tr>
+    <tr><td class="paramname">q</td><td>Pointer to the queue struct from where the value will be dequeued </td></tr>
+    <tr><td class="paramname">n</td><td>Pointer to a variable where the dequeued value will be stored </td></tr>
   </table>
   </dd>
 </dl>
@@ -248,8 +248,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a196b6894c701273a6b45ac70fcbb504c" name="a196b6894c701273a6b45ac70fcbb504c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a196b6894c701273a6b45ac70fcbb504c">&#9670;&#160;</a></span>put_queue()</h2>
+<a id="aa0da74506c2597c9c6f18775d6442bf9" name="aa0da74506c2597c9c6f18775d6442bf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0da74506c2597c9c6f18775d6442bf9">&#9670;&#160;</a></span>put_queue()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -262,17 +262,17 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enqueues an integer into the queue. </p>
+<p>Enqueues a value into the queue. </p>
 <p>If the queue is full, it tries to resize the queue. After successfully enqueuing, it adjusts the queue</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">q</td><td>Pointer to the queue_t struct where the integer will be enqueued </td></tr>
-    <tr><td class="paramname">n</td><td>Int value to be enqueued </td></tr>
+    <tr><td class="paramname">q</td><td>Pointer to the queue struct where the value will be enqueued </td></tr>
+    <tr><td class="paramname">n</td><td>8-bit unsigned value to be enqueued (what is passed through the serial port) </td></tr>
   </table>
   </dd>
 </dl>

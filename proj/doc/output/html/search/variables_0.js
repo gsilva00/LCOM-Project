@@ -9,7 +9,7 @@ var searchData=
   ['bola_5fy_6',['bola_y',['../ball__controller_8c.html#a0c10b7ff1345c2f5e8ce86ead27a4bc9',1,'ball_controller.c']]],
   ['bola_5fy_5foriginal_7',['bola_y_original',['../ball__controller_8c.html#a9f2ed71e9e67fbf4705c5433b83f1087',1,'ball_controller.c']]],
   ['bola_5fyspeed_8',['bola_yspeed',['../ball__controller_8c.html#ad4007d94cdd2dd6f8f927b2af6148381',1,'ball_controller.c']]],
-  ['bounce_5foffset_9',['bounce_offset',['../ball__controller_8c.html#a5502d663de0257e4cddeeab4756c46e5',1,'bounce_offset:&#160;ball_controller.c'],['../player__controller_8c.html#a5502d663de0257e4cddeeab4756c46e5',1,'bounce_offset:&#160;player_controller.c']]],
+  ['bounce_5foffset_9',['bounce_offset',['../ball__controller_8c.html#a5502d663de0257e4cddeeab4756c46e5',1,'ball_controller.c']]],
   ['buf_10',['buf',['../structqueue.html#afc60f7944f3e99e5ee66c122cce406e2',1,'queue']]],
   ['bytes_5fper_5fpixel_11',['bytes_per_pixel',['../gpu_8c.html#a36b87dc42923f704d16a629834a21b1e',1,'gpu.c']]]
 ];

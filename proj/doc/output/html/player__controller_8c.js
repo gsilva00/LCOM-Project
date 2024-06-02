@@ -8,7 +8,6 @@ var player__controller_8c =
     [ "player_player_collision", "player__controller_8c.html#a27c8228c1e7a90e401305a54caf0d042", null ],
     [ "prepare_for_player_jump", "player__controller_8c.html#a9d4e2f27c2191e556ccc1cea41049e88", null ],
     [ "restart_player_movement", "player__controller_8c.html#a39c0d0b8c6774b7965e43ab8128c10fb", null ],
-    [ "bounce_offset", "player__controller_8c.html#a5502d663de0257e4cddeeab4756c46e5", null ],
     [ "chuta", "player__controller_8c.html#ad7ca5de0a66877da005299af04a533fc", null ],
     [ "img", "player__controller_8c.html#a1849af5600dd99d11a7cae774e4121e4", null ],
     [ "player1_map0", "player__controller_8c.html#a805d825c5ab40bb6e8f3714028453403", null ],

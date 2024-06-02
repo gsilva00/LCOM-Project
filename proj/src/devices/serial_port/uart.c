@@ -21,8 +21,8 @@ int configure_uart() {
   // Ignore interrupts configured by MINIX (LSbit)
   new_ints &= 0xF0;
 
-  // Set interrupts when there's data for reading and space for sending
-  new_ints |= (THR_RDY_INT | DATA_RDY_INT);
+  // Set interrupts when there's data for reading
+  new_ints |= DATA_RDY_INT;
   if (sys_outb(COM1_PORT + UART_IER, new_ints)) {
     printf("Error while enabling necessary ints!\n");
     return 1;
@@ -89,14 +89,6 @@ void uart_ih() {
       }
     }
   }
-  else if ((iir & 0x0F) == IIR_THR_RDY && st & LSR_THR_RDY) { 
-    // Both bits are supposed to be set to 1 together 
-    uint8_t chr = get_scancode();
-    if (send_char(chr)) {
-      printf("Error while transmitting char!\n");
-      return;
-    }
-  }
 }
 
 
@@ -104,7 +96,7 @@ int receive_char(uint8_t st) {
   uint8_t chr;
 
   // Read the character from the buffer to clear it
-  // (even if it has errors - checked later )
+  // (even if it has errors - checked later)
   if (util_sys_inb(COM1_PORT + UART_RBR, &chr)) {
     printf("Error while reading data buffer!\n");
     return 1;

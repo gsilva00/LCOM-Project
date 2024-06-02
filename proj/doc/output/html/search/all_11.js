@@ -93,7 +93,7 @@ var searchData=
   ['ps2_5fack_90',['PS2_ACK',['../group___ack_bytes.html#gaae27b4e03e27b850f66cf5f46ed30530',1,'i8042.h']]],
   ['ps2_5fdata_5fdis_91',['PS2_DATA_DIS',['../group___m_w___args.html#ga430aa16edf2e21b213f84f4230b64f17',1,'i8042.h']]],
   ['ps2_5fdata_5fenable_92',['PS2_DATA_ENABLE',['../group___m_w___args.html#ga7fc697cf663e037a0354573736d2452c',1,'i8042.h']]],
-  ['ps2_5ferror_93',['PS2_ERROR',['../group___ack_bytes.html#gadc05915a537a7469e85f7e3921e5b762',1,'i8042.h']]],
+  ['ps2_5ferror_93',['PS2_Error',['../group___ack_bytes.html#ga0b2a3e7a70268eff74346e338ba7fd30',1,'i8042.h']]],
   ['ps2_5ffirstid_94',['PS2_FIRSTID',['../group___mouse_packet.html#ga5f81bc03d86f07b525f345ce17a37b94',1,'i8042.h']]],
   ['ps2_5flb_95',['PS2_LB',['../group___mouse_packet.html#ga6f67d9cdc9d2402f8e2e0a19aec348f4',1,'i8042.h']]],
   ['ps2_5fmb_96',['PS2_MB',['../group___mouse_packet.html#ga469573679f1c139caf854e635cfc298d',1,'i8042.h']]],
@@ -103,5 +103,5 @@ var searchData=
   ['ps2_5fxover_100',['PS2_XOVER',['../group___mouse_packet.html#ga9e75db874e6f99a09fce3f9e0f226e7b',1,'i8042.h']]],
   ['ps2_5fydelta_101',['PS2_YDELTA',['../group___mouse_packet.html#ga7900c4de49498bcf3c1954c41dac59df',1,'i8042.h']]],
   ['ps2_5fyover_102',['PS2_YOVER',['../group___mouse_packet.html#gaa1d528d3434ccf8a16d259822315dda4',1,'i8042.h']]],
-  ['put_5fqueue_103',['put_queue',['../queue_8c.html#a196b6894c701273a6b45ac70fcbb504c',1,'put_queue(queue_t *q, int n):&#160;queue.c'],['../queue_8h.html#a196b6894c701273a6b45ac70fcbb504c',1,'put_queue(queue_t *q, int n):&#160;queue.c']]]
+  ['put_5fqueue_103',['put_queue',['../queue_8c.html#aa0da74506c2597c9c6f18775d6442bf9',1,'put_queue(queue_t *q, uint8_t n):&#160;queue.c'],['../queue_8h.html#aa0da74506c2597c9c6f18775d6442bf9',1,'put_queue(queue_t *q, uint8_t n):&#160;queue.c']]]
 ];

@@ -34,7 +34,7 @@ var i8042_8h =
     [ "PS2_ACK", "group___ack_bytes.html#gaae27b4e03e27b850f66cf5f46ed30530", null ],
     [ "PS2_DATA_DIS", "group___m_w___args.html#ga430aa16edf2e21b213f84f4230b64f17", null ],
     [ "PS2_DATA_ENABLE", "group___m_w___args.html#ga7fc697cf663e037a0354573736d2452c", null ],
-    [ "PS2_ERROR", "group___ack_bytes.html#gadc05915a537a7469e85f7e3921e5b762", null ],
+    [ "PS2_Error", "group___ack_bytes.html#ga0b2a3e7a70268eff74346e338ba7fd30", null ],
     [ "PS2_FIRSTID", "group___mouse_packet.html#ga5f81bc03d86f07b525f345ce17a37b94", null ],
     [ "PS2_LB", "group___mouse_packet.html#ga6f67d9cdc9d2402f8e2e0a19aec348f4", null ],
     [ "PS2_MB", "group___mouse_packet.html#ga469573679f1c139caf854e635cfc298d", null ],

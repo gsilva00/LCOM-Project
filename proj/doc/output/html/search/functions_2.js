@@ -5,7 +5,7 @@ var searchData=
   ['change_5fvideo_5fmode_2',['change_video_mode',['../gpu_8c.html#a2c023eb0ddeea5fcd0a920a1491d3e38',1,'change_video_mode(uint16_t mode):&#160;gpu.c'],['../gpu_8h.html#a2c023eb0ddeea5fcd0a920a1491d3e38',1,'change_video_mode(uint16_t mode):&#160;gpu.c']]],
   ['change_5fy_3',['change_y',['../ball__controller_8c.html#a40f80270ca86d1e6d96dffe5fc8331df',1,'change_y(Ball *bola):&#160;ball_controller.c'],['../ball__controller_8h.html#a40f80270ca86d1e6d96dffe5fc8331df',1,'change_y(Ball *bola):&#160;ball_controller.c']]],
   ['check_5fball_5fgoal_5fheight_4',['check_ball_goal_height',['../ball__controller_8c.html#a1e8dc55045e169c25e6adda6e8d3c383',1,'ball_controller.c']]],
-  ['check_5fcursor_5fposition_5',['check_cursor_position',['../proj_8c.html#a2c237ec4fc66e5c5f9f570245ad2018c',1,'proj.c']]],
+  ['check_5fcursor_5fposition_5',['check_cursor_position',['../proj_8c.html#a635d68173893303f79247edb1fe9c369',1,'proj.c']]],
   ['check_5fkicking_5fplayer_6',['check_kicking_player',['../ball__controller_8c.html#a13a4798c6f9db1b2a8ee8e806e440c25',1,'check_kicking_player(Ball *bola, Player *pl):&#160;ball_controller.c'],['../ball__controller_8h.html#a13a4798c6f9db1b2a8ee8e806e440c25',1,'check_kicking_player(Ball *bola, Player *pl):&#160;ball_controller.c']]],
   ['configure_5frtc_7',['configure_rtc',['../rtc_8c.html#a0045351c03a6f33fc89e406c76914159',1,'configure_rtc():&#160;rtc.c'],['../rtc_8h.html#a0045351c03a6f33fc89e406c76914159',1,'configure_rtc():&#160;rtc.c']]],
   ['configure_5fuart_8',['configure_uart',['../uart_8c.html#ae07d385c874c8d1052f87a687369ffad',1,'configure_uart():&#160;uart.c'],['../uart_8h.html#ae07d385c874c8d1052f87a687369ffad',1,'configure_uart():&#160;uart.c']]],
