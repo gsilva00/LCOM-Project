@@ -99,121 +99,133 @@ $(function(){initNavTree('struct_scoreboard.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
+<p>Implementation of the <a class="el" href="struct_scoreboard.html" title="Implementation of the Scoreboard as an object usable in game.">Scoreboard</a> as an object usable in game.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="scoreboard_8h_source.html">scoreboard.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a4ffe0d59035f09d83dce721ff82b3c45" id="r_a4ffe0d59035f09d83dce721ff82b3c45"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ffe0d59035f09d83dce721ff82b3c45">x</a></td></tr>
-<tr class="separator:a4ffe0d59035f09d83dce721ff82b3c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7986a64fb28b2c302098e6f6e66bfe2" id="r_ae7986a64fb28b2c302098e6f6e66bfe2"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7986a64fb28b2c302098e6f6e66bfe2">y</a></td></tr>
-<tr class="separator:ae7986a64fb28b2c302098e6f6e66bfe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac20e9458c525c2b711beefc93cdfa001" id="r_ac20e9458c525c2b711beefc93cdfa001"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac20e9458c525c2b711beefc93cdfa001">points1</a></td></tr>
-<tr class="separator:ac20e9458c525c2b711beefc93cdfa001"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f2a4e31cc7d359374616a08ffb45db8" id="r_a6f2a4e31cc7d359374616a08ffb45db8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f2a4e31cc7d359374616a08ffb45db8">points2</a></td></tr>
-<tr class="separator:a6f2a4e31cc7d359374616a08ffb45db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac40aaa7de8f1a4180ddd8ffaafa1f96e" id="r_ac40aaa7de8f1a4180ddd8ffaafa1f96e"><td class="memItemLeft" align="right" valign="top">xpm_image_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac40aaa7de8f1a4180ddd8ffaafa1f96e">points1_img</a></td></tr>
-<tr class="separator:ac40aaa7de8f1a4180ddd8ffaafa1f96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84aba4d24228dae590cc76c20736532e" id="r_a84aba4d24228dae590cc76c20736532e"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84aba4d24228dae590cc76c20736532e">map</a></td></tr>
-<tr class="separator:a84aba4d24228dae590cc76c20736532e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8edaae883a6b4976d99610f88a3cb14" id="r_ae8edaae883a6b4976d99610f88a3cb14"><td class="memItemLeft" align="right" valign="top">xpm_image_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8edaae883a6b4976d99610f88a3cb14">img</a></td></tr>
-<tr class="separator:ae8edaae883a6b4976d99610f88a3cb14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a685de459292a54879c92bc7875b42389" id="r_a685de459292a54879c92bc7875b42389"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a685de459292a54879c92bc7875b42389">x</a></td></tr>
+<tr class="separator:a685de459292a54879c92bc7875b42389"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fce57e91085984807e24003f3368fd1" id="r_a4fce57e91085984807e24003f3368fd1"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fce57e91085984807e24003f3368fd1">y</a></td></tr>
+<tr class="separator:a4fce57e91085984807e24003f3368fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e85c58ae9a639a264ed327b77650767" id="r_a5e85c58ae9a639a264ed327b77650767"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e85c58ae9a639a264ed327b77650767">points1</a></td></tr>
+<tr class="separator:a5e85c58ae9a639a264ed327b77650767"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45d363690f01a506e3c8a658423a16dc" id="r_a45d363690f01a506e3c8a658423a16dc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45d363690f01a506e3c8a658423a16dc">points2</a></td></tr>
+<tr class="separator:a45d363690f01a506e3c8a658423a16dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad90c27986963feaead5405188d4cba7f" id="r_ad90c27986963feaead5405188d4cba7f"><td class="memItemLeft" align="right" valign="top">xpm_image_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad90c27986963feaead5405188d4cba7f">points1_img</a></td></tr>
+<tr class="separator:ad90c27986963feaead5405188d4cba7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc64b4ef8bff24596a991d1146b074c0" id="r_abc64b4ef8bff24596a991d1146b074c0"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc64b4ef8bff24596a991d1146b074c0">map</a></td></tr>
+<tr class="separator:abc64b4ef8bff24596a991d1146b074c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0035d2f15c41383d6083cc215e21684" id="r_af0035d2f15c41383d6083cc215e21684"><td class="memItemLeft" align="right" valign="top">xpm_image_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0035d2f15c41383d6083cc215e21684">img</a></td></tr>
+<tr class="separator:af0035d2f15c41383d6083cc215e21684"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae8edaae883a6b4976d99610f88a3cb14" name="ae8edaae883a6b4976d99610f88a3cb14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8edaae883a6b4976d99610f88a3cb14">&#9670;&#160;</a></span>img</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of the <a class="el" href="struct_scoreboard.html" title="Implementation of the Scoreboard as an object usable in game.">Scoreboard</a> as an object usable in game. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="af0035d2f15c41383d6083cc215e21684" name="af0035d2f15c41383d6083cc215e21684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0035d2f15c41383d6083cc215e21684">&#9670;&#160;</a></span>img</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">xpm_image_t Scoreboard::img</td>
+          <td class="memname">Scoreboard::img</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the scoreboard's image </p>
 
 </div>
 </div>
-<a id="a84aba4d24228dae590cc76c20736532e" name="a84aba4d24228dae590cc76c20736532e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84aba4d24228dae590cc76c20736532e">&#9670;&#160;</a></span>map</h2>
+<a id="abc64b4ef8bff24596a991d1146b074c0" name="abc64b4ef8bff24596a991d1146b074c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc64b4ef8bff24596a991d1146b074c0">&#9670;&#160;</a></span>map</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t* Scoreboard::map</td>
+          <td class="memname">Scoreboard::map</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>XPM map of the scoreboard </p>
 
 </div>
 </div>
-<a id="ac20e9458c525c2b711beefc93cdfa001" name="ac20e9458c525c2b711beefc93cdfa001"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac20e9458c525c2b711beefc93cdfa001">&#9670;&#160;</a></span>points1</h2>
+<a id="a5e85c58ae9a639a264ed327b77650767" name="a5e85c58ae9a639a264ed327b77650767"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e85c58ae9a639a264ed327b77650767">&#9670;&#160;</a></span>points1</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t Scoreboard::points1</td>
+          <td class="memname">Scoreboard::points1</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the first player's score </p>
 
 </div>
 </div>
-<a id="ac40aaa7de8f1a4180ddd8ffaafa1f96e" name="ac40aaa7de8f1a4180ddd8ffaafa1f96e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac40aaa7de8f1a4180ddd8ffaafa1f96e">&#9670;&#160;</a></span>points1_img</h2>
+<a id="ad90c27986963feaead5405188d4cba7f" name="ad90c27986963feaead5405188d4cba7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad90c27986963feaead5405188d4cba7f">&#9670;&#160;</a></span>points1_img</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">xpm_image_t Scoreboard::points1_img</td>
+          <td class="memname">Scoreboard::points1_img</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of first player's points image </p>
 
 </div>
 </div>
-<a id="a6f2a4e31cc7d359374616a08ffb45db8" name="a6f2a4e31cc7d359374616a08ffb45db8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f2a4e31cc7d359374616a08ffb45db8">&#9670;&#160;</a></span>points2</h2>
+<a id="a45d363690f01a506e3c8a658423a16dc" name="a45d363690f01a506e3c8a658423a16dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45d363690f01a506e3c8a658423a16dc">&#9670;&#160;</a></span>points2</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t Scoreboard::points2</td>
+          <td class="memname">Scoreboard::points2</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the second player's score </p>
 
 </div>
 </div>
-<a id="a4ffe0d59035f09d83dce721ff82b3c45" name="a4ffe0d59035f09d83dce721ff82b3c45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ffe0d59035f09d83dce721ff82b3c45">&#9670;&#160;</a></span>x</h2>
+<a id="a685de459292a54879c92bc7875b42389" name="a685de459292a54879c92bc7875b42389"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a685de459292a54879c92bc7875b42389">&#9670;&#160;</a></span>x</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t Scoreboard::x</td>
+          <td class="memname">Scoreboard::x</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_scoreboard.html" title="Implementation of the Scoreboard as an object usable in game.">Scoreboard</a>'s position in the x axis </p>
 
 </div>
 </div>
-<a id="ae7986a64fb28b2c302098e6f6e66bfe2" name="ae7986a64fb28b2c302098e6f6e66bfe2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7986a64fb28b2c302098e6f6e66bfe2">&#9670;&#160;</a></span>y</h2>
+<a id="a4fce57e91085984807e24003f3368fd1" name="a4fce57e91085984807e24003f3368fd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fce57e91085984807e24003f3368fd1">&#9670;&#160;</a></span>y</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t Scoreboard::y</td>
+          <td class="memname">Scoreboard::y</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_scoreboard.html" title="Implementation of the Scoreboard as an object usable in game.">Scoreboard</a>'s position in the y axis </p>
 
 </div>
 </div>

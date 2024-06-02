@@ -108,6 +108,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae07d385c874c8d1052f87a687369ffad" id="r_ae07d385c874c8d1052f87a687369ffad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae07d385c874c8d1052f87a687369ffad">configure_uart</a> ()</td></tr>
 <tr class="memdesc:ae07d385c874c8d1052f87a687369ffad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the UART's initial state.  <br /></td></tr>
 <tr class="separator:ae07d385c874c8d1052f87a687369ffad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1ff1066d01d7718b732e60cba0100b1" id="r_ac1ff1066d01d7718b732e60cba0100b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1ff1066d01d7718b732e60cba0100b1">reset_uart</a> ()</td></tr>
+<tr class="memdesc:ac1ff1066d01d7718b732e60cba0100b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets UART to its default state.  <br /></td></tr>
+<tr class="separator:ac1ff1066d01d7718b732e60cba0100b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0d5ac077c28fa582ed60b1c3d977d83" id="r_ac0d5ac077c28fa582ed60b1c3d977d83"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0d5ac077c28fa582ed60b1c3d977d83">uart_subscribe_int</a> (uint8_t *bit_no)</td></tr>
 <tr class="memdesc:ac0d5ac077c28fa582ed60b1c3d977d83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribes and enables UART interrupts.  <br /></td></tr>
 <tr class="separator:ac0d5ac077c28fa582ed60b1c3d977d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,7 +147,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Configures the UART's initial state. </p>
-<p>Enables interrupts ONLY for when data is available while maintaing the default configuration (by reading it first). Initializes the queue static global variable for receiving data</p>
+<p>Enables interrupts for when data is available and for when it's possible to send data. Stores the default configuration for resetting at the end of execution. Otherwise maintains the default configuration (by reading it first) except for the interrupts activated. Initializes the queue static global variable for receiving data</p>
 <dl class="section return"><dt>Returns</dt><dd>0 upon success, non-zero otherwise </dd></dl>
 
 </div>
@@ -193,6 +196,27 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>0 upon success, non-zero otherwise </dd></dl>
+
+</div>
+</div>
+<a id="ac1ff1066d01d7718b732e60cba0100b1" name="ac1ff1066d01d7718b732e60cba0100b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1ff1066d01d7718b732e60cba0100b1">&#9670;&#160;</a></span>reset_uart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int reset_uart </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resets UART to its default state. </p>
+<p>Sends the previously stored MINIX UART configuration (during <a class="el" href="#ae07d385c874c8d1052f87a687369ffad" title="Configures the UART&#39;s initial state.">configure_uart()</a>) to the appropriate register. Deallocates the queue.</p>
 <dl class="section return"><dt>Returns</dt><dd>0 upon success, non-zero otherwise </dd></dl>
 
 </div>

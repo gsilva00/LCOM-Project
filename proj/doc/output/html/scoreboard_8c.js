@@ -1,7 +1,7 @@
 var scoreboard_8c =
 [
-    [ "add_points_1", "scoreboard_8c.html#afe0d6a4c0df33be82d32cc9285ca648f", null ],
-    [ "add_points_2", "scoreboard_8c.html#a6605b0cecaf8370ead1fe938d1440d28", null ],
-    [ "create_scoreboard", "scoreboard_8c.html#a89f9818a6bb68959d2b6616f7afb695e", null ],
-    [ "destroy_scoreboard", "scoreboard_8c.html#a079598b57cbec6d933f9e30a9b4536a9", null ]
+    [ "add_points_1", "scoreboard_8c.html#aad4115d4c0221f58c45ad453f75e1e04", null ],
+    [ "add_points_2", "scoreboard_8c.html#a6baf68ab05f5b4985090043e7a425277", null ],
+    [ "create_scoreboard", "scoreboard_8c.html#a7f4651ba26de9460b5d9a5ce842dd870", null ],
+    [ "destroy_scoreboard", "scoreboard_8c.html#aad6cc7ea3c053596b32851593bc9bc69", null ]
 ];

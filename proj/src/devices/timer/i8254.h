@@ -4,7 +4,7 @@
 #include <lcom/lcf.h>
 
 /** 
- * @defgroup i8254 i8254
+ * @defgroup i8254 i8254 Macros
  * @brief Constants for programming the i8254 Timer
  * @{
  */

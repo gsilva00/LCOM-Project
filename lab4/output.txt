@@ -1,5 +1,5 @@
 change_sky_image called!
-Current hour: 22!
+Current hour: 8!
 Entered loading phase!
 Makecode: 0x1c
 Breakcode: 0x9c
@@ -9,6 +9,8 @@ Makecode: 0x50
 Breakcode: 0xd0
 Makecode: 0x1c
 Breakcode: 0x9c
+Makecode: 0x38
+Breakcode: 0xb8
 Makecode: 0x50
 Breakcode: 0xd0
 Makecode: 0x50

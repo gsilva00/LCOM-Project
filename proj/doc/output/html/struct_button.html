@@ -99,121 +99,133 @@ $(function(){initNavTree('struct_button.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
+<p>Implementation of the <a class="el" href="struct_button.html" title="Implementation of the Button as an object usable in game.">Button</a> as an object usable in game.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="button_8h_source.html">button.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a2ec3bc40025b64b44319e7464164d61f" id="r_a2ec3bc40025b64b44319e7464164d61f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ec3bc40025b64b44319e7464164d61f">x</a></td></tr>
-<tr class="separator:a2ec3bc40025b64b44319e7464164d61f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afff35ce0c47f662c3b096e5b644648a5" id="r_afff35ce0c47f662c3b096e5b644648a5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afff35ce0c47f662c3b096e5b644648a5">y</a></td></tr>
-<tr class="separator:afff35ce0c47f662c3b096e5b644648a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94051f6f79d4436d8a268a81b828863a" id="r_a94051f6f79d4436d8a268a81b828863a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94051f6f79d4436d8a268a81b828863a">width</a></td></tr>
-<tr class="separator:a94051f6f79d4436d8a268a81b828863a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c43732d529541e53c6b83607bdc5673" id="r_a1c43732d529541e53c6b83607bdc5673"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c43732d529541e53c6b83607bdc5673">height</a></td></tr>
-<tr class="separator:a1c43732d529541e53c6b83607bdc5673"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0f058de4b91ad01639459add15f10b8" id="r_ab0f058de4b91ad01639459add15f10b8"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0f058de4b91ad01639459add15f10b8">map</a></td></tr>
-<tr class="separator:ab0f058de4b91ad01639459add15f10b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e9bac3e0c56cff44c2ca289d6f4beb0" id="r_a7e9bac3e0c56cff44c2ca289d6f4beb0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e9bac3e0c56cff44c2ca289d6f4beb0">selected</a></td></tr>
-<tr class="separator:a7e9bac3e0c56cff44c2ca289d6f4beb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a020ff6a57443bb882414f55c791905" id="r_a6a020ff6a57443bb882414f55c791905"><td class="memItemLeft" align="right" valign="top">xpm_image_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a020ff6a57443bb882414f55c791905">img</a></td></tr>
-<tr class="separator:a6a020ff6a57443bb882414f55c791905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c6ac65bd4365d1e015905876caa4d20" id="r_a3c6ac65bd4365d1e015905876caa4d20"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c6ac65bd4365d1e015905876caa4d20">x</a></td></tr>
+<tr class="separator:a3c6ac65bd4365d1e015905876caa4d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d5012b3d9d3b373f8f3ddf227e165ce" id="r_a0d5012b3d9d3b373f8f3ddf227e165ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d5012b3d9d3b373f8f3ddf227e165ce">y</a></td></tr>
+<tr class="separator:a0d5012b3d9d3b373f8f3ddf227e165ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36c88219dff9a0989ce206f74b5fecd9" id="r_a36c88219dff9a0989ce206f74b5fecd9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36c88219dff9a0989ce206f74b5fecd9">width</a></td></tr>
+<tr class="separator:a36c88219dff9a0989ce206f74b5fecd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75d7389a2f7bac535e8da32bad6e4b7e" id="r_a75d7389a2f7bac535e8da32bad6e4b7e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75d7389a2f7bac535e8da32bad6e4b7e">height</a></td></tr>
+<tr class="separator:a75d7389a2f7bac535e8da32bad6e4b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e86c51cba7a3857023296886a495e9a" id="r_a7e86c51cba7a3857023296886a495e9a"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e86c51cba7a3857023296886a495e9a">map</a></td></tr>
+<tr class="separator:a7e86c51cba7a3857023296886a495e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78f5811454561c55ca405931d7f2beef" id="r_a78f5811454561c55ca405931d7f2beef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78f5811454561c55ca405931d7f2beef">selected</a></td></tr>
+<tr class="separator:a78f5811454561c55ca405931d7f2beef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7225c84d2fdd4b5de64cdfe3d6003f7" id="r_af7225c84d2fdd4b5de64cdfe3d6003f7"><td class="memItemLeft" align="right" valign="top">xpm_image_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7225c84d2fdd4b5de64cdfe3d6003f7">img</a></td></tr>
+<tr class="separator:af7225c84d2fdd4b5de64cdfe3d6003f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1c43732d529541e53c6b83607bdc5673" name="a1c43732d529541e53c6b83607bdc5673"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c43732d529541e53c6b83607bdc5673">&#9670;&#160;</a></span>height</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of the <a class="el" href="struct_button.html" title="Implementation of the Button as an object usable in game.">Button</a> as an object usable in game. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a75d7389a2f7bac535e8da32bad6e4b7e" name="a75d7389a2f7bac535e8da32bad6e4b7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75d7389a2f7bac535e8da32bad6e4b7e">&#9670;&#160;</a></span>height</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Button::height</td>
+          <td class="memname">Button::height</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_button.html" title="Implementation of the Button as an object usable in game.">Button</a>'s image height </p>
 
 </div>
 </div>
-<a id="a6a020ff6a57443bb882414f55c791905" name="a6a020ff6a57443bb882414f55c791905"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a020ff6a57443bb882414f55c791905">&#9670;&#160;</a></span>img</h2>
+<a id="af7225c84d2fdd4b5de64cdfe3d6003f7" name="af7225c84d2fdd4b5de64cdfe3d6003f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7225c84d2fdd4b5de64cdfe3d6003f7">&#9670;&#160;</a></span>img</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">xpm_image_t Button::img</td>
+          <td class="memname">Button::img</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_button.html" title="Implementation of the Button as an object usable in game.">Button</a>'s img </p>
 
 </div>
 </div>
-<a id="ab0f058de4b91ad01639459add15f10b8" name="ab0f058de4b91ad01639459add15f10b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0f058de4b91ad01639459add15f10b8">&#9670;&#160;</a></span>map</h2>
+<a id="a7e86c51cba7a3857023296886a495e9a" name="a7e86c51cba7a3857023296886a495e9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e86c51cba7a3857023296886a495e9a">&#9670;&#160;</a></span>map</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t* Button::map</td>
+          <td class="memname">Button::map</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Pointer to the <a class="el" href="struct_button.html" title="Implementation of the Button as an object usable in game.">Button</a>'s xpm map </p>
 
 </div>
 </div>
-<a id="a7e9bac3e0c56cff44c2ca289d6f4beb0" name="a7e9bac3e0c56cff44c2ca289d6f4beb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e9bac3e0c56cff44c2ca289d6f4beb0">&#9670;&#160;</a></span>selected</h2>
+<a id="a78f5811454561c55ca405931d7f2beef" name="a78f5811454561c55ca405931d7f2beef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78f5811454561c55ca405931d7f2beef">&#9670;&#160;</a></span>selected</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Button::selected</td>
+          <td class="memname">Button::selected</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Variable that says if the <a class="el" href="struct_button.html" title="Implementation of the Button as an object usable in game.">Button</a> was selected </p>
 
 </div>
 </div>
-<a id="a94051f6f79d4436d8a268a81b828863a" name="a94051f6f79d4436d8a268a81b828863a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94051f6f79d4436d8a268a81b828863a">&#9670;&#160;</a></span>width</h2>
+<a id="a36c88219dff9a0989ce206f74b5fecd9" name="a36c88219dff9a0989ce206f74b5fecd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36c88219dff9a0989ce206f74b5fecd9">&#9670;&#160;</a></span>width</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Button::width</td>
+          <td class="memname">Button::width</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_button.html" title="Implementation of the Button as an object usable in game.">Button</a>'s image width </p>
 
 </div>
 </div>
-<a id="a2ec3bc40025b64b44319e7464164d61f" name="a2ec3bc40025b64b44319e7464164d61f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ec3bc40025b64b44319e7464164d61f">&#9670;&#160;</a></span>x</h2>
+<a id="a3c6ac65bd4365d1e015905876caa4d20" name="a3c6ac65bd4365d1e015905876caa4d20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c6ac65bd4365d1e015905876caa4d20">&#9670;&#160;</a></span>x</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Button::x</td>
+          <td class="memname">Button::x</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_button.html" title="Implementation of the Button as an object usable in game.">Button</a>'s position in the x axis </p>
 
 </div>
 </div>
-<a id="afff35ce0c47f662c3b096e5b644648a5" name="afff35ce0c47f662c3b096e5b644648a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afff35ce0c47f662c3b096e5b644648a5">&#9670;&#160;</a></span>y</h2>
+<a id="a0d5012b3d9d3b373f8f3ddf227e165ce" name="a0d5012b3d9d3b373f8f3ddf227e165ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d5012b3d9d3b373f8f3ddf227e165ce">&#9670;&#160;</a></span>y</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Button::y</td>
+          <td class="memname">Button::y</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_button.html" title="Implementation of the Button as an object usable in game.">Button</a>'s position in the y axis </p>
 
 </div>
 </div>

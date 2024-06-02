@@ -1,8 +1,7 @@
 var timeboard_8h =
 [
     [ "Timeboard", "struct_timeboard.html", "struct_timeboard" ],
-    [ "timeboard", "timeboard_8h.html#a19994d097103061d36305f3b38cd34be", null ],
-    [ "add_time", "timeboard_8h.html#a58279b8a80e125137a50fd8697056a72", null ],
-    [ "create_timeboard", "timeboard_8h.html#aa4c43ed524d31d23f247110f66690ac0", null ],
-    [ "destroy_timeboard", "timeboard_8h.html#ad2d7aa77d235016d26fe8e1fdf1faebd", null ]
+    [ "create_timeboard", "timeboard_8h.html#abefa91c136c49d4d8d386356ac185467", null ],
+    [ "decrease_time", "timeboard_8h.html#a79adf9ea298ffe4e8822ca151c97873c", null ],
+    [ "destroy_timeboard", "timeboard_8h.html#ab061dc80b132bf7bc599a2afb3ab0526", null ]
 ];

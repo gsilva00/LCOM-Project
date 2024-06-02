@@ -1,11 +1,15 @@
 var searchData=
 [
-  ['wall_0',['Wall',['../struct_wall.html',1,'']]],
-  ['wall_1',['wall',['../wall_8h.html#a66e341a341801f82e6c18676d9d792cc',1,'wall.h']]],
-  ['wall_2ec_2',['wall.c',['../wall_8c.html',1,'']]],
-  ['wall_2eh_3',['wall.h',['../wall_8h.html',1,'']]],
-  ['weekday_4',['weekday',['../structrtc__data.html#a59d0f1c83c068e0dc10c6e937e547ef6',1,'rtc_data']]],
-  ['weekday_5faddr_5',['WEEKDAY_ADDR',['../group___r_t_c_registers.html#gaa0c12c43f2201683f530ab69b14dc08e',1,'rtc_macros.h']]],
-  ['width_6',['width',['../struct_ball.html#adbf4c11d7e5b18b1915e005e837de9da',1,'Ball::width'],['../struct_button.html#a94051f6f79d4436d8a268a81b828863a',1,'Button::width'],['../struct_player.html#ab112e078741802afd6c095ddea241b2f',1,'Player::width'],['../struct_wall.html#a1cf4e9f291dbac5a901a9211179218a8',1,'Wall::width']]],
-  ['word_7',['Word',['../group___count_mode.html',1,'Counting Mode for Control Word'],['../group___op_mode.html',1,'Operating mode for Control Word'],['../group___reg_sel.html',1,'Register selection for Control Word'],['../group___timer_sel.html',1,'Timer selection for Control Word']]]
+  ['vbe_20functions_0',['VBE Functions',['../group___v_b_e_functions.html',1,'']]],
+  ['vbe_20modes_1',['VBE Modes',['../group___v_b_e_modes.html',1,'']]],
+  ['vbe_5fcontroller_5finfo_2',['VBE_CONTROLLER_INFO',['../group___v_b_e_functions.html#gab3ae6cab04af0d37663adf157287f987',1,'gpu_macros.h']]],
+  ['vbe_5fmode_5f105_3',['VBE_MODE_105',['../group___v_b_e_modes.html#gaefc0bcefa44b288191e6568336f31251',1,'gpu_macros.h']]],
+  ['vbe_5fmode_5f110_4',['VBE_MODE_110',['../group___v_b_e_modes.html#gaa4e12f19b9d2a3b343272a5fcf51cfbf',1,'gpu_macros.h']]],
+  ['vbe_5fmode_5f115_5',['VBE_MODE_115',['../group___v_b_e_modes.html#ga7e925d45a720f0e3780cdcd6142503ab',1,'gpu_macros.h']]],
+  ['vbe_5fmode_5f11a_6',['VBE_MODE_11A',['../group___v_b_e_modes.html#gaa1af464e680d71cae046bb85727d4094',1,'gpu_macros.h']]],
+  ['vbe_5fmode_5f14c_7',['VBE_MODE_14C',['../group___v_b_e_modes.html#gabdae92fdefb7acdf858a8b298b86e003',1,'gpu_macros.h']]],
+  ['vbe_5fmode_5finfo_8',['VBE_MODE_INFO',['../group___v_b_e_functions.html#ga2ecbf8f92f9322fedec91461747c4843',1,'gpu_macros.h']]],
+  ['verify_5fgoal_9',['verify_goal',['../ball__controller_8c.html#a5ee9b2c9a5bc5cb825525780137dcd60',1,'ball_controller.c']]],
+  ['video_5fmem_10',['video_mem',['../gpu_8c.html#a51ca412bef7e65e7fb0a170abe47b36b',1,'gpu.c']]],
+  ['vmi_11',['vmi',['../gpu_8c.html#adb1f08b438cf612e163fe7d66cde86d0',1,'gpu.c']]]
 ];

@@ -20,6 +20,8 @@
     "button.h": "c",
     "cursor.h": "c",
     "game_state.h": "c",
-    "i8254.h": "c"
+    "i8254.h": "c",
+    "scoreboard.h": "c",
+    "goal.h": "c"
   },
 }

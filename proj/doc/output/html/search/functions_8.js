@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['kbc_5fih_0',['kbc_ih',['../keyboard_8c.html#ab9e6ed7960d60aa4834f2038247d4536',1,'keyboard.c']]],
-  ['kbc_5fread_5foutbuf_1',['kbc_read_outbuf',['../kbc_8c.html#a62c209283f6127df1365b342a1f3ddd9',1,'kbc_read_outbuf(uint8_t port, uint8_t *output, bool mouse):&#160;kbc.c'],['../kbc_8h.html#a62c209283f6127df1365b342a1f3ddd9',1,'kbc_read_outbuf(uint8_t port, uint8_t *output, bool mouse):&#160;kbc.c']]],
-  ['kbc_5fwrite_5fcmd_2',['kbc_write_cmd',['../kbc_8c.html#abd6297c4f21b5d7a33693a1cbcf03eb3',1,'kbc_write_cmd(uint8_t port, uint8_t command):&#160;kbc.c'],['../kbc_8h.html#abd6297c4f21b5d7a33693a1cbcf03eb3',1,'kbc_write_cmd(uint8_t port, uint8_t command):&#160;kbc.c']]],
-  ['kbc_5fwrite_5fmouse_3',['kbc_write_mouse',['../kbc_8c.html#aa90443358c3c8f173e5b2365494e1ec8',1,'kbc_write_mouse(uint8_t arg):&#160;kbc.c'],['../kbc_8h.html#aa90443358c3c8f173e5b2365494e1ec8',1,'kbc_write_mouse(uint8_t arg):&#160;kbc.c']]],
-  ['kbd_5fsubscribe_5fint_4',['kbd_subscribe_int',['../keyboard_8c.html#aa7a491d4d95eab5ca5326c4000ad67f8',1,'kbd_subscribe_int(uint8_t *bit_no):&#160;keyboard.c'],['../keyboard_8h.html#aa7a491d4d95eab5ca5326c4000ad67f8',1,'kbd_subscribe_int(uint8_t *bit_no):&#160;keyboard.c']]],
-  ['kbd_5funsubscribe_5fint_5',['kbd_unsubscribe_int',['../keyboard_8c.html#a5bdf6cfb570c375192b0d87913b65c57',1,'kbd_unsubscribe_int():&#160;keyboard.c'],['../keyboard_8h.html#a5bdf6cfb570c375192b0d87913b65c57',1,'kbd_unsubscribe_int():&#160;keyboard.c']]]
+  ['init_5fbackground_0',['init_background',['../gpu_8c.html#a2732cc2b96b20c6f177bfb677dedcf0d',1,'init_background(uint16_t *x_coords, uint16_t *y_coords, xpm_image_t *imgs, size_t num_elements):&#160;gpu.c'],['../gpu_8h.html#a2732cc2b96b20c6f177bfb677dedcf0d',1,'init_background(uint16_t *x_coords, uint16_t *y_coords, xpm_image_t *imgs, size_t num_elements):&#160;gpu.c']]],
+  ['initialize_5fball_5fvalues_1',['initialize_ball_values',['../ball__controller_8c.html#a38785a5b9212e94df950365c57db0f6d',1,'initialize_ball_values(Ball *bola):&#160;ball_controller.c'],['../ball__controller_8h.html#a38785a5b9212e94df950365c57db0f6d',1,'initialize_ball_values(Ball *bola):&#160;ball_controller.c']]],
+  ['initialize_5fplayer_5fvalues_2',['initialize_player_values',['../player__controller_8c.html#a46d3eddfcdbc55979be5e954a30733c8',1,'initialize_player_values(Player *player):&#160;player_controller.c'],['../player__controller_8h.html#a46d3eddfcdbc55979be5e954a30733c8',1,'initialize_player_values(Player *player):&#160;player_controller.c']]],
+  ['interrupt_5floop_3',['interrupt_loop',['../proj_8c.html#abffa0619dc6e991b421cad8c54bd45d0',1,'proj.c']]],
+  ['is_5fcursor_5ftouching_4',['is_cursor_touching',['../proj_8c.html#a85926f7454cc8f60daabfff1f7967d01',1,'proj.c']]],
+  ['is_5frtc_5fbinary_5',['is_rtc_binary',['../rtc_8c.html#a2bccb45fe57bd2fdceef07ab2a16637f',1,'is_rtc_binary():&#160;rtc.c'],['../rtc_8h.html#a2bccb45fe57bd2fdceef07ab2a16637f',1,'is_rtc_binary():&#160;rtc.c']]]
 ];

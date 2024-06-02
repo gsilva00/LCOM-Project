@@ -3,6 +3,7 @@ var rtc_8h =
     [ "rtc_data_t", "rtc_8h.html#a363a8726c6dfd911f706633f7ccd31c6", null ],
     [ "configure_rtc", "rtc_8h.html#a0045351c03a6f33fc89e406c76914159", null ],
     [ "equal_reads", "rtc_8h.html#a7211989be235eddc771c4057ad5dfe77", null ],
+    [ "get_current_hour", "rtc_8h.html#ac8ca9da60db21908502da2cb5aaef883", null ],
     [ "handle_alarm_int", "rtc_8h.html#a1314376c5de773828a9824b11cca2502", null ],
     [ "is_rtc_binary", "rtc_8h.html#a2bccb45fe57bd2fdceef07ab2a16637f", null ],
     [ "read_current_time", "rtc_8h.html#ad41e2906df57d43ee7caf481d2ab93e0", null ],

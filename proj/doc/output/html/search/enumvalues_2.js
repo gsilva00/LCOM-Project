@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['init_0',['INIT',['../mouse__sm_8h.html#a6ab3d6c199d4a2d7945eff8cbec931cfa0cb1b2c6a7db1f1084886c98909a3f36',1,'mouse_sm.h']]]
+  ['game_5fover_0',['GAME_OVER',['../game__state_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a871723195985a4ae22d7e10d99bf8a00',1,'game_state.h']]],
+  ['goal_1',['GOAL',['../game__state_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a481acf8650ec2f2e4c0b366fef0368b4',1,'game_state.h']]]
 ];

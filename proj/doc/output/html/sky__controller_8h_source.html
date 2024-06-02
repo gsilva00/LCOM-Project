@@ -117,14 +117,12 @@ $(function(){initNavTree('sky__controller_8h_source.html',''); initResizable(); 
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;../../images/backgrounds/sky_10pm.xpm&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">int</span> <a class="code hl_function" href="sky__controller_8h.html#a6a36a777c503eddcf5e1cb432c4848a5">change_sky_image</a>(uint8_t current_hour);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>uint8_t* <a class="code hl_function" href="sky__controller_8h.html#a09b9e143b00f7545dee679e5af5973d3">get_current_sky</a>();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif </span><span class="comment">// SKY_H</span></div>
-<div class="ttc" id="asky__controller_8h_html_a09b9e143b00f7545dee679e5af5973d3"><div class="ttname"><a href="sky__controller_8h.html#a09b9e143b00f7545dee679e5af5973d3">get_current_sky</a></div><div class="ttdeci">uint8_t * get_current_sky()</div><div class="ttdoc">Getter for the current_sky static global variable.</div><div class="ttdef"><b>Definition</b> sky_controller.c:35</div></div>
-<div class="ttc" id="asky__controller_8h_html_a6a36a777c503eddcf5e1cb432c4848a5"><div class="ttname"><a href="sky__controller_8h.html#a6a36a777c503eddcf5e1cb432c4848a5">change_sky_image</a></div><div class="ttdeci">int change_sky_image(uint8_t current_hour)</div><div class="ttdoc">Function to change the sky background based on the real-time of the computer.</div><div class="ttdef"><b>Definition</b> sky_controller.c:7</div></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">int</span> <a class="code hl_function" href="sky__controller_8h.html#a7a8b8103d2e5a20f3355c69c396c87f1">change_sky_image</a>(uint8_t current_hour, xpm_image_t *<a class="code hl_variable" href="proj_8c.html#a4271ea53093e3a265709369c47763695">sky_img</a>);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">// SKY_H</span></div>
+<div class="ttc" id="aproj_8c_html_a4271ea53093e3a265709369c47763695"><div class="ttname"><a href="proj_8c.html#a4271ea53093e3a265709369c47763695">sky_img</a></div><div class="ttdeci">static xpm_image_t sky_img</div><div class="ttdef"><b>Definition</b> proj.c:127</div></div>
+<div class="ttc" id="asky__controller_8h_html_a7a8b8103d2e5a20f3355c69c396c87f1"><div class="ttname"><a href="sky__controller_8h.html#a7a8b8103d2e5a20f3355c69c396c87f1">change_sky_image</a></div><div class="ttdeci">int change_sky_image(uint8_t current_hour, xpm_image_t *sky_img)</div><div class="ttdoc">Function to change the sky background based on the real-time of the computer.</div><div class="ttdef"><b>Definition</b> sky_controller.c:4</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

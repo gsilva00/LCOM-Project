@@ -99,169 +99,167 @@ $(function(){initNavTree('struct_ball.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
+<p>Implementation of the <a class="el" href="struct_ball.html" title="Implementation of the Ball as an object usable in game.">Ball</a> as an object usable in game.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ball_8h_source.html">ball.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ad08924534755897288502a1fac360b62" id="r_ad08924534755897288502a1fac360b62"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad08924534755897288502a1fac360b62">x</a></td></tr>
-<tr class="separator:ad08924534755897288502a1fac360b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04b86072ac312de607552544d27c7a5a" id="r_a04b86072ac312de607552544d27c7a5a"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04b86072ac312de607552544d27c7a5a">y</a></td></tr>
-<tr class="separator:a04b86072ac312de607552544d27c7a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbf4c11d7e5b18b1915e005e837de9da" id="r_adbf4c11d7e5b18b1915e005e837de9da"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbf4c11d7e5b18b1915e005e837de9da">width</a></td></tr>
-<tr class="separator:adbf4c11d7e5b18b1915e005e837de9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe4267531b1e97c17591792ee52fec5b" id="r_afe4267531b1e97c17591792ee52fec5b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe4267531b1e97c17591792ee52fec5b">height</a></td></tr>
-<tr class="separator:afe4267531b1e97c17591792ee52fec5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84f7cc5fccd2271aa8b3d9e31ed4e3f0" id="r_a84f7cc5fccd2271aa8b3d9e31ed4e3f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84f7cc5fccd2271aa8b3d9e31ed4e3f0">xspeed</a></td></tr>
-<tr class="separator:a84f7cc5fccd2271aa8b3d9e31ed4e3f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa73bd9cf3a31a7dcd1e3c9a9deb8a2ae" id="r_aa73bd9cf3a31a7dcd1e3c9a9deb8a2ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa73bd9cf3a31a7dcd1e3c9a9deb8a2ae">yspeed</a></td></tr>
-<tr class="separator:aa73bd9cf3a31a7dcd1e3c9a9deb8a2ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a583e58f5881c5d185d5ecbe316ad5cd0" id="r_a583e58f5881c5d185d5ecbe316ad5cd0"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a583e58f5881c5d185d5ecbe316ad5cd0">time_in_mov</a></td></tr>
-<tr class="separator:a583e58f5881c5d185d5ecbe316ad5cd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61b377cdd3fcfaf928d4f960c909ff7b" id="r_a61b377cdd3fcfaf928d4f960c909ff7b"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61b377cdd3fcfaf928d4f960c909ff7b">map</a></td></tr>
-<tr class="separator:a61b377cdd3fcfaf928d4f960c909ff7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fb7736b493fd7dc22b742d4011a2d22" id="r_a9fb7736b493fd7dc22b742d4011a2d22"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fb7736b493fd7dc22b742d4011a2d22">stop</a></td></tr>
-<tr class="separator:a9fb7736b493fd7dc22b742d4011a2d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa58de4595877fc2908faa4afec6398ef" id="r_aa58de4595877fc2908faa4afec6398ef"><td class="memItemLeft" align="right" valign="top">xpm_image_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa58de4595877fc2908faa4afec6398ef">img</a></td></tr>
-<tr class="separator:aa58de4595877fc2908faa4afec6398ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac27f3ce01316eada02b73bf5859780f" id="r_aac27f3ce01316eada02b73bf5859780f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac27f3ce01316eada02b73bf5859780f">x</a></td></tr>
+<tr class="separator:aac27f3ce01316eada02b73bf5859780f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0b721799972c001176a120d1d9998ac" id="r_ab0b721799972c001176a120d1d9998ac"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0b721799972c001176a120d1d9998ac">y</a></td></tr>
+<tr class="separator:ab0b721799972c001176a120d1d9998ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa5a930f33e744f303e09ac56fc1ac9a" id="r_afa5a930f33e744f303e09ac56fc1ac9a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa5a930f33e744f303e09ac56fc1ac9a">width</a></td></tr>
+<tr class="separator:afa5a930f33e744f303e09ac56fc1ac9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7f1bb5d88558364cc76b53d18320ffb" id="r_ad7f1bb5d88558364cc76b53d18320ffb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7f1bb5d88558364cc76b53d18320ffb">height</a></td></tr>
+<tr class="separator:ad7f1bb5d88558364cc76b53d18320ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25597563df4a6b5f25d975c5502590d9" id="r_a25597563df4a6b5f25d975c5502590d9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25597563df4a6b5f25d975c5502590d9">xspeed</a></td></tr>
+<tr class="separator:a25597563df4a6b5f25d975c5502590d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9955299c049c5944c3e148e2770fda6" id="r_ae9955299c049c5944c3e148e2770fda6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9955299c049c5944c3e148e2770fda6">yspeed</a></td></tr>
+<tr class="separator:ae9955299c049c5944c3e148e2770fda6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b362ea333dd7bdcda07be516698d56d" id="r_a7b362ea333dd7bdcda07be516698d56d"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b362ea333dd7bdcda07be516698d56d">map</a></td></tr>
+<tr class="separator:a7b362ea333dd7bdcda07be516698d56d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406ad5cb499b12223c05acc21f642107" id="r_a406ad5cb499b12223c05acc21f642107"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a406ad5cb499b12223c05acc21f642107">stop</a></td></tr>
+<tr class="separator:a406ad5cb499b12223c05acc21f642107"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae77c047f1023131867888d635301c53c" id="r_ae77c047f1023131867888d635301c53c"><td class="memItemLeft" align="right" valign="top">xpm_image_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae77c047f1023131867888d635301c53c">img</a></td></tr>
+<tr class="separator:ae77c047f1023131867888d635301c53c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="afe4267531b1e97c17591792ee52fec5b" name="afe4267531b1e97c17591792ee52fec5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe4267531b1e97c17591792ee52fec5b">&#9670;&#160;</a></span>height</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of the <a class="el" href="struct_ball.html" title="Implementation of the Ball as an object usable in game.">Ball</a> as an object usable in game. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad7f1bb5d88558364cc76b53d18320ffb" name="ad7f1bb5d88558364cc76b53d18320ffb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7f1bb5d88558364cc76b53d18320ffb">&#9670;&#160;</a></span>height</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Ball::height</td>
+          <td class="memname">Ball::height</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_ball.html" title="Implementation of the Ball as an object usable in game.">Ball</a>'s image height </p>
 
 </div>
 </div>
-<a id="aa58de4595877fc2908faa4afec6398ef" name="aa58de4595877fc2908faa4afec6398ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa58de4595877fc2908faa4afec6398ef">&#9670;&#160;</a></span>img</h2>
+<a id="ae77c047f1023131867888d635301c53c" name="ae77c047f1023131867888d635301c53c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae77c047f1023131867888d635301c53c">&#9670;&#160;</a></span>img</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">xpm_image_t Ball::img</td>
+          <td class="memname">Ball::img</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_ball.html" title="Implementation of the Ball as an object usable in game.">Ball</a>'s img </p>
 
 </div>
 </div>
-<a id="a61b377cdd3fcfaf928d4f960c909ff7b" name="a61b377cdd3fcfaf928d4f960c909ff7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61b377cdd3fcfaf928d4f960c909ff7b">&#9670;&#160;</a></span>map</h2>
+<a id="a7b362ea333dd7bdcda07be516698d56d" name="a7b362ea333dd7bdcda07be516698d56d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b362ea333dd7bdcda07be516698d56d">&#9670;&#160;</a></span>map</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t* Ball::map</td>
+          <td class="memname">Ball::map</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Pointer to the <a class="el" href="struct_ball.html" title="Implementation of the Ball as an object usable in game.">Ball</a>'s xpm map </p>
 
 </div>
 </div>
-<a id="a9fb7736b493fd7dc22b742d4011a2d22" name="a9fb7736b493fd7dc22b742d4011a2d22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fb7736b493fd7dc22b742d4011a2d22">&#9670;&#160;</a></span>stop</h2>
+<a id="a406ad5cb499b12223c05acc21f642107" name="a406ad5cb499b12223c05acc21f642107"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a406ad5cb499b12223c05acc21f642107">&#9670;&#160;</a></span>stop</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Ball::stop</td>
+          <td class="memname">Ball::stop</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Variable that says if the <a class="el" href="struct_ball.html" title="Implementation of the Ball as an object usable in game.">Ball</a> has stopped </p>
 
 </div>
 </div>
-<a id="a583e58f5881c5d185d5ecbe316ad5cd0" name="a583e58f5881c5d185d5ecbe316ad5cd0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a583e58f5881c5d185d5ecbe316ad5cd0">&#9670;&#160;</a></span>time_in_mov</h2>
+<a id="afa5a930f33e744f303e09ac56fc1ac9a" name="afa5a930f33e744f303e09ac56fc1ac9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa5a930f33e744f303e09ac56fc1ac9a">&#9670;&#160;</a></span>width</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t Ball::time_in_mov</td>
+          <td class="memname">Ball::width</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_ball.html" title="Implementation of the Ball as an object usable in game.">Ball</a>'s image width </p>
 
 </div>
 </div>
-<a id="adbf4c11d7e5b18b1915e005e837de9da" name="adbf4c11d7e5b18b1915e005e837de9da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbf4c11d7e5b18b1915e005e837de9da">&#9670;&#160;</a></span>width</h2>
+<a id="aac27f3ce01316eada02b73bf5859780f" name="aac27f3ce01316eada02b73bf5859780f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac27f3ce01316eada02b73bf5859780f">&#9670;&#160;</a></span>x</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Ball::width</td>
+          <td class="memname">Ball::x</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_ball.html" title="Implementation of the Ball as an object usable in game.">Ball</a>'s position in the x axis </p>
 
 </div>
 </div>
-<a id="ad08924534755897288502a1fac360b62" name="ad08924534755897288502a1fac360b62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad08924534755897288502a1fac360b62">&#9670;&#160;</a></span>x</h2>
+<a id="a25597563df4a6b5f25d975c5502590d9" name="a25597563df4a6b5f25d975c5502590d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25597563df4a6b5f25d975c5502590d9">&#9670;&#160;</a></span>xspeed</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t Ball::x</td>
+          <td class="memname">Ball::xspeed</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_ball.html" title="Implementation of the Ball as an object usable in game.">Ball</a>'s speed in the x axis </p>
 
 </div>
 </div>
-<a id="a84f7cc5fccd2271aa8b3d9e31ed4e3f0" name="a84f7cc5fccd2271aa8b3d9e31ed4e3f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84f7cc5fccd2271aa8b3d9e31ed4e3f0">&#9670;&#160;</a></span>xspeed</h2>
+<a id="ab0b721799972c001176a120d1d9998ac" name="ab0b721799972c001176a120d1d9998ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0b721799972c001176a120d1d9998ac">&#9670;&#160;</a></span>y</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Ball::xspeed</td>
+          <td class="memname">Ball::y</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_ball.html" title="Implementation of the Ball as an object usable in game.">Ball</a>'s position in the y axis </p>
 
 </div>
 </div>
-<a id="a04b86072ac312de607552544d27c7a5a" name="a04b86072ac312de607552544d27c7a5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04b86072ac312de607552544d27c7a5a">&#9670;&#160;</a></span>y</h2>
+<a id="ae9955299c049c5944c3e148e2770fda6" name="ae9955299c049c5944c3e148e2770fda6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9955299c049c5944c3e148e2770fda6">&#9670;&#160;</a></span>yspeed</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t Ball::y</td>
+          <td class="memname">Ball::yspeed</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa73bd9cf3a31a7dcd1e3c9a9deb8a2ae" name="aa73bd9cf3a31a7dcd1e3c9a9deb8a2ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa73bd9cf3a31a7dcd1e3c9a9deb8a2ae">&#9670;&#160;</a></span>yspeed</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Ball::yspeed</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_ball.html" title="Implementation of the Ball as an object usable in game.">Ball</a>'s speed in the y axis </p>
 
 </div>
 </div>

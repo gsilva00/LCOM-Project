@@ -5,7 +5,7 @@
 
 
 /** 
- * @defgroup i8042 i8042
+ * @defgroup i8042 i8042 Macros
  * @brief Constants for programming the i8042 KBC - Keyboard (and Mouse) Controller.
  * @{
  */

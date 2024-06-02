@@ -99,89 +99,99 @@ $(function(){initNavTree('struct_goal.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
+<p>Implementation of the <a class="el" href="struct_goal.html" title="Implementation of the Goal as an object usable in game.">Goal</a> as an object usable in game.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="goal_8h_source.html">goal.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aab4a40b5e03d973634b52c003869a2a8" id="r_aab4a40b5e03d973634b52c003869a2a8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab4a40b5e03d973634b52c003869a2a8">x</a></td></tr>
-<tr class="separator:aab4a40b5e03d973634b52c003869a2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01ad8b76e6f73c1146508c37d67a4a89" id="r_a01ad8b76e6f73c1146508c37d67a4a89"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01ad8b76e6f73c1146508c37d67a4a89">y</a></td></tr>
-<tr class="separator:a01ad8b76e6f73c1146508c37d67a4a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a7fcb35aaebca002a18778e3fe24ad9" id="r_a3a7fcb35aaebca002a18778e3fe24ad9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a7fcb35aaebca002a18778e3fe24ad9">orientation</a></td></tr>
-<tr class="separator:a3a7fcb35aaebca002a18778e3fe24ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af63ed3a84dd6eb27a12e9ee489b28e8f" id="r_af63ed3a84dd6eb27a12e9ee489b28e8f"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af63ed3a84dd6eb27a12e9ee489b28e8f">map</a></td></tr>
-<tr class="separator:af63ed3a84dd6eb27a12e9ee489b28e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55afa1b2ac648367c5d52f34273feb06" id="r_a55afa1b2ac648367c5d52f34273feb06"><td class="memItemLeft" align="right" valign="top">xpm_image_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55afa1b2ac648367c5d52f34273feb06">img</a></td></tr>
-<tr class="separator:a55afa1b2ac648367c5d52f34273feb06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae677ff2c3280e40caa7ca07892017d08" id="r_ae677ff2c3280e40caa7ca07892017d08"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae677ff2c3280e40caa7ca07892017d08">x</a></td></tr>
+<tr class="separator:ae677ff2c3280e40caa7ca07892017d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d7f99d0e1a4955c6d533f2cecae621b" id="r_a6d7f99d0e1a4955c6d533f2cecae621b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d7f99d0e1a4955c6d533f2cecae621b">y</a></td></tr>
+<tr class="separator:a6d7f99d0e1a4955c6d533f2cecae621b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30cfbf65daaeef54c715bb3f67f571e0" id="r_a30cfbf65daaeef54c715bb3f67f571e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30cfbf65daaeef54c715bb3f67f571e0">orientation</a></td></tr>
+<tr class="separator:a30cfbf65daaeef54c715bb3f67f571e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabf78219dee8fc385720fc833050276e" id="r_aabf78219dee8fc385720fc833050276e"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabf78219dee8fc385720fc833050276e">map</a></td></tr>
+<tr class="separator:aabf78219dee8fc385720fc833050276e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf4a9f8668f73646a2900ffa7cc4c8fc" id="r_aaf4a9f8668f73646a2900ffa7cc4c8fc"><td class="memItemLeft" align="right" valign="top">xpm_image_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf4a9f8668f73646a2900ffa7cc4c8fc">img</a></td></tr>
+<tr class="separator:aaf4a9f8668f73646a2900ffa7cc4c8fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a55afa1b2ac648367c5d52f34273feb06" name="a55afa1b2ac648367c5d52f34273feb06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55afa1b2ac648367c5d52f34273feb06">&#9670;&#160;</a></span>img</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of the <a class="el" href="struct_goal.html" title="Implementation of the Goal as an object usable in game.">Goal</a> as an object usable in game. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="aaf4a9f8668f73646a2900ffa7cc4c8fc" name="aaf4a9f8668f73646a2900ffa7cc4c8fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf4a9f8668f73646a2900ffa7cc4c8fc">&#9670;&#160;</a></span>img</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">xpm_image_t Goal::img</td>
+          <td class="memname">Goal::img</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_goal.html" title="Implementation of the Goal as an object usable in game.">Goal</a>'s img </p>
 
 </div>
 </div>
-<a id="af63ed3a84dd6eb27a12e9ee489b28e8f" name="af63ed3a84dd6eb27a12e9ee489b28e8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af63ed3a84dd6eb27a12e9ee489b28e8f">&#9670;&#160;</a></span>map</h2>
+<a id="aabf78219dee8fc385720fc833050276e" name="aabf78219dee8fc385720fc833050276e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabf78219dee8fc385720fc833050276e">&#9670;&#160;</a></span>map</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t* Goal::map</td>
+          <td class="memname">Goal::map</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Pointer to the <a class="el" href="struct_goal.html" title="Implementation of the Goal as an object usable in game.">Goal</a>'s xpm map </p>
 
 </div>
 </div>
-<a id="a3a7fcb35aaebca002a18778e3fe24ad9" name="a3a7fcb35aaebca002a18778e3fe24ad9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a7fcb35aaebca002a18778e3fe24ad9">&#9670;&#160;</a></span>orientation</h2>
+<a id="a30cfbf65daaeef54c715bb3f67f571e0" name="a30cfbf65daaeef54c715bb3f67f571e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30cfbf65daaeef54c715bb3f67f571e0">&#9670;&#160;</a></span>orientation</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Goal::orientation</td>
+          <td class="memname">Goal::orientation</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_goal.html" title="Implementation of the Goal as an object usable in game.">Goal</a>'s orientation </p>
 
 </div>
 </div>
-<a id="aab4a40b5e03d973634b52c003869a2a8" name="aab4a40b5e03d973634b52c003869a2a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab4a40b5e03d973634b52c003869a2a8">&#9670;&#160;</a></span>x</h2>
+<a id="ae677ff2c3280e40caa7ca07892017d08" name="ae677ff2c3280e40caa7ca07892017d08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae677ff2c3280e40caa7ca07892017d08">&#9670;&#160;</a></span>x</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Goal::x</td>
+          <td class="memname">Goal::x</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_goal.html" title="Implementation of the Goal as an object usable in game.">Goal</a>'s position in the x axis </p>
 
 </div>
 </div>
-<a id="a01ad8b76e6f73c1146508c37d67a4a89" name="a01ad8b76e6f73c1146508c37d67a4a89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01ad8b76e6f73c1146508c37d67a4a89">&#9670;&#160;</a></span>y</h2>
+<a id="a6d7f99d0e1a4955c6d533f2cecae621b" name="a6d7f99d0e1a4955c6d533f2cecae621b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d7f99d0e1a4955c6d533f2cecae621b">&#9670;&#160;</a></span>y</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Goal::y</td>
+          <td class="memname">Goal::y</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the <a class="el" href="struct_goal.html" title="Implementation of the Goal as an object usable in game.">Goal</a>'s position in the y axis </p>
 
 </div>
 </div>

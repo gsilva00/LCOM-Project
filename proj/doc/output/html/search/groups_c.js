@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['macros_0',['Macros',['../group___g_p_u_macros.html',1,'GPU Macros'],['../group___r_t_c_macros.html',1,'RTC Macros'],['../group___u_a_r_t_macros.html',1,'UART Macros']]],
+  ['macros_0',['Macros',['../group___g_p_u_macros.html',1,'GPU Macros'],['../group__i8042.html',1,'i8042 Macros'],['../group__i8254.html',1,'i8254 Macros'],['../group___r_t_c_macros.html',1,'RTC Macros'],['../group___u_a_r_t_macros.html',1,'UART Macros']]],
   ['main_20registers_1',['RTC Main Registers',['../group___r_t_c_main.html',1,'']]],
   ['mode_20for_20control_20word_2',['Counting Mode for Control Word',['../group___count_mode.html',1,'']]],
   ['mode_20for_20control_20word_3',['Operating mode for Control Word',['../group___op_mode.html',1,'']]],

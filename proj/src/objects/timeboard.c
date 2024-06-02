@@ -1,5 +1,6 @@
 #include "timeboard.h"
 
+
 Timeboard *create_timeboard(xpm_map_t pic) {
   Timeboard *tb = (Timeboard *) malloc (sizeof(Timeboard));
   if (tb == NULL) return NULL;
@@ -28,6 +29,7 @@ void destroy_timeboard(Timeboard *tb) {
 }
 
 void decrease_time(Timeboard *tb) {
+  if (tb == NULL) return;
   if (tb->time > 0  && (get_timer_intCounter() % 60 == 0)) {
     tb->time -= 1;
   }

@@ -150,6 +150,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a3d1ff5763600a995360272da8adef21a" id="r_a3d1ff5763600a995360272da8adef21a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d1ff5763600a995360272da8adef21a">set_hourly_alarm</a> ()</td></tr>
 <tr class="memdesc:a3d1ff5763600a995360272da8adef21a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activates alarm interrupts and sets the alarm to generate an interrupt every hour.  <br /></td></tr>
 <tr class="separator:a3d1ff5763600a995360272da8adef21a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8ca9da60db21908502da2cb5aaef883" id="r_ac8ca9da60db21908502da2cb5aaef883"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8ca9da60db21908502da2cb5aaef883">get_current_hour</a> ()</td></tr>
+<tr class="separator:ac8ca9da60db21908502da2cb5aaef883"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -177,7 +179,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Configures the RTC's initial state. </p>
-<p>Initializes the rtc_binary member variable (<a class="el" href="rtc_8h.html#a2bccb45fe57bd2fdceef07ab2a16637f" title="Checks if the RTC has its registers&#39; values in binary format or BCD.">is_rtc_binary()</a>). Initializes the current_time (<a class="el" href="rtc_8h.html#ad41e2906df57d43ee7caf481d2ab93e0" title="Reads the current time in the Real-Time Clock.">read_current_time()</a>). Sets hourly alarm for background-image changing (<a class="el" href="rtc_8h.html#a3d1ff5763600a995360272da8adef21a" title="Activates alarm interrupts and sets the alarm to generate an interrupt every hour.">set_hourly_alarm()</a>).</p>
+<p>Initializes the rtc_binary member variable (<a class="el" href="rtc_8h.html#a2bccb45fe57bd2fdceef07ab2a16637f" title="Checks if the RTC has its registers&#39; values in binary format or BCD.">is_rtc_binary()</a>). Initializes the current_time (<a class="el" href="rtc_8h.html#ad41e2906df57d43ee7caf481d2ab93e0" title="Reads the current time in the Real-Time Clock.">read_current_time()</a>). Sets hourly alarm for background-image changing (<a class="el" href="rtc_8h.html#a3d1ff5763600a995360272da8adef21a" title="Activates alarm interrupts and sets the alarm to generate an interrupt every hour.">set_hourly_alarm()</a>)</p>
 <dl class="section return"><dt>Returns</dt><dd>0 upon success, non-zero otherwise </dd></dl>
 
 </div>
@@ -209,6 +211,23 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if every struct member is equal, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="ac8ca9da60db21908502da2cb5aaef883" name="ac8ca9da60db21908502da2cb5aaef883"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8ca9da60db21908502da2cb5aaef883">&#9670;&#160;</a></span>get_current_hour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t get_current_hour </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -27,8 +27,7 @@ var NAVTREE =
   [ "Head Football", "index.html", [
     [ "FEUP - Computer Laboratory - 2023/2024", "index.html#autotoc_md1", [
       [ "Brief description:", "index.html#autotoc_md2", null ],
-      [ "Main features:", "index.html#autotoc_md3", null ],
-      [ "Developed by:", "index.html#autotoc_md4", null ]
+      [ "Developed by:", "index.html#autotoc_md3", null ]
     ] ],
     [ "Topics", "topics.html", "topics" ],
     [ "Classes", "annotated.html", [
@@ -57,9 +56,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group___int_id_reg.html#ga449d598879e08018235600302c38238d",
-"player_8h.html#a3330b80354deb60e0a1e67f102fd1228",
-"structqueue.html#afc60f7944f3e99e5ee66c122cce406e2"
+"group___int_id_reg.html#gad329bde1d6b6429ada5ea03d1c1f6b26",
+"player__controller_8c.html#a790cf4bb9fb5221879a7d564a4c26159",
+"struct_timeboard.html#ae3d751784d708d1cf1fef34a9d8be660"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
