@@ -1,0 +1,126 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/devices/timer/timer.c File Reference}
+\hypertarget{timer_8c}{}\label{timer_8c}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/timer/timer.c@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/timer/timer.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/timer.\+h$>$}\newline
+{\ttfamily \#include "{}aux\+\_\+timer.\+h"{}}\newline
+{\ttfamily \#include "{}i8254.\+h"{}}\newline
+Include dependency graph for timer.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{timer_8c_a6f786481e80308348d629d605ffa2d84}{timer\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\item 
+int \mbox{\hyperlink{timer_8c_ab9eea51549744bca5c5c923b388bb4ee}{timer\+\_\+unsubscribe\+\_\+int}} ()
+\item 
+void \mbox{\hyperlink{timer_8c_a10fc9c867b15c7da6649311c9987cd17}{timer\+\_\+int\+\_\+handler}} ()
+\item 
+int \mbox{\hyperlink{timer_8c_a3fbc33679c2fa1eaeaee5d24da9e88a9}{get\+\_\+timer\+\_\+int\+Counter}} ()
+\begin{DoxyCompactList}\small\item\em Getter for timer\+\_\+int\+Counter static global variable in \doxylink{timer_8c}{timer.\+c}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timer_8c_ac2fa1a9bef47951b97f52f2323d5e882}{set\+\_\+timer\+\_\+int\+Counter}} (int new\+Time)
+\begin{DoxyCompactList}\small\item\em Setter for timer\+\_\+int\+Counter static global variable in \doxylink{timer_8c}{timer.\+c}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{timer_8c_aa9f671684c9d64d26d166b9c76885021}{timer\+\_\+hook\+Id}} = \mbox{\hyperlink{group___num_consts8254_ga30bf84c312af248cb81bb224e09f9ba8}{TIMER0\+\_\+\+IRQ}}
+\item 
+static int \mbox{\hyperlink{timer_8c_a0a9c968a648e270ec024e654c878be58}{timer\+\_\+int\+Counter}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{timer_8c_a3fbc33679c2fa1eaeaee5d24da9e88a9}\label{timer_8c_a3fbc33679c2fa1eaeaee5d24da9e88a9} 
+\index{timer.c@{timer.c}!get\_timer\_intCounter@{get\_timer\_intCounter}}
+\index{get\_timer\_intCounter@{get\_timer\_intCounter}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{get\_timer\_intCounter()}{get\_timer\_intCounter()}}
+{\footnotesize\ttfamily int get\+\_\+timer\+\_\+int\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for timer\+\_\+int\+Counter static global variable in \doxylink{timer_8c}{timer.\+c}. 
+
+\begin{DoxyReturn}{Returns}
+Integer value with the current number of interrupts 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_a3fbc33679c2fa1eaeaee5d24da9e88a9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{timer_8c_ac2fa1a9bef47951b97f52f2323d5e882}\label{timer_8c_ac2fa1a9bef47951b97f52f2323d5e882} 
+\index{timer.c@{timer.c}!set\_timer\_intCounter@{set\_timer\_intCounter}}
+\index{set\_timer\_intCounter@{set\_timer\_intCounter}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{set\_timer\_intCounter()}{set\_timer\_intCounter()}}
+{\footnotesize\ttfamily void set\+\_\+timer\+\_\+int\+Counter (\begin{DoxyParamCaption}\item[{int}]{new\+Time }\end{DoxyParamCaption})}
+
+
+
+Setter for timer\+\_\+int\+Counter static global variable in \doxylink{timer_8c}{timer.\+c}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Time} & New integer value to change the timer\+\_\+int\+Counter variable to \\
+\hline
+\end{DoxyParams}
+\Hypertarget{timer_8c_a10fc9c867b15c7da6649311c9987cd17}\label{timer_8c_a10fc9c867b15c7da6649311c9987cd17} 
+\index{timer.c@{timer.c}!timer\_int\_handler@{timer\_int\_handler}}
+\index{timer\_int\_handler@{timer\_int\_handler}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_int\_handler()}{timer\_int\_handler()}}
+{\footnotesize\ttfamily void timer\+\_\+int\+\_\+handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{timer_8c_a10fc9c867b15c7da6649311c9987cd17_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{timer_8c_a6f786481e80308348d629d605ffa2d84}\label{timer_8c_a6f786481e80308348d629d605ffa2d84} 
+\index{timer.c@{timer.c}!timer\_subscribe\_int@{timer\_subscribe\_int}}
+\index{timer\_subscribe\_int@{timer\_subscribe\_int}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_subscribe\_int()}{timer\_subscribe\_int()}}
+{\footnotesize\ttfamily int timer\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{timer_8c_a6f786481e80308348d629d605ffa2d84_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{timer_8c_ab9eea51549744bca5c5c923b388bb4ee}\label{timer_8c_ab9eea51549744bca5c5c923b388bb4ee} 
+\index{timer.c@{timer.c}!timer\_unsubscribe\_int@{timer\_unsubscribe\_int}}
+\index{timer\_unsubscribe\_int@{timer\_unsubscribe\_int}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_unsubscribe\_int()}{timer\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int timer\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{timer_8c_ab9eea51549744bca5c5c923b388bb4ee_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{timer_8c_aa9f671684c9d64d26d166b9c76885021}\label{timer_8c_aa9f671684c9d64d26d166b9c76885021} 
+\index{timer.c@{timer.c}!timer\_hookId@{timer\_hookId}}
+\index{timer\_hookId@{timer\_hookId}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_hookId}{timer\_hookId}}
+{\footnotesize\ttfamily int timer\+\_\+hook\+Id = \mbox{\hyperlink{group___num_consts8254_ga30bf84c312af248cb81bb224e09f9ba8}{TIMER0\+\_\+\+IRQ}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{timer_8c_a0a9c968a648e270ec024e654c878be58}\label{timer_8c_a0a9c968a648e270ec024e654c878be58} 
+\index{timer.c@{timer.c}!timer\_intCounter@{timer\_intCounter}}
+\index{timer\_intCounter@{timer\_intCounter}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_intCounter}{timer\_intCounter}}
+{\footnotesize\ttfamily int timer\+\_\+int\+Counter = 0\hspace{0.3cm}{\ttfamily [static]}}
+

@@ -1,0 +1,59 @@
+\doxysection{GPU Macros}
+\hypertarget{group___g_p_u_macros}{}\label{group___g_p_u_macros}\index{GPU Macros@{GPU Macros}}
+
+
+Constants for programming the video-\/card driver.  
+
+
+Collaboration diagram for GPU Macros\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{group___g_p_u_macros}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Topics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group___failed_call}{Return codes}}
+\begin{DoxyCompactList}\small\item\em Unsuccessful call return codes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___color_modes}{Color Modes}}
+\begin{DoxyCompactList}\small\item\em Color modes -\/ from vmi.\+Memory\+Model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___v_b_e_modes}{VBE Modes}}
+\begin{DoxyCompactList}\small\item\em VBE modes -\/ arguments of VBE function 0x02 -\/ in register BX\+: \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___v_b_e_functions}{VBE Functions}}
+\begin{DoxyCompactList}\small\item\em VBE functions (called using INT 10h interrupt vector, passed in AL as argument of 0x4F) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___b_i_o_s_funcs}{BIOS functions}}
+\begin{DoxyCompactList}\small\item\em BIOS functions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___i_n_txx}{INT instructions}}
+\begin{DoxyCompactList}\small\item\em Software interrupt instructions INT xx -\/ Access to BIOS\textquotesingle{} services. Executed in real-\/mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___g_p_u_macros_ga1f168a40ed2b09b3a91ff643c91dbf77}{INVOKE\+\_\+\+VBE\+\_\+\+FUNC}}~0x4F
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Constants for programming the video-\/card driver. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group___g_p_u_macros_ga1f168a40ed2b09b3a91ff643c91dbf77}\label{group___g_p_u_macros_ga1f168a40ed2b09b3a91ff643c91dbf77} 
+\index{GPU Macros@{GPU Macros}!INVOKE\_VBE\_FUNC@{INVOKE\_VBE\_FUNC}}
+\index{INVOKE\_VBE\_FUNC@{INVOKE\_VBE\_FUNC}!GPU Macros@{GPU Macros}}
+\doxysubsubsection{\texorpdfstring{INVOKE\_VBE\_FUNC}{INVOKE\_VBE\_FUNC}}
+{\footnotesize\ttfamily \#define INVOKE\+\_\+\+VBE\+\_\+\+FUNC~0x4F}
+
+(In AH register) When invoking VBE functions, to distinguish VBE function from VGA BIOS functions.
+\begin{DoxyItemize}
+\item Returns VBE\+\_\+\+FUNC in AL if function is suported
+\item Returns 0x00 in AH if function is successful
+\item Returns codes below in AH if function is unsuccessful 
+\end{DoxyItemize}\input{group___failed_call}
+\input{group___color_modes}
+\input{group___v_b_e_modes}
+\input{group___v_b_e_functions}
+\input{group___b_i_o_s_funcs}
+\input{group___i_n_txx}

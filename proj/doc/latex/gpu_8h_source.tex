@@ -1,0 +1,58 @@
+\doxysection{gpu.\+h}
+\hypertarget{gpu_8h_source}{}\label{gpu_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/gpu/gpu.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/gpu/gpu.h}}
+\mbox{\hyperlink{gpu_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GPU\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GPU\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}../../images/numbers/0.xpm"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}../../images/numbers/1.xpm"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}../../images/numbers/2.xpm"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}../../images/numbers/3.xpm"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}../../images/numbers/4.xpm"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../../images/numbers/5.xpm"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../../images/numbers/6.xpm"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../../images/numbers/7.xpm"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}../../images/numbers/8.xpm"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}../../images/numbers/9.xpm"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gpu_8h_a2c023eb0ddeea5fcd0a920a1491d3e38}{change\_video\_mode}}(uint16\_t\ mode);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gpu_8h_a27eb773abb55667750d9678ac2e7dc7c}{create\_frame\_buffer}}(uint16\_t\ mode);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gpu_8h_afd868599f5114fb49d19022ac48ebd96}{free\_buffers}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gpu_8h_a2732cc2b96b20c6f177bfb677dedcf0d}{init\_background}}(uint16\_t\ *x\_coords,\ uint16\_t\ *y\_coords,\ xpm\_image\_t\ *imgs,\ \textcolor{keywordtype}{size\_t}\ num\_elements);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gpu_8h_a1eb4f1a42c106ef990a76aa98751cf8d}{draw\_to\_background}}(uint16\_t\ xi,\ uint16\_t\ yi,\ xpm\_image\_t\ \mbox{\hyperlink{player__controller_8c_a1849af5600dd99d11a7cae774e4121e4}{img}});}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gpu_8h_aad68426aceafbb8676132df1c0e2c735}{draw\_nums\_to\_background}}(uint16\_t\ xi,\ uint16\_t\ yi,\ uint8\_t\ points1);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gpu_8h_a07a8535cb9c579527854d2a8e501d4a8}{draw\_pixel}}(uint16\_t\ x,\ uint16\_t\ y,\ uint32\_t\ color,\ \textcolor{keywordtype}{bool}\ ignore);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gpu_8h_a84b306589c1608b17981217c477ef9f7}{draw\_xpm}}(uint16\_t\ xi,\ uint16\_t\ yi,\ xpm\_image\_t\ \mbox{\hyperlink{player__controller_8c_a1849af5600dd99d11a7cae774e4121e4}{img}},\ \textcolor{keywordtype}{bool}\ ignore);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gpu_8h_aaeb7358a013e203c55e09bff5bfb3a34}{prep\_next\_frame}}();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gpu_8h_a1097b0e9f41e52e83e5055aed2fa31ce}{end\_next\_frame}}();}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00113\ uint8\_t*\ \mbox{\hyperlink{gpu_8h_ae9fe2ed6e44beeacfc8d9ee775503e41}{get\_video\_mem}}();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00120\ vbe\_mode\_info\_t\ \mbox{\hyperlink{gpu_8h_aae3ff4c688394af50460bde20b5c46b1}{get\_vbe\_mode\_info}}();}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00127\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{gpu_8h_a10e416c59639a7f6b6f9f8f020fdb8d0}{get\_hres}}();}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00134\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{gpu_8h_a1c1b9a9c811575beb06fc355241ef17d}{get\_vres}}();}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00141\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{gpu_8h_a89e5e15fb2c065221f58c6d883da6049}{get\_bytes\_per\_pixel}}();}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

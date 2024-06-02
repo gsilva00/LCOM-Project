@@ -1,0 +1,15 @@
+<map id="draw_game" name="draw_game">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,104,104,129"/>
+<area shape="rect" id="Node000002" href="$gpu_8c.html#aad68426aceafbb8676132df1c0e2c735" title="Function to draw small numbers to the third buffer." alt="" coords="152,5,352,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,101,103,70,151,40,168,32,170,37,153,44,106,75,71,106"/>
+<area shape="rect" id="Node000003" href="$gpu_8c.html#a1eb4f1a42c106ef990a76aa98751cf8d" title="Auxiliary function to init_background()" alt="" coords="173,55,331,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="103,101,151,89,184,81,185,86,153,94,104,107"/>
+<area shape="rect" id="Node000004" href="$gpu_8c.html#a84b306589c1608b17981217c477ef9f7" title=" " alt="" coords="207,104,297,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="104,114,193,114,193,119,104,119"/>
+<area shape="rect" id="Node000006" href="$gpu_8c.html#a1097b0e9f41e52e83e5055aed2fa31ce" title="Copy the entirety of the contents from the second buffer to the video memory." alt="" coords="188,153,316,179"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="105,126,188,147,186,152,103,131"/>
+<area shape="rect" id="Node000007" href="$gpu_8c.html#aaeb7358a013e203c55e09bff5bfb3a34" title="Copy the entirety of the contents from the third buffer to the second buffer." alt="" coords="185,203,319,228"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="71,127,106,158,153,188,174,196,172,201,151,192,103,162,67,132"/>
+<area shape="rect" id="Node000005" href="$gpu_8c.html#a07a8535cb9c579527854d2a8e501d4a8" title="Draws a single pixel into the second_buffer." alt="" coords="400,104,492,129"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="298,114,386,114,386,119,298,119"/>
+</map>

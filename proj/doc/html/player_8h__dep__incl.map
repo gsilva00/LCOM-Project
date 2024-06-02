@@ -1,0 +1,22 @@
+<map id="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/objects/player.h" name="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/objects/player.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="459,5,647,60"/>
+<area shape="rect" id="Node000002" href="$ball_8h.html" title=" " alt="" coords="220,115,408,170"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="483,68,373,118,371,113,481,63"/>
+<area shape="rect" id="Node000007" href="$player__controller_8h.html" title=" " alt="" coords="456,108,649,177"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="555,74,555,108,550,108,550,74"/>
+<area shape="rect" id="Node000009" href="$player_8c.html" title=" " alt="" coords="673,115,861,170"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="618,64,716,113,714,118,616,69"/>
+<area shape="poly" id="edge3_Node000002_Node000002" title=" " alt="" coords="423,126,431,133,435,143,427,156,409,164,407,159,424,152,429,142,427,136,419,130"/>
+<area shape="rect" id="Node000003" href="$ball_8c.html" title=" " alt="" coords="5,233,193,287"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="255,179,149,235,147,230,252,174"/>
+<area shape="rect" id="Node000004" href="$ball__controller_8h.html" title=" " alt="" coords="217,225,411,295"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="317,183,317,225,311,225,311,183"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html" title=" " alt="" coords="380,350,568,405"/>
+<area shape="poly" id="edge7_Node000002_Node000006" title=" " alt="" coords="373,176,401,198,424,224,443,255,457,289,472,349,467,351,452,291,438,258,420,227,397,202,370,180"/>
+<area shape="rect" id="Node000005" href="$ball__controller_8c.html" title=" " alt="" coords="163,343,356,412"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="294,309,278,344,273,341,290,306"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="373,301,439,348,436,352,370,305"/>
+<area shape="poly" id="edge10_Node000007_Node000006" title=" " alt="" coords="539,191,527,226,485,351,480,349,522,224,534,190"/>
+<area shape="rect" id="Node000008" href="$player__controller_8c.html" title=" " alt="" coords="537,225,731,295"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="587,187,612,224,608,227,582,191"/>
+</map>

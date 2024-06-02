@@ -1,0 +1,14 @@
+<map id="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/objects/ball.c" name="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/objects/ball.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,193,60"/>
+<area shape="rect" id="Node000002" href="$ball_8h.html" title=" " alt="" coords="70,108,129,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,60,102,94,97,94,97,60"/>
+<area shape="poly" id="edge3_Node000002_Node000002" title=" " alt="" coords="125,105,145,107,152,112,155,121,150,131,139,136,137,131,147,128,150,121,148,115,143,112,124,111"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="57,255,142,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="87,135,68,156,53,182,51,199,56,215,77,244,73,247,51,217,45,199,47,180,64,153,83,132"/>
+<area shape="rect" id="Node000004" href="$player_8h.html" title=" " alt="" coords="62,181,137,207"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="102,134,102,168,97,168,97,134"/>
+<area shape="rect" id="Node000005" href="$goal_8h.html" title=" " alt="" coords="161,181,224,207"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="116,131,168,171,165,175,113,135"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="102,207,102,241,97,241,97,207"/>
+<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="179,209,127,248,124,244,176,205"/>
+</map>

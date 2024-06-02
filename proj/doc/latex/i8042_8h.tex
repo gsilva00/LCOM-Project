@@ -1,0 +1,126 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/devices/kbc/i8042.h File Reference}
+\hypertarget{i8042_8h}{}\label{i8042_8h}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/kbc/i8042.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/kbc/i8042.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for i8042.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{i8042_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{i8042_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___num_consts8042_gafd63d23830ad86d01b6fff2e6c615f7e}{MAX\+\_\+\+TRIES}}~10
+\begin{DoxyCompactList}\small\item\em Maximum amount of tries allowed to successfully complete operation on KBC. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___num_consts8042_ga66c64bf8a64b37d06bc7f788583f52ef}{KBD\+\_\+\+DELAY\+\_\+\+US}}~20000
+\begin{DoxyCompactList}\small\item\em Keyboard\textquotesingle{}s time to respond to a command in microseconds (μs) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___num_consts8042_ga3b74a993f188e055abf27a0e2e498a61}{MOUSE\+\_\+\+DELAY\+\_\+\+US}}~25000
+\begin{DoxyCompactList}\small\item\em Mouse\textquotesingle{}s time to send an acknowledgement message in microseconds (μs) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_i_r_q_ga5c1072213ce8d8cd43628c4319ae0391}{KBD\+\_\+\+IRQ}}~1
+\begin{DoxyCompactList}\small\item\em Keyboard\textquotesingle{}s IRQ line. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_i_r_q_ga85964cb90343bb1a029b1d1b4229f910}{MOUSE\+\_\+\+IRQ}}~12
+\begin{DoxyCompactList}\small\item\em Mouse\textquotesingle{}s IRQ line. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_regs_ga900ede6d0ed8248815da2d9520017959}{INBUF\+\_\+\+REG}}~0x60
+\begin{DoxyCompactList}\small\item\em Input Register to write KBD commands or KBC commands\textquotesingle{} arguments. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_regs_gadeb8dab4eb8527b789f5412a60bf3720}{OUTBUF\+\_\+\+REG}}~0x60
+\begin{DoxyCompactList}\small\item\em Output Register to read scancodes from KBD or return values of KBC commands/\+KBC commands\textquotesingle{} arguments. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_regs_ga9dbe0bc31014adb252c199f258d79622}{ST\+\_\+\+REG}}~0x64
+\begin{DoxyCompactList}\small\item\em Status Register to read KBC status. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_regs_gabf7206ca2181c36ef04b795c9b64e886}{CMD\+\_\+\+REG}}~0x64
+\begin{DoxyCompactList}\small\item\em Not Named Register to write KBC commands. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_status_gae5d0621fce7c1a2fbd3ab94a44456e36}{ST\+\_\+\+ERRPAR}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Status byte\textquotesingle{}s parity error bit -\/ invalid data (error in serial communication) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_status_ga3207fa52d8970bdf8577f054208f8e87}{ST\+\_\+\+ERRTOUT}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em Status byte\textquotesingle{}s timeout error bit -\/ invalid data (error in serial communication) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_status_ga94fef0df0fd49e7e35f33b3adb33bf81}{ST\+\_\+\+AUX}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Status byte\textquotesingle{}s mouse data bit. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_status_ga6798fb96300a7f4fa75882e48eb1c93f}{ST\+\_\+\+IBF}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Status byte\textquotesingle{}s input buffer full bit. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_status_ga63a033358fabe9da751ae14d6b64975a}{ST\+\_\+\+OBF}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em Status byte\textquotesingle{}s output buffer full bit. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_gad6ff09b5058171ce69f6485dbef6bfaa}{BREAKCODE}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Makecode MSbit is 0, Breakcode MSbit is 1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_gae1d0607e7821cd26907fb478edf5b99f}{SC\+\_\+\+MSB1}}~0x\+E0
+\begin{DoxyCompactList}\small\item\em 2-\/byte-\/scancode MSB can be E0 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_gaf7cddf9803b4f87d99eca234a33dc9df}{SC\+\_\+\+MSB2}}~0x\+E2
+\begin{DoxyCompactList}\small\item\em 2-\/byte-\/scancode MSB can also be E2 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga77c789e6ff7b6f33ac32ba84d3983ca4}{BREAKCODE\+\_\+\+ESC}}~0x81 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Breakcode of ESC key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga24f7ee135170664a714b63eb785484ea}{MAKECODE\+\_\+\+RIGHT}}~0x4d /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Makecode of right key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga61d14196740da1656723a51c23fc596d}{MAKECODE\+\_\+\+LEFT}}~0x4b /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Makecode of left key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga16d211d656345c06252daf9bd0d42540}{BREAKCODE\+\_\+\+LEFT}}~0xcd /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Breakcode of left key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga3e4251c1a7cf1eadcc7317123eacc201}{BREAKCODE\+\_\+\+RIGHT}}~0xcb /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Breakcode of right key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga7ae1e99f3fa36c20ee12ebaf5bfbb044}{MAKECODE\+\_\+\+UP}}~0x48 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Makecode of up key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_gab2f47b08db96907b6d4fe3e25428513c}{MAKECODE\+\_\+\+DOWN}}~0x50 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Makecode of down key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga1c02c554037f8912db865cec4edd15c8}{MAKECODE\+\_\+\+ENTER}}~0x1C /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Makecode of enter key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga9167ae980efb97e2698ff23f20768f45}{SCANCODE\+\_\+\+E0}}~0xe0 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Scancode of E0 \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga001d8b2a7b3a1e960169771bc7e0c481}{MAKECODE\+\_\+P}}~0x19 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Makecode of P key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_gaa7a45554686b9abe54443a4a80e8d2f5}{MAKECODE\+\_\+A}}~0x1e /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Makecode of A key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga2c181b340e0f7986f6ea695164558fc8}{MAKECODE\+\_\+D}}~0x20 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Makecode of D key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga48a460d951bb61b2aa11903c8e817b6c}{MAKECODE\+\_\+W}}~0x11 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Makecode of W key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga56fc5cfa3688047fb0aa49fc4ad3a46f}{BREAKCODE\+\_\+A}}~0x9e /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Breakcode of A key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_gaf51fbf094b38c00dbf57e96d9684e2f9}{BREAKCODE\+\_\+D}}~0xa0 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Breakcode of D key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___scancode_auxs_ga248870237f8cc9a4e73683480d2cfae3}{MAKECODE\+\_\+S}}~0x1F /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} @brief Makecode of S key \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___k_b_c_commands_ga0c61bbffbe21953703a63f249c6d42b5}{CMDBYTE\+\_\+\+READ}}~0x20
+\begin{DoxyCompactList}\small\item\em To be able to read Command Byte from KBC\+\_\+\+OUTBUF. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_commands_ga79cfa15fd1c7b4a4b33b606c0ca5ced7}{CMDBYTE\+\_\+\+WRITE}}~0x60
+\begin{DoxyCompactList}\small\item\em To be able to write new Command Byte to KBC\+\_\+\+INBUF. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_commands_gad63b38e1b4be88774301dadf44971448}{MOUSE\+\_\+\+WRITE}}~0x\+D4
+\begin{DoxyCompactList}\small\item\em To be able to write byte arguments directly to mouse without KBC interpretation (through KBC\+\_\+\+INBUF) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_command_b_ga31dd74a1f565d5693f521263e68a3d43}{CMDB\+\_\+\+DIS\+\_\+\+MOUSE}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Bit to disable mouse interface. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_command_b_gaf1e2fb13544e0b3eefe666aff359bd96}{CMDB\+\_\+\+DIS\+\_\+\+KBD}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em Bit to disable keyboard interface. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_command_b_gafdf6a899e3e0527662575a9f9e0cd84a}{CMDB\+\_\+\+INT\+\_\+\+MOUSE}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Bit to enable interrupt on OBF, from mouse. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___k_b_c_command_b_ga0c59470ad2731325db34d66d4874a1a1}{CMDB\+\_\+\+INT\+\_\+\+KBD}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em Bit to enable interrupt on OBF, from keyboard;. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_gaa1d528d3434ccf8a16d259822315dda4}{PS2\+\_\+\+YOVER}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Flag -\/ mouse Y displacement too large to represent as a 9-\/bit 2\textquotesingle{}s complement integer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_ga9e75db874e6f99a09fce3f9e0f226e7b}{PS2\+\_\+\+XOVER}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em Flag -\/ mouse X displacement too large to represent as a 9-\/bit 2\textquotesingle{}s complement integer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_ga7900c4de49498bcf3c1954c41dac59df}{PS2\+\_\+\+YDELTA}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Y axis relative displacement MSBit of 9-\/bit 2\textquotesingle{}s complement integer -\/ indicates if Y delta is negative. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_ga43398d1349278aff351db752ec72cfce}{PS2\+\_\+\+XDELTA}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em X axis relative displacement MSBit of 9-\/bit 2\textquotesingle{}s complement integer -\/ indicates if X delta is negative. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_ga5f81bc03d86f07b525f345ce17a37b94}{PS2\+\_\+\+FIRSTID}}~BIT(3)
+\begin{DoxyCompactList}\small\item\em Bit 3 of 1st byte is always set. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_ga469573679f1c139caf854e635cfc298d}{PS2\+\_\+\+MB}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em State of the middle button. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_gafc2f1a9cd13264d9d3e4c397e503f042}{PS2\+\_\+\+RB}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em State of the right button. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_ga6f67d9cdc9d2402f8e2e0a19aec348f4}{PS2\+\_\+\+LB}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em State of the left button. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___ack_bytes_gaae27b4e03e27b850f66cf5f46ed30530}{PS2\+\_\+\+ACK}}~0x\+FA
+\begin{DoxyCompactList}\small\item\em If everything OK. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___ack_bytes_ga85cfe8baf04e93139dfb81f65db12f8d}{PS2\+\_\+\+NACK}}~0x\+FE
+\begin{DoxyCompactList}\small\item\em If invalid byte (may be because of a serial communication error) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___ack_bytes_ga0b2a3e7a70268eff74346e338ba7fd30}{PS2\+\_\+\+Error}}~0x\+FC
+\begin{DoxyCompactList}\small\item\em Second consecutive invalid byte. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___m_w___args_ga430aa16edf2e21b213f84f4230b64f17}{PS2\+\_\+\+DATA\+\_\+\+DIS}}~0x\+F5
+\begin{DoxyCompactList}\small\item\em Disable Data Reporting -\/ In stream mode, should be sent before any other command. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___m_w___args_ga7fc697cf663e037a0354573736d2452c}{PS2\+\_\+\+DATA\+\_\+\+ENABLE}}~0x\+F4
+\begin{DoxyCompactList}\small\item\em Enable Data Reporting -\/ In stream mody only. \end{DoxyCompactList}\end{DoxyCompactItemize}

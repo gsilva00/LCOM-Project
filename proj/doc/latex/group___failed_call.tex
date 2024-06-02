@@ -1,0 +1,50 @@
+\doxysubsection{Return codes}
+\hypertarget{group___failed_call}{}\label{group___failed_call}\index{Return codes@{Return codes}}
+
+
+Unsuccessful call return codes.  
+
+
+Collaboration diagram for Return codes\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{group___failed_call}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___failed_call_gae5e1a11604d6d00b8fa09491bb4e2e3f}{AH\+\_\+\+CALL\+\_\+\+FAIL}}~0x01
+\item 
+\#define \mbox{\hyperlink{group___failed_call_ga7b66d754071d15b3ad7cdbe0fbd52873}{Ah\+\_\+\+FUNC\+\_\+\+SUP\+\_\+\+FAIL}}~0x02
+\item 
+\#define \mbox{\hyperlink{group___failed_call_ga7384877ac24c6e4dedbade64bdd7e0c7}{Ah\+\_\+\+FUNC\+\_\+\+INV\+\_\+\+FAIL}}~0x03
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Unsuccessful call return codes. 
+
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___failed_call_gae5e1a11604d6d00b8fa09491bb4e2e3f}\label{group___failed_call_gae5e1a11604d6d00b8fa09491bb4e2e3f} 
+\index{Return codes@{Return codes}!AH\_CALL\_FAIL@{AH\_CALL\_FAIL}}
+\index{AH\_CALL\_FAIL@{AH\_CALL\_FAIL}!Return codes@{Return codes}}
+\doxysubsubsubsection{\texorpdfstring{AH\_CALL\_FAIL}{AH\_CALL\_FAIL}}
+{\footnotesize\ttfamily \#define AH\+\_\+\+CALL\+\_\+\+FAIL~0x01}
+
+VBE call failed \Hypertarget{group___failed_call_ga7384877ac24c6e4dedbade64bdd7e0c7}\label{group___failed_call_ga7384877ac24c6e4dedbade64bdd7e0c7} 
+\index{Return codes@{Return codes}!Ah\_FUNC\_INV\_FAIL@{Ah\_FUNC\_INV\_FAIL}}
+\index{Ah\_FUNC\_INV\_FAIL@{Ah\_FUNC\_INV\_FAIL}!Return codes@{Return codes}}
+\doxysubsubsubsection{\texorpdfstring{Ah\_FUNC\_INV\_FAIL}{Ah\_FUNC\_INV\_FAIL}}
+{\footnotesize\ttfamily \#define Ah\+\_\+\+FUNC\+\_\+\+INV\+\_\+\+FAIL~0x03}
+
+VBE function is invalid in current video mode \Hypertarget{group___failed_call_ga7b66d754071d15b3ad7cdbe0fbd52873}\label{group___failed_call_ga7b66d754071d15b3ad7cdbe0fbd52873} 
+\index{Return codes@{Return codes}!Ah\_FUNC\_SUP\_FAIL@{Ah\_FUNC\_SUP\_FAIL}}
+\index{Ah\_FUNC\_SUP\_FAIL@{Ah\_FUNC\_SUP\_FAIL}!Return codes@{Return codes}}
+\doxysubsubsubsection{\texorpdfstring{Ah\_FUNC\_SUP\_FAIL}{Ah\_FUNC\_SUP\_FAIL}}
+{\footnotesize\ttfamily \#define Ah\+\_\+\+FUNC\+\_\+\+SUP\+\_\+\+FAIL~0x02}
+
+VBE function is not supported in current HW configuration 

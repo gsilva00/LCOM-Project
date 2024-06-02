@@ -53,7 +53,7 @@ bool check_kicking_player(Ball *bola, Player *pl) {
   }
   else { // Right player
     if ((bola->x + bola->width >= pl->x - 10) && (bola->x + bola->width < pl->x)) {
-      if ((bola->y >= pl->y + pl->height/4) && (bola->y + 5 >= pl->y + pl->height)) {
+      if ((bola->y >= pl->y + pl->height/4) && (bola->y + 5 <= pl->y + pl->height)) {
         return true;
       }
       else {
@@ -67,12 +67,11 @@ bool check_kicking_player(Ball *bola, Player *pl) {
 }
 
 bool ball_player_collision(Ball *bola, Player *pl) {
-  if ((bola->x <= pl->x + pl->width + 5) && (bola->x + bola->width + 5 >= pl->x)) {
-    return (bola->y <= pl->y + pl->height + 5) && (bola->y + bola->height + 5 >= pl->y);
-  }
-  else {
-    return false;
-  }
+  uint16_t bola_end = bola->x + bola->img.width;
+  uint16_t bola_bottom = bola->y + bola->img.height;
+  uint16_t pl_end = pl->x + pl->img.width;
+  uint16_t pl_bottom = pl->y + pl->img.height;
+  return !((bola_bottom < pl->y || pl_bottom < bola->y) || (bola_end < pl->x || pl_end < bola->x));
 }
 
 void change_y(Ball *bola) {
@@ -178,7 +177,7 @@ void move_ball(Ball *bola, BallState *ball_state, BallState *ball_state_temporar
         if (get_timer_intCounter() % 30 == 0) {
           bola->xspeed = bola->xspeed * SPEED_REDUCTION_FACTOR;
         }
-      }else{
+      } else {
         *ball_state = JUMP_END;
       }
     default:
@@ -191,14 +190,15 @@ int check_ball_goal_height(Ball *bl, Goal *gl) {
 }
 
 void verify_goal(Ball *bl, Goal *gl, Scoreboard *sc, BallState *ball_state) {
-  if (gl->orientation == 1) {
+  if (gl->orientation) { // right goal
     if ((bl->x >= gl->x) && bl->x <= gl->x + gl->img.width) {
       if (!bl->stop) {
         add_points_1(sc);
         bl->stop = true;
       }
     }
-  }else if (gl->orientation == 0) {
+  }
+  else { // left goal
     if ((bl->x >= gl->x) && bl->x + bl->img.width <= gl->x + gl->img.width) {
       if (!bl->stop) {
         add_points_2(sc);
@@ -208,28 +208,14 @@ void verify_goal(Ball *bl, Goal *gl, Scoreboard *sc, BallState *ball_state) {
   } 
 }
 
-bool ball_goal_collision(Ball *bl, Goal *gl, Scoreboard *sc, BallState *ball_state) {
-  if (bl == NULL || gl == NULL) return false; 
+int ball_goal_collision(Ball *bl, Goal *gl, Scoreboard *sc, BallState *ball_state) {
+  if (bl == NULL || gl == NULL) return 1;
   
-  if (gl->orientation == false) { // on the left side of the pitch
-    if (check_ball_goal_height(bl,gl)) {// inside the goal
-      verify_goal(bl,gl, sc, ball_state);
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-  else if (gl->orientation == 0) {
-    if (check_ball_goal_height(bl,gl)) {
-      verify_goal(bl,gl,sc, ball_state);
-      return true;
-    }
-    else {
-      return false;
-    }
+  if (check_ball_goal_height(bl,gl)) {// inside the goal
+    verify_goal(bl, gl, sc, ball_state);
+    return 0;
   }
   else {
-    return false;
+    return 0; // No collision between ball and goal
   }
 }

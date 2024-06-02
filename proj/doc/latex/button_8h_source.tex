@@ -1,0 +1,25 @@
+\doxysection{button.\+h}
+\hypertarget{button_8h_source}{}\label{button_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/button.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/button.h}}
+\mbox{\hyperlink{button_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BUTTON\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BUTTON\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_button_a9336ebf25087d91c818ee6e9ec29f8c1}{x}},\ y;}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{int}\ width,\ \mbox{\hyperlink{struct_button_a509290c21d570ff479c1b9d9b1fe8810}{height}};}
+\DoxyCodeLine{00035\ \ \ uint8\_t\ *\mbox{\hyperlink{struct_button_a9ec9dda576db2a36c42c1c3af155d07c}{map}};}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_button_a2224ec0958a602aef926b6a3715e094e}{selected}};}
+\DoxyCodeLine{00037\ \ \ xpm\_image\_t\ \mbox{\hyperlink{struct_button_a86d0d51ceb4bc3bd26707520f257a5a4}{img}};}
+\DoxyCodeLine{00038\ \}\ \mbox{\hyperlink{struct_button}{Button}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00050\ \mbox{\hyperlink{struct_button}{Button}}\ *\mbox{\hyperlink{button_8h_a640e73a284c530b654dc7cfd9d1dcea4}{create\_button}}(xpm\_map\_t\ pic,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{bool}\ selected);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{button_8h_a905101e90b9c5d475594862d98830d25}{destroy\_button}}(\mbox{\hyperlink{struct_button}{Button}}\ *bt);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,32 @@
+\doxysection{ball.\+h}
+\hypertarget{ball_8h_source}{}\label{ball_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/ball.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/ball.h}}
+\mbox{\hyperlink{ball_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BALL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BALL\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ball_8h}{ball.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{goal_8h}{goal.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00043\ \ \ uint16\_t\ \mbox{\hyperlink{struct_ball_a9336ebf25087d91c818ee6e9ec29f8c1}{x}},\ y;}
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{int}\ width,\ \mbox{\hyperlink{struct_ball_a509290c21d570ff479c1b9d9b1fe8810}{height}};}
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_ball_a98f2e0dfcdbd3de203bc2e72c511fe68}{xspeed}},\ yspeed;}
+\DoxyCodeLine{00046\ \ \ uint8\_t\ *\mbox{\hyperlink{struct_ball_a9ec9dda576db2a36c42c1c3af155d07c}{map}};}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_ball_a2d6abedce0377a7a23305ce566382d23}{stop}};}
+\DoxyCodeLine{00048\ \ \ xpm\_image\_t\ \mbox{\hyperlink{struct_ball_a86d0d51ceb4bc3bd26707520f257a5a4}{img}};}
+\DoxyCodeLine{00049\ \}\ \mbox{\hyperlink{struct_ball}{Ball}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00064\ \mbox{\hyperlink{struct_ball}{Ball}}\ *\mbox{\hyperlink{ball_8h_a3e0cb746ba7654144a010598d2d66b6d}{create\_ball}}(xpm\_map\_t\ pic,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \textcolor{keywordtype}{int}\ xspeed,\ \textcolor{keywordtype}{int}\ yspeed);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ball_8h_a8e2c265bd455108cb0ca461370589a5a}{destroy\_ball}}(\mbox{\hyperlink{struct_ball}{Ball}}\ *bl);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ball_8h_ad71ed0890e15f2b92bd95f5a58a6ae5c}{move\_ball\_to\_center}}(\mbox{\hyperlink{struct_ball}{Ball}}\ *bl);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

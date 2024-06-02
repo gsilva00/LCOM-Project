@@ -1,0 +1,117 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/objects/timeboard.h File Reference}
+\hypertarget{timeboard_8h}{}\label{timeboard_8h}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/timeboard.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/timeboard.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}../devices/timer/aux\+\_\+timer.\+h"{}}\newline
+Include dependency graph for timeboard.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{timeboard_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timeboard_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_timeboard}{Timeboard}}
+\begin{DoxyCompactList}\small\item\em Implementation of the \doxylink{struct_timeboard}{Timeboard} as an object usable in game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_timeboard}{Timeboard}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{timeboard_8h_abefa91c136c49d4d8d386356ac185467}{create\+\_\+timeboard}} (xpm\+\_\+map\+\_\+t pic)
+\begin{DoxyCompactList}\small\item\em Constructor of the \doxylink{struct_timeboard}{Timeboard} "{}class"{} (C-\/class == struct + functions) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timeboard_8h_ab061dc80b132bf7bc599a2afb3ab0526}{destroy\+\_\+timeboard}} (\mbox{\hyperlink{struct_timeboard}{Timeboard}} \texorpdfstring{$\ast$}{*}tb)
+\begin{DoxyCompactList}\small\item\em Destructor of the \doxylink{struct_timeboard}{Timeboard} "{}class"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timeboard_8h_a79adf9ea298ffe4e8822ca151c97873c}{decrease\+\_\+time}} (\mbox{\hyperlink{struct_timeboard}{Timeboard}} \texorpdfstring{$\ast$}{*}tb)
+\begin{DoxyCompactList}\small\item\em Function that decreaces the time left. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{timeboard_8h_abefa91c136c49d4d8d386356ac185467}\label{timeboard_8h_abefa91c136c49d4d8d386356ac185467} 
+\index{timeboard.h@{timeboard.h}!create\_timeboard@{create\_timeboard}}
+\index{create\_timeboard@{create\_timeboard}!timeboard.h@{timeboard.h}}
+\doxysubsubsection{\texorpdfstring{create\_timeboard()}{create\_timeboard()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_timeboard}{Timeboard}} \texorpdfstring{$\ast$}{*} create\+\_\+timeboard (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{pic }\end{DoxyParamCaption})}
+
+
+
+Constructor of the \doxylink{struct_timeboard}{Timeboard} "{}class"{} (C-\/class == struct + functions) 
+
+Dynamically allocates in memory a \doxylink{struct_timeboard}{Timeboard} instance, effectively initializing the object
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic} & XPM map used to make the timeboard\textquotesingle{}s image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the \doxylink{struct_timeboard}{Timeboard} struct dynamically allocated in memory. If memory allocation fails, returns NULL 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{timeboard_8h_abefa91c136c49d4d8d386356ac185467_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{timeboard_8h_a79adf9ea298ffe4e8822ca151c97873c}\label{timeboard_8h_a79adf9ea298ffe4e8822ca151c97873c} 
+\index{timeboard.h@{timeboard.h}!decrease\_time@{decrease\_time}}
+\index{decrease\_time@{decrease\_time}!timeboard.h@{timeboard.h}}
+\doxysubsubsection{\texorpdfstring{decrease\_time()}{decrease\_time()}}
+{\footnotesize\ttfamily void decrease\+\_\+time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_timeboard}{Timeboard}} \texorpdfstring{$\ast$}{*}}]{tb }\end{DoxyParamCaption})}
+
+
+
+Function that decreaces the time left. 
+
+Decreases the time member variable by one second everytime there are 60 timer interrupts (from \doxylink{aux__timer_8h_a3fbc33679c2fa1eaeaee5d24da9e88a9}{get\+\_\+timer\+\_\+int\+Counter()})
+
+
+\begin{DoxyParams}{Parameters}
+{\em tb} & Pointer to the \doxylink{struct_timeboard}{Timeboard} whose time will be changed. If tb is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{timeboard_8h_a79adf9ea298ffe4e8822ca151c97873c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{timeboard_8h_a79adf9ea298ffe4e8822ca151c97873c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{timeboard_8h_ab061dc80b132bf7bc599a2afb3ab0526}\label{timeboard_8h_ab061dc80b132bf7bc599a2afb3ab0526} 
+\index{timeboard.h@{timeboard.h}!destroy\_timeboard@{destroy\_timeboard}}
+\index{destroy\_timeboard@{destroy\_timeboard}!timeboard.h@{timeboard.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_timeboard()}{destroy\_timeboard()}}
+{\footnotesize\ttfamily void destroy\+\_\+timeboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_timeboard}{Timeboard}} \texorpdfstring{$\ast$}{*}}]{tb }\end{DoxyParamCaption})}
+
+
+
+Destructor of the \doxylink{struct_timeboard}{Timeboard} "{}class"{}. 
+
+Frees the memory allocated for the \doxylink{struct_timeboard}{Timeboard} instance and its buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em tb} & Pointer to the \doxylink{struct_timeboard}{Timeboard} struct to be deallocated. If tb is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{timeboard_8h_ab061dc80b132bf7bc599a2afb3ab0526_icgraph}
+\end{center}
+\end{figure}

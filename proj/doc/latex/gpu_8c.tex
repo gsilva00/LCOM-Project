@@ -1,0 +1,426 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/devices/gpu/gpu.c File Reference}
+\hypertarget{gpu_8c}{}\label{gpu_8c}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/gpu/gpu.c@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/gpu/gpu.c}}
+{\ttfamily \#include "{}gpu.\+h"{}}\newline
+{\ttfamily \#include "{}gpu\+\_\+macros.\+h"{}}\newline
+Include dependency graph for gpu.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gpu_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{gpu_8c_a2c023eb0ddeea5fcd0a920a1491d3e38}{change\+\_\+video\+\_\+mode}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Changes the video mode to the specified mode. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gpu_8c_a27eb773abb55667750d9678ac2e7dc7c}{create\+\_\+frame\+\_\+buffer}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Creates a frame buffer for the specified VBE mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gpu_8c_aaeb7358a013e203c55e09bff5bfb3a34}{prep\+\_\+next\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Copy the entirety of the contents from the third buffer to the second buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gpu_8c_a1097b0e9f41e52e83e5055aed2fa31ce}{end\+\_\+next\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Copy the entirety of the contents from the second buffer to the video memory. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gpu_8c_afd868599f5114fb49d19022ac48ebd96}{free\+\_\+buffers}} ()
+\begin{DoxyCompactList}\small\item\em Function to deallocate buffers from memory. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gpu_8c_a07a8535cb9c579527854d2a8e501d4a8}{draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color, bool ignore)
+\begin{DoxyCompactList}\small\item\em Draws a single pixel into the second\+\_\+buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gpu_8c_a2732cc2b96b20c6f177bfb677dedcf0d}{init\+\_\+background}} (uint16\+\_\+t \texorpdfstring{$\ast$}{*}x\+\_\+coords, uint16\+\_\+t \texorpdfstring{$\ast$}{*}y\+\_\+coords, xpm\+\_\+image\+\_\+t \texorpdfstring{$\ast$}{*}imgs, size\+\_\+t num\+\_\+elements)
+\begin{DoxyCompactList}\small\item\em Function to initialize third buffer that stores (unchanging) the background of the game. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gpu_8c_a1eb4f1a42c106ef990a76aa98751cf8d}{draw\+\_\+to\+\_\+background}} (uint16\+\_\+t xi, uint16\+\_\+t yi, xpm\+\_\+image\+\_\+t \mbox{\hyperlink{player__controller_8c_a1849af5600dd99d11a7cae774e4121e4}{img}})
+\begin{DoxyCompactList}\small\item\em Auxiliary function to \doxylink{gpu_8h_a2732cc2b96b20c6f177bfb677dedcf0d}{init\+\_\+background()} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gpu_8c_aad68426aceafbb8676132df1c0e2c735}{draw\+\_\+nums\+\_\+to\+\_\+background}} (uint16\+\_\+t xi, uint16\+\_\+t yi, uint8\+\_\+t points1)
+\begin{DoxyCompactList}\small\item\em Function to draw small numbers to the third buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gpu_8c_a84b306589c1608b17981217c477ef9f7}{draw\+\_\+xpm}} (uint16\+\_\+t xi, uint16\+\_\+t yi, xpm\+\_\+image\+\_\+t \mbox{\hyperlink{player__controller_8c_a1849af5600dd99d11a7cae774e4121e4}{img}}, bool ignore)
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gpu_8c_ae9fe2ed6e44beeacfc8d9ee775503e41}{get\+\_\+video\+\_\+mem}} ()
+\begin{DoxyCompactList}\small\item\em Gets the pointer to the video memory. \end{DoxyCompactList}\item 
+vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{gpu_8c_aae3ff4c688394af50460bde20b5c46b1}{get\+\_\+vbe\+\_\+mode\+\_\+info}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the general VBE mode information. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{gpu_8c_a10e416c59639a7f6b6f9f8f020fdb8d0}{get\+\_\+hres}} ()
+\begin{DoxyCompactList}\small\item\em Gets the horizontal resolution of the screen. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{gpu_8c_a1c1b9a9c811575beb06fc355241ef17d}{get\+\_\+vres}} ()
+\begin{DoxyCompactList}\small\item\em Gets the vertical resolution of the screen. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{gpu_8c_a89e5e15fb2c065221f58c6d883da6049}{get\+\_\+bytes\+\_\+per\+\_\+pixel}} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of bytes per pixel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gpu_8c_a51ca412bef7e65e7fb0a170abe47b36b}{video\+\_\+mem}}
+\item 
+static uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gpu_8c_a6473b5098c114ab97fc4cde61684ab7b}{double\+\_\+buffer}}
+\item 
+static uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gpu_8c_a40be353997ba7583c2321795c9576978}{game\+\_\+background}}
+\item 
+static vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{gpu_8c_adb1f08b438cf612e163fe7d66cde86d0}{vmi}}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{gpu_8c_a36b87dc42923f704d16a629834a21b1e}{bytes\+\_\+per\+\_\+pixel}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gpu_8c_a2c023eb0ddeea5fcd0a920a1491d3e38}\label{gpu_8c_a2c023eb0ddeea5fcd0a920a1491d3e38} 
+\index{gpu.c@{gpu.c}!change\_video\_mode@{change\_video\_mode}}
+\index{change\_video\_mode@{change\_video\_mode}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{change\_video\_mode()}{change\_video\_mode()}}
+{\footnotesize\ttfamily int change\+\_\+video\+\_\+mode (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Changes the video mode to the specified mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & video mode to change to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{gpu_8c_a2c023eb0ddeea5fcd0a920a1491d3e38_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gpu_8c_a27eb773abb55667750d9678ac2e7dc7c}\label{gpu_8c_a27eb773abb55667750d9678ac2e7dc7c} 
+\index{gpu.c@{gpu.c}!create\_frame\_buffer@{create\_frame\_buffer}}
+\index{create\_frame\_buffer@{create\_frame\_buffer}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{create\_frame\_buffer()}{create\_frame\_buffer()}}
+{\footnotesize\ttfamily int create\+\_\+frame\+\_\+buffer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Creates a frame buffer for the specified VBE mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & VBE mode to set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{gpu_8c_a27eb773abb55667750d9678ac2e7dc7c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gpu_8c_aad68426aceafbb8676132df1c0e2c735}\label{gpu_8c_aad68426aceafbb8676132df1c0e2c735} 
+\index{gpu.c@{gpu.c}!draw\_nums\_to\_background@{draw\_nums\_to\_background}}
+\index{draw\_nums\_to\_background@{draw\_nums\_to\_background}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{draw\_nums\_to\_background()}{draw\_nums\_to\_background()}}
+{\footnotesize\ttfamily int draw\+\_\+nums\+\_\+to\+\_\+background (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{xi,  }\item[{uint16\+\_\+t}]{yi,  }\item[{uint8\+\_\+t}]{points1 }\end{DoxyParamCaption})}
+
+
+
+Function to draw small numbers to the third buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xi,yi} & Coordinates of the upper left corner of the image \\
+\hline
+{\em points1} & Image of the number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gpu_8c_aad68426aceafbb8676132df1c0e2c735_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gpu_8c_a07a8535cb9c579527854d2a8e501d4a8}\label{gpu_8c_a07a8535cb9c579527854d2a8e501d4a8} 
+\index{gpu.c@{gpu.c}!draw\_pixel@{draw\_pixel}}
+\index{draw\_pixel@{draw\_pixel}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{draw\_pixel()}{draw\_pixel()}}
+{\footnotesize\ttfamily int draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{color,  }\item[{bool}]{ignore }\end{DoxyParamCaption})}
+
+
+
+Draws a single pixel into the second\+\_\+buffer. 
+
+Calculates the position in the buffer and copies the color to the double buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em x,y} & Coordinates of the pixel \\
+\hline
+{\em color} & Color of the pixel \\
+\hline
+{\em ignore} & Bool indicating if should ignore the collision with the borders of the screen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gpu_8c_a07a8535cb9c579527854d2a8e501d4a8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gpu_8c_a1eb4f1a42c106ef990a76aa98751cf8d}\label{gpu_8c_a1eb4f1a42c106ef990a76aa98751cf8d} 
+\index{gpu.c@{gpu.c}!draw\_to\_background@{draw\_to\_background}}
+\index{draw\_to\_background@{draw\_to\_background}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{draw\_to\_background()}{draw\_to\_background()}}
+{\footnotesize\ttfamily int draw\+\_\+to\+\_\+background (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{xi,  }\item[{uint16\+\_\+t}]{yi,  }\item[{xpm\+\_\+image\+\_\+t}]{img }\end{DoxyParamCaption})}
+
+
+
+Auxiliary function to \doxylink{gpu_8h_a2732cc2b96b20c6f177bfb677dedcf0d}{init\+\_\+background()} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xi,yi} & Coordinates of the upper right corner of the image \\
+\hline
+{\em img} & Image of the object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gpu_8c_a1eb4f1a42c106ef990a76aa98751cf8d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gpu_8c_a84b306589c1608b17981217c477ef9f7}\label{gpu_8c_a84b306589c1608b17981217c477ef9f7} 
+\index{gpu.c@{gpu.c}!draw\_xpm@{draw\_xpm}}
+\index{draw\_xpm@{draw\_xpm}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{draw\_xpm()}{draw\_xpm()}}
+{\footnotesize\ttfamily int draw\+\_\+xpm (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{xi,  }\item[{uint16\+\_\+t}]{yi,  }\item[{xpm\+\_\+image\+\_\+t}]{img,  }\item[{bool}]{ignore }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em xi,yi} & Coordinates of the upper left corner of the image \\
+\hline
+{\em img} & \\
+\hline
+{\em ignore} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{gpu_8c_a84b306589c1608b17981217c477ef9f7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gpu_8c_a84b306589c1608b17981217c477ef9f7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gpu_8c_a1097b0e9f41e52e83e5055aed2fa31ce}\label{gpu_8c_a1097b0e9f41e52e83e5055aed2fa31ce} 
+\index{gpu.c@{gpu.c}!end\_next\_frame@{end\_next\_frame}}
+\index{end\_next\_frame@{end\_next\_frame}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{end\_next\_frame()}{end\_next\_frame()}}
+{\footnotesize\ttfamily void end\+\_\+next\+\_\+frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Copy the entirety of the contents from the second buffer to the video memory. 
+
+Last step after drawing everything in the second buffer. Effectively shows things on screen Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gpu_8c_a1097b0e9f41e52e83e5055aed2fa31ce_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gpu_8c_afd868599f5114fb49d19022ac48ebd96}\label{gpu_8c_afd868599f5114fb49d19022ac48ebd96} 
+\index{gpu.c@{gpu.c}!free\_buffers@{free\_buffers}}
+\index{free\_buffers@{free\_buffers}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{free\_buffers()}{free\_buffers()}}
+{\footnotesize\ttfamily int free\+\_\+buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to deallocate buffers from memory. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{gpu_8c_afd868599f5114fb49d19022ac48ebd96_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gpu_8c_a89e5e15fb2c065221f58c6d883da6049}\label{gpu_8c_a89e5e15fb2c065221f58c6d883da6049} 
+\index{gpu.c@{gpu.c}!get\_bytes\_per\_pixel@{get\_bytes\_per\_pixel}}
+\index{get\_bytes\_per\_pixel@{get\_bytes\_per\_pixel}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{get\_bytes\_per\_pixel()}{get\_bytes\_per\_pixel()}}
+{\footnotesize\ttfamily unsigned get\+\_\+bytes\+\_\+per\+\_\+pixel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of bytes per pixel. 
+
+\begin{DoxyReturn}{Returns}
+Number of bytes per pixel. 
+\end{DoxyReturn}
+\Hypertarget{gpu_8c_a10e416c59639a7f6b6f9f8f020fdb8d0}\label{gpu_8c_a10e416c59639a7f6b6f9f8f020fdb8d0} 
+\index{gpu.c@{gpu.c}!get\_hres@{get\_hres}}
+\index{get\_hres@{get\_hres}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{get\_hres()}{get\_hres()}}
+{\footnotesize\ttfamily unsigned get\+\_\+hres (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the horizontal resolution of the screen. 
+
+\begin{DoxyReturn}{Returns}
+Horizontal resolution of the frame buffer. 
+\end{DoxyReturn}
+\Hypertarget{gpu_8c_aae3ff4c688394af50460bde20b5c46b1}\label{gpu_8c_aae3ff4c688394af50460bde20b5c46b1} 
+\index{gpu.c@{gpu.c}!get\_vbe\_mode\_info@{get\_vbe\_mode\_info}}
+\index{get\_vbe\_mode\_info@{get\_vbe\_mode\_info}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{get\_vbe\_mode\_info()}{get\_vbe\_mode\_info()}}
+{\footnotesize\ttfamily vbe\+\_\+mode\+\_\+info\+\_\+t get\+\_\+vbe\+\_\+mode\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the general VBE mode information. 
+
+\begin{DoxyReturn}{Returns}
+VBE mode information. 
+\end{DoxyReturn}
+\Hypertarget{gpu_8c_ae9fe2ed6e44beeacfc8d9ee775503e41}\label{gpu_8c_ae9fe2ed6e44beeacfc8d9ee775503e41} 
+\index{gpu.c@{gpu.c}!get\_video\_mem@{get\_video\_mem}}
+\index{get\_video\_mem@{get\_video\_mem}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{get\_video\_mem()}{get\_video\_mem()}}
+{\footnotesize\ttfamily uint8\+\_\+t \texorpdfstring{$\ast$}{*} get\+\_\+video\+\_\+mem (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the pointer to the video memory. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the video memory. 
+\end{DoxyReturn}
+\Hypertarget{gpu_8c_a1c1b9a9c811575beb06fc355241ef17d}\label{gpu_8c_a1c1b9a9c811575beb06fc355241ef17d} 
+\index{gpu.c@{gpu.c}!get\_vres@{get\_vres}}
+\index{get\_vres@{get\_vres}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{get\_vres()}{get\_vres()}}
+{\footnotesize\ttfamily unsigned get\+\_\+vres (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the vertical resolution of the screen. 
+
+\begin{DoxyReturn}{Returns}
+Vertical resolution of the frame buffer. 
+\end{DoxyReturn}
+\Hypertarget{gpu_8c_a2732cc2b96b20c6f177bfb677dedcf0d}\label{gpu_8c_a2732cc2b96b20c6f177bfb677dedcf0d} 
+\index{gpu.c@{gpu.c}!init\_background@{init\_background}}
+\index{init\_background@{init\_background}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{init\_background()}{init\_background()}}
+{\footnotesize\ttfamily int init\+\_\+background (\begin{DoxyParamCaption}\item[{uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{x\+\_\+coords,  }\item[{uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{y\+\_\+coords,  }\item[{xpm\+\_\+image\+\_\+t \texorpdfstring{$\ast$}{*}}]{imgs,  }\item[{size\+\_\+t}]{num\+\_\+elements }\end{DoxyParamCaption})}
+
+
+
+Function to initialize third buffer that stores (unchanging) the background of the game. 
+
+Calls the \doxylink{gpu_8h_a1eb4f1a42c106ef990a76aa98751cf8d}{draw\+\_\+to\+\_\+background()} function
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+\_\+coords,y\+\_\+coords} & Arrays with the coordinates of the game\textquotesingle{}s background sprites \\
+\hline
+{\em imgs} & Array with the images (with type xpm\+\_\+image\+\_\+t) \\
+\hline
+{\em num\+\_\+elements} & Number of elements to draw \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{gpu_8c_a2732cc2b96b20c6f177bfb677dedcf0d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{gpu_8c_a2732cc2b96b20c6f177bfb677dedcf0d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gpu_8c_aaeb7358a013e203c55e09bff5bfb3a34}\label{gpu_8c_aaeb7358a013e203c55e09bff5bfb3a34} 
+\index{gpu.c@{gpu.c}!prep\_next\_frame@{prep\_next\_frame}}
+\index{prep\_next\_frame@{prep\_next\_frame}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{prep\_next\_frame()}{prep\_next\_frame()}}
+{\footnotesize\ttfamily void prep\+\_\+next\+\_\+frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Copy the entirety of the contents from the third buffer to the second buffer. 
+
+First step to then draw the rest of the second buffer Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gpu_8c_aaeb7358a013e203c55e09bff5bfb3a34_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{gpu_8c_a36b87dc42923f704d16a629834a21b1e}\label{gpu_8c_a36b87dc42923f704d16a629834a21b1e} 
+\index{gpu.c@{gpu.c}!bytes\_per\_pixel@{bytes\_per\_pixel}}
+\index{bytes\_per\_pixel@{bytes\_per\_pixel}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{bytes\_per\_pixel}{bytes\_per\_pixel}}
+{\footnotesize\ttfamily uint8\+\_\+t bytes\+\_\+per\+\_\+pixel\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gpu_8c_a6473b5098c114ab97fc4cde61684ab7b}\label{gpu_8c_a6473b5098c114ab97fc4cde61684ab7b} 
+\index{gpu.c@{gpu.c}!double\_buffer@{double\_buffer}}
+\index{double\_buffer@{double\_buffer}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{double\_buffer}{double\_buffer}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} double\+\_\+buffer\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gpu_8c_a40be353997ba7583c2321795c9576978}\label{gpu_8c_a40be353997ba7583c2321795c9576978} 
+\index{gpu.c@{gpu.c}!game\_background@{game\_background}}
+\index{game\_background@{game\_background}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{game\_background}{game\_background}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} game\+\_\+background\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gpu_8c_a51ca412bef7e65e7fb0a170abe47b36b}\label{gpu_8c_a51ca412bef7e65e7fb0a170abe47b36b} 
+\index{gpu.c@{gpu.c}!video\_mem@{video\_mem}}
+\index{video\_mem@{video\_mem}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{video\_mem}{video\_mem}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} video\+\_\+mem\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gpu_8c_adb1f08b438cf612e163fe7d66cde86d0}\label{gpu_8c_adb1f08b438cf612e163fe7d66cde86d0} 
+\index{gpu.c@{gpu.c}!vmi@{vmi}}
+\index{vmi@{vmi}!gpu.c@{gpu.c}}
+\doxysubsubsection{\texorpdfstring{vmi}{vmi}}
+{\footnotesize\ttfamily vbe\+\_\+mode\+\_\+info\+\_\+t vmi\hspace{0.3cm}{\ttfamily [static]}}
+

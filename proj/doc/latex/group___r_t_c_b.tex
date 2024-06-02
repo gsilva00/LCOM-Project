@@ -1,0 +1,136 @@
+\doxysubsection{RTC\textquotesingle{}s Control Register B}
+\hypertarget{group___r_t_c_b}{}\label{group___r_t_c_b}\index{RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}}
+
+
+REGISTER 11.  
+
+
+Collaboration diagram for RTC\textquotesingle{}s Control Register B\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{group___r_t_c_b}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga121f0898e213740c802ac5e2c3daf5c7}{RB\+\_\+\+ADDR}}~0xB
+\begin{DoxyCompactList}\small\item\em Register B\textquotesingle{}s address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga76d2ca0295a0754fdde851c3c6da2583}{RB\+\_\+\+SET}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Set to 1 to inhibit updates of time/data registers. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga06116e1f2b18dd2b69d06dd0ef3ccc70}{RB\+\_\+\+PIE}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em Set to 1 to enable periodic interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga9ac54f9f4d894e3d78bfd32c73130f12}{RB\+\_\+\+AIE}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Set to 1 to enable alarm interrupts. ~\newline
+ \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga6d372a5a638de39566998b54a1f51b4d}{RB\+\_\+\+UIE}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em Set to 1 to enable update interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga0ebf6b582d659630d3a278bfc84051fd}{RB\+\_\+\+SQWE}}~BIT(3)
+\begin{DoxyCompactList}\small\item\em Set to 1 to enable square-\/wave generation. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga8becfac2877b8eb34afa6d703ade09a0}{RB\+\_\+\+DM}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em 1 -\/ time, alarm and date registers in binary. 0 -\/ in BCD \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_gaa61e748336b6b57d195ec6e5ecec7853}{RB\+\_\+2412}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em 1 -\/ hours from 0 to 23. 0 -\/ from 1 to 12 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_gaa010b70333a156c022db58087a9b845a}{RB\+\_\+\+DSE}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em 1 -\/ Daylight Saving Time. 0 -\/ disable. Useless\+: old US DST \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+REGISTER 11. 
+
+Do not change bits 0,1,2 -\/ may interfere with OS 
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___r_t_c_b_gaa61e748336b6b57d195ec6e5ecec7853}\label{group___r_t_c_b_gaa61e748336b6b57d195ec6e5ecec7853} 
+\index{RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}!RB\_2412@{RB\_2412}}
+\index{RB\_2412@{RB\_2412}!RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}}
+\doxysubsubsubsection{\texorpdfstring{RB\_2412}{RB\_2412}}
+{\footnotesize\ttfamily \#define RB\+\_\+2412~BIT(1)}
+
+
+
+1 -\/ hours from 0 to 23. 0 -\/ from 1 to 12 
+
+\Hypertarget{group___r_t_c_b_ga121f0898e213740c802ac5e2c3daf5c7}\label{group___r_t_c_b_ga121f0898e213740c802ac5e2c3daf5c7} 
+\index{RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}!RB\_ADDR@{RB\_ADDR}}
+\index{RB\_ADDR@{RB\_ADDR}!RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}}
+\doxysubsubsubsection{\texorpdfstring{RB\_ADDR}{RB\_ADDR}}
+{\footnotesize\ttfamily \#define RB\+\_\+\+ADDR~0xB}
+
+
+
+Register B\textquotesingle{}s address. 
+
+\Hypertarget{group___r_t_c_b_ga9ac54f9f4d894e3d78bfd32c73130f12}\label{group___r_t_c_b_ga9ac54f9f4d894e3d78bfd32c73130f12} 
+\index{RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}!RB\_AIE@{RB\_AIE}}
+\index{RB\_AIE@{RB\_AIE}!RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}}
+\doxysubsubsubsection{\texorpdfstring{RB\_AIE}{RB\_AIE}}
+{\footnotesize\ttfamily \#define RB\+\_\+\+AIE~BIT(5)}
+
+
+
+Set to 1 to enable alarm interrupts. ~\newline
+ 
+
+\Hypertarget{group___r_t_c_b_ga8becfac2877b8eb34afa6d703ade09a0}\label{group___r_t_c_b_ga8becfac2877b8eb34afa6d703ade09a0} 
+\index{RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}!RB\_DM@{RB\_DM}}
+\index{RB\_DM@{RB\_DM}!RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}}
+\doxysubsubsubsection{\texorpdfstring{RB\_DM}{RB\_DM}}
+{\footnotesize\ttfamily \#define RB\+\_\+\+DM~BIT(2)}
+
+
+
+1 -\/ time, alarm and date registers in binary. 0 -\/ in BCD 
+
+\Hypertarget{group___r_t_c_b_gaa010b70333a156c022db58087a9b845a}\label{group___r_t_c_b_gaa010b70333a156c022db58087a9b845a} 
+\index{RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}!RB\_DSE@{RB\_DSE}}
+\index{RB\_DSE@{RB\_DSE}!RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}}
+\doxysubsubsubsection{\texorpdfstring{RB\_DSE}{RB\_DSE}}
+{\footnotesize\ttfamily \#define RB\+\_\+\+DSE~BIT(0)}
+
+
+
+1 -\/ Daylight Saving Time. 0 -\/ disable. Useless\+: old US DST 
+
+\Hypertarget{group___r_t_c_b_ga06116e1f2b18dd2b69d06dd0ef3ccc70}\label{group___r_t_c_b_ga06116e1f2b18dd2b69d06dd0ef3ccc70} 
+\index{RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}!RB\_PIE@{RB\_PIE}}
+\index{RB\_PIE@{RB\_PIE}!RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}}
+\doxysubsubsubsection{\texorpdfstring{RB\_PIE}{RB\_PIE}}
+{\footnotesize\ttfamily \#define RB\+\_\+\+PIE~BIT(6)}
+
+
+
+Set to 1 to enable periodic interrupts. 
+
+With a period between 122 µs and 0.\+5s as determined by RS0-\/\+RS3 in Register A ~\newline
+ \Hypertarget{group___r_t_c_b_ga76d2ca0295a0754fdde851c3c6da2583}\label{group___r_t_c_b_ga76d2ca0295a0754fdde851c3c6da2583} 
+\index{RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}!RB\_SET@{RB\_SET}}
+\index{RB\_SET@{RB\_SET}!RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}}
+\doxysubsubsubsection{\texorpdfstring{RB\_SET}{RB\_SET}}
+{\footnotesize\ttfamily \#define RB\+\_\+\+SET~BIT(7)}
+
+
+
+Set to 1 to inhibit updates of time/data registers. 
+
+\Hypertarget{group___r_t_c_b_ga0ebf6b582d659630d3a278bfc84051fd}\label{group___r_t_c_b_ga0ebf6b582d659630d3a278bfc84051fd} 
+\index{RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}!RB\_SQWE@{RB\_SQWE}}
+\index{RB\_SQWE@{RB\_SQWE}!RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}}
+\doxysubsubsubsection{\texorpdfstring{RB\_SQWE}{RB\_SQWE}}
+{\footnotesize\ttfamily \#define RB\+\_\+\+SQWE~BIT(3)}
+
+
+
+Set to 1 to enable square-\/wave generation. 
+
+\Hypertarget{group___r_t_c_b_ga6d372a5a638de39566998b54a1f51b4d}\label{group___r_t_c_b_ga6d372a5a638de39566998b54a1f51b4d} 
+\index{RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}!RB\_UIE@{RB\_UIE}}
+\index{RB\_UIE@{RB\_UIE}!RTC\textquotesingle{}s Control Register B@{RTC\textquotesingle{}s Control Register B}}
+\doxysubsubsubsection{\texorpdfstring{RB\_UIE}{RB\_UIE}}
+{\footnotesize\ttfamily \#define RB\+\_\+\+UIE~BIT(4)}
+
+
+
+Set to 1 to enable update interrupts. 
+

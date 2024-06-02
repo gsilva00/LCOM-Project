@@ -1,0 +1,12 @@
+<map id="kbc_read_outbuf" name="kbc_read_outbuf">
+<area shape="rect" id="Node000001" title="Bottom layer function: Reads from an output register." alt="" coords="347,55,477,80"/>
+<area shape="rect" id="Node000002" href="$keyboard_8c.html#ab9e6ed7960d60aa4834f2038247d4536" title=" " alt="" coords="205,5,269,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="353,54,269,29,271,24,354,48"/>
+<area shape="rect" id="Node000004" href="$mouse_8c.html#a834b6d7efe311484d6da234db333cb97" title=" " alt="" coords="195,55,280,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="333,70,280,70,280,65,333,65"/>
+<area shape="rect" id="Node000005" href="$keyboard_8c.html#aee81e59c2a9baaacf9c588e40546dd48" title="Re&#45;enables keyboard interrupts (that lcf_start() disabled) by writing the appropriate command byte." alt="" coords="176,104,299,129"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="354,86,284,106,283,101,353,81"/>
+<area shape="rect" id="Node000003" href="$proj_8c.html#a7a72220d8366dd84709e79ce415862e5" title=" " alt="" coords="5,31,128,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="192,27,129,37,128,32,191,22"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="180,62,128,55,128,49,181,57"/>
+</map>

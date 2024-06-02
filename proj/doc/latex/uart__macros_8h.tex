@@ -1,0 +1,90 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/devices/serial\+\_\+port/uart\+\_\+macros.h File Reference}
+\hypertarget{uart__macros_8h}{}\label{uart__macros_8h}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/uart\_macros.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/serial\_port/uart\_macros.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for uart\+\_\+macros.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{uart__macros_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart__macros_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___num_consts8042_ga38942f78cc285b85cd25db549699bff0}{UART\+\_\+\+SYNC\+\_\+\+MAX\+\_\+\+FRAMES}}~300
+\item 
+\#define \mbox{\hyperlink{group___num_consts8042_ga21ebddd6bb3d5548b3f0d998cc364fa4}{UART\+\_\+\+SYNC}}~0x00
+\item 
+\#define \mbox{\hyperlink{group___num_consts8042_ga89b8b90049de295565ae7b1a36b3774a}{UART\+\_\+\+ACK}}~0x01
+\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_i_r_q_ga3685c78b9bd6dd0fa3861807e24a4e1b}{COM1\+\_\+\+IRQ}}~4
+\begin{DoxyCompactList}\small\item\em COM1\textquotesingle{}s IRQ line. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_i_r_q_gab02d84052a299a0c207a8ea4c1a5636d}{COM2\+\_\+\+IRQ}}~3
+\begin{DoxyCompactList}\small\item\em COM2\textquotesingle{}s IRQ line -\/ Not used. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_ports_ga8982f081d8608e775b0739cde65373d5}{COM1\+\_\+\+PORT}}~0x3\+F8
+\begin{DoxyCompactList}\small\item\em COM1\textquotesingle{}s base address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_ports_ga88373c3e34a242356333ec08389eae54}{COM2\+\_\+\+PORT}}~0x2\+F8
+\begin{DoxyCompactList}\small\item\em COM2\textquotesingle{}s base address -\/ Not used. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga88135060cd7c85ef5c49d605ea9b4cae}{UART\+\_\+\+SR}}~7
+\begin{DoxyCompactList}\small\item\em Scratchpad Register (Read / Write) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga71067c48bdde7dc6c5d0a1c56746e776}{UART\+\_\+\+MSR}}~6
+\begin{DoxyCompactList}\small\item\em Modem Status Register (R) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga0f8ac527073d763bac90daba987361c6}{UART\+\_\+\+LSR}}~5
+\begin{DoxyCompactList}\small\item\em Line Status Register (R) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga8ef39bc0942ddd0411d87001d12224f4}{UART\+\_\+\+MCR}}~4
+\begin{DoxyCompactList}\small\item\em Modem Control Register (R/W) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga36c30861e332468c7f1998648e706740}{UART\+\_\+\+LCR}}~3
+\begin{DoxyCompactList}\small\item\em Line Control Register (R/W) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga220a678f91ca8244b30fe813200c26c1}{UART\+\_\+\+FCR}}~2
+\begin{DoxyCompactList}\small\item\em FIFO Control Register (W) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga16add7e6b9f91a6698c5910704111b68}{UART\+\_\+\+IIR}}~2
+\begin{DoxyCompactList}\small\item\em Interrupt Identification Reg (R) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga63f95172026aa533407e357e73b04551}{UART\+\_\+\+DLM}}~1
+\begin{DoxyCompactList}\small\item\em Divisor Latch MSB (Overloaded address -\/ accessible if DLAB of LCR is 1) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_gaaf7aaa372e86b3aa99e6c78242be2722}{UART\+\_\+\+IER}}~1
+\begin{DoxyCompactList}\small\item\em Interrupt Enable Register (R/W) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga7ff21e0cfc73a2db80c3907c5cac5a61}{UART\+\_\+\+DLL}}~0
+\begin{DoxyCompactList}\small\item\em Divisor Latch LSB (Overloaded address -\/ accessible if DLAB of LCR is 1) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga7a676f075475e46d27eb878977b867ec}{UART\+\_\+\+THR}}~0
+\begin{DoxyCompactList}\small\item\em Transmitter Holding Register -\/ Sending character (W) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___u_a_r_t_regs_ga3eb7d5a767dae7774aa2b4be28e20a7e}{UART\+\_\+\+RBR}}~0
+\begin{DoxyCompactList}\small\item\em RBR Receiver Buffer Register -\/ Read received character (R) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_gaad7697bcfac0bf1e0effd1c766c856f7}{LSR\+\_\+\+ERRFIFO}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em ERRPAR/\+ERRFRAME/\+BREAK in the FIFO; Resets to 0 on LSR read if no errors. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_gadaea8572f90ee57d5137ef69ff51bf50}{LSR\+\_\+\+TMT\+\_\+\+MT}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em Both THR and Transmitter Shift Register Empty. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_gab0904d456196c9551cef9f7d2f07a229}{LSR\+\_\+\+THR\+\_\+\+RDY}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Ready to accept new character for transmitting. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_gafa4a5e9b6122093d0e21afaee6b60a8b}{LSR\+\_\+\+BREAKINT}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em Serial data input line at low for longer than full-\/word transmission. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_gafbdf2477580ca6379ad8dd6b8b970744}{LSR\+\_\+\+ERRFRAME}}~BIT(3)
+\begin{DoxyCompactList}\small\item\em Received character with no valid stop bit. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_ga962d57b2f3158e4739235d45e4d15c9a}{LSR\+\_\+\+ERRPAR}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em Received character has parity error. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_ga11f25e648a2b213c6130245aa2d393f3}{LSR\+\_\+\+ERROVER}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Received character overwritten by another one. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___status_reg_gacc953afbc113851e8d35e30e4d1bdc24}{LSR\+\_\+\+DATA}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em There is data for receiving. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_enable_reg_ga0a191b30250669d46bb16613ba6cfb79}{LSRERR\+\_\+\+INT}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em Enables the Receiver Line Status Interrupt This event is generated when there is a change in the state of bits 1 to 4, i.\+e. the error bits, of the LSR. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_enable_reg_ga062627ae9a4d3d4d4f284e4010f59430}{THR\+\_\+\+RDY\+\_\+\+INT}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Enables the Transmitter Holding Register Empty Interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_enable_reg_gab55d698618b036cb1a5b94e33d1b5dc3}{DATA\+\_\+\+RDY\+\_\+\+INT}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em Enables the Received Data Available Interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_id_reg_ga2bc1e4757d4be3e5cc32633b18d7d3ef}{IIR\+\_\+\+LSRERR}}~BIT(2) \texorpdfstring{$\vert$}{|} BIT(1)
+\begin{DoxyCompactList}\small\item\em Receiver Line Status. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_id_reg_ga99204928d0bfb9e3b08b4483c31d05f4}{IIR\+\_\+\+DATA\+\_\+\+RDY}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em Received Data Available. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_id_reg_ga3ea4e5538ef8d80d481b71e3a7919092}{IIR\+\_\+\+CHAR\+\_\+\+TOUT}}~BIT(3) \texorpdfstring{$\vert$}{|} BIT(2)
+\begin{DoxyCompactList}\small\item\em Character Timeout (FIFO) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_id_reg_ga449d598879e08018235600302c38238d}{IIR\+\_\+\+THR\+\_\+\+RDY}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Transmitter Holding Register Empty. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_id_reg_gad329bde1d6b6429ada5ea03d1c1f6b26}{IIR\+\_\+\+NONE}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em When set, no interrupt is pending. \end{DoxyCompactList}\end{DoxyCompactItemize}

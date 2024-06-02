@@ -1,0 +1,23 @@
+<map id="configure_rtc" name="configure_rtc">
+<area shape="rect" id="Node000001" title="Configures the RTC&#39;s initial state." alt="" coords="5,68,112,93"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#a2bccb45fe57bd2fdceef07ab2a16637f" title="Checks if the RTC has its registers&#39; values in binary format or BCD." alt="" coords="520,5,625,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,65,159,53,253,38,347,27,506,17,506,23,348,33,254,43,161,58,106,71"/>
+<area shape="rect" id="Node000004" href="$rtc_8c.html#ad41e2906df57d43ee7caf481d2ab93e0" title="Reads the current time in the Real&#45;Time Clock." alt="" coords="160,68,301,93"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="112,78,146,78,146,83,112,83"/>
+<area shape="rect" id="Node000009" href="$rtc_8c.html#a3d1ff5763600a995360272da8adef21a" title="Activates alarm interrupts and sets the alarm to generate an interrupt every hour." alt="" coords="163,143,298,168"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="90,91,189,135,187,140,88,96"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="673,80,772,105"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="601,29,685,71,683,76,598,33"/>
+<area shape="rect" id="Node000005" href="$rtc_8c.html#a7211989be235eddc771c4057ad5dfe77" title="Compares 2 rtc_data_t variables for equality." alt="" coords="360,43,461,68"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="301,68,346,62,347,67,302,73"/>
+<area shape="rect" id="Node000006" href="$rtc_8c.html#a388d5a9020707af17db740911902bfd3" title="Reads all the time registers." alt="" coords="349,92,472,117"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="302,87,336,92,335,97,301,93"/>
+<area shape="rect" id="Node000007" href="$rtc_8c.html#a69fd5a2cda35b5ac189d8db459142290" title="Reads the value in the specified RTC internal register." alt="" coords="535,129,610,155"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="467,115,523,128,522,133,466,120"/>
+<area shape="rect" id="Node000008" href="$rtc_8c.html#a0b4a586a73bd16970971d2b52b6a5366" title="Converts BCD value into decimal." alt="" coords="525,80,620,105"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="472,97,511,95,512,100,472,103"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="609,127,670,107,671,112,611,132"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="298,150,522,141,522,147,298,155"/>
+<area shape="rect" id="Node000010" href="$rtc_8c.html#a87889a81ecf0db2a1c281e1c474af054" title="Writes the specified value in the specified RTC internal register." alt="" coords="371,193,450,219"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="277,166,359,189,358,194,276,171"/>
+</map>

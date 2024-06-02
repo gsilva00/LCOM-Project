@@ -133,7 +133,7 @@
  */
 #define PS2_ACK 0xFA    /**< @brief If everything OK */
 #define PS2_NACK 0xFE   /**< @brief If invalid byte (may be because of a serial communication error) */
-#define PS2_ERROR 0xFC  /**< @brief Second consecutive invalid byte */
+#define PS2_Error 0xFC  /**< @brief Second consecutive invalid byte */
 /** @} */
 
 

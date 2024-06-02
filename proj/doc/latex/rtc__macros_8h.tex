@@ -1,0 +1,95 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/devices/rtc/rtc\+\_\+macros.h File Reference}
+\hypertarget{rtc__macros_8h}{}\label{rtc__macros_8h}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/rtc/rtc\_macros.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/rtc/rtc\_macros.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for rtc\+\_\+macros.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{rtc__macros_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{rtc__macros_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___r_t_c_macros_ga4e22feb6ffbc1cda32fadff5c740dc51}{RTC\+\_\+\+IRQ}}~8
+\begin{DoxyCompactList}\small\item\em RTC\textquotesingle{}s IRQ Line. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___num_consts_r_t_c_ga1f0dfc2ff4ce13a2117454aec45c1375}{MAX\+\_\+\+READS}}~10
+\item 
+\#define \mbox{\hyperlink{group___r_t_c_main_ga710b98232df2c563009e6f8a6cd18220}{RTC\+\_\+\+ADDR\+\_\+\+REG}}~0x70
+\begin{DoxyCompactList}\small\item\em RTC\textquotesingle{}s Address Register. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_main_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\+\_\+\+DATA\+\_\+\+REG}}~0x71
+\begin{DoxyCompactList}\small\item\em RTC\textquotesingle{}s Data Register. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_gac6365d7f429ac4e05ecb88880d32a551}{YEAR\+\_\+\+ADDR}}~0x9
+\begin{DoxyCompactList}\small\item\em Year Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_gae615679819fcbd214d60f9104bdb8bf9}{MONTH\+\_\+\+ADDR}}~0x8
+\begin{DoxyCompactList}\small\item\em Month Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_ga059a7ffd66c8cef5421397925e6d8230}{DAY\+\_\+\+ADDR}}~0x7
+\begin{DoxyCompactList}\small\item\em Day Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_gaa0c12c43f2201683f530ab69b14dc08e}{WEEKDAY\+\_\+\+ADDR}}~0x6
+\begin{DoxyCompactList}\small\item\em Weekday Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_gad8fcf1eca789c118eee3bf654152896d}{HOURS\+\_\+\+AL\+\_\+\+ADDR}}~0x5
+\begin{DoxyCompactList}\small\item\em Hours Alarm Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_ga9397a8a942f648404f12d1f362ea20f7}{HOURS\+\_\+\+ADDR}}~0x4
+\begin{DoxyCompactList}\small\item\em Hours Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_gaddd245199c5dc6de4787c87d5e0cd962}{MINS\+\_\+\+AL\+\_\+\+ADDR}}~0x3
+\begin{DoxyCompactList}\small\item\em Minutes Alarm Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_ga28c667b5676f847028436ecd4e6b96bf}{MINS\+\_\+\+ADDR}}~0x2
+\begin{DoxyCompactList}\small\item\em Minutes Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_ga7d6b9ba880a462dd1db2edd34926cd02}{SECS\+\_\+\+AL\+\_\+\+ADDR}}~0x1
+\begin{DoxyCompactList}\small\item\em Seconds Alarm Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_ga4851c19f07c835bd907e7954255bfe69}{SECS\+\_\+\+ADDR}}~0x0
+\begin{DoxyCompactList}\small\item\em Seconds Register\textquotesingle{}s Address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_registers_ga487ea2164e3f2607ca628d40d2c1c9dd}{AL\+\_\+\+DONTCARE}}~BIT(7)\texorpdfstring{$\vert$}{|}BIT(6)
+\begin{DoxyCompactList}\small\item\em Don\textquotesingle{}t-\/\+Care value for Alarm Registers -\/ match any value in the register (alarms in multiple times of day) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_a_ga21e2535541a5e674e5b560407dc7b46e}{RA\+\_\+\+ADDR}}~0xA
+\begin{DoxyCompactList}\small\item\em Register A\textquotesingle{}s address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_a_ga604a89f8a713c8eab5646e69aa3540eb}{RA\+\_\+\+UIP}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Set to 1 -\/ update in progress. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_a_ga1df62de5d09c658687f9d97f0565dce9}{RA\+\_\+\+RS3}}~BIT(3)
+\begin{DoxyCompactList}\small\item\em Rate selector -\/ for periodic interrupts and square-\/wave output. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_a_ga17477b470c6d2627b1d264a40991cc51}{RA\+\_\+\+RS2}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em Rate selector -\/ for periodic interrupts and square-\/wave output. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_a_ga1b50d848d67573b61760357e6515a0f9}{RA\+\_\+\+RS1}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Rate selector -\/ for periodic interrupts and square-\/wave output. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_a_gaddadb9609c78af2cfecefc3a3c95c40f}{RA\+\_\+\+RS0}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em Rate selector -\/ for periodic interrupts and square-\/wave output. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga121f0898e213740c802ac5e2c3daf5c7}{RB\+\_\+\+ADDR}}~0xB
+\begin{DoxyCompactList}\small\item\em Register B\textquotesingle{}s address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga76d2ca0295a0754fdde851c3c6da2583}{RB\+\_\+\+SET}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Set to 1 to inhibit updates of time/data registers. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga06116e1f2b18dd2b69d06dd0ef3ccc70}{RB\+\_\+\+PIE}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em Set to 1 to enable periodic interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga9ac54f9f4d894e3d78bfd32c73130f12}{RB\+\_\+\+AIE}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Set to 1 to enable alarm interrupts. ~\newline
+ \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga6d372a5a638de39566998b54a1f51b4d}{RB\+\_\+\+UIE}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em Set to 1 to enable update interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga0ebf6b582d659630d3a278bfc84051fd}{RB\+\_\+\+SQWE}}~BIT(3)
+\begin{DoxyCompactList}\small\item\em Set to 1 to enable square-\/wave generation. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_ga8becfac2877b8eb34afa6d703ade09a0}{RB\+\_\+\+DM}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em 1 -\/ time, alarm and date registers in binary. 0 -\/ in BCD \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_gaa61e748336b6b57d195ec6e5ecec7853}{RB\+\_\+2412}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em 1 -\/ hours from 0 to 23. 0 -\/ from 1 to 12 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_b_gaa010b70333a156c022db58087a9b845a}{RB\+\_\+\+DSE}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em 1 -\/ Daylight Saving Time. 0 -\/ disable. Useless\+: old US DST \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_c_ga5aab142079cf979f9ca42f76d63dc371}{RC\+\_\+\+ADDR}}~0xC
+\begin{DoxyCompactList}\small\item\em Register C\textquotesingle{}s address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_c_ga5c3d4f79ca6093dbdac8d5111fbdce4c}{RC\+\_\+\+IRQF}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em IRQ line active. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_c_gae893c65e30ef52caea34c354cfb8d207}{RC\+\_\+\+PF}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em Flag -\/ Periodic interrupt pending. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_c_gae6cdb5b0e7fe763c48c4086db4d9a0d4}{RC\+\_\+\+AF}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Flag -\/ Alarm interrupt pending. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_c_ga9f88cf4ec9c9f481ecb4b362e8b7703b}{RC\+\_\+\+UF}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em Flag -\/ Update interrupt pending. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_d_gad6541e510f99fb11fe71dd171f7130b4}{RD\+\_\+\+ADDR}}~0xD
+\begin{DoxyCompactList}\small\item\em Register D\textquotesingle{}s address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_t_c_d_ga275fb2ccc2d98a921843fb99bd3777bd}{RD\+\_\+\+VRT}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Valid RAM/time -\/ set to 0 when internal lithium battery runs out of energy. RTC readings questionable. \end{DoxyCompactList}\end{DoxyCompactItemize}

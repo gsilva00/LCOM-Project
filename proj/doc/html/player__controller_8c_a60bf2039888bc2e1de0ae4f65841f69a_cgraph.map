@@ -1,0 +1,16 @@
+<map id="move_player" name="move_player">
+<area shape="rect" id="Node000001" title="Main function that changes the player&#39;s atributes according to the current state." alt="" coords="5,104,112,129"/>
+<area shape="rect" id="Node000002" href="$timer_8c.html#a3fbc33679c2fa1eaeaee5d24da9e88a9" title="Getter for timer_intCounter static global variable in timer.c." alt="" coords="399,5,559,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,102,108,70,133,54,159,41,216,24,275,15,332,10,385,10,385,15,333,16,276,20,217,30,161,46,135,58,111,74,75,106"/>
+<area shape="rect" id="Node000003" href="$player__controller_8c.html#aed07cf74ee169467f39f1184b6d3bbe1" title="Function that performs the player&#39;s jump." alt="" coords="178,55,333,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,101,190,81,192,86,111,107"/>
+<area shape="rect" id="Node000005" href="$player__controller_8c.html#a46d3eddfcdbc55979be5e954a30733c8" title="Function that saves the initial values of the player." alt="" coords="167,104,343,129"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="112,114,153,114,153,119,112,119"/>
+<area shape="rect" id="Node000006" href="$player__controller_8c.html#a9d4e2f27c2191e556ccc1cea41049e88" title="Function that prepares the player for the jump." alt="" coords="163,153,348,179"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="111,127,192,147,190,153,109,132"/>
+<area shape="rect" id="Node000007" href="$player__controller_8c.html#a39c0d0b8c6774b7965e43ab8128c10fb" title="Function that resets the values of the player." alt="" coords="160,203,351,228"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="75,128,113,159,161,189,178,196,176,201,159,194,109,163,72,132"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="313,52,407,31,408,36,314,57"/>
+<area shape="rect" id="Node000004" href="$player__controller_8c.html#a238061bfefbe3029a722e7680ea40d42" title="Function that changes the player&#39;s y value along the jump." alt="" coords="413,55,545,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="333,65,399,65,399,70,333,70"/>
+</map>

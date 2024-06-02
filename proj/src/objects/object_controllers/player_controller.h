@@ -35,18 +35,6 @@
 
 #define SPEED_REDUCTION_FACTOR 0.65
 
-/** 
- * @brief Declaration of the Player Jump State Machine
- * @details This state machine toggles the ability of the player to jump. It involves a preparation state, the state where the actual jump occures, a state that resets the atributes after the action is complete (except atributes that are supposed to change) and a rest state. 
-*/
-typedef enum {
-  PLAYER_JUMP_NONE,
-  START_PLAYER_JUMP,
-  BEFORE_PLAYER_JUMP,
-  PLAYER_JUMP,
-  AFTER_PLAYER_JUMP,
-  PLAYER_JUMP_END,
-} PlayerStateJump;
 
 /** 
  * @brief Declaration of the Player Move State Machine
@@ -60,9 +48,21 @@ typedef enum {
   PLAYER_MOVE_RIGHT,
   AFTER_PLAYER_MOVE_LEFT,
   AFTER_PLAYER_MOVE_RIGHT,
-  PLAYER_MOVE_LEFT_END,
-  PLAYER_MOVE_RIGHT_END,
+  PLAYER_MOVE_END,
 } PlayerStateMove;
+
+/** 
+ * @brief Declaration of the Player Jump State Machine
+ * @details This state machine toggles the ability of the player to jump. It involves a preparation state, the state where the actual jump occures, a state that resets the atributes after the action is complete (except atributes that are supposed to change) and a rest state. 
+*/
+typedef enum {
+  PLAYER_JUMP_NONE,
+  START_PLAYER_JUMP,
+  BEFORE_PLAYER_JUMP,
+  PLAYER_JUMP,
+  AFTER_PLAYER_JUMP,
+  PLAYER_JUMP_END,
+} PlayerStateJump;
 
 /** 
  * @brief Declaration of the Player Jump State Machine

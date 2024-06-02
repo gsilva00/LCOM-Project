@@ -1,0 +1,20 @@
+<map id="get_timer_intCounter" name="get_timer_intCounter">
+<area shape="rect" id="Node000001" title="Getter for timer_intCounter static global variable in timer.c." alt="" coords="545,132,705,157"/>
+<area shape="rect" id="Node000002" href="$timeboard_8c.html#a79adf9ea298ffe4e8822ca151c97873c" title="Function that decreaces the time left." alt="" coords="176,5,295,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="600,125,555,86,526,67,496,52,445,36,391,26,295,19,295,14,392,21,446,31,498,48,529,63,558,82,604,120"/>
+<area shape="rect" id="Node000003" href="$proj_8c.html#a7a72220d8366dd84709e79ce415862e5" title=" " alt="" coords="5,81,128,107"/>
+<area shape="poly" id="edge11_Node000001_Node000003" title=" " alt="" coords="587,128,544,110,497,97,396,84,295,81,203,84,128,90,128,84,203,78,295,75,397,79,498,91,546,105,589,124"/>
+<area shape="rect" id="Node000004" href="$ball__controller_8c.html#a6e694eb670f358f0384f9bec32b8bdeb" title="Function that performs the ball&#39;s jump." alt="" coords="367,107,473,132"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="531,136,473,129,474,123,532,130"/>
+<area shape="rect" id="Node000005" href="$ball__controller_8c.html#ae682a2e7727d219e592f6ee4c95398e3" title="Main function that changes the ball&#39;s atributes according to the current state." alt="" coords="190,107,281,132"/>
+<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="531,152,440,152,342,146,281,134,282,129,343,141,440,147,531,147"/>
+<area shape="rect" id="Node000006" href="$player__controller_8c.html#aed07cf74ee169467f39f1184b6d3bbe1" title="Function that performs the player&#39;s jump." alt="" coords="343,208,497,233"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="578,165,456,210,454,205,577,160"/>
+<area shape="rect" id="Node000007" href="$player__controller_8c.html#a60bf2039888bc2e1de0ae4f65841f69a" title="Main function that changes the player&#39;s atributes according to the current state." alt="" coords="182,208,289,233"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="606,169,561,212,531,233,498,249,468,257,437,260,375,259,317,249,271,236,273,231,319,243,375,253,437,255,467,251,496,243,528,228,557,208,603,166"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="195,39,97,84,95,79,193,34"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="353,122,281,122,281,117,353,117"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="176,113,128,106,129,101,177,108"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="329,223,289,223,289,218,329,218"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="204,201,83,109,86,105,208,197"/>
+</map>

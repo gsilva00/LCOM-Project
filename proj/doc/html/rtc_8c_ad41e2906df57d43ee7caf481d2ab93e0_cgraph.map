@@ -1,0 +1,13 @@
+<map id="read_current_time" name="read_current_time">
+<area shape="rect" id="Node000001" title="Reads the current time in the Real&#45;Time Clock." alt="" coords="5,31,147,56"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#a7211989be235eddc771c4057ad5dfe77" title="Compares 2 rtc_data_t variables for equality." alt="" coords="205,5,307,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,31,191,24,192,30,147,36"/>
+<area shape="rect" id="Node000003" href="$rtc_8c.html#a388d5a9020707af17db740911902bfd3" title="Reads all the time registers." alt="" coords="195,55,317,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="147,50,181,55,181,60,147,55"/>
+<area shape="rect" id="Node000004" href="$rtc_8c.html#a69fd5a2cda35b5ac189d8db459142290" title="Reads the value in the specified RTC internal register." alt="" coords="375,29,450,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="317,55,361,48,362,53,318,60"/>
+<area shape="rect" id="Node000006" href="$rtc_8c.html#a0b4a586a73bd16970971d2b52b6a5366" title="Converts BCD value into decimal." alt="" coords="365,79,460,104"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="318,74,352,79,351,85,317,79"/>
+<area shape="rect" id="Node000005" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="508,29,607,55"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="450,39,494,39,494,45,450,45"/>
+</map>

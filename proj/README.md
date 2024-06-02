@@ -6,7 +6,7 @@
 
 ### Brief description:
 
-High-paced 2v2 footbal multiplayer game (with 1v1 training mode).
+High-paced 2-person footbal multiplayer game (with 1-person training mode).
 
 Inspired by [Head Soccer](https://play.google.com/store/apps/details?id=com.dnddream.headsoccer.android&hl=en&gl=US).
 

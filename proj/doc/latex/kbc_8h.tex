@@ -1,0 +1,134 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/devices/kbc/kbc.h File Reference}
+\hypertarget{kbc_8h}{}\label{kbc_8h}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/kbc/kbc.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/kbc/kbc.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for kbc.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{kbc_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{kbc_8h_a62c209283f6127df1365b342a1f3ddd9}{kbc\+\_\+read\+\_\+outbuf}} (uint8\+\_\+t port, uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, bool mouse)
+\begin{DoxyCompactList}\small\item\em Bottom layer function\+: Reads from an output register. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8h_abd6297c4f21b5d7a33693a1cbcf03eb3}{kbc\+\_\+write\+\_\+cmd}} (uint8\+\_\+t port, uint8\+\_\+t command)
+\begin{DoxyCompactList}\small\item\em Bottom layer function\+: Writes a command to an input register. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8h_aa90443358c3c8f173e5b2365494e1ec8}{kbc\+\_\+write\+\_\+mouse}} (uint8\+\_\+t arg)
+\begin{DoxyCompactList}\small\item\em Bottom layer function\+: Writes a command directly to the mouse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{kbc_8h_a62c209283f6127df1365b342a1f3ddd9}\label{kbc_8h_a62c209283f6127df1365b342a1f3ddd9} 
+\index{kbc.h@{kbc.h}!kbc\_read\_outbuf@{kbc\_read\_outbuf}}
+\index{kbc\_read\_outbuf@{kbc\_read\_outbuf}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_read\_outbuf()}{kbc\_read\_outbuf()}}
+{\footnotesize\ttfamily int kbc\+\_\+read\+\_\+outbuf (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output,  }\item[{bool}]{mouse }\end{DoxyParamCaption})}
+
+
+
+Bottom layer function\+: Reads from an output register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & address to a KBC output register \\
+\hline
+{\em output} & address of memory to receive the byte from the port \\
+\hline
+{\em mouse} & True to read output from mouse, false to read output from keyboard \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{kbc_8h_a62c209283f6127df1365b342a1f3ddd9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8h_a62c209283f6127df1365b342a1f3ddd9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kbc_8h_abd6297c4f21b5d7a33693a1cbcf03eb3}\label{kbc_8h_abd6297c4f21b5d7a33693a1cbcf03eb3} 
+\index{kbc.h@{kbc.h}!kbc\_write\_cmd@{kbc\_write\_cmd}}
+\index{kbc\_write\_cmd@{kbc\_write\_cmd}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_write\_cmd()}{kbc\_write\_cmd()}}
+{\footnotesize\ttfamily int kbc\+\_\+write\+\_\+cmd (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t}]{command }\end{DoxyParamCaption})}
+
+
+
+Bottom layer function\+: Writes a command to an input register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & address to a KBC input register \\
+\hline
+{\em command} & KBC\textquotesingle{}s Command Byte to be written to a register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{kbc_8h_abd6297c4f21b5d7a33693a1cbcf03eb3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8h_abd6297c4f21b5d7a33693a1cbcf03eb3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kbc_8h_aa90443358c3c8f173e5b2365494e1ec8}\label{kbc_8h_aa90443358c3c8f173e5b2365494e1ec8} 
+\index{kbc.h@{kbc.h}!kbc\_write\_mouse@{kbc\_write\_mouse}}
+\index{kbc\_write\_mouse@{kbc\_write\_mouse}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_write\_mouse()}{kbc\_write\_mouse()}}
+{\footnotesize\ttfamily int kbc\+\_\+write\+\_\+mouse (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{arg }\end{DoxyParamCaption})}
+
+
+
+Bottom layer function\+: Writes a command directly to the mouse. 
+
+Not interpreted by the KBC
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & 0x\+D4-\/\+Command\textquotesingle{}s Argument Byte to be written directly to mouse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8h_aa90443358c3c8f173e5b2365494e1ec8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8h_aa90443358c3c8f173e5b2365494e1ec8_icgraph}
+\end{center}
+\end{figure}

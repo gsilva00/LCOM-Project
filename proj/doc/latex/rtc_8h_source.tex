@@ -1,0 +1,48 @@
+\doxysection{rtc.\+h}
+\hypertarget{rtc_8h_source}{}\label{rtc_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/rtc/rtc.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/rtc/rtc.h}}
+\mbox{\hyperlink{rtc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ RTC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RTC\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structrtc__data}{rtc\_data}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structrtc__data}{rtc\_data}}\ \mbox{\hyperlink{structrtc__data}{rtc\_data\_t}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_a0045351c03a6f33fc89e406c76914159}{configure\_rtc}}();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_a5171a9c0f54940fe60f7500896afcc86}{rtc\_subscribe\_int}}(uint8\_t\ *bit\_no);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_ab8f17bf5280c908c8b199a90fefcc758}{rtc\_unsubscribe\_int}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rtc_8h_a46a3900840f7cfabdc6225622ffd88c6}{rtc\_ih}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_a1314376c5de773828a9824b11cca2502}{handle\_alarm\_int}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_a69fd5a2cda35b5ac189d8db459142290}{rtc\_read}}(uint8\_t\ reg\_addr,\ uint8\_t\ *output);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_a87889a81ecf0db2a1c281e1c474af054}{rtc\_write}}(uint8\_t\ reg\_addr,\ uint8\_t\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_a2bccb45fe57bd2fdceef07ab2a16637f}{is\_rtc\_binary}}();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00091\ uint8\_t\ \mbox{\hyperlink{rtc_8h_a0b4a586a73bd16970971d2b52b6a5366}{to\_decimal}}(uint8\_t\ bcd\_num);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_ad41e2906df57d43ee7caf481d2ab93e0}{read\_current\_time}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_a388d5a9020707af17db740911902bfd3}{read\_time\_regs}}(\mbox{\hyperlink{structrtc__data}{rtc\_data\_t}}\ *read);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00120\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{rtc_8h_a7211989be235eddc771c4057ad5dfe77}{equal\_reads}}(\mbox{\hyperlink{structrtc__data}{rtc\_data\_t}}\ *read1,\ \mbox{\hyperlink{structrtc__data}{rtc\_data\_t}}\ *read2);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00128\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_a3d1ff5763600a995360272da8adef21a}{set\_hourly\_alarm}}();}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00133\ uint8\_t\ \mbox{\hyperlink{rtc_8h_ac8ca9da60db21908502da2cb5aaef883}{get\_current\_hour}}();\ }
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ RTC\_H}}
+
+\end{DoxyCode}

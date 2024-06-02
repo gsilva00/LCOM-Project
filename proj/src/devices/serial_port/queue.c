@@ -21,7 +21,7 @@
  * Number of elements in queue.
  */
 struct queue {
-  int *buf;
+  uint8_t *buf;
   int in,out;
   int size;
   int count;
@@ -35,7 +35,7 @@ queue_t *new_queue(unsigned int in_size) {
 
   // allocate space to store queue elements
   q->size = in_size ? in_size : 1;
-  q->buf = malloc(q->size * sizeof(int));
+  q->buf = malloc(q->size * sizeof(uint8_t));
   if (q->buf == NULL) {
     free(q);
     return NULL;
@@ -65,7 +65,7 @@ static void adjust_queue(queue_t *q) {
 static int resize_queue(queue_t *q) {
   if (q == NULL) return -1;
 
-  int *p = (int *)realloc(q->buf, 2*(q->size)*sizeof(int));
+  uint8_t *p = (uint8_t *)realloc(q->buf, 2*(q->size)*sizeof(uint8_t));
   if (p == NULL) {
     printf("Queue object was NULL!\n");
     return -1;
@@ -83,7 +83,7 @@ static int resize_queue(queue_t *q) {
   return 0;
 }
 
-int put_queue(queue_t *q, int n) {
+int put_queue(queue_t *q, uint8_t n) {
   if (q == NULL) return 1;
 
   if (q->count == q->size) {
@@ -99,7 +99,7 @@ int put_queue(queue_t *q, int n) {
   return 0;
 }
 
-int get_queue(queue_t *q, int *n) {
+int get_queue(queue_t *q, uint8_t *n) {
   if (q == NULL) return 1;
 
   if (q->count != 0) {

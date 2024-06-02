@@ -1,0 +1,4 @@
+<map id="VBE Functions" name="VBE Functions">
+<area shape="rect" id="Node000002" href="$group___g_p_u_macros.html" title="Constants for programming the video&#45;card driver." alt="" coords="5,5,107,31"/>
+<area shape="rect" id="Node000001" title="VBE functions (called using INT 10h interrupt vector, passed in AL as argument of 0x4F)" alt="" coords="155,5,269,31"/>
+</map>

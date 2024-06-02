@@ -1,0 +1,4 @@
+<map id="Line Status Register (LST)" name="Line Status Register (LST)">
+<area shape="rect" id="Node000001" title="Bits 0 to 4 reset on LSR read." alt="" coords="161,5,313,45"/>
+<area shape="rect" id="Node000002" href="$group___u_a_r_t_macros.html" title="Constants for programming the UART &#45; Universal Asynchronous Receiver&#45;Transmitter (Serial&#45;Port)." alt="" coords="5,13,113,38"/>
+</map>

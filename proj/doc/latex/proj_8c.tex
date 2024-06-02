@@ -1,0 +1,768 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/proj.c File Reference}
+\hypertarget{proj_8c}{}\label{proj_8c}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/proj.c@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/proj.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}game\+\_\+state.\+h"{}}\newline
+{\ttfamily \#include "{}devices/timer/aux\+\_\+timer.\+h"{}}\newline
+{\ttfamily \#include "{}devices/timer/i8254.\+h"{}}\newline
+{\ttfamily \#include $<$lcom/timer.\+h$>$}\newline
+{\ttfamily \#include "{}devices/kbc/i8042.\+h"{}}\newline
+{\ttfamily \#include "{}devices/kbc/keyboard.\+h"{}}\newline
+{\ttfamily \#include "{}devices/kbc/mouse.\+h"{}}\newline
+{\ttfamily \#include "{}devices/gpu/gpu.\+h"{}}\newline
+{\ttfamily \#include "{}devices/gpu/gpu\+\_\+macros.\+h"{}}\newline
+{\ttfamily \#include "{}devices/rtc/rtc.\+h"{}}\newline
+{\ttfamily \#include "{}devices/serial\+\_\+port/uart.\+h"{}}\newline
+{\ttfamily \#include "{}devices/serial\+\_\+port/uart\+\_\+macros.\+h"{}}\newline
+{\ttfamily \#include "{}objects/ball.\+h"{}}\newline
+{\ttfamily \#include "{}objects/button.\+h"{}}\newline
+{\ttfamily \#include "{}objects/cursor.\+h"{}}\newline
+{\ttfamily \#include "{}objects/goal.\+h"{}}\newline
+{\ttfamily \#include "{}objects/scoreboard.\+h"{}}\newline
+{\ttfamily \#include "{}objects/timeboard.\+h"{}}\newline
+{\ttfamily \#include "{}objects/wall.\+h"{}}\newline
+{\ttfamily \#include "{}objects/object\+\_\+controllers/ball\+\_\+controller.\+h"{}}\newline
+{\ttfamily \#include "{}objects/object\+\_\+controllers/player\+\_\+controller.\+h"{}}\newline
+{\ttfamily \#include "{}objects/object\+\_\+controllers/sky\+\_\+controller.\+h"{}}\newline
+{\ttfamily \#include "{}images/objects/baliza-\/tras-\/right.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/objects/bola.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/objects/cursor.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/objects/goal\+\_\+back.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/objects/goal\+\_\+front.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/objects/goal\+\_\+front\+\_\+right.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/objects/goal\+\_\+card.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/objects/scoreboard\+\_\+90.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/objects/timeboard\+\_\+90.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/backgrounds/sky\+\_\+10am.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/backgrounds/muro.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/buttons/play.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/buttons/play\+\_\+sem.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/buttons/close.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/buttons/close\+\_\+sem.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/menus/menu.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/menus/connection\+\_\+menu.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/menus/pausa\+\_\+menu\+\_\+90\+\_\+sem\+\_\+background.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/menus/player1win\+\_\+menu.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/menus/player2win\+\_\+menu.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/menus/draw\+\_\+menu.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/menus/timereached\+\_\+menu.\+xpm"{}}\newline
+Include dependency graph for proj.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{proj_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{proj_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{proj_8c_a0ba929c0faf835631a2b834e42409e4d}{draw\+\_\+menus}} (xpm\+\_\+image\+\_\+t \mbox{\hyperlink{proj_8c_aca88420a7e1db62dcc8361747eddd85e}{menu\+\_\+img}}, \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}one, \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}two, \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}three, \mbox{\hyperlink{struct_cursor}{Cursor}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a8a6bb85bf44d1392b588a65de57652c0}{cursor}}, bool cursor\+\_\+active)
+\item 
+int \mbox{\hyperlink{proj_8c_aeb62b55840be42aa9ff5cb318f3b57b1}{draw\+\_\+game}} (bool multiplayer, bool done)
+\item 
+bool \mbox{\hyperlink{proj_8c_a85926f7454cc8f60daabfff1f7967d01}{is\+\_\+cursor\+\_\+touching}} (\mbox{\hyperlink{struct_cursor}{Cursor}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a8a6bb85bf44d1392b588a65de57652c0}{cursor}}, \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}button)
+\item 
+bool \mbox{\hyperlink{proj_8c_a635d68173893303f79247edb1fe9c369}{check\+\_\+cursor\+\_\+position}} (\mbox{\hyperlink{struct_cursor}{Cursor}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a8a6bb85bf44d1392b588a65de57652c0}{cursor}}, bool cursor\+\_\+active, \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}one, \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}two, \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}three, \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \mbox{\hyperlink{proj_8c_ab8c8a2816ae974e5a2df22ec1e87fa51}{game\+\_\+state}}, \mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2}{Menu\+State}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a7aa13957f2040b70e6f5a5413a2b620f}{menu\+\_\+state}}, \mbox{\hyperlink{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62}{Menu\+Pause\+State}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a84f466bd8d76ba1ebfa5004c947323df}{menu\+\_\+pause\+\_\+state}})
+\item 
+void \mbox{\hyperlink{proj_8c_a91783592376f138dbba0a39c5053fae7}{reset\+\_\+states}} (bool multiplayer)
+\item 
+void \mbox{\hyperlink{proj_8c_a88626391969e5e621d5622f9305f7192}{setup\+\_\+singleplayer}} ()
+\item 
+void \mbox{\hyperlink{proj_8c_a41b14608b773ea06f3da769856742aab}{setup\+\_\+multiplayer}} ()
+\item 
+void \mbox{\hyperlink{proj_8c_a7e55dc276a3b154dfa09b3a28eb1178c}{restart\+\_\+game}} (bool multiplayer)
+\item 
+int \mbox{\hyperlink{proj_8c_a7a72220d8366dd84709e79ce415862e5}{proj\+\_\+main\+\_\+loop}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \mbox{\hyperlink{proj_8c_ab8c8a2816ae974e5a2df22ec1e87fa51}{game\+\_\+state}} = \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a4c40e60bc71a32b924ce1f08d57f9721}{MENU}}
+\item 
+static \mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2}{Menu\+State}} \mbox{\hyperlink{proj_8c_a7aa13957f2040b70e6f5a5413a2b620f}{menu\+\_\+state}} = \mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2a025126463eac5d7b4013f652b036cf4f}{HOVER\+\_\+\+SINGLEPLAYER}}
+\item 
+static \mbox{\hyperlink{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62}{Menu\+Pause\+State}} \mbox{\hyperlink{proj_8c_a84f466bd8d76ba1ebfa5004c947323df}{menu\+\_\+pause\+\_\+state}} = \mbox{\hyperlink{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62a4496c5acca2193771f7f412c8a8192ac}{HOVER\+\_\+\+RESUME}}
+\item 
+static \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} \mbox{\hyperlink{proj_8c_a9dd36b367eb32385d9cabfe5c1ae1aed}{ball\+\_\+state}} = \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9ac36e5c9ac597253191be83acf0b51d25}{STATE\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} \mbox{\hyperlink{proj_8c_a366778f061532ce05e331a6a004318b3}{ball\+\_\+state\+\_\+temporary}} = \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9ac36e5c9ac597253191be83acf0b51d25}{STATE\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \mbox{\hyperlink{proj_8c_ae0d695fc8e57547357f877b8ba3f1a3e}{player1\+\_\+state\+\_\+jump}} = \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca8ef5eeec0f3891d614f6ec711548cae5}{PLAYER\+\_\+\+JUMP\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \mbox{\hyperlink{proj_8c_aa8399b18cec5d1267bcbea03ccfbb473}{player1\+\_\+state\+\_\+jump\+\_\+temporary}} = \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca8ef5eeec0f3891d614f6ec711548cae5}{PLAYER\+\_\+\+JUMP\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \mbox{\hyperlink{proj_8c_a1e39035360f24dc2a39f2138e9722bbb}{player1\+\_\+state\+\_\+move}} = \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a871895a848d0b5a7e7ce7fed2f353554}{PLAYER\+\_\+\+MOVE\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \mbox{\hyperlink{proj_8c_ad0596685a8e2b676519f58c46870b807}{player1\+\_\+state\+\_\+move\+\_\+temporary}} = \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a871895a848d0b5a7e7ce7fed2f353554}{PLAYER\+\_\+\+MOVE\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \mbox{\hyperlink{proj_8c_acefd804ba0e68ad484126019d45c00a2}{player1\+\_\+state\+\_\+kick}} = \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96acb1f09367b8449564a9bfb5ce02eaddd}{PLAYER\+\_\+\+KICK\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \mbox{\hyperlink{proj_8c_acc03ab61c810c4b8e211e8ab5bb7e585}{player1\+\_\+state\+\_\+kick\+\_\+temporary}} = \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96acb1f09367b8449564a9bfb5ce02eaddd}{PLAYER\+\_\+\+KICK\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \mbox{\hyperlink{proj_8c_a282a907173c1145699ca5614c9756960}{player2\+\_\+state\+\_\+jump}} = \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca8ef5eeec0f3891d614f6ec711548cae5}{PLAYER\+\_\+\+JUMP\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \mbox{\hyperlink{proj_8c_a712d105cc5194ecfe78af191e75d360c}{player2\+\_\+state\+\_\+jump\+\_\+temporary}} = \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca8ef5eeec0f3891d614f6ec711548cae5}{PLAYER\+\_\+\+JUMP\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \mbox{\hyperlink{proj_8c_a0aa0710b838c446e24feeab8dc15b228}{player2\+\_\+state\+\_\+move}} = \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a871895a848d0b5a7e7ce7fed2f353554}{PLAYER\+\_\+\+MOVE\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \mbox{\hyperlink{proj_8c_ab4bae4f6974cb668ae957adc3608678c}{player2\+\_\+state\+\_\+move\+\_\+temporary}} = \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a871895a848d0b5a7e7ce7fed2f353554}{PLAYER\+\_\+\+MOVE\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \mbox{\hyperlink{proj_8c_ad2496e53a10c9b4873477910e9a815ea}{player2\+\_\+state\+\_\+kick}} = \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96acb1f09367b8449564a9bfb5ce02eaddd}{PLAYER\+\_\+\+KICK\+\_\+\+NONE}}
+\item 
+static \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \mbox{\hyperlink{proj_8c_ab9b18e68df1fca481350959f29ec9ec3}{player2\+\_\+state\+\_\+kick\+\_\+temporary}} = \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96acb1f09367b8449564a9bfb5ce02eaddd}{PLAYER\+\_\+\+KICK\+\_\+\+NONE}}
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_a805d825c5ab40bb6e8f3714028453403}{player1\+\_\+map0}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+parado\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_ac4de97313bafac1c955f0a088403c635}{player2\+\_\+map0}} = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+parado\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_ae05ab80a75c631de679f09be8a6c06b4}{ground\+\_\+map}} = (xpm\+\_\+map\+\_\+t) muro\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_ae4419c103316f2f5d603794ac8bf69da}{bola\+\_\+map}} = (xpm\+\_\+map\+\_\+t) bola\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_ab41a58f80ea540d0948a9ce79a945ecd}{goal\+\_\+map}} = (xpm\+\_\+map\+\_\+t) goal\+\_\+back\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_a35f84c5428e151cbc455ddaec4f6d98f}{goal\+\_\+right\+\_\+map}} = (xpm\+\_\+map\+\_\+t) baliza\+\_\+tras\+\_\+right\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_a2e042d7e766a042219fc4b93bc284563}{goal\+\_\+front\+\_\+map}} = (xpm\+\_\+map\+\_\+t) goal\+\_\+front\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_ad9711697b45c0d6763d5fd2e208ba861}{goal\+\_\+right\+\_\+front\+\_\+map}} = (xpm\+\_\+map\+\_\+t) goal\+\_\+front\+\_\+right\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_a448a306a7c652b99f784c4da6c46b5c9}{scoreboard\+\_\+map}} = (xpm\+\_\+map\+\_\+t) scoreboard\+\_\+90\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_a44ddee5ce5133c863f141957358ce33f}{tb\+\_\+map}} = (xpm\+\_\+map\+\_\+t) timeboard\+\_\+90\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_a0b3c455375afd5b4ce2ff4bdc20259dc}{cursor\+\_\+map}} = (xpm\+\_\+map\+\_\+t) cursor\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_a082e7c8b3087694bc068dfa03b2faa2a}{start\+\_\+selected\+\_\+map}} = (xpm\+\_\+map\+\_\+t) play\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_ae0f4393b9251d55e4a49f601f49a1647}{start\+\_\+not\+\_\+selected\+\_\+map}} = (xpm\+\_\+map\+\_\+t) play\+\_\+sem\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_a06d9b9f6f6374c846106aceb75b12005}{end\+\_\+selected\+\_\+map}} = (xpm\+\_\+map\+\_\+t) close\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_aa548d6a8e62a5a3da0eb3da0ecb7eb73}{end\+\_\+not\+\_\+selected\+\_\+map}} = (xpm\+\_\+map\+\_\+t) close\+\_\+sem\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_afdb62e7be0d5f01234a6819e056e5b38}{menu\+\_\+map}} = (xpm\+\_\+map\+\_\+t) menu\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_aaa6d15b23405961e9dde187a85a6f7d8}{connection\+\_\+menu\+\_\+map}} = (xpm\+\_\+map\+\_\+t) connection\+\_\+menu\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_a1c503b04dd8c6e8aa0f03886796457ef}{pause\+\_\+menu\+\_\+map}} = (xpm\+\_\+map\+\_\+t) pausa\+\_\+menu\+\_\+90\+\_\+sem\+\_\+background\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_a4eef9d591dcfd3606defbd0db3183bcd}{player1win\+\_\+menu\+\_\+map}} = (xpm\+\_\+map\+\_\+t) player1win\+\_\+menu\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_a79d17d3d5629650e5c11e5d911f9c76e}{player2win\+\_\+menu\+\_\+map}} = (xpm\+\_\+map\+\_\+t) player2win\+\_\+menu\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_ada922d8af3e8dec73d5e436c8370008f}{draw\+\_\+menu\+\_\+map}} = (xpm\+\_\+map\+\_\+t) draw\+\_\+menu\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_a1fef8fdb0c0cda8ce6bef7e37603ccb3}{time\+\_\+reached\+\_\+menu\+\_\+map}} = (xpm\+\_\+map\+\_\+t) timereached\+\_\+menu\+\_\+xpm
+\item 
+static xpm\+\_\+map\+\_\+t \mbox{\hyperlink{proj_8c_ab92489523b4aeac274166c574ba210b8}{goal\+\_\+card\+\_\+menu\+\_\+map}} = (xpm\+\_\+map\+\_\+t) goal\+\_\+card\+\_\+xpm
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{proj_8c_a4b13d3784cdeaf97ca9bd75675bc0d6a}{goal\+\_\+img}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{proj_8c_abbd74f717423bda8db1b31c5dfc41369}{goal\+\_\+right\+\_\+img}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{proj_8c_a4271ea53093e3a265709369c47763695}{sky\+\_\+img}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{proj_8c_aca88420a7e1db62dcc8361747eddd85e}{menu\+\_\+img}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{proj_8c_a05cb04dcabdae234fdd4b318dc0e6922}{connection\+\_\+menu\+\_\+img}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{proj_8c_a83ca8464417396fabf4879b0144063a1}{pause\+\_\+menu\+\_\+img}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{proj_8c_ac55020f33ed439ebaa0d19652ec99fd6}{player1win\+\_\+menu\+\_\+img}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{proj_8c_a39dcfc0f80f7eb0a9295d91a4d7456ce}{player2win\+\_\+menu\+\_\+img}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{proj_8c_abfdda0e797043cc8b6866e4382f92f25}{gamedraw\+\_\+menu\+\_\+img}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{proj_8c_a047cbed7cd07bc5c202d7eee276ad2cb}{time\+\_\+reached\+\_\+menu\+\_\+img}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{proj_8c_ad93e33ac74a31485590d8941b9fbc106}{goal\+\_\+card\+\_\+menu\+\_\+img}}
+\item 
+static \mbox{\hyperlink{struct_cursor}{Cursor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_a8a6bb85bf44d1392b588a65de57652c0}{cursor}}
+\item 
+static \mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}}
+\item 
+static \mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_a427622cef5fab821a8baf9d51e68450b}{player1}}
+\item 
+static \mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_aa1ad9a3d30291b7fbfbabd79cc45d4f9}{player2}}
+\item 
+static \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_a7ef701ee7a4a344877ee3bf1ffd31c73}{single}}
+\item 
+static \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_a5a6ffb89c1c8792bef738fda38be815a}{multi}}
+\item 
+static \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_aa7b62a15cbeb75a08d84b0d909989fa9}{end}}
+\item 
+static \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_a08effa53be4b4fb62961921d67dd6336}{resume}}
+\item 
+static \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_ad26ca2f5d1233dde8d30aa913f592a9f}{go\+\_\+back}}
+\item 
+static \mbox{\hyperlink{struct_wall}{Wall}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_aeb6aae4c20aca87321d0f35fd91a21d1}{muro}}
+\item 
+static \mbox{\hyperlink{struct_goal}{Goal}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_a94ce7af8961c7521a4119bb3d3216aae}{goal}}
+\item 
+static \mbox{\hyperlink{struct_goal}{Goal}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_ab67747641f04777a350de4e42a752c21}{goal\+\_\+right}}
+\item 
+static \mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_a265ad15229da2a6a05f908da093b3ed5}{scoreboard}}
+\item 
+static \mbox{\hyperlink{struct_timeboard}{Timeboard}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_a7e413c6f968806d1971f37ccde6b2411}{timeboard}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{proj_8c_a635d68173893303f79247edb1fe9c369}\label{proj_8c_a635d68173893303f79247edb1fe9c369} 
+\index{proj.c@{proj.c}!check\_cursor\_position@{check\_cursor\_position}}
+\index{check\_cursor\_position@{check\_cursor\_position}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{check\_cursor\_position()}{check\_cursor\_position()}}
+{\footnotesize\ttfamily bool check\+\_\+cursor\+\_\+position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_cursor}{Cursor}} \texorpdfstring{$\ast$}{*}}]{cursor,  }\item[{bool}]{cursor\+\_\+active,  }\item[{\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}}]{one,  }\item[{\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}}]{two,  }\item[{\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}}]{three,  }\item[{\mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}}}]{game\+\_\+state,  }\item[{\mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2}{Menu\+State}} \texorpdfstring{$\ast$}{*}}]{menu\+\_\+state,  }\item[{\mbox{\hyperlink{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62}{Menu\+Pause\+State}} \texorpdfstring{$\ast$}{*}}]{menu\+\_\+pause\+\_\+state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{proj_8c_a635d68173893303f79247edb1fe9c369_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{proj_8c_a635d68173893303f79247edb1fe9c369_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{proj_8c_aeb62b55840be42aa9ff5cb318f3b57b1}\label{proj_8c_aeb62b55840be42aa9ff5cb318f3b57b1} 
+\index{proj.c@{proj.c}!draw\_game@{draw\_game}}
+\index{draw\_game@{draw\_game}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{draw\_game()}{draw\_game()}}
+{\footnotesize\ttfamily int draw\+\_\+game (\begin{DoxyParamCaption}\item[{bool}]{multiplayer,  }\item[{bool}]{done }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{proj_8c_aeb62b55840be42aa9ff5cb318f3b57b1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{proj_8c_aeb62b55840be42aa9ff5cb318f3b57b1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{proj_8c_a0ba929c0faf835631a2b834e42409e4d}\label{proj_8c_a0ba929c0faf835631a2b834e42409e4d} 
+\index{proj.c@{proj.c}!draw\_menus@{draw\_menus}}
+\index{draw\_menus@{draw\_menus}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{draw\_menus()}{draw\_menus()}}
+{\footnotesize\ttfamily void draw\+\_\+menus (\begin{DoxyParamCaption}\item[{xpm\+\_\+image\+\_\+t}]{menu\+\_\+img,  }\item[{\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}}]{one,  }\item[{\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}}]{two,  }\item[{\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}}]{three,  }\item[{\mbox{\hyperlink{struct_cursor}{Cursor}} \texorpdfstring{$\ast$}{*}}]{cursor,  }\item[{bool}]{cursor\+\_\+active }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{proj_8c_a0ba929c0faf835631a2b834e42409e4d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=287pt]{proj_8c_a0ba929c0faf835631a2b834e42409e4d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{proj_8c_a85926f7454cc8f60daabfff1f7967d01}\label{proj_8c_a85926f7454cc8f60daabfff1f7967d01} 
+\index{proj.c@{proj.c}!is\_cursor\_touching@{is\_cursor\_touching}}
+\index{is\_cursor\_touching@{is\_cursor\_touching}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{is\_cursor\_touching()}{is\_cursor\_touching()}}
+{\footnotesize\ttfamily bool is\+\_\+cursor\+\_\+touching (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_cursor}{Cursor}} \texorpdfstring{$\ast$}{*}}]{cursor,  }\item[{\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}}]{button }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{proj_8c_a85926f7454cc8f60daabfff1f7967d01_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{proj_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{proj_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{proj.c@{proj.c}!main@{main}}
+\index{main@{main}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{proj_8c_a7a72220d8366dd84709e79ce415862e5}\label{proj_8c_a7a72220d8366dd84709e79ce415862e5} 
+\index{proj.c@{proj.c}!proj\_main\_loop@{proj\_main\_loop}}
+\index{proj\_main\_loop@{proj\_main\_loop}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{proj\_main\_loop()}{proj\_main\_loop()}}
+{\footnotesize\ttfamily int proj\+\_\+main\+\_\+loop (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{proj_8c_a91783592376f138dbba0a39c5053fae7}\label{proj_8c_a91783592376f138dbba0a39c5053fae7} 
+\index{proj.c@{proj.c}!reset\_states@{reset\_states}}
+\index{reset\_states@{reset\_states}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{reset\_states()}{reset\_states()}}
+{\footnotesize\ttfamily void reset\+\_\+states (\begin{DoxyParamCaption}\item[{bool}]{multiplayer }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{proj_8c_a91783592376f138dbba0a39c5053fae7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{proj_8c_a7e55dc276a3b154dfa09b3a28eb1178c}\label{proj_8c_a7e55dc276a3b154dfa09b3a28eb1178c} 
+\index{proj.c@{proj.c}!restart\_game@{restart\_game}}
+\index{restart\_game@{restart\_game}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{restart\_game()}{restart\_game()}}
+{\footnotesize\ttfamily void restart\+\_\+game (\begin{DoxyParamCaption}\item[{bool}]{multiplayer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{proj_8c_a7e55dc276a3b154dfa09b3a28eb1178c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{proj_8c_a7e55dc276a3b154dfa09b3a28eb1178c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{proj_8c_a41b14608b773ea06f3da769856742aab}\label{proj_8c_a41b14608b773ea06f3da769856742aab} 
+\index{proj.c@{proj.c}!setup\_multiplayer@{setup\_multiplayer}}
+\index{setup\_multiplayer@{setup\_multiplayer}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{setup\_multiplayer()}{setup\_multiplayer()}}
+{\footnotesize\ttfamily void setup\+\_\+multiplayer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{proj_8c_a41b14608b773ea06f3da769856742aab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{proj_8c_a41b14608b773ea06f3da769856742aab_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{proj_8c_a88626391969e5e621d5622f9305f7192}\label{proj_8c_a88626391969e5e621d5622f9305f7192} 
+\index{proj.c@{proj.c}!setup\_singleplayer@{setup\_singleplayer}}
+\index{setup\_singleplayer@{setup\_singleplayer}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{setup\_singleplayer()}{setup\_singleplayer()}}
+{\footnotesize\ttfamily void setup\+\_\+singleplayer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{proj_8c_a88626391969e5e621d5622f9305f7192_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{proj_8c_a88626391969e5e621d5622f9305f7192_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{proj_8c_a9dd36b367eb32385d9cabfe5c1ae1aed}\label{proj_8c_a9dd36b367eb32385d9cabfe5c1ae1aed} 
+\index{proj.c@{proj.c}!ball\_state@{ball\_state}}
+\index{ball\_state@{ball\_state}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{ball\_state}{ball\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} ball\+\_\+state = \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9ac36e5c9ac597253191be83acf0b51d25}{STATE\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a366778f061532ce05e331a6a004318b3}\label{proj_8c_a366778f061532ce05e331a6a004318b3} 
+\index{proj.c@{proj.c}!ball\_state\_temporary@{ball\_state\_temporary}}
+\index{ball\_state\_temporary@{ball\_state\_temporary}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{ball\_state\_temporary}{ball\_state\_temporary}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} ball\+\_\+state\+\_\+temporary = \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9ac36e5c9ac597253191be83acf0b51d25}{STATE\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}\label{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d} 
+\index{proj.c@{proj.c}!bola@{bola}}
+\index{bola@{bola}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{bola}{bola}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_ball}{Ball}}\texorpdfstring{$\ast$}{*} bola\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ae4419c103316f2f5d603794ac8bf69da}\label{proj_8c_ae4419c103316f2f5d603794ac8bf69da} 
+\index{proj.c@{proj.c}!bola\_map@{bola\_map}}
+\index{bola\_map@{bola\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{bola\_map}{bola\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t bola\+\_\+map = (xpm\+\_\+map\+\_\+t) bola\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a05cb04dcabdae234fdd4b318dc0e6922}\label{proj_8c_a05cb04dcabdae234fdd4b318dc0e6922} 
+\index{proj.c@{proj.c}!connection\_menu\_img@{connection\_menu\_img}}
+\index{connection\_menu\_img@{connection\_menu\_img}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{connection\_menu\_img}{connection\_menu\_img}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t connection\+\_\+menu\+\_\+img\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_aaa6d15b23405961e9dde187a85a6f7d8}\label{proj_8c_aaa6d15b23405961e9dde187a85a6f7d8} 
+\index{proj.c@{proj.c}!connection\_menu\_map@{connection\_menu\_map}}
+\index{connection\_menu\_map@{connection\_menu\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{connection\_menu\_map}{connection\_menu\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t connection\+\_\+menu\+\_\+map = (xpm\+\_\+map\+\_\+t) connection\+\_\+menu\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a8a6bb85bf44d1392b588a65de57652c0}\label{proj_8c_a8a6bb85bf44d1392b588a65de57652c0} 
+\index{proj.c@{proj.c}!cursor@{cursor}}
+\index{cursor@{cursor}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{cursor}{cursor}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_cursor}{Cursor}}\texorpdfstring{$\ast$}{*} cursor\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a0b3c455375afd5b4ce2ff4bdc20259dc}\label{proj_8c_a0b3c455375afd5b4ce2ff4bdc20259dc} 
+\index{proj.c@{proj.c}!cursor\_map@{cursor\_map}}
+\index{cursor\_map@{cursor\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{cursor\_map}{cursor\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t cursor\+\_\+map = (xpm\+\_\+map\+\_\+t) cursor\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ada922d8af3e8dec73d5e436c8370008f}\label{proj_8c_ada922d8af3e8dec73d5e436c8370008f} 
+\index{proj.c@{proj.c}!draw\_menu\_map@{draw\_menu\_map}}
+\index{draw\_menu\_map@{draw\_menu\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{draw\_menu\_map}{draw\_menu\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t draw\+\_\+menu\+\_\+map = (xpm\+\_\+map\+\_\+t) draw\+\_\+menu\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_aa7b62a15cbeb75a08d84b0d909989fa9}\label{proj_8c_aa7b62a15cbeb75a08d84b0d909989fa9} 
+\index{proj.c@{proj.c}!end@{end}}
+\index{end@{end}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{end}{end}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_button}{Button}}\texorpdfstring{$\ast$}{*} end\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_aa548d6a8e62a5a3da0eb3da0ecb7eb73}\label{proj_8c_aa548d6a8e62a5a3da0eb3da0ecb7eb73} 
+\index{proj.c@{proj.c}!end\_not\_selected\_map@{end\_not\_selected\_map}}
+\index{end\_not\_selected\_map@{end\_not\_selected\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{end\_not\_selected\_map}{end\_not\_selected\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t end\+\_\+not\+\_\+selected\+\_\+map = (xpm\+\_\+map\+\_\+t) close\+\_\+sem\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a06d9b9f6f6374c846106aceb75b12005}\label{proj_8c_a06d9b9f6f6374c846106aceb75b12005} 
+\index{proj.c@{proj.c}!end\_selected\_map@{end\_selected\_map}}
+\index{end\_selected\_map@{end\_selected\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{end\_selected\_map}{end\_selected\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t end\+\_\+selected\+\_\+map = (xpm\+\_\+map\+\_\+t) close\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ab8c8a2816ae974e5a2df22ec1e87fa51}\label{proj_8c_ab8c8a2816ae974e5a2df22ec1e87fa51} 
+\index{proj.c@{proj.c}!game\_state@{game\_state}}
+\index{game\_state@{game\_state}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{game\_state}{game\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} game\+\_\+state = \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a4c40e60bc71a32b924ce1f08d57f9721}{MENU}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_abfdda0e797043cc8b6866e4382f92f25}\label{proj_8c_abfdda0e797043cc8b6866e4382f92f25} 
+\index{proj.c@{proj.c}!gamedraw\_menu\_img@{gamedraw\_menu\_img}}
+\index{gamedraw\_menu\_img@{gamedraw\_menu\_img}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{gamedraw\_menu\_img}{gamedraw\_menu\_img}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t gamedraw\+\_\+menu\+\_\+img\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ad26ca2f5d1233dde8d30aa913f592a9f}\label{proj_8c_ad26ca2f5d1233dde8d30aa913f592a9f} 
+\index{proj.c@{proj.c}!go\_back@{go\_back}}
+\index{go\_back@{go\_back}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{go\_back}{go\_back}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_button}{Button}}\texorpdfstring{$\ast$}{*} go\+\_\+back\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a94ce7af8961c7521a4119bb3d3216aae}\label{proj_8c_a94ce7af8961c7521a4119bb3d3216aae} 
+\index{proj.c@{proj.c}!goal@{goal}}
+\index{goal@{goal}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{goal}{goal}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_goal}{Goal}}\texorpdfstring{$\ast$}{*} goal\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ad93e33ac74a31485590d8941b9fbc106}\label{proj_8c_ad93e33ac74a31485590d8941b9fbc106} 
+\index{proj.c@{proj.c}!goal\_card\_menu\_img@{goal\_card\_menu\_img}}
+\index{goal\_card\_menu\_img@{goal\_card\_menu\_img}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{goal\_card\_menu\_img}{goal\_card\_menu\_img}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t goal\+\_\+card\+\_\+menu\+\_\+img\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ab92489523b4aeac274166c574ba210b8}\label{proj_8c_ab92489523b4aeac274166c574ba210b8} 
+\index{proj.c@{proj.c}!goal\_card\_menu\_map@{goal\_card\_menu\_map}}
+\index{goal\_card\_menu\_map@{goal\_card\_menu\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{goal\_card\_menu\_map}{goal\_card\_menu\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t goal\+\_\+card\+\_\+menu\+\_\+map = (xpm\+\_\+map\+\_\+t) goal\+\_\+card\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a2e042d7e766a042219fc4b93bc284563}\label{proj_8c_a2e042d7e766a042219fc4b93bc284563} 
+\index{proj.c@{proj.c}!goal\_front\_map@{goal\_front\_map}}
+\index{goal\_front\_map@{goal\_front\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{goal\_front\_map}{goal\_front\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t goal\+\_\+front\+\_\+map = (xpm\+\_\+map\+\_\+t) goal\+\_\+front\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a4b13d3784cdeaf97ca9bd75675bc0d6a}\label{proj_8c_a4b13d3784cdeaf97ca9bd75675bc0d6a} 
+\index{proj.c@{proj.c}!goal\_img@{goal\_img}}
+\index{goal\_img@{goal\_img}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{goal\_img}{goal\_img}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t goal\+\_\+img\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ab41a58f80ea540d0948a9ce79a945ecd}\label{proj_8c_ab41a58f80ea540d0948a9ce79a945ecd} 
+\index{proj.c@{proj.c}!goal\_map@{goal\_map}}
+\index{goal\_map@{goal\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{goal\_map}{goal\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t goal\+\_\+map = (xpm\+\_\+map\+\_\+t) goal\+\_\+back\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ab67747641f04777a350de4e42a752c21}\label{proj_8c_ab67747641f04777a350de4e42a752c21} 
+\index{proj.c@{proj.c}!goal\_right@{goal\_right}}
+\index{goal\_right@{goal\_right}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{goal\_right}{goal\_right}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_goal}{Goal}}\texorpdfstring{$\ast$}{*} goal\+\_\+right\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ad9711697b45c0d6763d5fd2e208ba861}\label{proj_8c_ad9711697b45c0d6763d5fd2e208ba861} 
+\index{proj.c@{proj.c}!goal\_right\_front\_map@{goal\_right\_front\_map}}
+\index{goal\_right\_front\_map@{goal\_right\_front\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{goal\_right\_front\_map}{goal\_right\_front\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t goal\+\_\+right\+\_\+front\+\_\+map = (xpm\+\_\+map\+\_\+t) goal\+\_\+front\+\_\+right\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_abbd74f717423bda8db1b31c5dfc41369}\label{proj_8c_abbd74f717423bda8db1b31c5dfc41369} 
+\index{proj.c@{proj.c}!goal\_right\_img@{goal\_right\_img}}
+\index{goal\_right\_img@{goal\_right\_img}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{goal\_right\_img}{goal\_right\_img}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t goal\+\_\+right\+\_\+img\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a35f84c5428e151cbc455ddaec4f6d98f}\label{proj_8c_a35f84c5428e151cbc455ddaec4f6d98f} 
+\index{proj.c@{proj.c}!goal\_right\_map@{goal\_right\_map}}
+\index{goal\_right\_map@{goal\_right\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{goal\_right\_map}{goal\_right\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t goal\+\_\+right\+\_\+map = (xpm\+\_\+map\+\_\+t) baliza\+\_\+tras\+\_\+right\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ae05ab80a75c631de679f09be8a6c06b4}\label{proj_8c_ae05ab80a75c631de679f09be8a6c06b4} 
+\index{proj.c@{proj.c}!ground\_map@{ground\_map}}
+\index{ground\_map@{ground\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{ground\_map}{ground\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t ground\+\_\+map = (xpm\+\_\+map\+\_\+t) muro\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_aca88420a7e1db62dcc8361747eddd85e}\label{proj_8c_aca88420a7e1db62dcc8361747eddd85e} 
+\index{proj.c@{proj.c}!menu\_img@{menu\_img}}
+\index{menu\_img@{menu\_img}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{menu\_img}{menu\_img}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t menu\+\_\+img\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_afdb62e7be0d5f01234a6819e056e5b38}\label{proj_8c_afdb62e7be0d5f01234a6819e056e5b38} 
+\index{proj.c@{proj.c}!menu\_map@{menu\_map}}
+\index{menu\_map@{menu\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{menu\_map}{menu\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t menu\+\_\+map = (xpm\+\_\+map\+\_\+t) menu\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a84f466bd8d76ba1ebfa5004c947323df}\label{proj_8c_a84f466bd8d76ba1ebfa5004c947323df} 
+\index{proj.c@{proj.c}!menu\_pause\_state@{menu\_pause\_state}}
+\index{menu\_pause\_state@{menu\_pause\_state}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{menu\_pause\_state}{menu\_pause\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62}{Menu\+Pause\+State}} menu\+\_\+pause\+\_\+state = \mbox{\hyperlink{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62a4496c5acca2193771f7f412c8a8192ac}{HOVER\+\_\+\+RESUME}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a7aa13957f2040b70e6f5a5413a2b620f}\label{proj_8c_a7aa13957f2040b70e6f5a5413a2b620f} 
+\index{proj.c@{proj.c}!menu\_state@{menu\_state}}
+\index{menu\_state@{menu\_state}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{menu\_state}{menu\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2}{Menu\+State}} menu\+\_\+state = \mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2a025126463eac5d7b4013f652b036cf4f}{HOVER\+\_\+\+SINGLEPLAYER}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a5a6ffb89c1c8792bef738fda38be815a}\label{proj_8c_a5a6ffb89c1c8792bef738fda38be815a} 
+\index{proj.c@{proj.c}!multi@{multi}}
+\index{multi@{multi}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{multi}{multi}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_button}{Button}}\texorpdfstring{$\ast$}{*} multi\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_aeb6aae4c20aca87321d0f35fd91a21d1}\label{proj_8c_aeb6aae4c20aca87321d0f35fd91a21d1} 
+\index{proj.c@{proj.c}!muro@{muro}}
+\index{muro@{muro}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{muro}{muro}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_wall}{Wall}}\texorpdfstring{$\ast$}{*} muro\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a83ca8464417396fabf4879b0144063a1}\label{proj_8c_a83ca8464417396fabf4879b0144063a1} 
+\index{proj.c@{proj.c}!pause\_menu\_img@{pause\_menu\_img}}
+\index{pause\_menu\_img@{pause\_menu\_img}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{pause\_menu\_img}{pause\_menu\_img}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t pause\+\_\+menu\+\_\+img\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a1c503b04dd8c6e8aa0f03886796457ef}\label{proj_8c_a1c503b04dd8c6e8aa0f03886796457ef} 
+\index{proj.c@{proj.c}!pause\_menu\_map@{pause\_menu\_map}}
+\index{pause\_menu\_map@{pause\_menu\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{pause\_menu\_map}{pause\_menu\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t pause\+\_\+menu\+\_\+map = (xpm\+\_\+map\+\_\+t) pausa\+\_\+menu\+\_\+90\+\_\+sem\+\_\+background\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a427622cef5fab821a8baf9d51e68450b}\label{proj_8c_a427622cef5fab821a8baf9d51e68450b} 
+\index{proj.c@{proj.c}!player1@{player1}}
+\index{player1@{player1}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player1}{player1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_player}{Player}}\texorpdfstring{$\ast$}{*} player1\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a805d825c5ab40bb6e8f3714028453403}\label{proj_8c_a805d825c5ab40bb6e8f3714028453403} 
+\index{proj.c@{proj.c}!player1\_map0@{player1\_map0}}
+\index{player1\_map0@{player1\_map0}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player1\_map0}{player1\_map0}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1\+\_\+map0 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+parado\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ae0d695fc8e57547357f877b8ba3f1a3e}\label{proj_8c_ae0d695fc8e57547357f877b8ba3f1a3e} 
+\index{proj.c@{proj.c}!player1\_state\_jump@{player1\_state\_jump}}
+\index{player1\_state\_jump@{player1\_state\_jump}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player1\_state\_jump}{player1\_state\_jump}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} player1\+\_\+state\+\_\+jump = \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca8ef5eeec0f3891d614f6ec711548cae5}{PLAYER\+\_\+\+JUMP\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_aa8399b18cec5d1267bcbea03ccfbb473}\label{proj_8c_aa8399b18cec5d1267bcbea03ccfbb473} 
+\index{proj.c@{proj.c}!player1\_state\_jump\_temporary@{player1\_state\_jump\_temporary}}
+\index{player1\_state\_jump\_temporary@{player1\_state\_jump\_temporary}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player1\_state\_jump\_temporary}{player1\_state\_jump\_temporary}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} player1\+\_\+state\+\_\+jump\+\_\+temporary = \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca8ef5eeec0f3891d614f6ec711548cae5}{PLAYER\+\_\+\+JUMP\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_acefd804ba0e68ad484126019d45c00a2}\label{proj_8c_acefd804ba0e68ad484126019d45c00a2} 
+\index{proj.c@{proj.c}!player1\_state\_kick@{player1\_state\_kick}}
+\index{player1\_state\_kick@{player1\_state\_kick}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player1\_state\_kick}{player1\_state\_kick}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} player1\+\_\+state\+\_\+kick = \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96acb1f09367b8449564a9bfb5ce02eaddd}{PLAYER\+\_\+\+KICK\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_acc03ab61c810c4b8e211e8ab5bb7e585}\label{proj_8c_acc03ab61c810c4b8e211e8ab5bb7e585} 
+\index{proj.c@{proj.c}!player1\_state\_kick\_temporary@{player1\_state\_kick\_temporary}}
+\index{player1\_state\_kick\_temporary@{player1\_state\_kick\_temporary}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player1\_state\_kick\_temporary}{player1\_state\_kick\_temporary}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} player1\+\_\+state\+\_\+kick\+\_\+temporary = \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96acb1f09367b8449564a9bfb5ce02eaddd}{PLAYER\+\_\+\+KICK\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a1e39035360f24dc2a39f2138e9722bbb}\label{proj_8c_a1e39035360f24dc2a39f2138e9722bbb} 
+\index{proj.c@{proj.c}!player1\_state\_move@{player1\_state\_move}}
+\index{player1\_state\_move@{player1\_state\_move}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player1\_state\_move}{player1\_state\_move}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} player1\+\_\+state\+\_\+move = \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a871895a848d0b5a7e7ce7fed2f353554}{PLAYER\+\_\+\+MOVE\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ad0596685a8e2b676519f58c46870b807}\label{proj_8c_ad0596685a8e2b676519f58c46870b807} 
+\index{proj.c@{proj.c}!player1\_state\_move\_temporary@{player1\_state\_move\_temporary}}
+\index{player1\_state\_move\_temporary@{player1\_state\_move\_temporary}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player1\_state\_move\_temporary}{player1\_state\_move\_temporary}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} player1\+\_\+state\+\_\+move\+\_\+temporary = \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a871895a848d0b5a7e7ce7fed2f353554}{PLAYER\+\_\+\+MOVE\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ac55020f33ed439ebaa0d19652ec99fd6}\label{proj_8c_ac55020f33ed439ebaa0d19652ec99fd6} 
+\index{proj.c@{proj.c}!player1win\_menu\_img@{player1win\_menu\_img}}
+\index{player1win\_menu\_img@{player1win\_menu\_img}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player1win\_menu\_img}{player1win\_menu\_img}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t player1win\+\_\+menu\+\_\+img\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a4eef9d591dcfd3606defbd0db3183bcd}\label{proj_8c_a4eef9d591dcfd3606defbd0db3183bcd} 
+\index{proj.c@{proj.c}!player1win\_menu\_map@{player1win\_menu\_map}}
+\index{player1win\_menu\_map@{player1win\_menu\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player1win\_menu\_map}{player1win\_menu\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player1win\+\_\+menu\+\_\+map = (xpm\+\_\+map\+\_\+t) player1win\+\_\+menu\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_aa1ad9a3d30291b7fbfbabd79cc45d4f9}\label{proj_8c_aa1ad9a3d30291b7fbfbabd79cc45d4f9} 
+\index{proj.c@{proj.c}!player2@{player2}}
+\index{player2@{player2}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player2}{player2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_player}{Player}}\texorpdfstring{$\ast$}{*} player2\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ac4de97313bafac1c955f0a088403c635}\label{proj_8c_ac4de97313bafac1c955f0a088403c635} 
+\index{proj.c@{proj.c}!player2\_map0@{player2\_map0}}
+\index{player2\_map0@{player2\_map0}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player2\_map0}{player2\_map0}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2\+\_\+map0 = (xpm\+\_\+map\+\_\+t) personagem\+\_\+2\+\_\+parado\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a282a907173c1145699ca5614c9756960}\label{proj_8c_a282a907173c1145699ca5614c9756960} 
+\index{proj.c@{proj.c}!player2\_state\_jump@{player2\_state\_jump}}
+\index{player2\_state\_jump@{player2\_state\_jump}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player2\_state\_jump}{player2\_state\_jump}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} player2\+\_\+state\+\_\+jump = \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca8ef5eeec0f3891d614f6ec711548cae5}{PLAYER\+\_\+\+JUMP\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a712d105cc5194ecfe78af191e75d360c}\label{proj_8c_a712d105cc5194ecfe78af191e75d360c} 
+\index{proj.c@{proj.c}!player2\_state\_jump\_temporary@{player2\_state\_jump\_temporary}}
+\index{player2\_state\_jump\_temporary@{player2\_state\_jump\_temporary}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player2\_state\_jump\_temporary}{player2\_state\_jump\_temporary}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} player2\+\_\+state\+\_\+jump\+\_\+temporary = \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca8ef5eeec0f3891d614f6ec711548cae5}{PLAYER\+\_\+\+JUMP\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ad2496e53a10c9b4873477910e9a815ea}\label{proj_8c_ad2496e53a10c9b4873477910e9a815ea} 
+\index{proj.c@{proj.c}!player2\_state\_kick@{player2\_state\_kick}}
+\index{player2\_state\_kick@{player2\_state\_kick}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player2\_state\_kick}{player2\_state\_kick}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} player2\+\_\+state\+\_\+kick = \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96acb1f09367b8449564a9bfb5ce02eaddd}{PLAYER\+\_\+\+KICK\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ab9b18e68df1fca481350959f29ec9ec3}\label{proj_8c_ab9b18e68df1fca481350959f29ec9ec3} 
+\index{proj.c@{proj.c}!player2\_state\_kick\_temporary@{player2\_state\_kick\_temporary}}
+\index{player2\_state\_kick\_temporary@{player2\_state\_kick\_temporary}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player2\_state\_kick\_temporary}{player2\_state\_kick\_temporary}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} player2\+\_\+state\+\_\+kick\+\_\+temporary = \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96acb1f09367b8449564a9bfb5ce02eaddd}{PLAYER\+\_\+\+KICK\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a0aa0710b838c446e24feeab8dc15b228}\label{proj_8c_a0aa0710b838c446e24feeab8dc15b228} 
+\index{proj.c@{proj.c}!player2\_state\_move@{player2\_state\_move}}
+\index{player2\_state\_move@{player2\_state\_move}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player2\_state\_move}{player2\_state\_move}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} player2\+\_\+state\+\_\+move = \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a871895a848d0b5a7e7ce7fed2f353554}{PLAYER\+\_\+\+MOVE\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ab4bae4f6974cb668ae957adc3608678c}\label{proj_8c_ab4bae4f6974cb668ae957adc3608678c} 
+\index{proj.c@{proj.c}!player2\_state\_move\_temporary@{player2\_state\_move\_temporary}}
+\index{player2\_state\_move\_temporary@{player2\_state\_move\_temporary}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player2\_state\_move\_temporary}{player2\_state\_move\_temporary}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} player2\+\_\+state\+\_\+move\+\_\+temporary = \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a871895a848d0b5a7e7ce7fed2f353554}{PLAYER\+\_\+\+MOVE\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a39dcfc0f80f7eb0a9295d91a4d7456ce}\label{proj_8c_a39dcfc0f80f7eb0a9295d91a4d7456ce} 
+\index{proj.c@{proj.c}!player2win\_menu\_img@{player2win\_menu\_img}}
+\index{player2win\_menu\_img@{player2win\_menu\_img}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player2win\_menu\_img}{player2win\_menu\_img}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t player2win\+\_\+menu\+\_\+img\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a79d17d3d5629650e5c11e5d911f9c76e}\label{proj_8c_a79d17d3d5629650e5c11e5d911f9c76e} 
+\index{proj.c@{proj.c}!player2win\_menu\_map@{player2win\_menu\_map}}
+\index{player2win\_menu\_map@{player2win\_menu\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{player2win\_menu\_map}{player2win\_menu\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t player2win\+\_\+menu\+\_\+map = (xpm\+\_\+map\+\_\+t) player2win\+\_\+menu\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a08effa53be4b4fb62961921d67dd6336}\label{proj_8c_a08effa53be4b4fb62961921d67dd6336} 
+\index{proj.c@{proj.c}!resume@{resume}}
+\index{resume@{resume}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{resume}{resume}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_button}{Button}}\texorpdfstring{$\ast$}{*} resume\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a265ad15229da2a6a05f908da093b3ed5}\label{proj_8c_a265ad15229da2a6a05f908da093b3ed5} 
+\index{proj.c@{proj.c}!scoreboard@{scoreboard}}
+\index{scoreboard@{scoreboard}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{scoreboard}{scoreboard}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_scoreboard}{Scoreboard}}\texorpdfstring{$\ast$}{*} scoreboard\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a448a306a7c652b99f784c4da6c46b5c9}\label{proj_8c_a448a306a7c652b99f784c4da6c46b5c9} 
+\index{proj.c@{proj.c}!scoreboard\_map@{scoreboard\_map}}
+\index{scoreboard\_map@{scoreboard\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{scoreboard\_map}{scoreboard\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t scoreboard\+\_\+map = (xpm\+\_\+map\+\_\+t) scoreboard\+\_\+90\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a7ef701ee7a4a344877ee3bf1ffd31c73}\label{proj_8c_a7ef701ee7a4a344877ee3bf1ffd31c73} 
+\index{proj.c@{proj.c}!single@{single}}
+\index{single@{single}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{single}{single}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_button}{Button}}\texorpdfstring{$\ast$}{*} single\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a4271ea53093e3a265709369c47763695}\label{proj_8c_a4271ea53093e3a265709369c47763695} 
+\index{proj.c@{proj.c}!sky\_img@{sky\_img}}
+\index{sky\_img@{sky\_img}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{sky\_img}{sky\_img}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t sky\+\_\+img\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_ae0f4393b9251d55e4a49f601f49a1647}\label{proj_8c_ae0f4393b9251d55e4a49f601f49a1647} 
+\index{proj.c@{proj.c}!start\_not\_selected\_map@{start\_not\_selected\_map}}
+\index{start\_not\_selected\_map@{start\_not\_selected\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{start\_not\_selected\_map}{start\_not\_selected\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t start\+\_\+not\+\_\+selected\+\_\+map = (xpm\+\_\+map\+\_\+t) play\+\_\+sem\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a082e7c8b3087694bc068dfa03b2faa2a}\label{proj_8c_a082e7c8b3087694bc068dfa03b2faa2a} 
+\index{proj.c@{proj.c}!start\_selected\_map@{start\_selected\_map}}
+\index{start\_selected\_map@{start\_selected\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{start\_selected\_map}{start\_selected\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t start\+\_\+selected\+\_\+map = (xpm\+\_\+map\+\_\+t) play\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a44ddee5ce5133c863f141957358ce33f}\label{proj_8c_a44ddee5ce5133c863f141957358ce33f} 
+\index{proj.c@{proj.c}!tb\_map@{tb\_map}}
+\index{tb\_map@{tb\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{tb\_map}{tb\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t tb\+\_\+map = (xpm\+\_\+map\+\_\+t) timeboard\+\_\+90\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a047cbed7cd07bc5c202d7eee276ad2cb}\label{proj_8c_a047cbed7cd07bc5c202d7eee276ad2cb} 
+\index{proj.c@{proj.c}!time\_reached\_menu\_img@{time\_reached\_menu\_img}}
+\index{time\_reached\_menu\_img@{time\_reached\_menu\_img}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{time\_reached\_menu\_img}{time\_reached\_menu\_img}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t time\+\_\+reached\+\_\+menu\+\_\+img\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a1fef8fdb0c0cda8ce6bef7e37603ccb3}\label{proj_8c_a1fef8fdb0c0cda8ce6bef7e37603ccb3} 
+\index{proj.c@{proj.c}!time\_reached\_menu\_map@{time\_reached\_menu\_map}}
+\index{time\_reached\_menu\_map@{time\_reached\_menu\_map}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{time\_reached\_menu\_map}{time\_reached\_menu\_map}}
+{\footnotesize\ttfamily xpm\+\_\+map\+\_\+t time\+\_\+reached\+\_\+menu\+\_\+map = (xpm\+\_\+map\+\_\+t) timereached\+\_\+menu\+\_\+xpm\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{proj_8c_a7e413c6f968806d1971f37ccde6b2411}\label{proj_8c_a7e413c6f968806d1971f37ccde6b2411} 
+\index{proj.c@{proj.c}!timeboard@{timeboard}}
+\index{timeboard@{timeboard}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{timeboard}{timeboard}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_timeboard}{Timeboard}}\texorpdfstring{$\ast$}{*} timeboard\hspace{0.3cm}{\ttfamily [static]}}
+

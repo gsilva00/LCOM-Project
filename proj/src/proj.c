@@ -15,6 +15,7 @@
 #include "devices/gpu/gpu_macros.h"
 #include "devices/rtc/rtc.h"
 #include "devices/serial_port/uart.h"
+#include "devices/serial_port/uart_macros.h"
 
 #include "objects/ball.h"
 #include "objects/button.h"
@@ -42,11 +43,12 @@
 #include "images/buttons/play_sem.xpm"
 #include "images/buttons/close.xpm"
 #include "images/buttons/close_sem.xpm"
-#include "images/menus/draw_menu.xpm"
 #include "images/menus/menu.xpm"
+#include "images/menus/connection_menu.xpm"
 #include "images/menus/pausa_menu_90_sem_background.xpm"
 #include "images/menus/player1win_menu.xpm"
 #include "images/menus/player2win_menu.xpm"
+#include "images/menus/draw_menu.xpm"
 #include "images/menus/timereached_menu.xpm"
 
 
@@ -114,6 +116,7 @@ static xpm_map_t start_not_selected_map = (xpm_map_t) play_sem_xpm;
 static xpm_map_t end_selected_map = (xpm_map_t) close_xpm;
 static xpm_map_t end_not_selected_map = (xpm_map_t) close_sem_xpm;
 static xpm_map_t menu_map = (xpm_map_t) menu_xpm;
+static xpm_map_t connection_menu_map = (xpm_map_t) connection_menu_xpm;
 static xpm_map_t pause_menu_map = (xpm_map_t) pausa_menu_90_sem_background_xpm;
 static xpm_map_t player1win_menu_map = (xpm_map_t) player1win_menu_xpm;
 static xpm_map_t player2win_menu_map = (xpm_map_t) player2win_menu_xpm;
@@ -126,6 +129,7 @@ static xpm_image_t goal_img;
 static xpm_image_t goal_right_img;
 static xpm_image_t sky_img;
 static xpm_image_t menu_img;
+static xpm_image_t connection_menu_img;
 static xpm_image_t pause_menu_img;
 static xpm_image_t player1win_menu_img;
 static xpm_image_t player2win_menu_img;
@@ -150,18 +154,15 @@ static Scoreboard *scoreboard;
 static Timeboard *timeboard;
 
 
-int interrupt_loop() {
-  return 0;
-}
-
 void draw_menus(xpm_image_t menu_img, Button *one, Button *two, Button *three, Cursor *cursor, bool cursor_active) {
   draw_xpm(0, 0, menu_img, true);
   if (one != NULL) draw_xpm(one->x, one->y, one->img, true);
   if (two != NULL) draw_xpm(two->x, two->y, two->img, true);
   if (three != NULL) draw_xpm(three->x, three->y, three->img, true);
-  if (cursor != NULL) draw_xpm(cursor->x, cursor->y, cursor->img, true);
+  if (cursor != NULL && cursor_active) draw_xpm(cursor->x, cursor->y, cursor->img, true);
 }
 
+// Done is false when there's more to draw
 int draw_game(bool multiplayer, bool done) {
   // Draw scoreboard - clear existing numbers
   if (draw_to_background(scoreboard->x, scoreboard->y, scoreboard->img)) {
@@ -230,13 +231,16 @@ bool is_cursor_touching(Cursor *cursor, Button *button) {
   uint16_t button_bottom = button->y + button->img.height;
   return !((cursor_bottom < button->y || button_bottom < cursor->y) || (cursor_end < button->x || button_end < cursor->x));
 }
-bool check_cursor_position(Cursor *cursor, Button *single, Button *multi, Button *end, GameState game_state, MenuState *menu_state, MenuPauseState *menu_pause_state) {
+bool check_cursor_position(Cursor *cursor, bool cursor_active, Button *one, Button *two, Button *three, GameState game_state, MenuState *menu_state, MenuPauseState *menu_pause_state) {
 
-  bool is_touching_single = (single != NULL) ? is_cursor_touching(cursor, single) : false;
-  bool is_touching_multi = (multi != NULL) ? is_cursor_touching(cursor, multi) : false;
-  bool is_touching_end = (end != NULL) ? is_cursor_touching(cursor, end) : false;
+  bool is_touching_one = (one != NULL) ? is_cursor_touching(cursor, one) : false;
+  bool is_touching_two = (two != NULL) ? is_cursor_touching(cursor, two) : false;
+  bool is_touching_three = (three != NULL) ? is_cursor_touching(cursor, three) : false;
 
-  if (is_touching_single) {
+  // Make mouse deactivate if the cursor's not active
+  if (!cursor_active) return false;
+
+  if (is_touching_one) {
     if (game_state == MENU && menu_state != NULL) {
       *menu_state = HOVER_SINGLEPLAYER;
     }
@@ -244,20 +248,20 @@ bool check_cursor_position(Cursor *cursor, Button *single, Button *multi, Button
       *menu_pause_state = HOVER_RESUME;
     }
   }
-  if (is_touching_multi) {
+  if (is_touching_two) {
     if (game_state == MENU && menu_state != NULL) {
       *menu_state = HOVER_MULTIPLAYER;
     }
-    else if (game_state == PAUSE && menu_pause_state != NULL) {
+    else if ((game_state == PAUSE || game_state == MULTIPLAYER_END) && menu_pause_state != NULL) {
       *menu_pause_state = HOVER_GO_BACK;
     }
   }
-  if (is_touching_end) {
+  if (is_touching_three) {
     if (game_state == MENU && menu_state != NULL) {
       *menu_state = HOVER_EXIT;
     }
   }
-  return is_touching_single || is_touching_multi || is_touching_end;
+  return is_touching_one || is_touching_two || is_touching_three;
 }
 
 
@@ -270,7 +274,7 @@ void reset_states(bool multiplayer) {
   }
 
   if (player1_state_move != PLAYER_MOVE_NONE) {
-    player1_state_move = PLAYER_MOVE_RIGHT_END;
+    player1_state_move = PLAYER_MOVE_END;
     player1_state_jump = PLAYER_JUMP_END;
   }
   else {
@@ -280,7 +284,7 @@ void reset_states(bool multiplayer) {
 
   if (multiplayer) {
     if (player2_state_move != PLAYER_MOVE_NONE) {
-      player2_state_move = PLAYER_MOVE_RIGHT_END;
+      player2_state_move = PLAYER_MOVE_END;
       player2_state_jump = PLAYER_JUMP_END;
     }
     else {
@@ -336,6 +340,16 @@ int(proj_main_loop)(int argc, char *argv[]) {
     printf("Error while configuring RTC!\n");
     return 1;
   }
+
+  // Seed that changes every second and adds additional randomness with process id
+  srandom(time(NULL) ^ getpid());
+  int sync_frames = UART_SYNC_MAX_FRAMES; // no of frames left to establish UART communication  (20 seconds)
+  int untie_frames = random() % sync_frames; // To "untie" the machines if they start the synchronization at the same time (after untie_frames it will send the ACK)
+  printf("Untie frames: %d!\n", untie_frames);
+
+  bool connected = false;
+  bool initiated = false;
+  bool is_player1 = false; // Know which player after synchronization
   if (configure_uart()) {
     printf("Error while configuring UART!\n");
     return 1;
@@ -346,6 +360,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
   xpm_load(goal_right_front_map, XPM_8_8_8, &goal_right_img);
   xpm_load((xpm_map_t) sky_10am_xpm, XPM_8_8_8, &sky_img);
   xpm_load(menu_map, XPM_8_8_8, &menu_img);
+  xpm_load(connection_menu_map, XPM_8_8_8, &connection_menu_img);
   xpm_load(pause_menu_map, XPM_8_8_8, &pause_menu_img);
   xpm_load(player1win_menu_map, XPM_8_8_8, &player1win_menu_img);
   xpm_load(player2win_menu_map, XPM_8_8_8, &player2win_menu_img);
@@ -362,12 +377,12 @@ int(proj_main_loop)(int argc, char *argv[]) {
   resume = create_button(start_selected_map, 500, 155, true);
   go_back = create_button(end_not_selected_map, 500, 219, false);
 
-  bola = create_ball(bola_map, 400, 490, 32, 32, 10, 50);
+  bola = create_ball(bola_map, 400, 490, 62, 32, 10, 50);
   player1 = create_player(player1_map0, 200, 450, 62, 78, 10, 50, 0);
   player2 = create_player(player2_map0, 600, 450, 62, 78, 10, 50, 1);
   muro = create_wall(ground_map);
-  goal = create_goal(goal_map, 0);
-  goal_right = create_goal(goal_right_map, 1);
+  goal = create_goal(goal_map, false);
+  goal_right = create_goal(goal_right_map, true);
   scoreboard = create_scoreboard(scoreboard_map);
   timeboard = create_timeboard(tb_map);
 
@@ -427,6 +442,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
   bool touching1 = false, touching2 = false, kicking = false, kicking2 = false;
   bool done = false;
 
+  uint8_t prev_scancode = 0x00;
   uint8_t mouse_big_packet[3];
   uint8_t counter_byte_packet = 0;
   while (!done) {
@@ -441,7 +457,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
           if (msg.m_notify.interrupts & timer_int_bit) {
             timer_int_handler();
 
-            if (get_timer_intCounter() % 2 == 0) { // 30 fps
+            if (get_timer_intCounter() % 2 == 0) { // 30 FPS
               if (game_state == MENU) {
                 if (menu_state == HOVER_SINGLEPLAYER && single->selected == false) {
                   single->selected = true;
@@ -470,7 +486,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 prep_next_frame();
                 draw_menus(menu_img, single, multi, end, cursor, cursor_active);
-                check_cursor_position(cursor, single, multi, end, game_state, &menu_state, NULL);
+                check_cursor_position(cursor, cursor_active, single, multi, end, game_state, &menu_state, NULL);
                 end_next_frame();
               }
               else if (game_state == PREPARE_SINGLEPLAYER) {
@@ -484,14 +500,68 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 cursor_active = false;
               }
               else if (game_state == PREPARE_MULTIPLAYER) {
-                single->selected = false;
-                multi->selected = true;
-                end->selected = false;
+                // If there's nothing in the queue - other machine didn't send anything, it will remain at 0xFF
+                uint8_t chr = 0xFF;
+                get_queue(get_receive_q(), &chr);
 
-                setup_multiplayer();
-                draw_game(true, true);
-                game_state = MULTIPLAYER;
-                cursor_active = false;
+                if (sync_frames && !connected) {
+                  // printf("Number of tries left: %d\n", sync_frames);
+                  if (chr == 0xFF) { // Didn't receive anything
+                    send_char(UART_SYNC); // Synchronization code
+                    initiated = true;
+                    sync_frames--;
+                  }
+                  else if (chr == UART_ACK) { // Received ACK
+                    sync_frames = 0;
+                    is_player1 = true;
+                    connected = true;
+                    // printf("Connection established!\n");
+                  }
+                  else if (chr == UART_SYNC) {
+                    if (!initiated || (initiated && untie_frames == (UART_SYNC_MAX_FRAMES - sync_frames))) {
+                      // Received synchronization code (but didn't send one - both machines didnt send at the same time) OR
+                      // Both sent at the same time - untie them by the first one to enter here becoming passive
+                      send_char(UART_ACK);
+                      sync_frames = 0;
+                      is_player1 = false;
+                      connected = true;
+                      // printf("Connection established!\n");
+                    }
+                    else {
+                      sync_frames--;
+                    }
+                  }
+
+                  // Waiting menu
+                  cursor_active = false;
+                  prep_next_frame();
+                  draw_menus(connection_menu_img, NULL, NULL, NULL, cursor, cursor_active);
+                  end_next_frame();
+                }
+                else if (connected) { // Connection was established successfully
+                  single->selected = false;
+                  multi->selected = true;
+                  end->selected = false;
+
+                  setup_multiplayer();
+                  draw_game(true, true);
+                  game_state = MULTIPLAYER;
+                  cursor_active = false;
+                }
+                else { // Connection can't be established after all the tries, go back to menu
+                  // printf("Connection failed!\n");
+
+                  // Reset to try again
+                  connected = false;
+                  initiated = false;
+                  is_player1 = false;
+                  sync_frames = UART_SYNC_MAX_FRAMES;
+
+                  prep_next_frame();
+                  draw_menus(menu_img, single, multi, end, cursor, cursor_active);
+                  end_next_frame();
+                  game_state = MENU;
+                }
               }
               else if (game_state == PREPARE_PAUSE) {
                 game_state = PAUSE;
@@ -514,7 +584,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 draw_game(multi->selected, false);
                 draw_menus(pause_menu_img, resume, go_back, NULL, cursor, cursor_active);
-                check_cursor_position(cursor, single, multi, NULL, game_state, NULL, &menu_pause_state);
+                check_cursor_position(cursor, cursor_active, single, multi, NULL, game_state, NULL, &menu_pause_state);
                 end_next_frame();
               }
               else if (game_state == PAUSE_TO_PLAY) {
@@ -533,18 +603,23 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 cursor_active = false;
               }
               else if (game_state == PAUSE_TO_MENU) {
-                resume->selected = true;
-                go_back->selected = false;
+                resume->selected = false;
+                go_back->selected = true;
+
+                cursor_active = true;
 
                 prep_next_frame();
                 draw_menus(menu_img, single, multi, end, cursor, cursor_active);
                 end_next_frame();
                 game_state = MENU;
-                cursor_active = true;
               }
               else if (game_state == MULTIPLAYER_END) {
-                go_back->selected = true;
-                go_back->map = xpm_load(end_selected_map, XPM_8_8_8, &go_back->img);
+                if (menu_pause_state == HOVER_GO_BACK && go_back->selected == false) {
+                  go_back->selected = true;
+                  go_back->map = xpm_load(end_selected_map, XPM_8_8_8, &go_back->img);
+                }
+
+                cursor_active = true;
 
                 draw_game(multi->selected, false);
 
@@ -557,17 +632,28 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 else {
                   draw_menus(gamedraw_menu_img, NULL, go_back, NULL, cursor, cursor_active);
                 }
+                check_cursor_position(cursor, cursor_active, NULL, go_back, NULL, game_state, NULL, &menu_pause_state);
                 end_next_frame();
+
+                // Reset for another connection
+                connected = false;
+                initiated = false;
+                is_player1 = false;
+                sync_frames = UART_SYNC_MAX_FRAMES;
               }
               else if (game_state == TIME_LIMIT) {
                 go_back->selected = true;
                 go_back->map = xpm_load(end_selected_map, XPM_8_8_8, &go_back->img);
+
+                cursor_active = true;
 
                 draw_game(multi->selected, false);
                 draw_menus(time_reached_menu_img, NULL, go_back, NULL, cursor, cursor_active);
                 end_next_frame();
               }
               else if (game_state == GOAL) {
+                cursor_active = false;
+
                 draw_game(multi->selected, true);
                 draw_menus(goal_card_menu_img, NULL, NULL, NULL, NULL, cursor_active);
                 end_next_frame();
@@ -577,7 +663,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 draw_game(multi->selected, true);
 
                 game_state = multi->selected ? MULTIPLAYER : SINGLEPLAYER;
-                cursor_active = false;
+
                 prep_next_frame();
                 draw_xpm(bola->x, bola->y, bola->img, false);
                 draw_xpm(player1->x, player1->y, player1->img, true);
@@ -595,7 +681,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 if (player_border_collision(player1)) {
                   if (player1_state_move != PLAYER_MOVE_NONE) {
-                    player1_state_move = AFTER_PLAYER_MOVE_LEFT;
+                    player1_state_move = PLAYER_MOVE_END;
                   }
                 }
                 move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary, &player1_state_kick, &player1_state_kick_temporary);
@@ -605,15 +691,15 @@ int(proj_main_loop)(int argc, char *argv[]) {
                       if (ball_state != STATE_NONE) {
                         ball_state = JUMP_END;
                         ball_state_temporary = MOVE_LEFT_START;
-                      }else{
+                      } else {
                         ball_state = MOVE_LEFT_START;
                       }
                     }
-                  }else {
+                  } else {
                     if (ball_state != STATE_NONE) {
                       ball_state = JUMP_END;
                       ball_state_temporary = MOVE_RIGHT_START;
-                    }else {
+                    } else {
                       ball_state = MOVE_RIGHT_START;
                     }
                   }
@@ -624,7 +710,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   touching1 = false;
                 }
                 if (check_kicking_player(bola, player1) && kicking) {
-                  printf("kick\n");
                   if (ball_state != STATE_NONE) {
                     ball_state = JUMP_END;
                     ball_state_temporary = START_JUMP_RIGHT;
@@ -644,7 +729,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   game_state = TIME_LIMIT;
                 }
                 else if (scoreboard->points1 == 9 || scoreboard->points2 == 9) {
-
+                  game_state = MULTIPLAYER_END;
                 }
                 if (bola->stop) {
                   game_state = GOAL;
@@ -659,20 +744,20 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 if (player_border_collision(player1)) {
                   if (player1_state_move != PLAYER_MOVE_NONE) {
-                    player1_state_move = AFTER_PLAYER_MOVE_LEFT;
+                    player1_state_move = PLAYER_MOVE_END;
                   }
                 }
                 if (player_border_collision(player2)) {
                   if (player2_state_move != PLAYER_MOVE_NONE) {
-                    player2_state_move = AFTER_PLAYER_MOVE_LEFT;
+                    player2_state_move = PLAYER_MOVE_END;
                   }
                 }
                 if (player_player_collision(player1, player2)) {
                   if (player1_state_move != PLAYER_MOVE_NONE) {
-                    player1_state_move = AFTER_PLAYER_MOVE_LEFT;
+                    player1_state_move = PLAYER_MOVE_END;
                   }
                   if (player2_state_move != PLAYER_MOVE_NONE) {
-                    player2_state_move = AFTER_PLAYER_MOVE_LEFT;
+                    player2_state_move = PLAYER_MOVE_END;
                   }
                 }
                 move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary, &player1_state_kick, &player1_state_kick_temporary);
@@ -682,14 +767,14 @@ int(proj_main_loop)(int argc, char *argv[]) {
                     if (ball_state != STATE_NONE) {
                       ball_state = JUMP_END;
                       ball_state_temporary = MOVE_LEFT_START;
-                    }else {
+                    } else {
                       ball_state = MOVE_LEFT_START;
                     }
-                  }else {
+                  } else {
                     if (ball_state != STATE_NONE) {
                       ball_state = JUMP_END;
                       ball_state_temporary = MOVE_RIGHT_START;
-                    }else {
+                    } else {
                       ball_state = MOVE_RIGHT_START;
                     }
                   }
@@ -697,22 +782,24 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 else if (!ball_player_collision(bola, player1) && touching1) {
                   ball_state = AFTER_MOVE;
+                  ball_state_temporary = STATE_NONE;
                   touching1 = false;
                 }
 
-                if (ball_player_collision(bola, player2) && !touching2) {
+                if (ball_player_collision(bola, player2)) {
+                  
                   if (player2->x + player2->width/2 > bola->x + bola->width/2) {
-                    if (ball_state != STATE_NONE) {
+                    if (ball_state != STATE_NONE  && ball_state != MOVE_LEFT_START && ball_state != MOVE_LEFT) {
                       ball_state = JUMP_END;
                       ball_state_temporary = MOVE_LEFT_START;
-                    }else {
+                    } else if(ball_state != MOVE_LEFT){
                       ball_state = MOVE_LEFT_START;
                     }
-                  }else {
-                    if (ball_state != STATE_NONE) {
+                  } else {
+                    if (ball_state != STATE_NONE && ball_state != MOVE_RIGHT_START && ball_state != MOVE_RIGHT) {
                       ball_state = JUMP_END;
                       ball_state_temporary = MOVE_RIGHT_START;
-                    }else {
+                    } else if(ball_state != MOVE_RIGHT){
                       ball_state = MOVE_RIGHT_START;
                     }
                   }
@@ -720,6 +807,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 else if (!ball_player_collision(bola, player2) && touching2) {
                   ball_state = AFTER_MOVE;
+                  ball_state_temporary = STATE_NONE;
                   touching2 = false;
                 }
 
@@ -728,7 +816,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   if (ball_state != STATE_NONE) {
                     ball_state = JUMP_END;
                     ball_state_temporary = START_JUMP_RIGHT;
-                  }else{
+                  } else {
                     ball_state = START_JUMP_RIGHT;
                   }
                   kicking = false;
@@ -738,7 +826,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   if (ball_state != STATE_NONE) {
                     ball_state = JUMP_END;
                     ball_state_temporary = START_JUMP_LEFT;
-                  }else{
+                  } else {
                     ball_state = START_JUMP_LEFT;
                   }
                   kicking2 = false;
@@ -761,24 +849,41 @@ int(proj_main_loop)(int argc, char *argv[]) {
             kbc_ih();
 
             uint8_t scancode = get_scancode();
-            bool make = !(scancode & BREAKCODE);
-
             if (scancode == SCANCODE_E0) {
               continue;
             }
 
-            if (kbd_print_scancode(make, 1, &scancode)) {
-              return 1;
+            // Communicate the player moves
+            bool diff = (scancode != prev_scancode);
+            if (diff) prev_scancode = scancode;
+
+            if (game_state == MULTIPLAYER && diff) {
+              if (scancode == MAKECODE_UP || scancode == MAKECODE_LEFT || scancode == MAKECODE_DOWN || scancode == MAKECODE_RIGHT || scancode == BREAKCODE_LEFT || scancode == BREAKCODE_RIGHT) {
+                send_char(scancode);
+              }
             }
 
-            // PLAYER 1 CONTROLS
+
+            // PLAYER CONTROLS
             cursor_active = false;
             if (scancode == MAKECODE_UP) {
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
+              // Game controls
+              if (game_state == SINGLEPLAYER || (game_state == MULTIPLAYER && is_player1)) { 
+                // Got assigned to palyer on left
                 if (player1_state_jump == PLAYER_JUMP_NONE) {
                   player1_state_jump = START_PLAYER_JUMP;
                 }
               }
+              else if (game_state == MULTIPLAYER && !is_player1) { 
+                // Got assigned to player on right
+                if (game_state == MULTIPLAYER) {
+                  if (player2_state_jump == PLAYER_JUMP_NONE) {
+                    player2_state_jump = START_PLAYER_JUMP;
+                  }
+                }
+              }
+
+              // Menus controls
               else if (game_state == MENU) {
                 if (menu_state == HOVER_SINGLEPLAYER) {
                   menu_state = HOVER_EXIT;
@@ -793,22 +898,18 @@ int(proj_main_loop)(int argc, char *argv[]) {
               else if (game_state == PAUSE) {
                 if (menu_pause_state == HOVER_RESUME) {
                   menu_pause_state = HOVER_GO_BACK;
-                }else if (menu_pause_state == HOVER_GO_BACK) {
+                } else if (menu_pause_state == HOVER_GO_BACK) {
                   menu_pause_state = HOVER_RESUME;
                 }
               }
-              else if (game_state == PAUSE) {
-                if (menu_pause_state == HOVER_RESUME) {
-                  menu_pause_state = HOVER_GO_BACK;
-                }
-                else if (menu_pause_state == HOVER_GO_BACK) {
-                  menu_pause_state = HOVER_RESUME;
-                }
+              else if (game_state == MULTIPLAYER_END) {
+                menu_pause_state = HOVER_GO_BACK;
               }
             }
 
             if (scancode == MAKECODE_LEFT) {
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
+              // Game controls
+              if (game_state == SINGLEPLAYER || (game_state == MULTIPLAYER && is_player1)) {
                 if (player1_state_move == PLAYER_MOVE_NONE) {
                   if (player1_state_jump != PLAYER_JUMP_NONE) {
                     player1_state_move = PLAYER_MOVE_LEFT;
@@ -818,10 +919,55 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   }
                 }
               }
+              else if (game_state == MULTIPLAYER && !is_player1) {
+                if (player2_state_move == PLAYER_MOVE_NONE) {
+                  if (player2_state_jump != PLAYER_JUMP_NONE) {
+                    player2_state_move = PLAYER_MOVE_LEFT;
+                  }
+                  else {
+                    player2_state_move = PLAYER_MOVE_LEFT_START;
+                  }
+                }
+                if (ball_player_collision(bola, player2)) {
+                  if (ball_state != STATE_NONE) {
+                    ball_state = JUMP_END;
+                    ball_state_temporary = MOVE_RIGHT_START;
+                  } else {
+                    ball_state = MOVE_RIGHT_START;
+                  }
+                }
+              }
             }
 
             if (scancode == MAKECODE_DOWN) {
-              if (game_state == MENU) {
+              // Game controls
+              if (game_state == SINGLEPLAYER || (game_state == MULTIPLAYER && is_player1)) {
+                if (player1_state_kick == PLAYER_KICK_NONE) {
+                  player1_state_kick = PLAYER_KICK_START;
+                }
+                else {
+                  player1_state_kick = AFTER_PLAYER_KICK;
+                  player1_state_kick_temporary = PLAYER_KICK_START;
+                }
+                if (check_kicking_player(bola, player1)) {
+                  kicking = true;
+                }
+              }
+              else if (game_state == MULTIPLAYER && !is_player1) {
+                if (player2_state_kick == PLAYER_KICK_NONE) {
+                  player2_state_kick = PLAYER_KICK_START;
+                }
+                else {
+                  player2_state_kick = AFTER_PLAYER_KICK;
+                  player2_state_kick_temporary = PLAYER_KICK_START;
+                }
+                if (check_kicking_player(bola, player2)) {
+                  kicking2 = true;
+                }
+              }
+
+              // Menus controls
+              else if (game_state == MENU) {
                 if (menu_state == HOVER_SINGLEPLAYER) {
                   menu_state = HOVER_MULTIPLAYER;
                 }
@@ -840,87 +986,23 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   menu_pause_state = HOVER_RESUME;
                 }
               }
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
-                if (player1_state_kick == PLAYER_KICK_NONE) {
-                  player1_state_kick = PLAYER_KICK_START;
-                }
-                else {
-                  player1_state_kick = AFTER_PLAYER_KICK;
-                  player1_state_kick_temporary = PLAYER_KICK_START;
-                }
-                kicking = true;
+              else if (game_state == MULTIPLAYER_END) {
+                menu_pause_state = HOVER_GO_BACK;
               }
             }
 
             if (scancode == MAKECODE_RIGHT) {
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
-                if (player1_state_move != PLAYER_MOVE_NONE) {
-                  //player_state_move = STATE_PLAYER_MOVE_END;
-                  //player_state_move_temporary = PLAYER_MOVE_RIGHT_START;
-                }else {
+              // Game controls
+              if (game_state == SINGLEPLAYER || (game_state == MULTIPLAYER && is_player1)) {
+                if (player1_state_move == PLAYER_MOVE_NONE) {
                   if (player1_state_jump != PLAYER_JUMP_NONE) {
-                     player1_state_move = PLAYER_MOVE_RIGHT;
-                  }else {
+                    player1_state_move = PLAYER_MOVE_RIGHT;
+                  } else {
                     player1_state_move = PLAYER_MOVE_RIGHT_START;
                   }
                 }
               }
-            }
-
-            if (scancode == BREAKCODE_LEFT) {
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
-                player1_state_move = PLAYER_MOVE_LEFT_END;
-              }
-            }
-
-            if (scancode == BREAKCODE_RIGHT) {
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
-                player1_state_move = PLAYER_MOVE_RIGHT_END;
-              }
-            }
-
-            // PLAYER 2 CONTROLS
-            if (scancode == MAKECODE_W) {
-              if (game_state == MULTIPLAYER) {
-                if (player2_state_jump == PLAYER_JUMP_NONE) {
-                  player2_state_jump = START_PLAYER_JUMP;
-                }
-              }
-            }
-            if (scancode == MAKECODE_A) {
-              if (game_state == MULTIPLAYER) {
-                if (player2_state_move == PLAYER_MOVE_NONE) {
-                  if (player2_state_jump != PLAYER_JUMP_NONE) {
-                    player2_state_move = PLAYER_MOVE_LEFT;
-                  }
-                  else {
-                    player2_state_move = PLAYER_MOVE_LEFT_START;
-                  }
-                }
-                if (ball_player_collision(bola, player2)) {
-                  if (ball_state != STATE_NONE) {
-                    ball_state = JUMP_END;
-                    ball_state_temporary = MOVE_RIGHT_START;
-                  }else {
-                    ball_state = MOVE_RIGHT_START;
-                  }
-                }
-              }
-            }
-            if (scancode == MAKECODE_S) {
-              if (game_state == MULTIPLAYER) {
-                if (player2_state_kick == PLAYER_KICK_NONE) {
-                  player2_state_kick = PLAYER_KICK_START;
-                }
-                else{
-                  player2_state_kick = AFTER_PLAYER_KICK;
-                  player2_state_kick_temporary = PLAYER_KICK_START;
-                }
-                kicking2 = true;
-              }
-            }
-            if (scancode == MAKECODE_D) {
-              if (game_state == MULTIPLAYER) {
+              else if (game_state == MULTIPLAYER && !is_player1) {
                 if (player2_state_move == PLAYER_MOVE_NONE) {
                   if (player2_state_jump != PLAYER_JUMP_NONE) {
                     player2_state_move = PLAYER_MOVE_RIGHT;
@@ -933,31 +1015,38 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   if (ball_state != STATE_NONE) {
                     ball_state = JUMP_END;
                     ball_state_temporary = MOVE_LEFT_START;
-                  }else {
+                  } else {
                     ball_state = MOVE_LEFT_START;
                   }
                 }
               }
             }
 
-            if (scancode == BREAKCODE_A) {
-              if (game_state == MULTIPLAYER) {
-                player2_state_move = PLAYER_MOVE_LEFT_END;
+            if (scancode == BREAKCODE_LEFT) {
+              if (game_state == SINGLEPLAYER || (game_state == MULTIPLAYER && is_player1)) {
+                player1_state_move = PLAYER_MOVE_END;
+              }
+              else if (game_state == MULTIPLAYER && !is_player1) {
+                player2_state_move = PLAYER_MOVE_END;
               }
             }
 
-            if (scancode == BREAKCODE_D) {
-              if (game_state == MULTIPLAYER) {
-                player2_state_move = PLAYER_MOVE_RIGHT_END;
+            if (scancode == BREAKCODE_RIGHT) {
+              if (game_state == SINGLEPLAYER || (game_state == MULTIPLAYER && is_player1)) {
+                player1_state_move = PLAYER_MOVE_END;
+              }
+              else if (game_state == MULTIPLAYER && !is_player1) {
+                player2_state_move = PLAYER_MOVE_END;
               }
             }
+
 
             if (scancode == MAKECODE_ENTER) {
               enter_new_state(&game_state, &menu_state, &menu_pause_state, &done, &cursor_active);
             }
 
             if (scancode == BREAKCODE_ESC) {
-              if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
+              if (game_state == SINGLEPLAYER) { // Removed pause from multiplayer
                 if (game_state != MULTIPLAYER_END && game_state != TIME_LIMIT && bola->stop == false && game_state != GOAL) {
                   game_state = PREPARE_PAUSE;
                 }
@@ -970,7 +1059,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
 
             uint8_t packetByte = get_packetByte();
             if (counter_byte_packet == 0 && !(packetByte & BIT(3))) {
-              printf("ERROR: This packet's first byte has bit 3 at 0!\n");
+              printf("Error: This packet's first byte has bit 3 at 0!\n");
               continue;
             }
 
@@ -978,6 +1067,8 @@ int(proj_main_loop)(int argc, char *argv[]) {
             counter_byte_packet++;
 
             if (counter_byte_packet == 3) {
+              cursor_active = true;
+
               bool clicked_lb = mouse_big_packet[0] & PS2_LB;
 
               bool exists_x_ovf = mouse_big_packet[0] & PS2_XOVER;
@@ -1005,7 +1096,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
 
                 set_coordinates(cursor, delta_x % 800, delta_y % 600, mouse_big_packet[0] & PS2_XDELTA, !(mouse_big_packet[0] & PS2_YDELTA));
 
-                if (check_cursor_position(cursor, single, multi, end, game_state, &menu_state, &menu_pause_state) && clicked_lb) {
+                if (check_cursor_position(cursor, cursor_active, single, multi, end, game_state, &menu_state, &menu_pause_state) && clicked_lb) {
                   enter_new_state(&game_state, &menu_state, &menu_pause_state, &done, &cursor_active);
                 }
               }
@@ -1032,14 +1123,134 @@ int(proj_main_loop)(int argc, char *argv[]) {
               printf("Error while initializing the third buffer!\n");
               return 1;
             }
-
-            // For debugging: Only works if struct is public
-            // rtc_data_t date_time = get_current_time();
-            // printf("Today is: %d/%d/%d, %d. Current time is %d:%d:%d\n", date_time.day, date_time.month, date_time.year, date_time.weekday, date_time.hours, date_time.minutes, date_time.seconds);
           }
 
           if (msg.m_notify.interrupts & uart_int_bit) { 
+            uart_ih();
+
+            if (connected) {
+              printf("Entered drawing the other!\n");
+              uint8_t uart_scancode;
+              get_queue(get_receive_q(), &uart_scancode);
             
+              if (uart_scancode == MAKECODE_UP) {
+                if (is_player1) { // If you're player1, data from UART is player2
+                  if (player2_state_jump == PLAYER_JUMP_NONE) {
+                    player2_state_jump = START_PLAYER_JUMP;
+                  }
+                }
+                else { // If you're player2, data from UART is player1
+                  if (player1_state_jump == PLAYER_JUMP_NONE) {
+                    player1_state_jump = START_PLAYER_JUMP;
+                  }
+                }
+              }
+              if (uart_scancode == MAKECODE_LEFT) {
+                printf("Clciked left!\n");
+                if (is_player1) {
+                  if (player2_state_move == PLAYER_MOVE_NONE) {
+                    if (player2_state_jump != PLAYER_JUMP_NONE) {
+                      player2_state_move = PLAYER_MOVE_LEFT;
+                    }
+                    else {
+                      player2_state_move = PLAYER_MOVE_LEFT_START;
+                    }
+                  }
+                  if (ball_player_collision(bola, player2)) {
+                    if (ball_state != STATE_NONE) {
+                      ball_state = JUMP_END;
+                      ball_state_temporary = MOVE_RIGHT_START;
+                    } else {
+                      ball_state = MOVE_RIGHT_START;
+                    }
+                  }
+                }
+                else {
+                  if (player1_state_move == PLAYER_MOVE_NONE) {
+                    if (player1_state_jump != PLAYER_JUMP_NONE) {
+                      player1_state_move = PLAYER_MOVE_LEFT;
+                    }
+                    else {
+                      player1_state_move = PLAYER_MOVE_LEFT_START;
+                    }
+                  }
+                }
+              }
+              if (uart_scancode == MAKECODE_DOWN) {
+                if (is_player1) {
+                  if (player2_state_kick == PLAYER_KICK_NONE) {
+                    player2_state_kick = PLAYER_KICK_START;
+                  }
+                  else {
+                    player2_state_kick = AFTER_PLAYER_KICK;
+                    player2_state_kick_temporary = PLAYER_KICK_START;
+                  }
+                  if (check_kicking_player(bola, player2)) {
+                    kicking2 = true;
+                  }
+                }
+                else {
+                  if (player1_state_kick == PLAYER_KICK_NONE) {
+                    player1_state_kick = PLAYER_KICK_START;
+                  }
+                  else {
+                    player1_state_kick = AFTER_PLAYER_KICK;
+                    player1_state_kick_temporary = PLAYER_KICK_START;
+                  }
+                  if (check_kicking_player(bola, player1)) {
+                    kicking = true;
+                  }
+                }
+              }
+              if (uart_scancode == MAKECODE_RIGHT) {
+                printf("Right cliedk!\n");
+                if (is_player1) {
+                  if (player2_state_move == PLAYER_MOVE_NONE) {
+                    if (player2_state_jump != PLAYER_JUMP_NONE) {
+                      player2_state_move = PLAYER_MOVE_RIGHT;
+                    }
+                    else {
+                      player2_state_move = PLAYER_MOVE_RIGHT_START;
+                    }
+                  }
+                  if (ball_player_collision(bola, player2)) {
+                    if (ball_state != STATE_NONE) {
+                      ball_state = JUMP_END;
+                      ball_state_temporary = MOVE_LEFT_START;
+                    } else {
+                      ball_state = MOVE_LEFT_START;
+                    }
+                  }
+                }
+                else {
+                  if (player1_state_move == PLAYER_MOVE_NONE) {
+                    if (player1_state_jump != PLAYER_JUMP_NONE) {
+                      player1_state_move = PLAYER_MOVE_RIGHT;
+                    } else {
+                      player1_state_move = PLAYER_MOVE_RIGHT_START;
+                    }
+                  }
+                }
+              }
+
+              if (uart_scancode == BREAKCODE_LEFT) {
+                if (is_player1) {
+                  player2_state_move = PLAYER_MOVE_END;
+                } 
+                else {
+                  player1_state_move = PLAYER_MOVE_END;
+                }
+              }
+
+              if (uart_scancode == BREAKCODE_RIGHT) {
+                if (is_player1) {
+                  player2_state_move = PLAYER_MOVE_END;
+                }
+                else {
+                  player1_state_move = PLAYER_MOVE_END;
+                }
+              }
+            }
           }
           break;
         default:

@@ -1,0 +1,119 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/objects/scoreboard.c File Reference}
+\hypertarget{scoreboard_8c}{}\label{scoreboard_8c}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/scoreboard.c@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/scoreboard.c}}
+{\ttfamily \#include "{}scoreboard.\+h"{}}\newline
+Include dependency graph for scoreboard.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{scoreboard_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{scoreboard_8c_a7f4651ba26de9460b5d9a5ce842dd870}{create\+\_\+scoreboard}} (xpm\+\_\+map\+\_\+t pic)
+\begin{DoxyCompactList}\small\item\em Constructor of the \doxylink{struct_scoreboard}{Scoreboard} "{}class"{} (C-\/class == struct + functions) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{scoreboard_8c_aad6cc7ea3c053596b32851593bc9bc69}{destroy\+\_\+scoreboard}} (\mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*}sc)
+\begin{DoxyCompactList}\small\item\em Destructor of the \doxylink{struct_scoreboard}{Scoreboard} "{}class"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{scoreboard_8c_aad4115d4c0221f58c45ad453f75e1e04}{add\+\_\+points\+\_\+1}} (\mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*}sc)
+\begin{DoxyCompactList}\small\item\em Function that adds a goal to the first player\textquotesingle{}s score. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{scoreboard_8c_a6baf68ab05f5b4985090043e7a425277}{add\+\_\+points\+\_\+2}} (\mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*}sc)
+\begin{DoxyCompactList}\small\item\em Function that adds a goal to the second player\textquotesingle{}s score. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{scoreboard_8c_aad4115d4c0221f58c45ad453f75e1e04}\label{scoreboard_8c_aad4115d4c0221f58c45ad453f75e1e04} 
+\index{scoreboard.c@{scoreboard.c}!add\_points\_1@{add\_points\_1}}
+\index{add\_points\_1@{add\_points\_1}!scoreboard.c@{scoreboard.c}}
+\doxysubsubsection{\texorpdfstring{add\_points\_1()}{add\_points\_1()}}
+{\footnotesize\ttfamily void add\+\_\+points\+\_\+1 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*}}]{sc }\end{DoxyParamCaption})}
+
+
+
+Function that adds a goal to the first player\textquotesingle{}s score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sc} & Pointer to the \doxylink{struct_scoreboard}{Scoreboard} struct to be deallocated. If sc is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scoreboard_8c_aad4115d4c0221f58c45ad453f75e1e04_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{scoreboard_8c_a6baf68ab05f5b4985090043e7a425277}\label{scoreboard_8c_a6baf68ab05f5b4985090043e7a425277} 
+\index{scoreboard.c@{scoreboard.c}!add\_points\_2@{add\_points\_2}}
+\index{add\_points\_2@{add\_points\_2}!scoreboard.c@{scoreboard.c}}
+\doxysubsubsection{\texorpdfstring{add\_points\_2()}{add\_points\_2()}}
+{\footnotesize\ttfamily void add\+\_\+points\+\_\+2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*}}]{sc }\end{DoxyParamCaption})}
+
+
+
+Function that adds a goal to the second player\textquotesingle{}s score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sc} & Pointer to the \doxylink{struct_scoreboard}{Scoreboard} struct to be deallocated. If sc is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scoreboard_8c_a6baf68ab05f5b4985090043e7a425277_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{scoreboard_8c_a7f4651ba26de9460b5d9a5ce842dd870}\label{scoreboard_8c_a7f4651ba26de9460b5d9a5ce842dd870} 
+\index{scoreboard.c@{scoreboard.c}!create\_scoreboard@{create\_scoreboard}}
+\index{create\_scoreboard@{create\_scoreboard}!scoreboard.c@{scoreboard.c}}
+\doxysubsubsection{\texorpdfstring{create\_scoreboard()}{create\_scoreboard()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*} create\+\_\+scoreboard (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{pic }\end{DoxyParamCaption})}
+
+
+
+Constructor of the \doxylink{struct_scoreboard}{Scoreboard} "{}class"{} (C-\/class == struct + functions) 
+
+Dynamically allocates in memory a \doxylink{struct_scoreboard}{Scoreboard} instance, effectively initializing the object
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic} & XPM map used to make the scoreboard\textquotesingle{}s image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the \doxylink{struct_scoreboard}{Scoreboard} struct dynamically allocated in memory. If memory allocation fails, returns NULL 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{scoreboard_8c_a7f4651ba26de9460b5d9a5ce842dd870_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{scoreboard_8c_aad6cc7ea3c053596b32851593bc9bc69}\label{scoreboard_8c_aad6cc7ea3c053596b32851593bc9bc69} 
+\index{scoreboard.c@{scoreboard.c}!destroy\_scoreboard@{destroy\_scoreboard}}
+\index{destroy\_scoreboard@{destroy\_scoreboard}!scoreboard.c@{scoreboard.c}}
+\doxysubsubsection{\texorpdfstring{destroy\_scoreboard()}{destroy\_scoreboard()}}
+{\footnotesize\ttfamily void destroy\+\_\+scoreboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*}}]{sc }\end{DoxyParamCaption})}
+
+
+
+Destructor of the \doxylink{struct_scoreboard}{Scoreboard} "{}class"{}. 
+
+Frees the memory allocated for the \doxylink{struct_scoreboard}{Scoreboard} instance and its buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em sc} & Pointer to the \doxylink{struct_scoreboard}{Scoreboard} struct to be deallocated. If bl is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{scoreboard_8c_aad6cc7ea3c053596b32851593bc9bc69_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,62 @@
+\doxysubsection{Read-\/\+Back Command Byte}
+\hypertarget{group___r_b_command}{}\label{group___r_b_command}\index{Read-\/Back Command Byte@{Read-\/Back Command Byte}}
+
+
+Meaning of each of the bits of the Read-\/\+Back Command Byte.  
+
+
+Collaboration diagram for Read-\/\+Back Command Byte\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{group___r_b_command}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___r_b_command_ga6c248216df24b5e9d907d126d80bd195}{TIMER\+\_\+\+RB\+\_\+\+COUNT\+\_\+}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Active low. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_b_command_ga08b4952bb7058684a3f8f66be04dd45e}{TIMER\+\_\+\+RB\+\_\+\+STATUS\+\_\+}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em Active low. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___r_b_command_gaf598b17740e07842a0545af512714711}{TIMER\+\_\+\+RB\+\_\+\+SEL}}(n)~BIT((n) + 1)
+\begin{DoxyCompactList}\small\item\em Select which counter the info will pertain to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Meaning of each of the bits of the Read-\/\+Back Command Byte. 
+
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___r_b_command_ga6c248216df24b5e9d907d126d80bd195}\label{group___r_b_command_ga6c248216df24b5e9d907d126d80bd195} 
+\index{Read-\/Back Command Byte@{Read-\/Back Command Byte}!TIMER\_RB\_COUNT\_@{TIMER\_RB\_COUNT\_}}
+\index{TIMER\_RB\_COUNT\_@{TIMER\_RB\_COUNT\_}!Read-\/Back Command Byte@{Read-\/Back Command Byte}}
+\doxysubsubsubsection{\texorpdfstring{TIMER\_RB\_COUNT\_}{TIMER\_RB\_COUNT\_}}
+{\footnotesize\ttfamily \#define TIMER\+\_\+\+RB\+\_\+\+COUNT\+\_\+~BIT(5)}
+
+
+
+Active low. 
+
+When set to 1, the output of the Read-\/\+Back Command won\textquotesingle{}t have the count info (count disabled) \Hypertarget{group___r_b_command_gaf598b17740e07842a0545af512714711}\label{group___r_b_command_gaf598b17740e07842a0545af512714711} 
+\index{Read-\/Back Command Byte@{Read-\/Back Command Byte}!TIMER\_RB\_SEL@{TIMER\_RB\_SEL}}
+\index{TIMER\_RB\_SEL@{TIMER\_RB\_SEL}!Read-\/Back Command Byte@{Read-\/Back Command Byte}}
+\doxysubsubsubsection{\texorpdfstring{TIMER\_RB\_SEL}{TIMER\_RB\_SEL}}
+{\footnotesize\ttfamily \#define TIMER\+\_\+\+RB\+\_\+\+SEL(\begin{DoxyParamCaption}\item[{}]{n }\end{DoxyParamCaption})~BIT((n) + 1)}
+
+
+
+Select which counter the info will pertain to. 
+
+\Hypertarget{group___r_b_command_ga08b4952bb7058684a3f8f66be04dd45e}\label{group___r_b_command_ga08b4952bb7058684a3f8f66be04dd45e} 
+\index{Read-\/Back Command Byte@{Read-\/Back Command Byte}!TIMER\_RB\_STATUS\_@{TIMER\_RB\_STATUS\_}}
+\index{TIMER\_RB\_STATUS\_@{TIMER\_RB\_STATUS\_}!Read-\/Back Command Byte@{Read-\/Back Command Byte}}
+\doxysubsubsubsection{\texorpdfstring{TIMER\_RB\_STATUS\_}{TIMER\_RB\_STATUS\_}}
+{\footnotesize\ttfamily \#define TIMER\+\_\+\+RB\+\_\+\+STATUS\+\_\+~BIT(4)}
+
+
+
+Active low. 
+
+When set to 1, the output of the Read-\/\+Back Command won\textquotesingle{}t have the status info (status disabled) 

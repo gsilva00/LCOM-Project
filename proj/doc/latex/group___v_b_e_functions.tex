@@ -1,0 +1,73 @@
+\doxysubsection{VBE Functions}
+\hypertarget{group___v_b_e_functions}{}\label{group___v_b_e_functions}\index{VBE Functions@{VBE Functions}}
+
+
+VBE functions (called using INT 10h interrupt vector, passed in AL as argument of 0x4F)  
+
+
+Collaboration diagram for VBE Functions\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{group___v_b_e_functions}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___v_b_e_functions_gab3ae6cab04af0d37663adf157287f987}{VBE\+\_\+\+CONTROLLER\+\_\+\+INFO}}~0x00
+\item 
+\#define \mbox{\hyperlink{group___v_b_e_functions_ga2ecbf8f92f9322fedec91461747c4843}{VBE\+\_\+\+MODE\+\_\+\+INFO}}~0x01
+\item 
+\#define \mbox{\hyperlink{group___v_b_e_functions_gab32156e1d72cb92b120bb16883c87eea}{SET\+\_\+\+VBE\+\_\+\+MODE}}~0x02
+\item 
+\#define \mbox{\hyperlink{group___v_b_e_functions_ga9acb445e46a9b7c6e0741215252e6adc}{SET\+\_\+\+LINEAR\+\_\+\+FB}}~BIT(14)
+\item 
+\#define \mbox{\hyperlink{group___v_b_e_functions_ga21e586ce26c14a8b36c7e3800fa9e330}{PRESERVE\+\_\+\+DISP\+\_\+\+MEM}}~BIT(15)
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+VBE functions (called using INT 10h interrupt vector, passed in AL as argument of 0x4F) 
+
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___v_b_e_functions_ga21e586ce26c14a8b36c7e3800fa9e330}\label{group___v_b_e_functions_ga21e586ce26c14a8b36c7e3800fa9e330} 
+\index{VBE Functions@{VBE Functions}!PRESERVE\_DISP\_MEM@{PRESERVE\_DISP\_MEM}}
+\index{PRESERVE\_DISP\_MEM@{PRESERVE\_DISP\_MEM}!VBE Functions@{VBE Functions}}
+\doxysubsubsubsection{\texorpdfstring{PRESERVE\_DISP\_MEM}{PRESERVE\_DISP\_MEM}}
+{\footnotesize\ttfamily \#define PRESERVE\+\_\+\+DISP\+\_\+\+MEM~BIT(15)}
+
+(In BX register) Set bit 15\+: preserve display memory \Hypertarget{group___v_b_e_functions_ga9acb445e46a9b7c6e0741215252e6adc}\label{group___v_b_e_functions_ga9acb445e46a9b7c6e0741215252e6adc} 
+\index{VBE Functions@{VBE Functions}!SET\_LINEAR\_FB@{SET\_LINEAR\_FB}}
+\index{SET\_LINEAR\_FB@{SET\_LINEAR\_FB}!VBE Functions@{VBE Functions}}
+\doxysubsubsubsection{\texorpdfstring{SET\_LINEAR\_FB}{SET\_LINEAR\_FB}}
+{\footnotesize\ttfamily \#define SET\+\_\+\+LINEAR\+\_\+\+FB~BIT(14)}
+
+(In BX register) Set bit 14\+: use linear/flat framebuffer \Hypertarget{group___v_b_e_functions_gab32156e1d72cb92b120bb16883c87eea}\label{group___v_b_e_functions_gab32156e1d72cb92b120bb16883c87eea} 
+\index{VBE Functions@{VBE Functions}!SET\_VBE\_MODE@{SET\_VBE\_MODE}}
+\index{SET\_VBE\_MODE@{SET\_VBE\_MODE}!VBE Functions@{VBE Functions}}
+\doxysubsubsubsection{\texorpdfstring{SET\_VBE\_MODE}{SET\_VBE\_MODE}}
+{\footnotesize\ttfamily \#define SET\+\_\+\+VBE\+\_\+\+MODE~0x02}
+
+Set VBE mode. Mode passed in BX register, which should have BIT(14) set \Hypertarget{group___v_b_e_functions_gab3ae6cab04af0d37663adf157287f987}\label{group___v_b_e_functions_gab3ae6cab04af0d37663adf157287f987} 
+\index{VBE Functions@{VBE Functions}!VBE\_CONTROLLER\_INFO@{VBE\_CONTROLLER\_INFO}}
+\index{VBE\_CONTROLLER\_INFO@{VBE\_CONTROLLER\_INFO}!VBE Functions@{VBE Functions}}
+\doxysubsubsubsection{\texorpdfstring{VBE\_CONTROLLER\_INFO}{VBE\_CONTROLLER\_INFO}}
+{\footnotesize\ttfamily \#define VBE\+\_\+\+CONTROLLER\+\_\+\+INFO~0x00}
+
+Get VBE controller information. Args\+:
+\begin{DoxyItemize}
+\item real-\/mode address of buffer to be filled with capabilties of controller in registers ES\+:DI 
+\end{DoxyItemize}\Hypertarget{group___v_b_e_functions_ga2ecbf8f92f9322fedec91461747c4843}\label{group___v_b_e_functions_ga2ecbf8f92f9322fedec91461747c4843} 
+\index{VBE Functions@{VBE Functions}!VBE\_MODE\_INFO@{VBE\_MODE\_INFO}}
+\index{VBE\_MODE\_INFO@{VBE\_MODE\_INFO}!VBE Functions@{VBE Functions}}
+\doxysubsubsubsection{\texorpdfstring{VBE\_MODE\_INFO}{VBE\_MODE\_INFO}}
+{\footnotesize\ttfamily \#define VBE\+\_\+\+MODE\+\_\+\+INFO~0x01}
+
+Get VBE mode information. Args\+:
+\begin{DoxyItemize}
+\item Mode in register CX
+\item Real-\/mode address of buffer to be filled with parameters of specified mode (VRAM\textquotesingle{}s physical address, among others) in registers ES\+:DI 
+\end{DoxyItemize}

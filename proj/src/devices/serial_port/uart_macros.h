@@ -6,13 +6,32 @@
 
 /**
  * @defgroup UARTMacros UART Macros
- * @brief Constants for programming the UART - Universal asynchronous receiver-transmitter (Serial-Port).
+ * @brief Constants for programming the UART - Universal Asynchronous Receiver-Transmitter (Serial-Port).
  * @{
  */
 
 
+/** 
+ * @defgroup NumConsts8042 KBC Numeric Constants
+ * @ingroup i8042
+ * @brief Numeric Constants (Constants and bytes for synchronization)
+ * @{
+ */
+#define UART_SYNC_MAX_FRAMES 300
+#define UART_SYNC 0x00
+#define UART_ACK 0x01
+/** @} */
+
+
+/** 
+ * @defgroup UARTIRQ UART's IRQs
+ * @ingroup UARTMacros
+ * @brief UART Interrupt Request Lines: 
+ * @{
+ */
 #define COM1_IRQ 4 /**< @brief COM1's IRQ line */
-#define COM2_IRQ 3 /**< @brief COM2's IRQ line */
+#define COM2_IRQ 3 /**< @brief COM2's IRQ line - Not used */
+/** @} */
 
 /**
  * @defgroup UARTPorts UART's Ports
@@ -23,7 +42,7 @@
  * @{
  */
 #define COM1_PORT 0x3F8 /**< @brief COM1's base address */
-#define COM2_PORT 0x2F8 /**< @brief COM2's base address */
+#define COM2_PORT 0x2F8 /**< @brief COM2's base address - Not used */
 /** @} */
 
 /**

@@ -1,0 +1,121 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/devices/kbc/keyboard.h File Reference}
+\hypertarget{keyboard_8h}{}\label{keyboard_8h}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/kbc/keyboard.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/devices/kbc/keyboard.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for keyboard.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{keyboard_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{keyboard_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{keyboard_8h_aa7a491d4d95eab5ca5326c4000ad67f8}{kbd\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes and enables keyboard interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{keyboard_8h_a5bdf6cfb570c375192b0d87913b65c57}{kbd\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes keyboard interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{keyboard_8h_aee81e59c2a9baaacf9c588e40546dd48}{reset\+\_\+keyboard}} ()
+\begin{DoxyCompactList}\small\item\em Re-\/enables keyboard interrupts (that lcf\+\_\+start() disabled) by writing the appropriate command byte. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{keyboard_8h_abc8ff8ed43aabe9661e0e21f3d7e6000}{get\+\_\+scancode}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the scancode static global variable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{keyboard_8h_abc8ff8ed43aabe9661e0e21f3d7e6000}\label{keyboard_8h_abc8ff8ed43aabe9661e0e21f3d7e6000} 
+\index{keyboard.h@{keyboard.h}!get\_scancode@{get\_scancode}}
+\index{get\_scancode@{get\_scancode}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{get\_scancode()}{get\_scancode()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+scancode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the scancode static global variable. 
+
+Getter is needed because of the use of the static keyword (makes the variable only accesible in the file it\textquotesingle{}s declared). Provides encapsulation
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t value corresponding to the scancode 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{keyboard_8h_abc8ff8ed43aabe9661e0e21f3d7e6000_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{keyboard_8h_aa7a491d4d95eab5ca5326c4000ad67f8}\label{keyboard_8h_aa7a491d4d95eab5ca5326c4000ad67f8} 
+\index{keyboard.h@{keyboard.h}!kbd\_subscribe\_int@{kbd\_subscribe\_int}}
+\index{kbd\_subscribe\_int@{kbd\_subscribe\_int}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbd\_subscribe\_int()}{kbd\_subscribe\_int()}}
+{\footnotesize\ttfamily int kbd\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Subscribes and enables keyboard interrupts. 
+
+Uses the IRQ\+\_\+\+EXCLUSIVE flag to avoid conflicts with Minix\textquotesingle{}s default keyboard IH
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & address of memory to be initialized with the bit number to be set in the mask returned upon an interrupt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{keyboard_8h_aa7a491d4d95eab5ca5326c4000ad67f8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{keyboard_8h_a5bdf6cfb570c375192b0d87913b65c57}\label{keyboard_8h_a5bdf6cfb570c375192b0d87913b65c57} 
+\index{keyboard.h@{keyboard.h}!kbd\_unsubscribe\_int@{kbd\_unsubscribe\_int}}
+\index{kbd\_unsubscribe\_int@{kbd\_unsubscribe\_int}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbd\_unsubscribe\_int()}{kbd\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int kbd\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes keyboard interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{keyboard_8h_a5bdf6cfb570c375192b0d87913b65c57_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{keyboard_8h_aee81e59c2a9baaacf9c588e40546dd48}\label{keyboard_8h_aee81e59c2a9baaacf9c588e40546dd48} 
+\index{keyboard.h@{keyboard.h}!reset\_keyboard@{reset\_keyboard}}
+\index{reset\_keyboard@{reset\_keyboard}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{reset\_keyboard()}{reset\_keyboard()}}
+{\footnotesize\ttfamily int reset\+\_\+keyboard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Re-\/enables keyboard interrupts (that lcf\+\_\+start() disabled) by writing the appropriate command byte. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{keyboard_8h_aee81e59c2a9baaacf9c588e40546dd48_cgraph}
+\end{center}
+\end{figure}

@@ -32,24 +32,24 @@ queue_t *new_queue(unsigned int ini_size);
 void delete_queue(queue_t *q);
 
 /**
- * @brief Enqueues an integer into the queue
+ * @brief Enqueues a value into the queue
  * @details If the queue is full, it tries to resize the queue. After successfully enqueuing, it adjusts the queue
  *
- * @param q Pointer to the queue_t struct where the integer will be enqueued
- * @param n Int value to be enqueued
+ * @param q Pointer to the queue struct where the value will be enqueued
+ * @param n 8-bit unsigned value to be enqueued (what is passed through the serial port)
  * @return 0 upon success, non-zero otherwise
  */
-int put_queue(queue_t *q, int n); 
+int put_queue(queue_t *q, uint8_t n); 
 
 /**
- * @brief Dequeues an integer from the queue
+ * @brief Dequeues a value from the queue
  * @details If the queue is empty, it returns an error. After successfully dequeuing, it adjusts the queue
  *
- * @param q Pointer to the queue_t struct from where the integer will be dequeued
- * @param n Pointer to an integer where the dequeued value will be stored
+ * @param q Pointer to the queue struct from where the value will be dequeued
+ * @param n Pointer to a variable where the dequeued value will be stored
  * @return 0 upon success, non-zero otherwise
  */
-int get_queue(queue_t *q, int *n);
+int get_queue(queue_t *q, uint8_t *n);
 
 
 #endif

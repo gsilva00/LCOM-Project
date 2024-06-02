@@ -1,0 +1,13 @@
+<map id="i8042 Macros" name="i8042 Macros">
+<area shape="rect" id="Node000010" href="$group___ack_bytes.html" title="PS/2 Acknowledgement Bytes." alt="" coords="176,5,351,45"/>
+<area shape="rect" id="Node000008" href="$group___k_b_c_command_b.html" title="Returned on OUTBUF_REG after CMDBYTE_READ." alt="" coords="177,70,349,95"/>
+<area shape="rect" id="Node000007" href="$group___k_b_c_commands.html" title="They are written to CMD_REG." alt="" coords="194,119,333,145"/>
+<area shape="rect" id="Node000003" href="$group___k_b_c_i_r_q.html" title="KBC Interrupt Request Lines:" alt="" coords="216,169,311,194"/>
+<area shape="rect" id="Node000004" href="$group___k_b_c_regs.html" title="KBC&#39;s Registers Addresses." alt="" coords="201,218,326,243"/>
+<area shape="rect" id="Node000005" href="$group___k_b_c_status.html" title="Meaning of each of bits in the Status Byte." alt="" coords="194,267,333,293"/>
+<area shape="rect" id="Node000011" href="$group___m_w___args.html" title="Passed in KBC_INBUF; Responses to them in KBC_OUTBUF &#45; Directly to the mouse:" alt="" coords="163,317,364,357"/>
+<area shape="rect" id="Node000009" href="$group___mouse_packet.html" title="Meaning of each of the bits in the Mouse&#39;s Data Packet&#39;s 1st byte." alt="" coords="169,381,358,421"/>
+<area shape="rect" id="Node000002" href="$group___num_consts8042.html" title="Numeric Constants (frequencies and other miscellaneous stuff)" alt="" coords="175,446,352,471"/>
+<area shape="rect" id="Node000006" href="$group___scancode_auxs.html" title="Auxiliars values for scancode manipulation." alt="" coords="177,495,350,521"/>
+<area shape="rect" id="Node000001" title="Constants for programming the i8042 KBC &#45; Keyboard (and Mouse) Controller." alt="" coords="5,243,115,269"/>
+</map>

@@ -147,7 +147,7 @@ int read_current_time() {
     }
   }
 
-  printf("%s ERROR! Ran for %d tries and didn't succeed!\n", __func__, tries);
+  printf("%s Error: Ran for %d tries and didn't succeed!\n", __func__, MAX_READS);
   return 1;
 }
 

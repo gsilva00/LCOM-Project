@@ -1,0 +1,10 @@
+<map id="reset_keyboard" name="reset_keyboard">
+<area shape="rect" id="Node000001" title="Re&#45;enables keyboard interrupts (that lcf_start() disabled) by writing the appropriate command byte." alt="" coords="5,31,128,56"/>
+<area shape="rect" id="Node000002" href="$kbc_8c.html#a62c209283f6127df1365b342a1f3ddd9" title="Bottom layer function: Reads from an output register." alt="" coords="176,5,307,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,32,162,27,163,32,129,37"/>
+<area shape="rect" id="Node000004" href="$kbc_8c.html#abd6297c4f21b5d7a33693a1cbcf03eb3" title="Bottom layer function: Writes a command to an input register." alt="" coords="181,55,301,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="129,49,168,55,167,60,128,54"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="355,31,453,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="307,26,341,31,341,36,306,31"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="301,56,341,50,342,55,302,61"/>
+</map>

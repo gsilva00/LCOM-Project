@@ -1,0 +1,4 @@
+<map id="PS/2 Mouse&apos;s Data Packet 1st byte" name="PS/2 Mouse&apos;s Data Packet 1st byte">
+<area shape="rect" id="Node000001" title="Meaning of each of the bits in the Mouse&#39;s Data Packet&#39;s 1st byte." alt="" coords="163,5,352,45"/>
+<area shape="rect" id="Node000002" href="$group__i8042.html" title="Constants for programming the i8042 KBC &#45; Keyboard (and Mouse) Controller." alt="" coords="5,13,115,38"/>
+</map>

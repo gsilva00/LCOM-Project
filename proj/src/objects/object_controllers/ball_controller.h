@@ -68,9 +68,9 @@ bool ball_player_collision(Ball *bola, Player *pl);
  * @param gl Pointer to the goal object, of type Goal (struct we created).
  * @param sc Pointer to the scoreboard object, of type Scoreboard (struct we created)
  * @param ball_state Pointer to the ball's current state, referring to the state machine BallState
- * @return True if they are colliding, and false if not. In the case of an error it returns false as well
+ * @return 0 on success, 1 otherwise
  */
-bool ball_goal_collision(Ball *bl, Goal *gl, Scoreboard *sc,BallState * ball_state);
+int ball_goal_collision(Ball *bl, Goal *gl, Scoreboard *sc, BallState * ball_state);
 
 /** 
  * @brief Function that detects if a player is in a position to kick the ball

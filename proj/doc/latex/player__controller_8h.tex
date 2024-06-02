@@ -1,0 +1,450 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/objects/object\+\_\+controllers/player\+\_\+controller.h File Reference}
+\hypertarget{player__controller_8h}{}\label{player__controller_8h}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/object\_controllers/player\_controller.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/object\_controllers/player\_controller.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$objects/player.\+h$>$}\newline
+{\ttfamily \#include $<$devices/timer/aux\+\_\+timer.\+h$>$}\newline
+{\ttfamily \#include $<$devices/gpu/gpu.\+h$>$}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+2\+\_\+parado.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+parado.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+chutar\+\_\+frente\+\_\+1.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+chutar\+\_\+frente\+\_\+2.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+chutar\+\_\+frente\+\_\+3.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+chutar\+\_\+frente\+\_\+4.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+chutar\+\_\+frente\+\_\+5.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+chutar\+\_\+frente\+\_\+6.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+chutar\+\_\+tras\+\_\+1.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+chutar\+\_\+tras\+\_\+2.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+chutar\+\_\+tras\+\_\+3.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+chutar\+\_\+tras\+\_\+4.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+1.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+2.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+3.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+4.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+5.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+2\+\_\+chutar\+\_\+frente\+\_\+6.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+2\+\_\+chutar\+\_\+tras\+\_\+1.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+2\+\_\+chutar\+\_\+tras\+\_\+2.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+2\+\_\+chutar\+\_\+tras\+\_\+3.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/objects/personagem\+\_\+2\+\_\+chutar\+\_\+tras\+\_\+4.\+xpm"{}}\newline
+Include dependency graph for player\+\_\+controller.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{player__controller_8h_a15080e55b315f32b7ead46e0d99afae2}{SPEED\+\_\+\+REDUCTION\+\_\+\+FACTOR}}~0.\+65
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \{ \newline
+\mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a871895a848d0b5a7e7ce7fed2f353554}{PLAYER\+\_\+\+MOVE\+\_\+\+NONE}}
+, \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a41014f9a88dec6f975680932aa055a53}{PLAYER\+\_\+\+MOVE\+\_\+\+LEFT\+\_\+\+START}}
+, \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a148b6f1a4266876740275ef91170bc13}{PLAYER\+\_\+\+MOVE\+\_\+\+RIGHT\+\_\+\+START}}
+, \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a3a26fe647fab3b9db9023a44e5c8c486}{PLAYER\+\_\+\+MOVE\+\_\+\+LEFT}}
+, \newline
+\mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a5b714015fbe60a90f82629b8b191d229}{PLAYER\+\_\+\+MOVE\+\_\+\+RIGHT}}
+, \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94adc5c472ee9984282e570243955040185}{AFTER\+\_\+\+PLAYER\+\_\+\+MOVE\+\_\+\+LEFT}}
+, \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a4053106a146d55ada3b134eb9d40d5ec}{AFTER\+\_\+\+PLAYER\+\_\+\+MOVE\+\_\+\+RIGHT}}
+, \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94ae3fd543d137b3f01529888fb6d6967e5}{PLAYER\+\_\+\+MOVE\+\_\+\+END}}
+ \}
+\begin{DoxyCompactList}\small\item\em Declaration of the \doxylink{struct_player}{Player} Move State Machine. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \{ \newline
+\mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca8ef5eeec0f3891d614f6ec711548cae5}{PLAYER\+\_\+\+JUMP\+\_\+\+NONE}}
+, \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca966f6fa4342b769e8a1a496547ff6e00}{START\+\_\+\+PLAYER\+\_\+\+JUMP}}
+, \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fccab7bd99cc7d7613ad92541ac81df62b57}{BEFORE\+\_\+\+PLAYER\+\_\+\+JUMP}}
+, \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fccac6e06004f9416d9ca4c9f2d575d31830}{PLAYER\+\_\+\+JUMP}}
+, \newline
+\mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca0900220d7e9076f78c60cc113e6f1f79}{AFTER\+\_\+\+PLAYER\+\_\+\+JUMP}}
+, \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fccaf021f1dc75bd9edaa0a736839933f0b4}{PLAYER\+\_\+\+JUMP\+\_\+\+END}}
+ \}
+\begin{DoxyCompactList}\small\item\em Declaration of the \doxylink{struct_player}{Player} Jump State Machine. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \{ \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96acb1f09367b8449564a9bfb5ce02eaddd}{PLAYER\+\_\+\+KICK\+\_\+\+NONE}}
+, \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96af63c7839cfeac8f05d10a945e17e82e2}{PLAYER\+\_\+\+KICK\+\_\+\+START}}
+, \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96a4844e72c35be46867a96a983f1eab051}{PLAYER\+\_\+\+KICK}}
+, \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96a51c272aed72359d65677232bb88a3711}{AFTER\+\_\+\+PLAYER\+\_\+\+KICK}}
+ \}
+\begin{DoxyCompactList}\small\item\em Declaration of the \doxylink{struct_player}{Player} Jump State Machine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{player__controller_8h_a60bf2039888bc2e1de0ae4f65841f69a}{move\+\_\+player}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player, \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+move, \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+move\+\_\+temporary, \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+jump, \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+jump\+\_\+temporary, \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+kick, \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+kick\+\_\+temporary)
+\begin{DoxyCompactList}\small\item\em Main function that changes the player\textquotesingle{}s atributes according to the current state. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{player__controller_8h_acd16eb81aa9a47c1ed8bff9eafe87ed3}{player\+\_\+border\+\_\+collision}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Collision detecting function between a player and a border. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{player__controller_8h_a27c8228c1e7a90e401305a54caf0d042}{player\+\_\+player\+\_\+collision}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a427622cef5fab821a8baf9d51e68450b}{player1}}, \mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_aa1ad9a3d30291b7fbfbabd79cc45d4f9}{player2}})
+\begin{DoxyCompactList}\small\item\em Collision detecting function between a player and another player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player__controller_8h_a46d3eddfcdbc55979be5e954a30733c8}{initialize\+\_\+player\+\_\+values}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Function that saves the initial values of the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player__controller_8h_a9d4e2f27c2191e556ccc1cea41049e88}{prepare\+\_\+for\+\_\+player\+\_\+jump}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Function that prepares the player for the jump. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player__controller_8h_a238061bfefbe3029a722e7680ea40d42}{change\+\_\+player\+\_\+y}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Function that changes the player\textquotesingle{}s y value along the jump. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player__controller_8h_aed07cf74ee169467f39f1184b6d3bbe1}{handle\+\_\+player\+\_\+jump}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player, \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \texorpdfstring{$\ast$}{*}player\+\_\+state\+\_\+jump)
+\begin{DoxyCompactList}\small\item\em Function that performs the player\textquotesingle{}s jump. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{player__controller_8h_a39c0d0b8c6774b7965e43ab8128c10fb}{restart\+\_\+player\+\_\+movement}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Function that resets the values of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{player__controller_8h_a15080e55b315f32b7ead46e0d99afae2}\label{player__controller_8h_a15080e55b315f32b7ead46e0d99afae2} 
+\index{player\_controller.h@{player\_controller.h}!SPEED\_REDUCTION\_FACTOR@{SPEED\_REDUCTION\_FACTOR}}
+\index{SPEED\_REDUCTION\_FACTOR@{SPEED\_REDUCTION\_FACTOR}!player\_controller.h@{player\_controller.h}}
+\doxysubsubsection{\texorpdfstring{SPEED\_REDUCTION\_FACTOR}{SPEED\_REDUCTION\_FACTOR}}
+{\footnotesize\ttfamily \#define SPEED\+\_\+\+REDUCTION\+\_\+\+FACTOR~0.\+65}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}\label{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc} 
+\index{player\_controller.h@{player\_controller.h}!PlayerStateJump@{PlayerStateJump}}
+\index{PlayerStateJump@{PlayerStateJump}!player\_controller.h@{player\_controller.h}}
+\doxysubsubsection{\texorpdfstring{PlayerStateJump}{PlayerStateJump}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}}}
+
+
+
+Declaration of the \doxylink{struct_player}{Player} Jump State Machine. 
+
+This state machine toggles the ability of the player to jump. It involves a preparation state, the state where the actual jump occures, a state that resets the atributes after the action is complete (except atributes that are supposed to change) and a rest state. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_JUMP\_NONE@{PLAYER\_JUMP\_NONE}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!PLAYER\_JUMP\_NONE@{PLAYER\_JUMP\_NONE}}}\Hypertarget{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca8ef5eeec0f3891d614f6ec711548cae5}\label{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca8ef5eeec0f3891d614f6ec711548cae5} 
+PLAYER\+\_\+\+JUMP\+\_\+\+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{START\_PLAYER\_JUMP@{START\_PLAYER\_JUMP}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!START\_PLAYER\_JUMP@{START\_PLAYER\_JUMP}}}\Hypertarget{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca966f6fa4342b769e8a1a496547ff6e00}\label{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca966f6fa4342b769e8a1a496547ff6e00} 
+START\+\_\+\+PLAYER\+\_\+\+JUMP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BEFORE\_PLAYER\_JUMP@{BEFORE\_PLAYER\_JUMP}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!BEFORE\_PLAYER\_JUMP@{BEFORE\_PLAYER\_JUMP}}}\Hypertarget{player__controller_8h_aeded9502d9026b585252cbb3ad062fccab7bd99cc7d7613ad92541ac81df62b57}\label{player__controller_8h_aeded9502d9026b585252cbb3ad062fccab7bd99cc7d7613ad92541ac81df62b57} 
+BEFORE\+\_\+\+PLAYER\+\_\+\+JUMP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_JUMP@{PLAYER\_JUMP}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!PLAYER\_JUMP@{PLAYER\_JUMP}}}\Hypertarget{player__controller_8h_aeded9502d9026b585252cbb3ad062fccac6e06004f9416d9ca4c9f2d575d31830}\label{player__controller_8h_aeded9502d9026b585252cbb3ad062fccac6e06004f9416d9ca4c9f2d575d31830} 
+PLAYER\+\_\+\+JUMP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AFTER\_PLAYER\_JUMP@{AFTER\_PLAYER\_JUMP}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!AFTER\_PLAYER\_JUMP@{AFTER\_PLAYER\_JUMP}}}\Hypertarget{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca0900220d7e9076f78c60cc113e6f1f79}\label{player__controller_8h_aeded9502d9026b585252cbb3ad062fcca0900220d7e9076f78c60cc113e6f1f79} 
+AFTER\+\_\+\+PLAYER\+\_\+\+JUMP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_JUMP\_END@{PLAYER\_JUMP\_END}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!PLAYER\_JUMP\_END@{PLAYER\_JUMP\_END}}}\Hypertarget{player__controller_8h_aeded9502d9026b585252cbb3ad062fccaf021f1dc75bd9edaa0a736839933f0b4}\label{player__controller_8h_aeded9502d9026b585252cbb3ad062fccaf021f1dc75bd9edaa0a736839933f0b4} 
+PLAYER\+\_\+\+JUMP\+\_\+\+END&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}\label{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96} 
+\index{player\_controller.h@{player\_controller.h}!PlayerStateKick@{PlayerStateKick}}
+\index{PlayerStateKick@{PlayerStateKick}!player\_controller.h@{player\_controller.h}}
+\doxysubsubsection{\texorpdfstring{PlayerStateKick}{PlayerStateKick}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}}}
+
+
+
+Declaration of the \doxylink{struct_player}{Player} Jump State Machine. 
+
+This state machine toggles the player\textquotesingle{}s animations when kicking. It involves a preparation state, the state where the actual kic occures, a state that resets the atributes after the action is complete (except atributes that are supposed to change) and a rest state. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_KICK\_NONE@{PLAYER\_KICK\_NONE}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!PLAYER\_KICK\_NONE@{PLAYER\_KICK\_NONE}}}\Hypertarget{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96acb1f09367b8449564a9bfb5ce02eaddd}\label{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96acb1f09367b8449564a9bfb5ce02eaddd} 
+PLAYER\+\_\+\+KICK\+\_\+\+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_KICK\_START@{PLAYER\_KICK\_START}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!PLAYER\_KICK\_START@{PLAYER\_KICK\_START}}}\Hypertarget{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96af63c7839cfeac8f05d10a945e17e82e2}\label{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96af63c7839cfeac8f05d10a945e17e82e2} 
+PLAYER\+\_\+\+KICK\+\_\+\+START&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_KICK@{PLAYER\_KICK}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!PLAYER\_KICK@{PLAYER\_KICK}}}\Hypertarget{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96a4844e72c35be46867a96a983f1eab051}\label{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96a4844e72c35be46867a96a983f1eab051} 
+PLAYER\+\_\+\+KICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AFTER\_PLAYER\_KICK@{AFTER\_PLAYER\_KICK}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!AFTER\_PLAYER\_KICK@{AFTER\_PLAYER\_KICK}}}\Hypertarget{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96a51c272aed72359d65677232bb88a3711}\label{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96a51c272aed72359d65677232bb88a3711} 
+AFTER\+\_\+\+PLAYER\+\_\+\+KICK&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}\label{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94} 
+\index{player\_controller.h@{player\_controller.h}!PlayerStateMove@{PlayerStateMove}}
+\index{PlayerStateMove@{PlayerStateMove}!player\_controller.h@{player\_controller.h}}
+\doxysubsubsection{\texorpdfstring{PlayerStateMove}{PlayerStateMove}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}}}
+
+
+
+Declaration of the \doxylink{struct_player}{Player} Move State Machine. 
+
+This state machine toggles the ability of the player to move. It involves a preparation state, the state where the actual moving occures, a state that resets the atributes after the action is complete (except atributes that are supposed to change) and a rest state. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_MOVE\_NONE@{PLAYER\_MOVE\_NONE}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!PLAYER\_MOVE\_NONE@{PLAYER\_MOVE\_NONE}}}\Hypertarget{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a871895a848d0b5a7e7ce7fed2f353554}\label{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a871895a848d0b5a7e7ce7fed2f353554} 
+PLAYER\+\_\+\+MOVE\+\_\+\+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_MOVE\_LEFT\_START@{PLAYER\_MOVE\_LEFT\_START}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!PLAYER\_MOVE\_LEFT\_START@{PLAYER\_MOVE\_LEFT\_START}}}\Hypertarget{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a41014f9a88dec6f975680932aa055a53}\label{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a41014f9a88dec6f975680932aa055a53} 
+PLAYER\+\_\+\+MOVE\+\_\+\+LEFT\+\_\+\+START&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_MOVE\_RIGHT\_START@{PLAYER\_MOVE\_RIGHT\_START}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!PLAYER\_MOVE\_RIGHT\_START@{PLAYER\_MOVE\_RIGHT\_START}}}\Hypertarget{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a148b6f1a4266876740275ef91170bc13}\label{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a148b6f1a4266876740275ef91170bc13} 
+PLAYER\+\_\+\+MOVE\+\_\+\+RIGHT\+\_\+\+START&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_MOVE\_LEFT@{PLAYER\_MOVE\_LEFT}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!PLAYER\_MOVE\_LEFT@{PLAYER\_MOVE\_LEFT}}}\Hypertarget{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a3a26fe647fab3b9db9023a44e5c8c486}\label{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a3a26fe647fab3b9db9023a44e5c8c486} 
+PLAYER\+\_\+\+MOVE\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_MOVE\_RIGHT@{PLAYER\_MOVE\_RIGHT}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!PLAYER\_MOVE\_RIGHT@{PLAYER\_MOVE\_RIGHT}}}\Hypertarget{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a5b714015fbe60a90f82629b8b191d229}\label{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a5b714015fbe60a90f82629b8b191d229} 
+PLAYER\+\_\+\+MOVE\+\_\+\+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AFTER\_PLAYER\_MOVE\_LEFT@{AFTER\_PLAYER\_MOVE\_LEFT}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!AFTER\_PLAYER\_MOVE\_LEFT@{AFTER\_PLAYER\_MOVE\_LEFT}}}\Hypertarget{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94adc5c472ee9984282e570243955040185}\label{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94adc5c472ee9984282e570243955040185} 
+AFTER\+\_\+\+PLAYER\+\_\+\+MOVE\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AFTER\_PLAYER\_MOVE\_RIGHT@{AFTER\_PLAYER\_MOVE\_RIGHT}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!AFTER\_PLAYER\_MOVE\_RIGHT@{AFTER\_PLAYER\_MOVE\_RIGHT}}}\Hypertarget{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a4053106a146d55ada3b134eb9d40d5ec}\label{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94a4053106a146d55ada3b134eb9d40d5ec} 
+AFTER\+\_\+\+PLAYER\+\_\+\+MOVE\+\_\+\+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER\_MOVE\_END@{PLAYER\_MOVE\_END}!player\_controller.h@{player\_controller.h}}\index{player\_controller.h@{player\_controller.h}!PLAYER\_MOVE\_END@{PLAYER\_MOVE\_END}}}\Hypertarget{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94ae3fd543d137b3f01529888fb6d6967e5}\label{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94ae3fd543d137b3f01529888fb6d6967e5} 
+PLAYER\+\_\+\+MOVE\+\_\+\+END&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{player__controller_8h_a238061bfefbe3029a722e7680ea40d42}\label{player__controller_8h_a238061bfefbe3029a722e7680ea40d42} 
+\index{player\_controller.h@{player\_controller.h}!change\_player\_y@{change\_player\_y}}
+\index{change\_player\_y@{change\_player\_y}!player\_controller.h@{player\_controller.h}}
+\doxysubsubsection{\texorpdfstring{change\_player\_y()}{change\_player\_y()}}
+{\footnotesize\ttfamily void change\+\_\+player\+\_\+y (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Function that changes the player\textquotesingle{}s y value along the jump. 
+
+Changes the player\textquotesingle{}s y value according to the player\textquotesingle{}s current speed values in the y axis, as well as the time spent above the ground. Auxiliary function of \doxylink{player__controller_8h_aed07cf74ee169467f39f1184b6d3bbe1}{handle\+\_\+player\+\_\+jump()}
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8h_a238061bfefbe3029a722e7680ea40d42_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8h_aed07cf74ee169467f39f1184b6d3bbe1}\label{player__controller_8h_aed07cf74ee169467f39f1184b6d3bbe1} 
+\index{player\_controller.h@{player\_controller.h}!handle\_player\_jump@{handle\_player\_jump}}
+\index{handle\_player\_jump@{handle\_player\_jump}!player\_controller.h@{player\_controller.h}}
+\doxysubsubsection{\texorpdfstring{handle\_player\_jump()}{handle\_player\_jump()}}
+{\footnotesize\ttfamily void handle\+\_\+player\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{\mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+jump }\end{DoxyParamCaption})}
+
+
+
+Function that performs the player\textquotesingle{}s jump. 
+
+Performs the player\textquotesingle{}s entire jump, from the beginning to the bouncing in the end. It is the function used in the action state of the state machine. Auxiliary function of \doxylink{player__controller_8h_a60bf2039888bc2e1de0ae4f65841f69a}{move\+\_\+player()}
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+{\em player\+\_\+state\+\_\+jump} & Pointer to the player\textquotesingle{}s current jump state, refering to the state machine Player\+State\+Jump. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8h_aed07cf74ee169467f39f1184b6d3bbe1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8h_aed07cf74ee169467f39f1184b6d3bbe1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8h_a46d3eddfcdbc55979be5e954a30733c8}\label{player__controller_8h_a46d3eddfcdbc55979be5e954a30733c8} 
+\index{player\_controller.h@{player\_controller.h}!initialize\_player\_values@{initialize\_player\_values}}
+\index{initialize\_player\_values@{initialize\_player\_values}!player\_controller.h@{player\_controller.h}}
+\doxysubsubsection{\texorpdfstring{initialize\_player\_values()}{initialize\_player\_values()}}
+{\footnotesize\ttfamily void initialize\+\_\+player\+\_\+values (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Function that saves the initial values of the player. 
+
+Takes the current values of position and speed of the player, and saves them in variables. This function is used in the preparation state of the various player\textquotesingle{}s state machine, so that these values are reset in the end. Auxiliary function of \doxylink{player__controller_8h_a60bf2039888bc2e1de0ae4f65841f69a}{move\+\_\+player()}
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8h_a46d3eddfcdbc55979be5e954a30733c8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8h_a60bf2039888bc2e1de0ae4f65841f69a}\label{player__controller_8h_a60bf2039888bc2e1de0ae4f65841f69a} 
+\index{player\_controller.h@{player\_controller.h}!move\_player@{move\_player}}
+\index{move\_player@{move\_player}!player\_controller.h@{player\_controller.h}}
+\doxysubsubsection{\texorpdfstring{move\_player()}{move\_player()}}
+{\footnotesize\ttfamily void move\+\_\+player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{\mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+move,  }\item[{\mbox{\hyperlink{player__controller_8h_ad79e9c138159071b3abbfe8275c87c94}{Player\+State\+Move}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+move\+\_\+temporary,  }\item[{\mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+jump,  }\item[{\mbox{\hyperlink{player__controller_8h_aeded9502d9026b585252cbb3ad062fcc}{Player\+State\+Jump}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+jump\+\_\+temporary,  }\item[{\mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+kick,  }\item[{\mbox{\hyperlink{player__controller_8h_aca2fc78d1b920f58779954077fdcfa96}{Player\+State\+Kick}} \texorpdfstring{$\ast$}{*}}]{player\+\_\+state\+\_\+kick\+\_\+temporary }\end{DoxyParamCaption})}
+
+
+
+Main function that changes the player\textquotesingle{}s atributes according to the current state. 
+
+This is the function that controls every one of the player\textquotesingle{}s movements and atributes, depending on the state it is in.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+{\em player\+\_\+state\+\_\+move} & Pointer to the main player move state, can vary depending on the action chosen, the phase it\textquotesingle{}s in, and the direction it\textquotesingle{}s going \\
+\hline
+{\em player\+\_\+state\+\_\+move\+\_\+temporary} & Pointer to the auxiliary player move state. Used when an action is requested before the other finishes \\
+\hline
+{\em player\+\_\+state\+\_\+jump} & Pointer to the main player jump state, can vary depending on the action chosen, the phase it\textquotesingle{}s in, and the direction it\textquotesingle{}s going \\
+\hline
+{\em player\+\_\+state\+\_\+jump\+\_\+temporary} & Pointer to the auxiliary player jump state. Used when an action is requested before the other finishes \\
+\hline
+{\em player\+\_\+state\+\_\+kick} & Pointer to the main player kick state, can vary depending on the action chosen, the phase it\textquotesingle{}s in, and the direction it\textquotesingle{}s going \\
+\hline
+{\em player\+\_\+state\+\_\+kick\+\_\+temporary} & Pointer to the auxiliary player kick state. Used when an action is requested before the other finishes \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8h_a60bf2039888bc2e1de0ae4f65841f69a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{player__controller_8h_a60bf2039888bc2e1de0ae4f65841f69a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8h_acd16eb81aa9a47c1ed8bff9eafe87ed3}\label{player__controller_8h_acd16eb81aa9a47c1ed8bff9eafe87ed3} 
+\index{player\_controller.h@{player\_controller.h}!player\_border\_collision@{player\_border\_collision}}
+\index{player\_border\_collision@{player\_border\_collision}!player\_controller.h@{player\_controller.h}}
+\doxysubsubsection{\texorpdfstring{player\_border\_collision()}{player\_border\_collision()}}
+{\footnotesize\ttfamily bool player\+\_\+border\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Collision detecting function between a player and a border. 
+
+Analyses the player\textquotesingle{}s position, and determines if it is colliding with any border
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if they are colliding, and false if not 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{player__controller_8h_acd16eb81aa9a47c1ed8bff9eafe87ed3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8h_a27c8228c1e7a90e401305a54caf0d042}\label{player__controller_8h_a27c8228c1e7a90e401305a54caf0d042} 
+\index{player\_controller.h@{player\_controller.h}!player\_player\_collision@{player\_player\_collision}}
+\index{player\_player\_collision@{player\_player\_collision}!player\_controller.h@{player\_controller.h}}
+\doxysubsubsection{\texorpdfstring{player\_player\_collision()}{player\_player\_collision()}}
+{\footnotesize\ttfamily bool player\+\_\+player\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player1,  }\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player2 }\end{DoxyParamCaption})}
+
+
+
+Collision detecting function between a player and another player. 
+
+Analyses both players positions, and determines if the two items are colliding ~\newline
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em player1} & Pointer to the first player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+{\em player2} & Pointer to the second player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if they are colliding, and false if not 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{player__controller_8h_a27c8228c1e7a90e401305a54caf0d042_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8h_a9d4e2f27c2191e556ccc1cea41049e88}\label{player__controller_8h_a9d4e2f27c2191e556ccc1cea41049e88} 
+\index{player\_controller.h@{player\_controller.h}!prepare\_for\_player\_jump@{prepare\_for\_player\_jump}}
+\index{prepare\_for\_player\_jump@{prepare\_for\_player\_jump}!player\_controller.h@{player\_controller.h}}
+\doxysubsubsection{\texorpdfstring{prepare\_for\_player\_jump()}{prepare\_for\_player\_jump()}}
+{\footnotesize\ttfamily void prepare\+\_\+for\+\_\+player\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Function that prepares the player for the jump. 
+
+Changes the time passed on every axis and the bounce offset value to prepare the player for its jump. This function is used in the preparation state of the player\textquotesingle{}s state machine. Auxiliary function of \doxylink{player__controller_8h_a60bf2039888bc2e1de0ae4f65841f69a}{move\+\_\+player()}
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8h_a9d4e2f27c2191e556ccc1cea41049e88_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player__controller_8h_a39c0d0b8c6774b7965e43ab8128c10fb}\label{player__controller_8h_a39c0d0b8c6774b7965e43ab8128c10fb} 
+\index{player\_controller.h@{player\_controller.h}!restart\_player\_movement@{restart\_player\_movement}}
+\index{restart\_player\_movement@{restart\_player\_movement}!player\_controller.h@{player\_controller.h}}
+\doxysubsubsection{\texorpdfstring{restart\_player\_movement()}{restart\_player\_movement()}}
+{\footnotesize\ttfamily int restart\+\_\+player\+\_\+movement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Function that resets the values of the player. 
+
+Takes the values saved in the beginning by \doxylink{player__controller_8h_a46d3eddfcdbc55979be5e954a30733c8}{initialize\+\_\+player\+\_\+values()}, and sets the player\textquotesingle{}s values to those variables, restoring its previous state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__controller_8h_a39c0d0b8c6774b7965e43ab8128c10fb_icgraph}
+\end{center}
+\end{figure}

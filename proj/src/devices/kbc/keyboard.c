@@ -26,21 +26,21 @@ int reset_keyboard() {
   uint8_t cmd;
 
   if (kbc_write_cmd(CMD_REG, CMDBYTE_READ)) {
-    printf("%s ERROR: kbc_write_cmd to KBC command register!\n", __func__);
+    printf("%s Error: kbc_write_cmd to KBC command register!\n", __func__);
     return 1;
   }
   if (kbc_read_outbuf(OUTBUF_REG, &cmd, false)) {
-    printf("%s ERROR: kbc_read_outbuf in KBC Output Buffer!\n", __func__);
+    printf("%s Error: kbc_read_outbuf in KBC Output Buffer!\n", __func__);
     return 1;
   }
 
   cmd |= CMDB_INT_KBD;
   if (kbc_write_cmd(CMD_REG, CMDBYTE_WRITE)) {
-    printf("%s ERROR: kbc_write_cmd to KBC command register!\n", __func__);
+    printf("%s Error: kbc_write_cmd to KBC command register!\n", __func__);
     return 1;
   }
   if (kbc_write_cmd(INBUF_REG, cmd)) {
-    printf("%s ERROR: kbc_write_cmd to KBC Input Buffer!\n", __func__);
+    printf("%s Error: kbc_write_cmd to KBC Input Buffer!\n", __func__);
     return 1;
   }
 

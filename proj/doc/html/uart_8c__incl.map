@@ -1,0 +1,19 @@
+<map id="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/devices/serial_port/uart.c" name="/home/gui/Desktop/MINIX&#45;LCOM/shared/proj/src/devices/serial_port/uart.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="83,5,274,60"/>
+<area shape="rect" id="Node000002" href="$uart_8h.html" title=" " alt="" coords="271,108,331,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,58,275,98,272,102,215,62"/>
+<area shape="rect" id="Node000006" href="$uart__macros_8h.html" title=" " alt="" coords="5,181,120,207"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="147,62,123,84,102,110,85,139,73,169,68,167,80,137,98,106,120,81,143,58"/>
+<area shape="rect" id="Node000007" href="$keyboard_8h.html" title=" " alt="" coords="112,108,245,133"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="181,60,181,94,176,94,176,60"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="188,255,273,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="302,134,296,168,281,208,254,246,250,243,276,205,290,167,297,133"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="195,181,266,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="292,136,254,174,250,170,288,132"/>
+<area shape="rect" id="Node000005" href="$queue_8h.html" title=" " alt="" coords="341,181,416,207"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="316,131,358,170,354,174,312,135"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="356,209,268,251,266,246,354,204"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="91,204,192,247,190,252,89,209"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="180,133,179,167,187,206,197,226,211,243,207,247,193,229,181,208,174,167,175,133"/>
+<area shape="poly" id="edge10_Node000007_Node000004" title=" " alt="" coords="189,132,216,169,212,172,185,135"/>
+</map>

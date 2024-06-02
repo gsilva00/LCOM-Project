@@ -1,0 +1,414 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/objects/object\+\_\+controllers/ball\+\_\+controller.c File Reference}
+\hypertarget{ball__controller_8c}{}\label{ball__controller_8c}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/object\_controllers/ball\_controller.c@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/object\_controllers/ball\_controller.c}}
+{\ttfamily \#include "{}ball\+\_\+controller.\+h"{}}\newline
+Include dependency graph for ball\+\_\+controller.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ball__controller_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ball__controller_8c_a38785a5b9212e94df950365c57db0f6d}{initialize\+\_\+ball\+\_\+values}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}})
+\begin{DoxyCompactList}\small\item\em Function that saves the initial values of the ball. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ball__controller_8c_ab9158092f8a622ce728ecbb06ab1191a}{prepare\+\_\+for\+\_\+jump}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}})
+\begin{DoxyCompactList}\small\item\em Function that prepares the ball for the jump. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ball__controller_8c_a28516e78c8a62cb15250a024ee2b7798}{update\+\_\+ball\+\_\+position\+\_\+after\+\_\+jump}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}})
+\begin{DoxyCompactList}\small\item\em Function that updates the ball\textquotesingle{}s position after the jump. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{ball__controller_8c_a13a4798c6f9db1b2a8ee8e806e440c25}{check\+\_\+kicking\+\_\+player}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}}, \mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}pl)
+\begin{DoxyCompactList}\small\item\em Function that detects if a player is in a position to kick the ball. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{ball__controller_8c_a9fc675a573cfc0ac3db2f051b6f9eff8}{ball\+\_\+player\+\_\+collision}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}}, \mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}pl)
+\begin{DoxyCompactList}\small\item\em Collision detecting function between a ball and a player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ball__controller_8c_a40f80270ca86d1e6d96dffe5fc8331df}{change\+\_\+y}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}})
+\begin{DoxyCompactList}\small\item\em Function that changes the ball\textquotesingle{}s y value along the jump. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ball__controller_8c_a6e694eb670f358f0384f9bec32b8bdeb}{handle\+\_\+jump}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}}, \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a9dd36b367eb32385d9cabfe5c1ae1aed}{ball\+\_\+state}}, int direction)
+\begin{DoxyCompactList}\small\item\em Function that performs the ball\textquotesingle{}s jump. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ball__controller_8c_ae682a2e7727d219e592f6ee4c95398e3}{move\+\_\+ball}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a80fee3354bc4498a1d6ee5d5c39d606d}{bola}}, \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a9dd36b367eb32385d9cabfe5c1ae1aed}{ball\+\_\+state}}, \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a366778f061532ce05e331a6a004318b3}{ball\+\_\+state\+\_\+temporary}})
+\begin{DoxyCompactList}\small\item\em Main function that changes the ball\textquotesingle{}s atributes according to the current state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ball__controller_8c_a1e8dc55045e169c25e6adda6e8d3c383}{check\+\_\+ball\+\_\+goal\+\_\+height}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}bl, \mbox{\hyperlink{struct_goal}{Goal}} \texorpdfstring{$\ast$}{*}gl)
+\item 
+void \mbox{\hyperlink{ball__controller_8c_a5ee9b2c9a5bc5cb825525780137dcd60}{verify\+\_\+goal}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}bl, \mbox{\hyperlink{struct_goal}{Goal}} \texorpdfstring{$\ast$}{*}gl, \mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*}sc, \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a9dd36b367eb32385d9cabfe5c1ae1aed}{ball\+\_\+state}})
+\item 
+int \mbox{\hyperlink{ball__controller_8c_a5dd601d5b34cfb88df1bd449936285f5}{ball\+\_\+goal\+\_\+collision}} (\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}bl, \mbox{\hyperlink{struct_goal}{Goal}} \texorpdfstring{$\ast$}{*}gl, \mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*}sc, \mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a9dd36b367eb32385d9cabfe5c1ae1aed}{ball\+\_\+state}})
+\begin{DoxyCompactList}\small\item\em Collision detecting function between a ball and a goal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{ball__controller_8c_ae63fb65a41365e48df3668fa23f69818}{time\+\_\+passed\+\_\+y}} = 0
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{ball__controller_8c_aabe6e417e2b4222133e4d2907ecb7c4f}{time\+\_\+passed\+\_\+x}} = 0
+\item 
+static int \mbox{\hyperlink{ball__controller_8c_a9f2ed71e9e67fbf4705c5433b83f1087}{bola\+\_\+y\+\_\+original}}
+\item 
+static int \mbox{\hyperlink{ball__controller_8c_a0c10b7ff1345c2f5e8ce86ead27a4bc9}{bola\+\_\+y}}
+\item 
+static int \mbox{\hyperlink{ball__controller_8c_ab63bdaec217fa8646c1c6baf6028c10b}{bola\+\_\+x}}
+\item 
+static int \mbox{\hyperlink{ball__controller_8c_ad4007d94cdd2dd6f8f927b2af6148381}{bola\+\_\+yspeed}}
+\item 
+static int \mbox{\hyperlink{ball__controller_8c_a4bb08cf422caa7c0614c92f81c9f5971}{bola\+\_\+xspeed}}
+\item 
+static int \mbox{\hyperlink{ball__controller_8c_a5502d663de0257e4cddeeab4756c46e5}{bounce\+\_\+offset}}
+\item 
+static bool \mbox{\hyperlink{ball__controller_8c_ad7ca5de0a66877da005299af04a533fc}{chuta}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ball__controller_8c_a5dd601d5b34cfb88df1bd449936285f5}\label{ball__controller_8c_a5dd601d5b34cfb88df1bd449936285f5} 
+\index{ball\_controller.c@{ball\_controller.c}!ball\_goal\_collision@{ball\_goal\_collision}}
+\index{ball\_goal\_collision@{ball\_goal\_collision}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{ball\_goal\_collision()}{ball\_goal\_collision()}}
+{\footnotesize\ttfamily int ball\+\_\+goal\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bl,  }\item[{\mbox{\hyperlink{struct_goal}{Goal}} \texorpdfstring{$\ast$}{*}}]{gl,  }\item[{\mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*}}]{sc,  }\item[{\mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} \texorpdfstring{$\ast$}{*}}]{ball\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+Collision detecting function between a ball and a goal. 
+
+Analyses the ball\textquotesingle{}s position, as well as the goal\textquotesingle{}s, and determines if the two items are colliding and/or if the ball is inside the net. Given the second case, it signals there has been a goal
+
+
+\begin{DoxyParams}{Parameters}
+{\em bl} & Pointer to the ball object, of type \doxylink{struct_ball}{Ball} (struct we created). \\
+\hline
+{\em gl} & Pointer to the goal object, of type \doxylink{struct_goal}{Goal} (struct we created). \\
+\hline
+{\em sc} & Pointer to the scoreboard object, of type \doxylink{struct_scoreboard}{Scoreboard} (struct we created) \\
+\hline
+{\em ball\+\_\+state} & Pointer to the ball\textquotesingle{}s current state, referring to the state machine Ball\+State \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ball__controller_8c_a5dd601d5b34cfb88df1bd449936285f5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{ball__controller_8c_a5dd601d5b34cfb88df1bd449936285f5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ball__controller_8c_a9fc675a573cfc0ac3db2f051b6f9eff8}\label{ball__controller_8c_a9fc675a573cfc0ac3db2f051b6f9eff8} 
+\index{ball\_controller.c@{ball\_controller.c}!ball\_player\_collision@{ball\_player\_collision}}
+\index{ball\_player\_collision@{ball\_player\_collision}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{ball\_player\_collision()}{ball\_player\_collision()}}
+{\footnotesize\ttfamily bool ball\+\_\+player\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bola,  }\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{pl }\end{DoxyParamCaption})}
+
+
+
+Collision detecting function between a ball and a player. 
+
+Analyses the ball\textquotesingle{}s position, as well as the player\textquotesingle{}s, and determines if the two items are colliding ~\newline
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em bola} & Pointer to the ball object, of type \doxylink{struct_ball}{Ball} (struct we created) \\
+\hline
+{\em pl} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if they are colliding, and false if not 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{ball__controller_8c_a9fc675a573cfc0ac3db2f051b6f9eff8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ball__controller_8c_a40f80270ca86d1e6d96dffe5fc8331df}\label{ball__controller_8c_a40f80270ca86d1e6d96dffe5fc8331df} 
+\index{ball\_controller.c@{ball\_controller.c}!change\_y@{change\_y}}
+\index{change\_y@{change\_y}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{change\_y()}{change\_y()}}
+{\footnotesize\ttfamily void change\+\_\+y (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bola }\end{DoxyParamCaption})}
+
+
+
+Function that changes the ball\textquotesingle{}s y value along the jump. 
+
+Changes the ball\textquotesingle{}s y value according to the ball\textquotesingle{}s current speed values in the y axis, as well as the time spent above the ground. Auxiliary function of \doxylink{ball__controller_8h_a6e694eb670f358f0384f9bec32b8bdeb}{handle\+\_\+jump()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bola} & Pointer to the ball object, of type \doxylink{struct_ball}{Ball} (struct we created). \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ball__controller_8c_a40f80270ca86d1e6d96dffe5fc8331df_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ball__controller_8c_a1e8dc55045e169c25e6adda6e8d3c383}\label{ball__controller_8c_a1e8dc55045e169c25e6adda6e8d3c383} 
+\index{ball\_controller.c@{ball\_controller.c}!check\_ball\_goal\_height@{check\_ball\_goal\_height}}
+\index{check\_ball\_goal\_height@{check\_ball\_goal\_height}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{check\_ball\_goal\_height()}{check\_ball\_goal\_height()}}
+{\footnotesize\ttfamily int check\+\_\+ball\+\_\+goal\+\_\+height (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bl,  }\item[{\mbox{\hyperlink{struct_goal}{Goal}} \texorpdfstring{$\ast$}{*}}]{gl }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ball__controller_8c_a1e8dc55045e169c25e6adda6e8d3c383_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ball__controller_8c_a13a4798c6f9db1b2a8ee8e806e440c25}\label{ball__controller_8c_a13a4798c6f9db1b2a8ee8e806e440c25} 
+\index{ball\_controller.c@{ball\_controller.c}!check\_kicking\_player@{check\_kicking\_player}}
+\index{check\_kicking\_player@{check\_kicking\_player}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{check\_kicking\_player()}{check\_kicking\_player()}}
+{\footnotesize\ttfamily bool check\+\_\+kicking\+\_\+player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bola,  }\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{pl }\end{DoxyParamCaption})}
+
+
+
+Function that detects if a player is in a position to kick the ball. 
+
+Analyses the ball\textquotesingle{}s position, as well as the player\textquotesingle{}s, and determines if the player is in position to kick the ball. It takes into consideration the orientation of the player, as the requirements change according to it
+
+
+\begin{DoxyParams}{Parameters}
+{\em bola} & Pointer to the ball object, of type \doxylink{struct_ball}{Ball} (struct we created). \\
+\hline
+{\em pl} & Pointer to the player object, of type \doxylink{struct_player}{Player} (struct we created). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if they the kick is available, and false if not 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{ball__controller_8c_a13a4798c6f9db1b2a8ee8e806e440c25_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ball__controller_8c_a6e694eb670f358f0384f9bec32b8bdeb}\label{ball__controller_8c_a6e694eb670f358f0384f9bec32b8bdeb} 
+\index{ball\_controller.c@{ball\_controller.c}!handle\_jump@{handle\_jump}}
+\index{handle\_jump@{handle\_jump}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{handle\_jump()}{handle\_jump()}}
+{\footnotesize\ttfamily void handle\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bola,  }\item[{\mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} \texorpdfstring{$\ast$}{*}}]{ball\+\_\+state,  }\item[{int}]{direction }\end{DoxyParamCaption})}
+
+
+
+Function that performs the ball\textquotesingle{}s jump. 
+
+Performs the ball\textquotesingle{}s entire jump, from the beginning to the bouncing in the end. It is the function used in the action state of the state machine. Auxiliary function of \doxylink{ball__controller_8h_ae682a2e7727d219e592f6ee4c95398e3}{move\+\_\+ball()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bola} & Pointer to the ball object, of type \doxylink{struct_ball}{Ball} (struct we created). \\
+\hline
+{\em ball\+\_\+state} & Pointer to the ball\textquotesingle{}s current state, refering to the state machine Ball\+State. \\
+\hline
+{\em direction} & Integer to indicate if the jump is going to the left (-\/1) or the right (1). \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{ball__controller_8c_a6e694eb670f358f0384f9bec32b8bdeb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ball__controller_8c_a6e694eb670f358f0384f9bec32b8bdeb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ball__controller_8c_a38785a5b9212e94df950365c57db0f6d}\label{ball__controller_8c_a38785a5b9212e94df950365c57db0f6d} 
+\index{ball\_controller.c@{ball\_controller.c}!initialize\_ball\_values@{initialize\_ball\_values}}
+\index{initialize\_ball\_values@{initialize\_ball\_values}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{initialize\_ball\_values()}{initialize\_ball\_values()}}
+{\footnotesize\ttfamily void initialize\+\_\+ball\+\_\+values (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bola }\end{DoxyParamCaption})}
+
+
+
+Function that saves the initial values of the ball. 
+
+Takes the current values of position and speed of the ball, and saves them in variables. This function is used in the preparation state of the ball\textquotesingle{}s state machine, so that these values are reset in the end. Auxiliary function of \doxylink{ball__controller_8h_ae682a2e7727d219e592f6ee4c95398e3}{move\+\_\+ball()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bola} & Pointer to the ball object, of type \doxylink{struct_ball}{Ball} (struct we created). \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ball__controller_8c_a38785a5b9212e94df950365c57db0f6d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ball__controller_8c_ae682a2e7727d219e592f6ee4c95398e3}\label{ball__controller_8c_ae682a2e7727d219e592f6ee4c95398e3} 
+\index{ball\_controller.c@{ball\_controller.c}!move\_ball@{move\_ball}}
+\index{move\_ball@{move\_ball}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{move\_ball()}{move\_ball()}}
+{\footnotesize\ttfamily void move\+\_\+ball (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bola,  }\item[{\mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} \texorpdfstring{$\ast$}{*}}]{ball\+\_\+state,  }\item[{\mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} \texorpdfstring{$\ast$}{*}}]{ball\+\_\+state\+\_\+temporary }\end{DoxyParamCaption})}
+
+
+
+Main function that changes the ball\textquotesingle{}s atributes according to the current state. 
+
+This is the function that controls every one of the ball\textquotesingle{}s movements and atributes, depending on the state it is in.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bola} & Pointer to the ball object, of type \doxylink{struct_ball}{Ball} (struct we created). \\
+\hline
+{\em ball\+\_\+state} & Pointer to the main ball state, can vary depending on the action chosen, the phase it\textquotesingle{}s in, and the direction it\textquotesingle{}s going. \\
+\hline
+{\em ball\+\_\+state\+\_\+temporary} & Pointer to the auxiliary ball state. Used when an action is requested before the other finishes \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ball__controller_8c_ae682a2e7727d219e592f6ee4c95398e3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{ball__controller_8c_ae682a2e7727d219e592f6ee4c95398e3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ball__controller_8c_ab9158092f8a622ce728ecbb06ab1191a}\label{ball__controller_8c_ab9158092f8a622ce728ecbb06ab1191a} 
+\index{ball\_controller.c@{ball\_controller.c}!prepare\_for\_jump@{prepare\_for\_jump}}
+\index{prepare\_for\_jump@{prepare\_for\_jump}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{prepare\_for\_jump()}{prepare\_for\_jump()}}
+{\footnotesize\ttfamily void prepare\+\_\+for\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bola }\end{DoxyParamCaption})}
+
+
+
+Function that prepares the ball for the jump. 
+
+Changes the time passed on every axis and the bounce offset value to prepare the ball for its jump. This function is used in the preparation state of the ball\textquotesingle{}s state machine. Auxiliary function of \doxylink{ball__controller_8h_ae682a2e7727d219e592f6ee4c95398e3}{move\+\_\+ball()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bola} & Pointer to the ball object, of type \doxylink{struct_ball}{Ball} (struct we created). \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ball__controller_8c_ab9158092f8a622ce728ecbb06ab1191a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ball__controller_8c_a28516e78c8a62cb15250a024ee2b7798}\label{ball__controller_8c_a28516e78c8a62cb15250a024ee2b7798} 
+\index{ball\_controller.c@{ball\_controller.c}!update\_ball\_position\_after\_jump@{update\_ball\_position\_after\_jump}}
+\index{update\_ball\_position\_after\_jump@{update\_ball\_position\_after\_jump}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{update\_ball\_position\_after\_jump()}{update\_ball\_position\_after\_jump()}}
+{\footnotesize\ttfamily void update\+\_\+ball\+\_\+position\+\_\+after\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bola }\end{DoxyParamCaption})}
+
+
+
+Function that updates the ball\textquotesingle{}s position after the jump. 
+
+Updates the ball\textquotesingle{}s position and speed values accordingly to the state of the jump it is in. It is used in the saving state of the ball\textquotesingle{}s state machine. Auxiliary function of \doxylink{ball__controller_8h_ae682a2e7727d219e592f6ee4c95398e3}{move\+\_\+ball()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bola} & Pointer to the ball object, of type \doxylink{struct_ball}{Ball} (struct we created). \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ball__controller_8c_a28516e78c8a62cb15250a024ee2b7798_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ball__controller_8c_a5ee9b2c9a5bc5cb825525780137dcd60}\label{ball__controller_8c_a5ee9b2c9a5bc5cb825525780137dcd60} 
+\index{ball\_controller.c@{ball\_controller.c}!verify\_goal@{verify\_goal}}
+\index{verify\_goal@{verify\_goal}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{verify\_goal()}{verify\_goal()}}
+{\footnotesize\ttfamily void verify\+\_\+goal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ball}{Ball}} \texorpdfstring{$\ast$}{*}}]{bl,  }\item[{\mbox{\hyperlink{struct_goal}{Goal}} \texorpdfstring{$\ast$}{*}}]{gl,  }\item[{\mbox{\hyperlink{struct_scoreboard}{Scoreboard}} \texorpdfstring{$\ast$}{*}}]{sc,  }\item[{\mbox{\hyperlink{ball__controller_8h_a2b4b482e0212ec7af64560b24c4623c9}{Ball\+State}} \texorpdfstring{$\ast$}{*}}]{ball\+\_\+state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{ball__controller_8c_a5ee9b2c9a5bc5cb825525780137dcd60_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ball__controller_8c_a5ee9b2c9a5bc5cb825525780137dcd60_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{ball__controller_8c_ab63bdaec217fa8646c1c6baf6028c10b}\label{ball__controller_8c_ab63bdaec217fa8646c1c6baf6028c10b} 
+\index{ball\_controller.c@{ball\_controller.c}!bola\_x@{bola\_x}}
+\index{bola\_x@{bola\_x}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{bola\_x}{bola\_x}}
+{\footnotesize\ttfamily int bola\+\_\+x\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{ball__controller_8c_a4bb08cf422caa7c0614c92f81c9f5971}\label{ball__controller_8c_a4bb08cf422caa7c0614c92f81c9f5971} 
+\index{ball\_controller.c@{ball\_controller.c}!bola\_xspeed@{bola\_xspeed}}
+\index{bola\_xspeed@{bola\_xspeed}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{bola\_xspeed}{bola\_xspeed}}
+{\footnotesize\ttfamily int bola\+\_\+xspeed\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{ball__controller_8c_a0c10b7ff1345c2f5e8ce86ead27a4bc9}\label{ball__controller_8c_a0c10b7ff1345c2f5e8ce86ead27a4bc9} 
+\index{ball\_controller.c@{ball\_controller.c}!bola\_y@{bola\_y}}
+\index{bola\_y@{bola\_y}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{bola\_y}{bola\_y}}
+{\footnotesize\ttfamily int bola\+\_\+y\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{ball__controller_8c_a9f2ed71e9e67fbf4705c5433b83f1087}\label{ball__controller_8c_a9f2ed71e9e67fbf4705c5433b83f1087} 
+\index{ball\_controller.c@{ball\_controller.c}!bola\_y\_original@{bola\_y\_original}}
+\index{bola\_y\_original@{bola\_y\_original}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{bola\_y\_original}{bola\_y\_original}}
+{\footnotesize\ttfamily int bola\+\_\+y\+\_\+original\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{ball__controller_8c_ad4007d94cdd2dd6f8f927b2af6148381}\label{ball__controller_8c_ad4007d94cdd2dd6f8f927b2af6148381} 
+\index{ball\_controller.c@{ball\_controller.c}!bola\_yspeed@{bola\_yspeed}}
+\index{bola\_yspeed@{bola\_yspeed}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{bola\_yspeed}{bola\_yspeed}}
+{\footnotesize\ttfamily int bola\+\_\+yspeed\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{ball__controller_8c_a5502d663de0257e4cddeeab4756c46e5}\label{ball__controller_8c_a5502d663de0257e4cddeeab4756c46e5} 
+\index{ball\_controller.c@{ball\_controller.c}!bounce\_offset@{bounce\_offset}}
+\index{bounce\_offset@{bounce\_offset}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{bounce\_offset}{bounce\_offset}}
+{\footnotesize\ttfamily int bounce\+\_\+offset\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{ball__controller_8c_ad7ca5de0a66877da005299af04a533fc}\label{ball__controller_8c_ad7ca5de0a66877da005299af04a533fc} 
+\index{ball\_controller.c@{ball\_controller.c}!chuta@{chuta}}
+\index{chuta@{chuta}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{chuta}{chuta}}
+{\footnotesize\ttfamily bool chuta\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{ball__controller_8c_aabe6e417e2b4222133e4d2907ecb7c4f}\label{ball__controller_8c_aabe6e417e2b4222133e4d2907ecb7c4f} 
+\index{ball\_controller.c@{ball\_controller.c}!time\_passed\_x@{time\_passed\_x}}
+\index{time\_passed\_x@{time\_passed\_x}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{time\_passed\_x}{time\_passed\_x}}
+{\footnotesize\ttfamily uint8\+\_\+t time\+\_\+passed\+\_\+x = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{ball__controller_8c_ae63fb65a41365e48df3668fa23f69818}\label{ball__controller_8c_ae63fb65a41365e48df3668fa23f69818} 
+\index{ball\_controller.c@{ball\_controller.c}!time\_passed\_y@{time\_passed\_y}}
+\index{time\_passed\_y@{time\_passed\_y}!ball\_controller.c@{ball\_controller.c}}
+\doxysubsubsection{\texorpdfstring{time\_passed\_y}{time\_passed\_y}}
+{\footnotesize\ttfamily uint8\+\_\+t time\+\_\+passed\+\_\+y = 0\hspace{0.3cm}{\ttfamily [static]}}
+

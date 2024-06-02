@@ -1,0 +1,7 @@
+<map id="check_ball_goal_height" name="check_ball_goal_height">
+<area shape="rect" id="Node000001" title=" " alt="" coords="367,5,541,31"/>
+<area shape="rect" id="Node000002" href="$ball__controller_8c.html#a5dd601d5b34cfb88df1bd449936285f5" title="Collision detecting function between a ball and a goal." alt="" coords="176,5,319,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="353,21,319,21,319,15,353,15"/>
+<area shape="rect" id="Node000003" href="$proj_8c.html#a7a72220d8366dd84709e79ce415862e5" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="162,21,128,21,128,15,162,15"/>
+</map>

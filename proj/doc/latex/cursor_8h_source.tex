@@ -1,0 +1,24 @@
+\doxysection{cursor.\+h}
+\hypertarget{cursor_8h_source}{}\label{cursor_8h_source}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/cursor.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/cursor.h}}
+\mbox{\hyperlink{cursor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CURSOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CURSOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00021\ \ \ uint16\_t\ \mbox{\hyperlink{struct_cursor_a9336ebf25087d91c818ee6e9ec29f8c1}{x}},\ y;}
+\DoxyCodeLine{00022\ \ \ xpm\_image\_t\ \mbox{\hyperlink{struct_cursor_a86d0d51ceb4bc3bd26707520f257a5a4}{img}};}
+\DoxyCodeLine{00023\ \}\ \mbox{\hyperlink{struct_cursor}{Cursor}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00032\ \mbox{\hyperlink{struct_cursor}{Cursor}}\ *\mbox{\hyperlink{cursor_8h_aa9e706d53a434e3f2557c6e190f098b9}{create\_cursor}}(xpm\_map\_t\ pic);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{cursor_8h_a52d5e036c20fa98010f85089e51c1040}{destroy\_cursor}}(\mbox{\hyperlink{struct_cursor}{Cursor}}\ *cr);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{cursor_8h_aba058b68eb2194fcd403c14f3ca04502}{set\_coordinates}}(\mbox{\hyperlink{struct_cursor}{Cursor}}\ *cr,\ uint16\_t\ x,\ uint16\_t\ y,\ \textcolor{keywordtype}{bool}\ negative\_x\ ,\ \textcolor{keywordtype}{bool}\ negative\_y);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

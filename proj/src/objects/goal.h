@@ -16,6 +16,7 @@
  * 
  * @var Goal::orientation
  * Value of the Goal's orientation
+ * True for right side goal and false for left side goal
  * 
  * @var Goal::map
  * Pointer to the Goal's xpm map

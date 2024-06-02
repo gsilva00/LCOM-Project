@@ -1,0 +1,5 @@
+<map id="reset_uart" name="reset_uart">
+<area shape="rect" id="Node000001" title="Resets UART to its default state." alt="" coords="5,5,93,31"/>
+<area shape="rect" id="Node000002" href="$queue_8c.html#a7b0221e1c302d1af3349ffa0a71b7c08" title="Destructor of the queue &quot;class&quot;." alt="" coords="141,5,252,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,15,128,15,128,21,94,21"/>
+</map>

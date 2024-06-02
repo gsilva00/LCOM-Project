@@ -1,0 +1,42 @@
+\doxysubsection{BIOS functions}
+\hypertarget{group___b_i_o_s_funcs}{}\label{group___b_i_o_s_funcs}\index{BIOS functions@{BIOS functions}}
+
+
+BIOS functions.  
+
+
+Collaboration diagram for BIOS functions\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{group___b_i_o_s_funcs}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___b_i_o_s_funcs_gabb44a77dfe682aab6d88afd3c20d2119}{BIOS\+\_\+\+VIDEO\+\_\+\+MODE}}~0x00
+\item 
+\#define \mbox{\hyperlink{group___b_i_o_s_funcs_ga67c303c315b8cd35acf0e6e425e02027}{MINIX\+\_\+\+TEXT\+\_\+\+MODE}}~0x03
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+BIOS functions. 
+
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___b_i_o_s_funcs_gabb44a77dfe682aab6d88afd3c20d2119}\label{group___b_i_o_s_funcs_gabb44a77dfe682aab6d88afd3c20d2119} 
+\index{BIOS functions@{BIOS functions}!BIOS\_VIDEO\_MODE@{BIOS\_VIDEO\_MODE}}
+\index{BIOS\_VIDEO\_MODE@{BIOS\_VIDEO\_MODE}!BIOS functions@{BIOS functions}}
+\doxysubsubsubsection{\texorpdfstring{BIOS\_VIDEO\_MODE}{BIOS\_VIDEO\_MODE}}
+{\footnotesize\ttfamily \#define BIOS\+\_\+\+VIDEO\+\_\+\+MODE~0x00}
+
+Set video mode (In AH). Argument (video mode) in AL. Should use standard INT 0x10 BIOS interface \Hypertarget{group___b_i_o_s_funcs_ga67c303c315b8cd35acf0e6e425e02027}\label{group___b_i_o_s_funcs_ga67c303c315b8cd35acf0e6e425e02027} 
+\index{BIOS functions@{BIOS functions}!MINIX\_TEXT\_MODE@{MINIX\_TEXT\_MODE}}
+\index{MINIX\_TEXT\_MODE@{MINIX\_TEXT\_MODE}!BIOS functions@{BIOS functions}}
+\doxysubsubsubsection{\texorpdfstring{MINIX\_TEXT\_MODE}{MINIX\_TEXT\_MODE}}
+{\footnotesize\ttfamily \#define MINIX\+\_\+\+TEXT\+\_\+\+MODE~0x03}
+
+Argument of 0x00. Minix text mode\+: standard CGA 

@@ -1,0 +1,61 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/objects/object\+\_\+controllers/sky\+\_\+controller.h File Reference}
+\hypertarget{sky__controller_8h}{}\label{sky__controller_8h}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/object\_controllers/sky\_controller.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/object\_controllers/sky\_controller.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}../../images/backgrounds/sky\+\_\+5am.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/backgrounds/sky\+\_\+7am.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/backgrounds/sky\+\_\+10am.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/backgrounds/sky\+\_\+12pm.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/backgrounds/sky\+\_\+4pm.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/backgrounds/sky\+\_\+7pm.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/backgrounds/sky\+\_\+8pm.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../images/backgrounds/sky\+\_\+10pm.\+xpm"{}}\newline
+Include dependency graph for sky\+\_\+controller.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sky__controller_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sky__controller_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{sky__controller_8h_a7a8b8103d2e5a20f3355c69c396c87f1}{change\+\_\+sky\+\_\+image}} (uint8\+\_\+t current\+\_\+hour, xpm\+\_\+image\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{proj_8c_a4271ea53093e3a265709369c47763695}{sky\+\_\+img}})
+\begin{DoxyCompactList}\small\item\em Function to change the sky background based on the real-\/time of the computer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sky__controller_8h_a7a8b8103d2e5a20f3355c69c396c87f1}\label{sky__controller_8h_a7a8b8103d2e5a20f3355c69c396c87f1} 
+\index{sky\_controller.h@{sky\_controller.h}!change\_sky\_image@{change\_sky\_image}}
+\index{change\_sky\_image@{change\_sky\_image}!sky\_controller.h@{sky\_controller.h}}
+\doxysubsubsection{\texorpdfstring{change\_sky\_image()}{change\_sky\_image()}}
+{\footnotesize\ttfamily int change\+\_\+sky\+\_\+image (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{current\+\_\+hour,  }\item[{xpm\+\_\+image\+\_\+t \texorpdfstring{$\ast$}{*}}]{sky\+\_\+img }\end{DoxyParamCaption})}
+
+
+
+Function to change the sky background based on the real-\/time of the computer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+\_\+hour} & Current hour to determine the background image \\
+\hline
+{\em sky\+\_\+img} & Pointer to store the newly loaded sky image\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{sky__controller_8h_a7a8b8103d2e5a20f3355c69c396c87f1_icgraph}
+\end{center}
+\end{figure}

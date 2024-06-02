@@ -1,0 +1,5 @@
+<map id="init_background" name="init_background">
+<area shape="rect" id="Node000001" title="Function to initialize third buffer that stores (unchanging) the background of the game." alt="" coords="5,5,132,31"/>
+<area shape="rect" id="Node000002" href="$gpu_8c.html#a1eb4f1a42c106ef990a76aa98751cf8d" title="Auxiliary function to init_background()" alt="" coords="180,5,337,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,15,166,15,166,21,132,21"/>
+</map>

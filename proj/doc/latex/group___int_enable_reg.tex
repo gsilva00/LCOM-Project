@@ -1,0 +1,68 @@
+\doxysubsection{Interrupt Enable Register (IER)}
+\hypertarget{group___int_enable_reg}{}\label{group___int_enable_reg}\index{Interrupt Enable Register (IER)@{Interrupt Enable Register (IER)}}
+
+
+Controlls UART interrupts on some events.  
+
+
+Collaboration diagram for Interrupt Enable Register (IER)\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{group___int_enable_reg}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___int_enable_reg_ga0a191b30250669d46bb16613ba6cfb79}{LSRERR\+\_\+\+INT}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em Enables the Receiver Line Status Interrupt This event is generated when there is a change in the state of bits 1 to 4, i.\+e. the error bits, of the LSR. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_enable_reg_ga062627ae9a4d3d4d4f284e4010f59430}{THR\+\_\+\+RDY\+\_\+\+INT}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Enables the Transmitter Holding Register Empty Interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___int_enable_reg_gab55d698618b036cb1a5b94e33d1b5dc3}{DATA\+\_\+\+RDY\+\_\+\+INT}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em Enables the Received Data Available Interrupt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Controlls UART interrupts on some events. 
+
+Line Control Register (LCR)\+: Set main communication parameters
+\begin{DoxyItemize}
+\item DLAB (1 for Divisor Latch Access -\/ DLL and DLM; 0 for RBR or THR)
+\item Break Control (sets serial output to 0) -\/ Bit 6
+\item Parity (No-\/, odd-\/, even-\/parity; parity bit always 1, always 0) -\/ Bits 5, 4, 3
+\item Number of stop bits (0 for 1 stop bit; 1 for 2 stop bits, 1.\+5 when 5 bits per char) -\/ Bit 2
+\item Number of bits per character (5, 6, 7 8) -\/ Bits 1 and 0    
+\end{DoxyItemize}
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___int_enable_reg_gab55d698618b036cb1a5b94e33d1b5dc3}\label{group___int_enable_reg_gab55d698618b036cb1a5b94e33d1b5dc3} 
+\index{Interrupt Enable Register (IER)@{Interrupt Enable Register (IER)}!DATA\_RDY\_INT@{DATA\_RDY\_INT}}
+\index{DATA\_RDY\_INT@{DATA\_RDY\_INT}!Interrupt Enable Register (IER)@{Interrupt Enable Register (IER)}}
+\doxysubsubsubsection{\texorpdfstring{DATA\_RDY\_INT}{DATA\_RDY\_INT}}
+{\footnotesize\ttfamily \#define DATA\+\_\+\+RDY\+\_\+\+INT~BIT(0)}
+
+
+
+Enables the Received Data Available Interrupt. 
+
+\Hypertarget{group___int_enable_reg_ga0a191b30250669d46bb16613ba6cfb79}\label{group___int_enable_reg_ga0a191b30250669d46bb16613ba6cfb79} 
+\index{Interrupt Enable Register (IER)@{Interrupt Enable Register (IER)}!LSRERR\_INT@{LSRERR\_INT}}
+\index{LSRERR\_INT@{LSRERR\_INT}!Interrupt Enable Register (IER)@{Interrupt Enable Register (IER)}}
+\doxysubsubsubsection{\texorpdfstring{LSRERR\_INT}{LSRERR\_INT}}
+{\footnotesize\ttfamily \#define LSRERR\+\_\+\+INT~BIT(2)}
+
+
+
+Enables the Receiver Line Status Interrupt This event is generated when there is a change in the state of bits 1 to 4, i.\+e. the error bits, of the LSR. 
+
+\Hypertarget{group___int_enable_reg_ga062627ae9a4d3d4d4f284e4010f59430}\label{group___int_enable_reg_ga062627ae9a4d3d4d4f284e4010f59430} 
+\index{Interrupt Enable Register (IER)@{Interrupt Enable Register (IER)}!THR\_RDY\_INT@{THR\_RDY\_INT}}
+\index{THR\_RDY\_INT@{THR\_RDY\_INT}!Interrupt Enable Register (IER)@{Interrupt Enable Register (IER)}}
+\doxysubsubsubsection{\texorpdfstring{THR\_RDY\_INT}{THR\_RDY\_INT}}
+{\footnotesize\ttfamily \#define THR\+\_\+\+RDY\+\_\+\+INT~BIT(1)}
+
+
+
+Enables the Transmitter Holding Register Empty Interrupt. 
+

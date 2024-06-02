@@ -1,0 +1,149 @@
+\doxysection{/home/gui/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/objects/player.h File Reference}
+\hypertarget{player_8h}{}\label{player_8h}\index{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/player.h@{/home/gui/Desktop/MINIX-\/LCOM/shared/proj/src/objects/player.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for player.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{player_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_player}{Player}}
+\begin{DoxyCompactList}\small\item\em Implementation of the \doxylink{struct_player}{Player} as an object usable in game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8h_a6bb4826862a934d5f61baee4da2261cc}{create\+\_\+player}} (xpm\+\_\+map\+\_\+t pic, int x, int y, int width, int height, int xspeed, int yspeed, bool orientation)
+\begin{DoxyCompactList}\small\item\em Constructor of the \doxylink{struct_player}{Player} "{}class"{} (C-\/class == struct + functions) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_aec5769b18f1f21021cc3d1423b0182d2}{destroy\+\_\+player}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}pl)
+\begin{DoxyCompactList}\small\item\em Destructor of the \doxylink{struct_player}{Player} "{}class"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a196e2a0e7ae1fef15cc96b432fcc9f35}{move\+\_\+player1\+\_\+to\+\_\+center}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}pl)
+\begin{DoxyCompactList}\small\item\em Function that moves the player to the left. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a79765031f66452343b8f3c31a19768de}{move\+\_\+player2\+\_\+to\+\_\+center}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}pl)
+\begin{DoxyCompactList}\small\item\em Function that moves the player to the right. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{player_8h_a6bb4826862a934d5f61baee4da2261cc}\label{player_8h_a6bb4826862a934d5f61baee4da2261cc} 
+\index{player.h@{player.h}!create\_player@{create\_player}}
+\index{create\_player@{create\_player}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{create\_player()}{create\_player()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*} create\+\_\+player (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{pic,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{int}]{xspeed,  }\item[{int}]{yspeed,  }\item[{bool}]{orientation }\end{DoxyParamCaption})}
+
+
+
+Constructor of the \doxylink{struct_player}{Player} "{}class"{} (C-\/class == struct + functions) 
+
+Dynamically allocates in memory a \doxylink{struct_player}{Player} instance, effectively initializing the object
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic} & XPM map used to make the \doxylink{struct_player}{Player}\textquotesingle{}s image \\
+\hline
+{\em x} & Value of the \doxylink{struct_player}{Player}\textquotesingle{}s position in the x axis \\
+\hline
+{\em y} & Value of the \doxylink{struct_player}{Player}\textquotesingle{}s position in the y axis \\
+\hline
+{\em width} & Value of the \doxylink{struct_player}{Player}\textquotesingle{}s image width \\
+\hline
+{\em height} & Value of the \doxylink{struct_player}{Player}\textquotesingle{}s image height \\
+\hline
+{\em xspeed} & Value of the \doxylink{struct_player}{Player}\textquotesingle{}s speed in the x axis \\
+\hline
+{\em yspeed} & Value of the \doxylink{struct_player}{Player}\textquotesingle{}s speed in the y axis \\
+\hline
+{\em orientation} & Variable of the orientation of the player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the \doxylink{struct_player}{Player} struct dynamically allocated in memory. If memory allocation fails, returns NULL 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{player_8h_a6bb4826862a934d5f61baee4da2261cc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player_8h_aec5769b18f1f21021cc3d1423b0182d2}\label{player_8h_aec5769b18f1f21021cc3d1423b0182d2} 
+\index{player.h@{player.h}!destroy\_player@{destroy\_player}}
+\index{destroy\_player@{destroy\_player}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_player()}{destroy\_player()}}
+{\footnotesize\ttfamily void destroy\+\_\+player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{pl }\end{DoxyParamCaption})}
+
+
+
+Destructor of the \doxylink{struct_player}{Player} "{}class"{}. 
+
+Frees the memory allocated for the \doxylink{struct_player}{Player} instance and its buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em pl} & Pointer to the \doxylink{struct_player}{Player} struct to be deallocated. If pl is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{player_8h_aec5769b18f1f21021cc3d1423b0182d2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player_8h_a196e2a0e7ae1fef15cc96b432fcc9f35}\label{player_8h_a196e2a0e7ae1fef15cc96b432fcc9f35} 
+\index{player.h@{player.h}!move\_player1\_to\_center@{move\_player1\_to\_center}}
+\index{move\_player1\_to\_center@{move\_player1\_to\_center}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{move\_player1\_to\_center()}{move\_player1\_to\_center()}}
+{\footnotesize\ttfamily void move\+\_\+player1\+\_\+to\+\_\+center (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{pl }\end{DoxyParamCaption})}
+
+
+
+Function that moves the player to the left. 
+
+Moves Player1 to the left of the field. It is used whenever the game is reset, either by beginning a new game or when someone scores a goal
+
+
+\begin{DoxyParams}{Parameters}
+{\em pl} & Pointer to the \doxylink{struct_player}{Player} struct to be reallocated. If pl is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h_a196e2a0e7ae1fef15cc96b432fcc9f35_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player_8h_a79765031f66452343b8f3c31a19768de}\label{player_8h_a79765031f66452343b8f3c31a19768de} 
+\index{player.h@{player.h}!move\_player2\_to\_center@{move\_player2\_to\_center}}
+\index{move\_player2\_to\_center@{move\_player2\_to\_center}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{move\_player2\_to\_center()}{move\_player2\_to\_center()}}
+{\footnotesize\ttfamily void move\+\_\+player2\+\_\+to\+\_\+center (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{pl }\end{DoxyParamCaption})}
+
+
+
+Function that moves the player to the right. 
+
+Moves Player2 to the right of the field. It is used whenever the game is reset, either by beginning a new game or when someone scores a goal
+
+
+\begin{DoxyParams}{Parameters}
+{\em pl} & Pointer to the \doxylink{struct_player}{Player} struct to be reallocated. If pl is NULL, no operation is performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h_a79765031f66452343b8f3c31a19768de_icgraph}
+\end{center}
+\end{figure}

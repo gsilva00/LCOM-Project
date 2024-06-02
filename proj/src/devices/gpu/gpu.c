@@ -24,7 +24,7 @@ int change_video_mode(uint16_t mode) {
 
   // Kernel call switches from 32-bit protected mode to 16-bit real mode - access BIOS calls - and executes specified software interrupt instruction INT
   if (sys_int86(&r86) == EFAULT) {
-    printf("sys_int86 kernel call failed!\n");
+    printf("Error: sys_int86 kernel call!\n");
     return 1;
   }
 

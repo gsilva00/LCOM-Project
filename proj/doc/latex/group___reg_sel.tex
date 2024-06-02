@@ -1,0 +1,61 @@
+\doxysubsection{Register selection for Control Word}
+\hypertarget{group___reg_sel}{}\label{group___reg_sel}\index{Register selection for Control Word@{Register selection for Control Word}}
+
+
+Register selection\+: bits 5 and 4 of Control Word.  
+
+
+Collaboration diagram for Register selection for Control Word\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{group___reg_sel}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___reg_sel_gac18cb814ebd0d67235392c330e0e3504}{TIMER\+\_\+\+LSB}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em Initialize Counter LSB only. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___reg_sel_ga2a8a6d363c612d756cd8d78480f7cd04}{TIMER\+\_\+\+MSB}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Initialize Counter MSB only. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___reg_sel_ga8c0f1933323274c765e23837e4fbc8c7}{TIMER\+\_\+\+LSB\+\_\+\+MSB}}~(\mbox{\hyperlink{group___reg_sel_gac18cb814ebd0d67235392c330e0e3504}{TIMER\+\_\+\+LSB}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{group___reg_sel_ga2a8a6d363c612d756cd8d78480f7cd04}{TIMER\+\_\+\+MSB}})
+\begin{DoxyCompactList}\small\item\em Initialize LSB first and MSB afterwards. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Register selection\+: bits 5 and 4 of Control Word. 
+
+In what way the counters of the Timer will be initialized 
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___reg_sel_gac18cb814ebd0d67235392c330e0e3504}\label{group___reg_sel_gac18cb814ebd0d67235392c330e0e3504} 
+\index{Register selection for Control Word@{Register selection for Control Word}!TIMER\_LSB@{TIMER\_LSB}}
+\index{TIMER\_LSB@{TIMER\_LSB}!Register selection for Control Word@{Register selection for Control Word}}
+\doxysubsubsubsection{\texorpdfstring{TIMER\_LSB}{TIMER\_LSB}}
+{\footnotesize\ttfamily \#define TIMER\+\_\+\+LSB~BIT(4)}
+
+
+
+Initialize Counter LSB only. 
+
+\Hypertarget{group___reg_sel_ga8c0f1933323274c765e23837e4fbc8c7}\label{group___reg_sel_ga8c0f1933323274c765e23837e4fbc8c7} 
+\index{Register selection for Control Word@{Register selection for Control Word}!TIMER\_LSB\_MSB@{TIMER\_LSB\_MSB}}
+\index{TIMER\_LSB\_MSB@{TIMER\_LSB\_MSB}!Register selection for Control Word@{Register selection for Control Word}}
+\doxysubsubsubsection{\texorpdfstring{TIMER\_LSB\_MSB}{TIMER\_LSB\_MSB}}
+{\footnotesize\ttfamily \#define TIMER\+\_\+\+LSB\+\_\+\+MSB~(\mbox{\hyperlink{group___reg_sel_gac18cb814ebd0d67235392c330e0e3504}{TIMER\+\_\+\+LSB}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{group___reg_sel_ga2a8a6d363c612d756cd8d78480f7cd04}{TIMER\+\_\+\+MSB}})}
+
+
+
+Initialize LSB first and MSB afterwards. 
+
+\Hypertarget{group___reg_sel_ga2a8a6d363c612d756cd8d78480f7cd04}\label{group___reg_sel_ga2a8a6d363c612d756cd8d78480f7cd04} 
+\index{Register selection for Control Word@{Register selection for Control Word}!TIMER\_MSB@{TIMER\_MSB}}
+\index{TIMER\_MSB@{TIMER\_MSB}!Register selection for Control Word@{Register selection for Control Word}}
+\doxysubsubsubsection{\texorpdfstring{TIMER\_MSB}{TIMER\_MSB}}
+{\footnotesize\ttfamily \#define TIMER\+\_\+\+MSB~BIT(5)}
+
+
+
+Initialize Counter MSB only. 
+

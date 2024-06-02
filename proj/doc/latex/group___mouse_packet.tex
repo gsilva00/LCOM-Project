@@ -1,0 +1,121 @@
+\doxysubsection{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}
+\hypertarget{group___mouse_packet}{}\label{group___mouse_packet}\index{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}}
+
+
+Meaning of each of the bits in the Mouse\textquotesingle{}s Data Packet\textquotesingle{}s 1st byte.  
+
+
+Collaboration diagram for PS/2 Mouse\textquotesingle{}s Data Packet 1st byte\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{group___mouse_packet}
+\end{center}
+\end{figure}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___mouse_packet_gaa1d528d3434ccf8a16d259822315dda4}{PS2\+\_\+\+YOVER}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Flag -\/ mouse Y displacement too large to represent as a 9-\/bit 2\textquotesingle{}s complement integer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_ga9e75db874e6f99a09fce3f9e0f226e7b}{PS2\+\_\+\+XOVER}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em Flag -\/ mouse X displacement too large to represent as a 9-\/bit 2\textquotesingle{}s complement integer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_ga7900c4de49498bcf3c1954c41dac59df}{PS2\+\_\+\+YDELTA}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Y axis relative displacement MSBit of 9-\/bit 2\textquotesingle{}s complement integer -\/ indicates if Y delta is negative. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_ga43398d1349278aff351db752ec72cfce}{PS2\+\_\+\+XDELTA}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em X axis relative displacement MSBit of 9-\/bit 2\textquotesingle{}s complement integer -\/ indicates if X delta is negative. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_ga5f81bc03d86f07b525f345ce17a37b94}{PS2\+\_\+\+FIRSTID}}~BIT(3)
+\begin{DoxyCompactList}\small\item\em Bit 3 of 1st byte is always set. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_ga469573679f1c139caf854e635cfc298d}{PS2\+\_\+\+MB}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em State of the middle button. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_gafc2f1a9cd13264d9d3e4c397e503f042}{PS2\+\_\+\+RB}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em State of the right button. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___mouse_packet_ga6f67d9cdc9d2402f8e2e0a19aec348f4}{PS2\+\_\+\+LB}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em State of the left button. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Meaning of each of the bits in the Mouse\textquotesingle{}s Data Packet\textquotesingle{}s 1st byte. 
+
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___mouse_packet_ga5f81bc03d86f07b525f345ce17a37b94}\label{group___mouse_packet_ga5f81bc03d86f07b525f345ce17a37b94} 
+\index{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}!PS2\_FIRSTID@{PS2\_FIRSTID}}
+\index{PS2\_FIRSTID@{PS2\_FIRSTID}!PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}}
+\doxysubsubsubsection{\texorpdfstring{PS2\_FIRSTID}{PS2\_FIRSTID}}
+{\footnotesize\ttfamily \#define PS2\+\_\+\+FIRSTID~BIT(3)}
+
+
+
+Bit 3 of 1st byte is always set. 
+
+\Hypertarget{group___mouse_packet_ga6f67d9cdc9d2402f8e2e0a19aec348f4}\label{group___mouse_packet_ga6f67d9cdc9d2402f8e2e0a19aec348f4} 
+\index{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}!PS2\_LB@{PS2\_LB}}
+\index{PS2\_LB@{PS2\_LB}!PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}}
+\doxysubsubsubsection{\texorpdfstring{PS2\_LB}{PS2\_LB}}
+{\footnotesize\ttfamily \#define PS2\+\_\+\+LB~BIT(0)}
+
+
+
+State of the left button. 
+
+\Hypertarget{group___mouse_packet_ga469573679f1c139caf854e635cfc298d}\label{group___mouse_packet_ga469573679f1c139caf854e635cfc298d} 
+\index{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}!PS2\_MB@{PS2\_MB}}
+\index{PS2\_MB@{PS2\_MB}!PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}}
+\doxysubsubsubsection{\texorpdfstring{PS2\_MB}{PS2\_MB}}
+{\footnotesize\ttfamily \#define PS2\+\_\+\+MB~BIT(2)}
+
+
+
+State of the middle button. 
+
+\Hypertarget{group___mouse_packet_gafc2f1a9cd13264d9d3e4c397e503f042}\label{group___mouse_packet_gafc2f1a9cd13264d9d3e4c397e503f042} 
+\index{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}!PS2\_RB@{PS2\_RB}}
+\index{PS2\_RB@{PS2\_RB}!PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}}
+\doxysubsubsubsection{\texorpdfstring{PS2\_RB}{PS2\_RB}}
+{\footnotesize\ttfamily \#define PS2\+\_\+\+RB~BIT(1)}
+
+
+
+State of the right button. 
+
+\Hypertarget{group___mouse_packet_ga43398d1349278aff351db752ec72cfce}\label{group___mouse_packet_ga43398d1349278aff351db752ec72cfce} 
+\index{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}!PS2\_XDELTA@{PS2\_XDELTA}}
+\index{PS2\_XDELTA@{PS2\_XDELTA}!PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}}
+\doxysubsubsubsection{\texorpdfstring{PS2\_XDELTA}{PS2\_XDELTA}}
+{\footnotesize\ttfamily \#define PS2\+\_\+\+XDELTA~BIT(4)}
+
+
+
+X axis relative displacement MSBit of 9-\/bit 2\textquotesingle{}s complement integer -\/ indicates if X delta is negative. 
+
+\Hypertarget{group___mouse_packet_ga9e75db874e6f99a09fce3f9e0f226e7b}\label{group___mouse_packet_ga9e75db874e6f99a09fce3f9e0f226e7b} 
+\index{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}!PS2\_XOVER@{PS2\_XOVER}}
+\index{PS2\_XOVER@{PS2\_XOVER}!PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}}
+\doxysubsubsubsection{\texorpdfstring{PS2\_XOVER}{PS2\_XOVER}}
+{\footnotesize\ttfamily \#define PS2\+\_\+\+XOVER~BIT(6)}
+
+
+
+Flag -\/ mouse X displacement too large to represent as a 9-\/bit 2\textquotesingle{}s complement integer. 
+
+\Hypertarget{group___mouse_packet_ga7900c4de49498bcf3c1954c41dac59df}\label{group___mouse_packet_ga7900c4de49498bcf3c1954c41dac59df} 
+\index{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}!PS2\_YDELTA@{PS2\_YDELTA}}
+\index{PS2\_YDELTA@{PS2\_YDELTA}!PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}}
+\doxysubsubsubsection{\texorpdfstring{PS2\_YDELTA}{PS2\_YDELTA}}
+{\footnotesize\ttfamily \#define PS2\+\_\+\+YDELTA~BIT(5)}
+
+
+
+Y axis relative displacement MSBit of 9-\/bit 2\textquotesingle{}s complement integer -\/ indicates if Y delta is negative. 
+
+\Hypertarget{group___mouse_packet_gaa1d528d3434ccf8a16d259822315dda4}\label{group___mouse_packet_gaa1d528d3434ccf8a16d259822315dda4} 
+\index{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}!PS2\_YOVER@{PS2\_YOVER}}
+\index{PS2\_YOVER@{PS2\_YOVER}!PS/2 Mouse\textquotesingle{}s Data Packet 1st byte@{PS/2 Mouse\textquotesingle{}s Data Packet 1st byte}}
+\doxysubsubsubsection{\texorpdfstring{PS2\_YOVER}{PS2\_YOVER}}
+{\footnotesize\ttfamily \#define PS2\+\_\+\+YOVER~BIT(7)}
+
+
+
+Flag -\/ mouse Y displacement too large to represent as a 9-\/bit 2\textquotesingle{}s complement integer. 
+
