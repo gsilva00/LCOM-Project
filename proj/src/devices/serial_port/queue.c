@@ -47,19 +47,24 @@ queue_t *new_queue(unsigned int in_size) {
 }
 
 void delete_queue(queue_t *q) {
+  if (q == NULL) return;
   free(q->buf);
   free(q);
+  q = NULL;
 }
 
 
 // Private functions: can be invoked only in queue.c
 // Adjusts the indices to provide the circularity of the queue
 static void adjust_queue(queue_t *q) {
+  if (q == NULL) return;
   q->in %= q->size;
   q->out %= q->size;
 }
 // Resizes the queue to double its size when it's full
 static int resize_queue(queue_t *q) {
+  if (q == NULL) return -1;
+
   int *p = (int *)realloc(q->buf, 2*(q->size)*sizeof(int));
   if (p == NULL) {
     printf("Queue object was NULL!\n");
@@ -79,6 +84,8 @@ static int resize_queue(queue_t *q) {
 }
 
 int put_queue(queue_t *q, int n) {
+  if (q == NULL) return 1;
+
   if (q->count == q->size) {
     if (resize_queue(q)) {
       printf("Error while resizing the queue!\n");
@@ -93,6 +100,8 @@ int put_queue(queue_t *q, int n) {
 }
 
 int get_queue(queue_t *q, int *n) {
+  if (q == NULL) return 1;
+
   if (q->count != 0) {
     *n = q->buf[q->out++];
     q->count--;

@@ -18,18 +18,11 @@
 /**
  * @brief Function to change the sky background based on the real-time of the computer.
  * @param current_hour Current hour to determine the background image
+ * @param sky_img Pointer to store the newly loaded sky image
  * 
  * @return 0 upon success, non-zero otherwise
  */
-int change_sky_image(uint8_t current_hour);
-
-/**
- * @brief Getter for the current_sky static global variable
- * @details Getter is needed because of the use of the static keyword (makes the variable only accesible in the file it's declared). Provides encapsulation
- * 
- * @return Address of allocated memory where the XPM image was read
- */
-uint8_t* get_current_sky();
+int change_sky_image(uint8_t current_hour, xpm_image_t *sky_img);
 
 
 #endif // SKY_H

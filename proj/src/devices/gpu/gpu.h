@@ -35,20 +35,15 @@ int create_frame_buffer(uint16_t mode);
 
 int free_buffers();
 
+int init_background(uint16_t *x_coords, uint16_t *y_coords, xpm_image_t *imgs, size_t num_elements);
+int draw_to_background(uint16_t xi, uint16_t yi, xpm_image_t img);
+int draw_nums_to_background(uint16_t xi, uint16_t yi, uint8_t points1);
 
 int draw_pixel(uint16_t x, uint16_t y, uint32_t color, bool ignore);
-
-int draw_back(uint16_t xi, uint16_t yi, xpm_image_t img);
-
-int draw_back_scoreboard(uint16_t xi, uint16_t yi, uint8_t points1);
-
-int draw_background(uint32_t color);
-
-int draw_frame_start();
-
-int draw_frame_end();
-
 int draw_xpm(uint16_t xi, uint16_t yi, xpm_image_t img, bool ignore);
+
+void prep_next_frame();
+void end_next_frame();
 
 
 // Getters
