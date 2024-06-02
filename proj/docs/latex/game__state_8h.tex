@@ -1,0 +1,170 @@
+\hypertarget{game__state_8h}{}\doxysection{/home/eunumshei/\+Desktop/\+MINIX-\/\+LCOM/shared/proj/src/game\+\_\+state.h File Reference}
+\label{game__state_8h}\index{/home/eunumshei/Desktop/MINIX-\/LCOM/shared/proj/src/game\_state.h@{/home/eunumshei/Desktop/MINIX-\/LCOM/shared/proj/src/game\_state.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for game\+\_\+state.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{game__state_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__state_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \{ \newline
+\mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a4c40e60bc71a32b924ce1f08d57f9721}{MENU}}
+, \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab233968ca763a8197066e42d7f59628c}{PREPARE\+\_\+\+MULTIPLAYER}}
+, \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a403778345700cbd36b5b26352b144f78}{MULTIPLAYER}}
+, \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a1ac1f44d243768b1ec68bd369673680c}{PREPARE\+\_\+\+SINGLEPLAYER}}
+, \newline
+\mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285adf9c53b97637b5e5ac722fb2f6d26512}{SINGLEPLAYER}}
+, \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a586faa0f5947c1fb23f4e925e7ed6a2c}{PREPARE\+\_\+\+PAUSE}}
+, \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a56b36d0d0bb01b339cf1041adc08e262}{PAUSE}}
+, \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a6d9102e22760dc39f0ac854d6ebce1ec}{PAUSE\+\_\+\+TO\+\_\+\+PLAY}}
+, \newline
+\mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a45897ef1260eb52fb3299aa85dbfad14}{PAUSE\+\_\+\+TO\+\_\+\+MENU}}
+, \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a372accd25715e67eb5960396c44aeeb6}{MULTIPLAYER\+\_\+\+END}}
+, \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab785710b5e54255cf858da9f8661573b}{TIME\+\_\+\+LIMIT}}
+, \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a481acf8650ec2f2e4c0b366fef0368b4}{GOAL}}
+, \newline
+\mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a871723195985a4ae22d7e10d99bf8a00}{GAME\+\_\+\+OVER}}
+ \}
+\item 
+enum \mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2}{Menu\+State}} \{ \mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2a025126463eac5d7b4013f652b036cf4f}{HOVER\+\_\+\+SINGLEPLAYER}}
+, \mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2a6aed102c6ce20bc6ed2e90762a1c897f}{HOVER\+\_\+\+MULTIPLAYER}}
+, \mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2a556f3fbc1abcf6bf4f2c07a76562c397}{HOVER\+\_\+\+EXIT}}
+ \}
+\item 
+enum \mbox{\hyperlink{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62}{Menu\+Pause\+State}} \{ \mbox{\hyperlink{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62a4496c5acca2193771f7f412c8a8192ac}{HOVER\+\_\+\+RESUME}}
+, \mbox{\hyperlink{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62a9e0b3f9c7abaa08cb7c32d76db37344a}{HOVER\+\_\+\+GO\+\_\+\+BACK}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game__state_8h_a9607abd9b7f13f5cce7f5614aab6ccdc}{enter\+\_\+new\+\_\+state}} (\mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} $\ast$\mbox{\hyperlink{proj_8c_ab8c8a2816ae974e5a2df22ec1e87fa51}{game\+\_\+state}}, \mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2}{Menu\+State}} $\ast$\mbox{\hyperlink{proj_8c_a7aa13957f2040b70e6f5a5413a2b620f}{menu\+\_\+state}}, \mbox{\hyperlink{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62}{Menu\+Pause\+State}} $\ast$\mbox{\hyperlink{proj_8c_a84f466bd8d76ba1ebfa5004c947323df}{menu\+\_\+pause\+\_\+state}}, bool $\ast$done, bool $\ast$cursor\+\_\+active)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285}} 
+\index{game\_state.h@{game\_state.h}!GameState@{GameState}}
+\index{GameState@{GameState}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{GameState}{GameState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU@{MENU}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!MENU@{MENU}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a4c40e60bc71a32b924ce1f08d57f9721}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a4c40e60bc71a32b924ce1f08d57f9721}} 
+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PREPARE\_MULTIPLAYER@{PREPARE\_MULTIPLAYER}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!PREPARE\_MULTIPLAYER@{PREPARE\_MULTIPLAYER}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab233968ca763a8197066e42d7f59628c}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab233968ca763a8197066e42d7f59628c}} 
+PREPARE\+\_\+\+MULTIPLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MULTIPLAYER@{MULTIPLAYER}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!MULTIPLAYER@{MULTIPLAYER}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a403778345700cbd36b5b26352b144f78}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a403778345700cbd36b5b26352b144f78}} 
+MULTIPLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PREPARE\_SINGLEPLAYER@{PREPARE\_SINGLEPLAYER}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!PREPARE\_SINGLEPLAYER@{PREPARE\_SINGLEPLAYER}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a1ac1f44d243768b1ec68bd369673680c}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a1ac1f44d243768b1ec68bd369673680c}} 
+PREPARE\+\_\+\+SINGLEPLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SINGLEPLAYER@{SINGLEPLAYER}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!SINGLEPLAYER@{SINGLEPLAYER}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285adf9c53b97637b5e5ac722fb2f6d26512}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285adf9c53b97637b5e5ac722fb2f6d26512}} 
+SINGLEPLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PREPARE\_PAUSE@{PREPARE\_PAUSE}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!PREPARE\_PAUSE@{PREPARE\_PAUSE}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a586faa0f5947c1fb23f4e925e7ed6a2c}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a586faa0f5947c1fb23f4e925e7ed6a2c}} 
+PREPARE\+\_\+\+PAUSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PAUSE@{PAUSE}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!PAUSE@{PAUSE}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a56b36d0d0bb01b339cf1041adc08e262}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a56b36d0d0bb01b339cf1041adc08e262}} 
+PAUSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PAUSE\_TO\_PLAY@{PAUSE\_TO\_PLAY}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!PAUSE\_TO\_PLAY@{PAUSE\_TO\_PLAY}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a6d9102e22760dc39f0ac854d6ebce1ec}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a6d9102e22760dc39f0ac854d6ebce1ec}} 
+PAUSE\+\_\+\+TO\+\_\+\+PLAY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PAUSE\_TO\_MENU@{PAUSE\_TO\_MENU}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!PAUSE\_TO\_MENU@{PAUSE\_TO\_MENU}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a45897ef1260eb52fb3299aa85dbfad14}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a45897ef1260eb52fb3299aa85dbfad14}} 
+PAUSE\+\_\+\+TO\+\_\+\+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MULTIPLAYER\_END@{MULTIPLAYER\_END}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!MULTIPLAYER\_END@{MULTIPLAYER\_END}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a372accd25715e67eb5960396c44aeeb6}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a372accd25715e67eb5960396c44aeeb6}} 
+MULTIPLAYER\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIME\_LIMIT@{TIME\_LIMIT}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!TIME\_LIMIT@{TIME\_LIMIT}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab785710b5e54255cf858da9f8661573b}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab785710b5e54255cf858da9f8661573b}} 
+TIME\+\_\+\+LIMIT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GOAL@{GOAL}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!GOAL@{GOAL}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a481acf8650ec2f2e4c0b366fef0368b4}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a481acf8650ec2f2e4c0b366fef0368b4}} 
+GOAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_OVER@{GAME\_OVER}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!GAME\_OVER@{GAME\_OVER}}}\mbox{\Hypertarget{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a871723195985a4ae22d7e10d99bf8a00}\label{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285a871723195985a4ae22d7e10d99bf8a00}} 
+GAME\+\_\+\+OVER&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62}\label{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62}} 
+\index{game\_state.h@{game\_state.h}!MenuPauseState@{MenuPauseState}}
+\index{MenuPauseState@{MenuPauseState}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{MenuPauseState}{MenuPauseState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62}{Menu\+Pause\+State}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HOVER\_RESUME@{HOVER\_RESUME}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!HOVER\_RESUME@{HOVER\_RESUME}}}\mbox{\Hypertarget{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62a4496c5acca2193771f7f412c8a8192ac}\label{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62a4496c5acca2193771f7f412c8a8192ac}} 
+HOVER\+\_\+\+RESUME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HOVER\_GO\_BACK@{HOVER\_GO\_BACK}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!HOVER\_GO\_BACK@{HOVER\_GO\_BACK}}}\mbox{\Hypertarget{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62a9e0b3f9c7abaa08cb7c32d76db37344a}\label{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62a9e0b3f9c7abaa08cb7c32d76db37344a}} 
+HOVER\+\_\+\+GO\+\_\+\+BACK&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{game__state_8h_aa3041ae4242c0dd57a126d17505443b2}\label{game__state_8h_aa3041ae4242c0dd57a126d17505443b2}} 
+\index{game\_state.h@{game\_state.h}!MenuState@{MenuState}}
+\index{MenuState@{MenuState}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{MenuState}{MenuState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2}{Menu\+State}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HOVER\_SINGLEPLAYER@{HOVER\_SINGLEPLAYER}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!HOVER\_SINGLEPLAYER@{HOVER\_SINGLEPLAYER}}}\mbox{\Hypertarget{game__state_8h_aa3041ae4242c0dd57a126d17505443b2a025126463eac5d7b4013f652b036cf4f}\label{game__state_8h_aa3041ae4242c0dd57a126d17505443b2a025126463eac5d7b4013f652b036cf4f}} 
+HOVER\+\_\+\+SINGLEPLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HOVER\_MULTIPLAYER@{HOVER\_MULTIPLAYER}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!HOVER\_MULTIPLAYER@{HOVER\_MULTIPLAYER}}}\mbox{\Hypertarget{game__state_8h_aa3041ae4242c0dd57a126d17505443b2a6aed102c6ce20bc6ed2e90762a1c897f}\label{game__state_8h_aa3041ae4242c0dd57a126d17505443b2a6aed102c6ce20bc6ed2e90762a1c897f}} 
+HOVER\+\_\+\+MULTIPLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HOVER\_EXIT@{HOVER\_EXIT}!game\_state.h@{game\_state.h}}\index{game\_state.h@{game\_state.h}!HOVER\_EXIT@{HOVER\_EXIT}}}\mbox{\Hypertarget{game__state_8h_aa3041ae4242c0dd57a126d17505443b2a556f3fbc1abcf6bf4f2c07a76562c397}\label{game__state_8h_aa3041ae4242c0dd57a126d17505443b2a556f3fbc1abcf6bf4f2c07a76562c397}} 
+HOVER\+\_\+\+EXIT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{game__state_8h_a9607abd9b7f13f5cce7f5614aab6ccdc}\label{game__state_8h_a9607abd9b7f13f5cce7f5614aab6ccdc}} 
+\index{game\_state.h@{game\_state.h}!enter\_new\_state@{enter\_new\_state}}
+\index{enter\_new\_state@{enter\_new\_state}!game\_state.h@{game\_state.h}}
+\doxysubsubsection{\texorpdfstring{enter\_new\_state()}{enter\_new\_state()}}
+{\footnotesize\ttfamily void enter\+\_\+new\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game__state_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} $\ast$}]{game\+\_\+state,  }\item[{\mbox{\hyperlink{game__state_8h_aa3041ae4242c0dd57a126d17505443b2}{Menu\+State}} $\ast$}]{menu\+\_\+state,  }\item[{\mbox{\hyperlink{game__state_8h_a180ab8bc9e2b40550afa1808fe09cb62}{Menu\+Pause\+State}} $\ast$}]{menu\+\_\+pause\+\_\+state,  }\item[{bool $\ast$}]{done,  }\item[{bool $\ast$}]{cursor\+\_\+active }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{game__state_8h_a9607abd9b7f13f5cce7f5614aab6ccdc_icgraph}
+\end{center}
+\end{figure}
