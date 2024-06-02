@@ -10,7 +10,6 @@ static int player_y;
 static int player_x;
 static int player_yspeed;
 static int player_xspeed;
-static int bounce_offset;
 static bool chuta;
 
 static int img = 0; // Image number to perform animation
