@@ -51,9 +51,9 @@ void destroy_timeboard(Timeboard *tb);
 
 /** 
  * @brief Function that decreaces the time left
- * @details This function changes the image of the first and second part of the timeboard according to the decreasing remaining time left
+ * @details Decreases the time member variable by one second everytime there are 60 timer interrupts (from get_timer_intCounter())
  *
- * @param tb Pointer to the Timeboard struct to be deallocated. If tb is NULL, no operation is performed
+ * @param tb Pointer to the Timeboard whose time will be changed. If tb is NULL, no operation is performed
  */
 void decrease_time(Timeboard *tb);
 

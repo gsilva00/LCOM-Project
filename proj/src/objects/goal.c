@@ -1,5 +1,6 @@
 #include "goal.h"
 
+
 Goal *create_goal(xpm_map_t pic, bool orientation) {
   //allocate space for the "object"
   Goal *gl = (Goal *) malloc (sizeof(Goal));

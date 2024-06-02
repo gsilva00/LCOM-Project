@@ -40,7 +40,7 @@ void destroy_cursor(Cursor *cr);
 
 /** 
  * @brief Function that sets the new coordinates of the cursor
- * @details This function takes an x, y, negative_x, neagtive_y, and alters the cursor's coordinates given the mouse movement
+ * @details Alters the cursor's coordinates given the mouse movement
  *
  * @param cr Pointer to the Cursor struct to be reallocated. If cr is NULL, no operation is performed
  * @param x Value of the cursor's position in the x axis

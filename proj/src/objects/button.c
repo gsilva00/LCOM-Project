@@ -1,5 +1,6 @@
 #include "button.h"
 
+
 Button *create_button(xpm_map_t pic, int x, int y, bool selected) {
   //allocate space for the "object"
   Button *bt = (Button *) malloc (sizeof(Button));

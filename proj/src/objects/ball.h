@@ -7,36 +7,37 @@
 #include "player.h"
 #include "goal.h"
 
+
 /**
  * @struct Ball
- * @brief Implementation of the ball as an object usable in game
+ * @brief Implementation of the Ball as an object usable in game
  * 
  * @var Ball::x
- * Value of the ball's position in the x axis
+ * Value of the Ball's position in the x axis
  * 
  * @var Ball::y
- * Value of the ball's position in the y axis
+ * Value of the Ball's position in the y axis
  * 
  * @var Ball::width
- * Value of the ball's image width
+ * Value of the Ball's image width
  * 
  * @var Ball::height
- * Value of the ball's image height
+ * Value of the Ball's image height
  * 
  * @var Ball::xspeed
- * Value of the ball's speed in the x axis
+ * Value of the Ball's speed in the x axis
  * 
  * @var Ball::yspeed
- * Value of the ball's speed in the y axis
+ * Value of the Ball's speed in the y axis
  * 
  * @var Ball::map
- * Pointer to the ball's xpm map
+ * Pointer to the Ball's xpm map
  * 
  * @var Ball::stop
- * Variable that says if the ball has stopped
+ * Variable that says if the Ball has stopped
  * 
  * @var Ball::img
- * Value of the ball's img
+ * Value of the Ball's img
  */
 typedef struct {
   uint16_t x, y;
@@ -72,7 +73,7 @@ void destroy_ball(Ball *bl);
 
 /** 
  * @brief Function that moves the ball to the center
- * @details This function realocates the ball to the center of the field. It is used whenever the game is reset, either by beginning a new game or when some scores a goal
+ * @details Moves the ball to the center of the field. It is used whenever the game is reset, either by beginning a new game or when someone scores a goal
  *
  * @param bl Pointer to the Ball struct to be reallocated. If bl is NULL, no operation is performed
  */

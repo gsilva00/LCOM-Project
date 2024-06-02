@@ -29,10 +29,12 @@ void destroy_scoreboard(Scoreboard *sc) {
 }
 
 void add_points_1(Scoreboard *sc) {
-  sc->points1 += 1; 
+  if (sc == NULL) return;
+  sc->points1 += 1;
 }
 
 void add_points_2(Scoreboard *sc) {
-  sc->points2 += 1; 
+  if (sc == NULL) return;
+  sc->points2 += 1;
 }
 

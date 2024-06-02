@@ -1,31 +1,40 @@
 #include "player_controller.h"
 
-uint8_t time_passed_player_y = 0;
-uint8_t time_passed_player_x = 0;
-int img = 0;
 
-xpm_map_t player1_map0 = (xpm_map_t) personagem_parado_xpm;
-xpm_map_t player2_map0 = (xpm_map_t) personagem_2_parado_xpm;
-xpm_map_t player1_map1 = (xpm_map_t) personagem_chutar_frente_1_xpm;
-xpm_map_t player1_map2 = (xpm_map_t) personagem_chutar_frente_2_xpm;
-xpm_map_t player1_map3 = (xpm_map_t) personagem_chutar_frente_3_xpm;
-xpm_map_t player1_map4 = (xpm_map_t) personagem_chutar_frente_4_xpm;
-xpm_map_t player1_map5 = (xpm_map_t) personagem_chutar_frente_5_xpm;
-xpm_map_t player1_map6 = (xpm_map_t) personagem_chutar_frente_6_xpm;
-xpm_map_t player1_map7 = (xpm_map_t) personagem_chutar_tras_1_xpm;
-xpm_map_t player1_map8 = (xpm_map_t) personagem_chutar_tras_2_xpm;
-xpm_map_t player1_map9 = (xpm_map_t) personagem_chutar_tras_3_xpm;
-xpm_map_t player1_map10 = (xpm_map_t) personagem_chutar_tras_4_xpm;
-xpm_map_t player2_map1 = (xpm_map_t) personagem_2_chutar_frente_1_xpm;
-xpm_map_t player2_map2 = (xpm_map_t) personagem_2_chutar_frente_2_xpm;
-xpm_map_t player2_map3 = (xpm_map_t) personagem_2_chutar_frente_3_xpm;
-xpm_map_t player2_map4 = (xpm_map_t) personagem_2_chutar_frente_4_xpm;
-xpm_map_t player2_map5 = (xpm_map_t) personagem_2_chutar_frente_5_xpm;
-xpm_map_t player2_map6 = (xpm_map_t) personagem_2_chutar_frente_6_xpm;
-xpm_map_t player2_map7 = (xpm_map_t) personagem_2_chutar_tras_1_xpm;
-xpm_map_t player2_map8 = (xpm_map_t) personagem_2_chutar_tras_2_xpm;
-xpm_map_t player2_map9 = (xpm_map_t) personagem_2_chutar_tras_3_xpm;
-xpm_map_t player2_map10 = (xpm_map_t) personagem_2_chutar_tras_4_xpm;
+// Time variables to simulate acceleration
+static uint8_t time_passed_player_y = 0;
+static uint8_t time_passed_player_x = 0;
+
+static int player_y_original;
+static int player_y;
+static int player_x;
+static int player_yspeed;
+static int player_xspeed;
+static bool chuta;
+
+static int img = 0; // Image number to perform animation
+static xpm_map_t player1_map0 = (xpm_map_t) personagem_parado_xpm;
+static xpm_map_t player1_map1 = (xpm_map_t) personagem_chutar_frente_1_xpm;
+static xpm_map_t player1_map2 = (xpm_map_t) personagem_chutar_frente_2_xpm;
+static xpm_map_t player1_map3 = (xpm_map_t) personagem_chutar_frente_3_xpm;
+static xpm_map_t player1_map4 = (xpm_map_t) personagem_chutar_frente_4_xpm;
+static xpm_map_t player1_map5 = (xpm_map_t) personagem_chutar_frente_5_xpm;
+static xpm_map_t player1_map6 = (xpm_map_t) personagem_chutar_frente_6_xpm;
+static xpm_map_t player1_map7 = (xpm_map_t) personagem_chutar_tras_1_xpm;
+static xpm_map_t player1_map8 = (xpm_map_t) personagem_chutar_tras_2_xpm;
+static xpm_map_t player1_map9 = (xpm_map_t) personagem_chutar_tras_3_xpm;
+static xpm_map_t player1_map10 = (xpm_map_t) personagem_chutar_tras_4_xpm;
+static xpm_map_t player2_map0 = (xpm_map_t) personagem_2_parado_xpm;
+static xpm_map_t player2_map1 = (xpm_map_t) personagem_2_chutar_frente_1_xpm;
+static xpm_map_t player2_map2 = (xpm_map_t) personagem_2_chutar_frente_2_xpm;
+static xpm_map_t player2_map3 = (xpm_map_t) personagem_2_chutar_frente_3_xpm;
+static xpm_map_t player2_map4 = (xpm_map_t) personagem_2_chutar_frente_4_xpm;
+static xpm_map_t player2_map5 = (xpm_map_t) personagem_2_chutar_frente_5_xpm;
+static xpm_map_t player2_map6 = (xpm_map_t) personagem_2_chutar_frente_6_xpm;
+static xpm_map_t player2_map7 = (xpm_map_t) personagem_2_chutar_tras_1_xpm;
+static xpm_map_t player2_map8 = (xpm_map_t) personagem_2_chutar_tras_2_xpm;
+static xpm_map_t player2_map9 = (xpm_map_t) personagem_2_chutar_tras_3_xpm;
+static xpm_map_t player2_map10 = (xpm_map_t) personagem_2_chutar_tras_4_xpm;
 
 void initialize_player_values(Player *player) {
   player_y_original = player->y;
@@ -44,7 +53,7 @@ void prepare_for_player_jump(Player *player) {
 }
 
 bool player_border_collision(Player *player) {
-  if(player == NULL) return 1;
+  if (player == NULL) return 1;
   if (player->x + player->width >= 800) {
     player->x--;
     return true;
@@ -57,7 +66,7 @@ bool player_border_collision(Player *player) {
 }
 
 bool player_player_collision(Player *player1, Player *player2) {
-  if(player1 == NULL || player2 == NULL){
+  if (player1 == NULL || player2 == NULL) {
     return 1;
   }
   if ((player1->x <= player2->x + player2->width + 5) && (player1->x + player1->width + 5 >= player2->x)) {
@@ -132,27 +141,23 @@ void move_player(Player *player, PlayerStateMove *player_state_move, PlayerState
       if (player->xspeed != 0) {
         if (get_timer_intCounter() % 30 == 0) {
           player->xspeed = player->xspeed * SPEED_REDUCTION_FACTOR;
-          printf("%d", player->xspeed);
+          printf("%d   ", player->xspeed);
         }
-      }else {
-        *player_state_move = PLAYER_MOVE_LEFT_END;
+      } else {
+        *player_state_move = PLAYER_MOVE_END;
       }
       break;
     case AFTER_PLAYER_MOVE_RIGHT:
-    if (player->xspeed != 0) {
+      if (player->xspeed != 0) {
         if (get_timer_intCounter() % 30 == 0) {
           player->xspeed = player->xspeed * SPEED_REDUCTION_FACTOR;
           printf("%d", player->xspeed);
         }
-      }else {
-        *player_state_move = PLAYER_MOVE_RIGHT_END;
+      } else {
+        *player_state_move = PLAYER_MOVE_END;
       }
       break;
-    case PLAYER_MOVE_LEFT_END:
-      restart_player_movement(player);
-      *player_state_move = PLAYER_MOVE_NONE;
-      break;
-    case PLAYER_MOVE_RIGHT_END:
+    case PLAYER_MOVE_END:
       restart_player_movement(player);
       *player_state_move = PLAYER_MOVE_NONE;
       break;
@@ -198,33 +203,33 @@ void move_player(Player *player, PlayerStateMove *player_state_move, PlayerState
         switch(img) {
           case 0:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map7, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map7, XPM_8_8_8, &player->img);
             }
             break;
           case 1:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map8, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map8, XPM_8_8_8, &player->img);
             }
             break;
           case 2:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map9, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map9, XPM_8_8_8, &player->img);
             }
             break;
           case 3:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map10, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map10, XPM_8_8_8, &player->img);
             }
             break;
@@ -240,49 +245,49 @@ void move_player(Player *player, PlayerStateMove *player_state_move, PlayerState
         switch(img) {
           case 0:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map1, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map1, XPM_8_8_8, &player->img);
             }
             break;
           case 1:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map2, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map2, XPM_8_8_8, &player->img);
             }
             break;
           case 2:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map3, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map3, XPM_8_8_8, &player->img);
             }
             break;
           case 3:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map4, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map4, XPM_8_8_8, &player->img);
             }
             break;
           case 4:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map5, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map5, XPM_8_8_8, &player->img);
             }
             break;
           case 5:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map6, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map6, XPM_8_8_8, &player->img);
             }
             break;
@@ -298,57 +303,57 @@ void move_player(Player *player, PlayerStateMove *player_state_move, PlayerState
         switch(img) {
           case 0:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map6, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map6, XPM_8_8_8, &player->img);
             }
             break;
           case 1:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map5, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map5, XPM_8_8_8, &player->img);
             }
             break;
           case 2:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map4, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map4, XPM_8_8_8, &player->img);
             }
             break;
           case 3:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map3, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map3, XPM_8_8_8, &player->img);
             }
             break;
           case 4:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map2, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map2, XPM_8_8_8, &player->img);
             }
             break;
           case 5:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map1, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map1, XPM_8_8_8, &player->img);
             }
             break;
           case 6:
             img++;
-            if(player->orientation == 0){
+            if (player->orientation == 0) {
               player->map = xpm_load(player1_map0, XPM_8_8_8, &player->img);
-            }else{
+            } else {
               player->map = xpm_load(player2_map0, XPM_8_8_8, &player->img);
             }
             break;

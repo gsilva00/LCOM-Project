@@ -29,7 +29,7 @@
  * Pointer to the Player's xpm map
  * 
  * @var Player::orientation
- * Variable of the orientation of the player
+ * Variable of the orientation of the player (0 for facing right, 1 for facing left)
  * 
  * @var Player::img
  * Value of the Player's img
@@ -69,7 +69,7 @@ void destroy_player(Player *pl);
 
 /** 
  * @brief Function that moves the player to the left
- * @details This function realocates the Player to the left of the field. It is used whenever the game is reset, either by beginning a new game or when some scores a goal
+ * @details Moves Player1 to the left of the field. It is used whenever the game is reset, either by beginning a new game or when someone scores a goal
  *
  * @param pl Pointer to the Player struct to be reallocated. If pl is NULL, no operation is performed
  */
@@ -77,7 +77,7 @@ void move_player1_to_center(Player *pl);
 
 /** 
  * @brief Function that moves the player to the right
- * @details This function realocates the Player to the right of the field. It is used whenever the game is reset, either by beginning a new game or when some scores a goal
+ * @details Moves Player2 to the right of the field. It is used whenever the game is reset, either by beginning a new game or when someone scores a goal
  *
  * @param pl Pointer to the Player struct to be reallocated. If pl is NULL, no operation is performed
  */

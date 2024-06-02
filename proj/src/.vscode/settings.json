@@ -18,6 +18,10 @@
     "timeboard.h": "c",
     "aux_timer.h": "c",
     "button.h": "c",
-    "cursor.h": "c"
+    "cursor.h": "c",
+    "game_state.h": "c",
+    "i8254.h": "c",
+    "scoreboard.h": "c",
+    "goal.h": "c"
   },
 }

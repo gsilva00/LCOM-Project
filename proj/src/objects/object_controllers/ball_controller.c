@@ -1,7 +1,18 @@
 #include "ball_controller.h"
 
-uint8_t time_passed_y = 0;
-uint8_t time_passed_x = 0;
+
+// Time variables to simulate acceleration
+static uint8_t time_passed_y = 0;
+static uint8_t time_passed_x = 0;
+
+static int bola_y_original;
+static int bola_y;
+static int bola_x;
+static int bola_yspeed;
+static int bola_xspeed;
+static int bounce_offset;
+static bool chuta;
+
 
 void initialize_ball_values(Ball *bola) {
   bola_y_original = bola->y;
@@ -26,37 +37,47 @@ void update_ball_position_after_jump(Ball *bola) {
 }
 
 bool check_kicking_player(Ball *bola, Player *pl) {
-  if(bola == NULL || pl == NULL) return false;
-  if(pl->orientation == 0) {
-    if ((bola->x <= pl->x + pl->width + 10) && (bola->x > pl->x + pl->width)){
-      if ((bola->y >= pl->y + pl->height/4) && (bola->y + 5 <= pl->y + pl->height)){
+  if (bola == NULL || pl == NULL) return false;
+  if (pl->orientation == 0) { // Left player
+    if ((bola->x <= pl->x + pl->width + 10) && (bola->x > pl->x + pl->width)) {
+      if ((bola->y >= pl->y + pl->height/4) && (bola->y + 5 <= pl->y + pl->height)) {
         return true;
-      }else{
+      }
+      else {
         return false;
       }
-    }else{
+    }
+    else {
       return false;
     }
-  }else{
-    if ((bola->x + bola->width >= pl->x - 10) && (bola->x + bola->width < pl->x)){
-      if ((bola->y >= pl->y + pl->height/4) && (bola->y + 5 >= pl->y + pl->height)){
+  }
+  else { // Right player
+    if ((bola->x + bola->width >= pl->x - 10) && (bola->x + bola->width < pl->x)) {
+      if ((bola->y >= pl->y + pl->height/4) && (bola->y + 5 <= pl->y + pl->height)) {
         return true;
-      }else{
+      }
+      else {
         return false;
       }
-    }else{
+    }
+    else {
       return false;
     }
   }
 }
 
 bool ball_player_collision(Ball *bola, Player *pl) {
-  if ((bola->x <= pl->x + pl->width + 5) && (bola->x + bola->width + 5 >= pl->x)) {
+  uint16_t bola_end = bola->x + bola->img.width;
+  uint16_t bola_bottom = bola->y + bola->img.height;
+  uint16_t pl_end = pl->x + pl->img.width;
+  uint16_t pl_bottom = pl->y + pl->img.height;
+  return !((bola_bottom < pl->y || pl_bottom < bola->y) || (bola_end < pl->x || pl_end < bola->x));
+  /*if ((bola->x <= pl->x + pl->width + 5) && (bola->x + bola->width + 5 >= pl->x)) {
     return (bola->y <= pl->y + pl->height + 5) && (bola->y + bola->height + 5 >= pl->y);
   }
   else {
     return false;
-  }
+  }*/
 }
 
 void change_y(Ball *bola) {
@@ -155,14 +176,15 @@ void move_ball(Ball *bola, BallState *ball_state, BallState *ball_state_temporar
     case MOVE_RIGHT:
       if (get_timer_intCounter() % 2 == 0) {
         bola->x += bola_xspeed;
+        printf("bola->x: %d\n", bola->x);
       }
       break;
     case AFTER_MOVE:
-      if (bola->xspeed != 0){
+      if (bola->xspeed != 0) {
         if (get_timer_intCounter() % 30 == 0) {
           bola->xspeed = bola->xspeed * SPEED_REDUCTION_FACTOR;
         }
-      }else{
+      } else {
         *ball_state = JUMP_END;
       }
     default:
@@ -175,14 +197,15 @@ int check_ball_goal_height(Ball *bl, Goal *gl) {
 }
 
 void verify_goal(Ball *bl, Goal *gl, Scoreboard *sc, BallState *ball_state) {
-  if (gl->orientation == 1) {
+  if (gl->orientation) { // right goal
     if ((bl->x >= gl->x) && bl->x <= gl->x + gl->img.width) {
       if (!bl->stop) {
         add_points_1(sc);
         bl->stop = true;
       }
     }
-  }else if (gl->orientation == 0) {
+  }
+  else { // left goal
     if ((bl->x >= gl->x) && bl->x + bl->img.width <= gl->x + gl->img.width) {
       if (!bl->stop) {
         add_points_2(sc);
@@ -193,29 +216,13 @@ void verify_goal(Ball *bl, Goal *gl, Scoreboard *sc, BallState *ball_state) {
 }
 
 int ball_goal_collision(Ball *bl, Goal *gl, Scoreboard *sc, BallState *ball_state) {
-  if (bl == NULL || gl == NULL) return 1; 
+  if (bl == NULL || gl == NULL) return 1;
   
-  if (gl->orientation == 1) { //on the left side of the pitch
-    if (check_ball_goal_height(bl,gl)) {//below the
-      verify_goal(bl,gl, sc, ball_state);
-      return 0;
-    }
-    else {
-      return 0; //No collision between ball and goal
-    }
-  }
-  else if (gl->orientation == 0) {
-    if (check_ball_goal_height(bl,gl)) {
-      verify_goal(bl,gl,sc, ball_state);
-      return 0;
-    }
-    else {
-      return 0; //No collision between ball and goal
-    }
+  if (check_ball_goal_height(bl,gl)) {// inside the goal
+    verify_goal(bl, gl, sc, ball_state);
+    return 0;
   }
   else {
-    return 1; //Direction error
+    return 0; // No collision between ball and goal
   }
-
-  return 0;
 }

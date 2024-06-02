@@ -48,9 +48,6 @@ int configure_rtc() {
   if (read_current_time()) {printf("Error: reading current time!\n"); return 1;}
   if (set_hourly_alarm()) {printf("Error: setting hourly alarm!\n"); return 1;}
 
-  // Initialize current sky
-  if (change_sky_image(current_time.hours)) {printf("Error: initializing first sky!\n"); return 1;}
-
   return 0;
 }
 
@@ -72,7 +69,6 @@ void rtc_ih(void) {
   if (rtc_read(RC_ADDR, &cause)) {printf("Error while reading from %x RTC address\n", RC_ADDR);}
 
   if (cause & RC_AF) {
-    // Call sky changer
     if (handle_alarm_int()) {
       printf("Error while handling the RTC's alarm interrupt!\n");
     }
@@ -82,11 +78,6 @@ void rtc_ih(void) {
 int handle_alarm_int() {
   if (read_current_time()) {
     printf("%s: Error while reading current time!\n", __func__);
-    return 1;
-  }
-
-  if (change_sky_image(current_time.hours)) {
-    printf("Error while changing sky\n");
     return 1;
   }
 
@@ -156,7 +147,7 @@ int read_current_time() {
     }
   }
 
-  printf("%s ERROR! Ran for %d tries and didn't succeed!\n", __func__, tries);
+  printf("%s Error: Ran for %d tries and didn't succeed!\n", __func__, tries);
   return 1;
 }
 
@@ -244,3 +235,7 @@ int set_hourly_alarm() {
   return 0;
 }
 
+
+uint8_t get_current_hour() {
+  return current_time.hours;
+}

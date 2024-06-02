@@ -16,7 +16,7 @@ typedef struct rtc_data rtc_data_t;
 
 /**
  * @brief Configures the RTC's initial state
- * @details Initializes the rtc_binary member variable (is_rtc_binary()). Initializes the current_time (read_current_time()). Sets hourly alarm for background-image changing (set_hourly_alarm()).
+ * @details Initializes the rtc_binary member variable (is_rtc_binary()). Initializes the current_time (read_current_time()). Sets hourly alarm for background-image changing (set_hourly_alarm())
  * 
  * @return 0 upon success, non-zero otherwise
 */
@@ -98,7 +98,7 @@ uint8_t to_decimal(uint8_t bcd_num);
  * - If the values are different, it means that there was an update while reading and it tries to read the values again.
  * - After 10 times, if it wasn't successful, it gives up.
  * 
- * @returns 0 upon success and non-zero otherwise
+ * @return 0 upon success and non-zero otherwise
 */
 int read_current_time();
 
@@ -107,7 +107,7 @@ int read_current_time();
  * @details The time registers are: seconds, minutes, hours, weekday, day, month, year
  * @param read Pointer to a struct rtc_data_t variable that stores the values read
  * 
- * @returns 0 upon success and non-zero otherwise
+ * @return 0 upon success and non-zero otherwise
 */
 int read_time_regs(rtc_data_t *read);
 
@@ -115,7 +115,7 @@ int read_time_regs(rtc_data_t *read);
  * @brief Compares 2 rtc_data_t variables for equality
  * @param read1, read2 The two time structs to be compared
  * 
- * @returns true if every struct member is equal, false otherwise
+ * @return true if every struct member is equal, false otherwise
 */
 bool equal_reads(rtc_data_t *read1, rtc_data_t *read2);
 
@@ -126,6 +126,11 @@ bool equal_reads(rtc_data_t *read1, rtc_data_t *read2);
  * @return 0 upon success, 1 otherwise
 */
 int set_hourly_alarm();
+
+/**
+ * 
+*/
+uint8_t get_current_hour(); 
 
 
 #endif // RTC_H

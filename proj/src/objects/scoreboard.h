@@ -56,7 +56,6 @@ void destroy_scoreboard(Scoreboard *sc);
 
 /** 
  * @brief Function that adds a goal to the first player's score
- * @details This function changes the image of the first part of the score to the next number after a goal
  *
  * @param sc Pointer to the Scoreboard struct to be deallocated. If sc is NULL, no operation is performed
  */
@@ -64,7 +63,6 @@ void add_points_1(Scoreboard *sc);
 
 /** 
  * @brief Function that adds a goal to the second player's score
- * @details This function changes the image of the second part of the score to the next number after a goal
  *
  * @param sc Pointer to the Scoreboard struct to be deallocated. If sc is NULL, no operation is performed
  */
