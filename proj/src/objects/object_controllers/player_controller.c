@@ -141,10 +141,10 @@ void move_player(Player *player, PlayerStateMove *player_state_move, PlayerState
       if (player->xspeed != 0) {
         if (get_timer_intCounter() % 30 == 0) {
           player->xspeed = player->xspeed * SPEED_REDUCTION_FACTOR;
-          printf("%d", player->xspeed);
+          printf("%d   ", player->xspeed);
         }
       } else {
-        *player_state_move = PLAYER_MOVE_LEFT_END;
+        *player_state_move = PLAYER_MOVE_END;
       }
       break;
     case AFTER_PLAYER_MOVE_RIGHT:
@@ -154,14 +154,10 @@ void move_player(Player *player, PlayerStateMove *player_state_move, PlayerState
           printf("%d", player->xspeed);
         }
       } else {
-        *player_state_move = PLAYER_MOVE_RIGHT_END;
+        *player_state_move = PLAYER_MOVE_END;
       }
       break;
-    case PLAYER_MOVE_LEFT_END:
-      restart_player_movement(player);
-      *player_state_move = PLAYER_MOVE_NONE;
-      break;
-    case PLAYER_MOVE_RIGHT_END:
+    case PLAYER_MOVE_END:
       restart_player_movement(player);
       *player_state_move = PLAYER_MOVE_NONE;
       break;

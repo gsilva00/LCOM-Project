@@ -274,7 +274,7 @@ void reset_states(bool multiplayer) {
   }
 
   if (player1_state_move != PLAYER_MOVE_NONE) {
-    player1_state_move = PLAYER_MOVE_RIGHT_END;
+    player1_state_move = PLAYER_MOVE_END;
     player1_state_jump = PLAYER_JUMP_END;
   }
   else {
@@ -284,7 +284,7 @@ void reset_states(bool multiplayer) {
 
   if (multiplayer) {
     if (player2_state_move != PLAYER_MOVE_NONE) {
-      player2_state_move = PLAYER_MOVE_RIGHT_END;
+      player2_state_move = PLAYER_MOVE_END;
       player2_state_jump = PLAYER_JUMP_END;
     }
     else {
@@ -367,7 +367,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
   resume = create_button(start_selected_map, 500, 155, true);
   go_back = create_button(end_not_selected_map, 500, 219, false);
 
-  bola = create_ball(bola_map, 400, 490, 32, 32, 10, 50);
+  bola = create_ball(bola_map, 400, 490, 62, 32, 10, 50);
   player1 = create_player(player1_map0, 200, 450, 62, 78, 10, 50, 0);
   player2 = create_player(player2_map0, 600, 450, 62, 78, 10, 50, 1);
   muro = create_wall(ground_map);
@@ -632,7 +632,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 if (player_border_collision(player1)) {
                   if (player1_state_move != PLAYER_MOVE_NONE) {
-                    player1_state_move = AFTER_PLAYER_MOVE_LEFT;
+                    player1_state_move = PLAYER_MOVE_END;
                   }
                 }
                 move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary, &player1_state_kick, &player1_state_kick_temporary);
@@ -696,25 +696,26 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 if (player_border_collision(player1)) {
                   if (player1_state_move != PLAYER_MOVE_NONE) {
-                    player1_state_move = AFTER_PLAYER_MOVE_LEFT;
+                    player1_state_move = PLAYER_MOVE_END;
                   }
                 }
                 if (player_border_collision(player2)) {
                   if (player2_state_move != PLAYER_MOVE_NONE) {
-                    player2_state_move = AFTER_PLAYER_MOVE_LEFT;
+                    player2_state_move = PLAYER_MOVE_END;
                   }
                 }
                 if (player_player_collision(player1, player2)) {
                   if (player1_state_move != PLAYER_MOVE_NONE) {
-                    player1_state_move = AFTER_PLAYER_MOVE_LEFT;
+                    player1_state_move = PLAYER_MOVE_END;
                   }
                   if (player2_state_move != PLAYER_MOVE_NONE) {
-                    player2_state_move = AFTER_PLAYER_MOVE_LEFT;
+                    player2_state_move = PLAYER_MOVE_END;
                   }
                 }
                 move_player(player1, &player1_state_move, &player1_state_move_temporary, &player1_state_jump, &player1_state_jump_temporary, &player1_state_kick, &player1_state_kick_temporary);
                 move_player(player2, &player2_state_move, &player2_state_move_temporary, &player2_state_jump, &player2_state_jump_temporary, &player2_state_kick, &player2_state_kick_temporary);
                 if (ball_player_collision(bola, player1) && !touching1) {
+                  printf("OOOO");
                   if (player1->x + player1->width/2 > bola->x + bola->width/2) {
                     if (ball_state != STATE_NONE) {
                       ball_state = JUMP_END;
@@ -734,29 +735,37 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 }
                 else if (!ball_player_collision(bola, player1) && touching1) {
                   ball_state = AFTER_MOVE;
+                  ball_state_temporary = STATE_NONE;
                   touching1 = false;
                 }
 
-                if (ball_player_collision(bola, player2) && !touching2) {
+                printf("ball_state %d\n", ball_state);
+                if (ball_player_collision(bola, player2)) {
+                  printf("IIII");
+                  
                   if (player2->x + player2->width/2 > bola->x + bola->width/2) {
-                    if (ball_state != STATE_NONE) {
+                    if (ball_state != STATE_NONE  && ball_state != MOVE_LEFT_START && ball_state != MOVE_LEFT) {
                       ball_state = JUMP_END;
                       ball_state_temporary = MOVE_LEFT_START;
-                    } else {
+                    } else if(ball_state != MOVE_LEFT){
                       ball_state = MOVE_LEFT_START;
                     }
                   } else {
-                    if (ball_state != STATE_NONE) {
+                    if (ball_state != STATE_NONE && ball_state != MOVE_RIGHT_START && ball_state != MOVE_RIGHT) {
+                      printf("end");
                       ball_state = JUMP_END;
                       ball_state_temporary = MOVE_RIGHT_START;
-                    } else {
+                    } else if(ball_state != MOVE_RIGHT){
+                      printf("right");
                       ball_state = MOVE_RIGHT_START;
                     }
                   }
                   touching2 = true;
                 }
                 else if (!ball_player_collision(bola, player2) && touching2) {
+                  printf("after");
                   ball_state = AFTER_MOVE;
+                  ball_state_temporary = STATE_NONE;
                   touching2 = false;
                 }
 
@@ -888,18 +897,17 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   player1_state_kick = AFTER_PLAYER_KICK;
                   player1_state_kick_temporary = PLAYER_KICK_START;
                 }
-                kicking = true;
+                if(check_kicking_player(bola, player1)){
+                  kicking = true;
+                }
               }
             }
 
             if (scancode == MAKECODE_RIGHT) {
               if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
-                if (player1_state_move != PLAYER_MOVE_NONE) {
-                  //player_state_move = STATE_PLAYER_MOVE_END;
-                  //player_state_move_temporary = PLAYER_MOVE_RIGHT_START;
-                } else {
+                if (player1_state_move == PLAYER_MOVE_NONE) {
                   if (player1_state_jump != PLAYER_JUMP_NONE) {
-                     player1_state_move = PLAYER_MOVE_RIGHT;
+                    player1_state_move = PLAYER_MOVE_RIGHT;
                   } else {
                     player1_state_move = PLAYER_MOVE_RIGHT_START;
                   }
@@ -909,13 +917,13 @@ int(proj_main_loop)(int argc, char *argv[]) {
 
             if (scancode == BREAKCODE_LEFT) {
               if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
-                player1_state_move = PLAYER_MOVE_LEFT_END;
+                player1_state_move = PLAYER_MOVE_END;
               }
             }
 
             if (scancode == BREAKCODE_RIGHT) {
               if (game_state == SINGLEPLAYER || game_state == MULTIPLAYER) {
-                player1_state_move = PLAYER_MOVE_RIGHT_END;
+                player1_state_move = PLAYER_MOVE_END;
               }
             }
 
@@ -956,7 +964,9 @@ int(proj_main_loop)(int argc, char *argv[]) {
                   player2_state_kick = AFTER_PLAYER_KICK;
                   player2_state_kick_temporary = PLAYER_KICK_START;
                 }
-                kicking2 = true;
+                if(check_kicking_player(bola, player2)){
+                  kicking2 = true;
+                }
               }
             }
             if (scancode == MAKECODE_D) {
@@ -982,13 +992,13 @@ int(proj_main_loop)(int argc, char *argv[]) {
 
             if (scancode == BREAKCODE_A) {
               if (game_state == MULTIPLAYER) {
-                player2_state_move = PLAYER_MOVE_LEFT_END;
+                player2_state_move = PLAYER_MOVE_END;
               }
             }
 
             if (scancode == BREAKCODE_D) {
               if (game_state == MULTIPLAYER) {
-                player2_state_move = PLAYER_MOVE_RIGHT_END;
+                player2_state_move = PLAYER_MOVE_END;
               }
             }
 
