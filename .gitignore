@@ -1,0 +1,4 @@
+# clang-format and .vscode/ files are added to the repository as they were provided by the course staff
+
+# Ignore OS libraries
+.minix-src/
